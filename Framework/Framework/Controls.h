@@ -17,3 +17,4 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <Framework/PublicHeader.h>
 #import <Controls/ConcentricView.h>
 #import <Controls/UnderscoredButtonsControl.h>
+#import <Controls/GradientSlider.h>

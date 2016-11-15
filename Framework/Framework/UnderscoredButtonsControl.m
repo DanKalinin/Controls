@@ -38,10 +38,11 @@
 }
 
 - (void)selectButton:(UIButton *)button animated:(BOOL)animated {
-    self.selectedButton = button;
     
-    [self.buttons setValue:@NO forKey:@"selected"];
+    self.selectedButton.selected = NO;
     button.selected = YES;
+    
+    self.selectedButton = button;
     
     self.leadingConstraint.constant = button.frame.origin.x;
     self.widthConstraint.constant = button.frame.size.width;
@@ -49,6 +50,11 @@
     [UIView animateWithDuration:duration animations:^{
         [self.underscoreView.superview layoutIfNeeded];
     }];
+    
+    CGFloat x = button.frame.origin.x - self.stackView.spacing;
+    CGFloat width = button.frame.size.width + 2.0 * self.stackView.spacing;
+    CGRect rect = CGRectMake(x, 0.0, width, 1.0);
+    [self.scrollView scrollRectToVisible:rect animated:animated];
 }
 
 #pragma mark - Actions
