@@ -13,8 +13,8 @@
 		37A502031DD8EE8A004DD6BC /* Helpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A502021DD8EE83004DD6BC /* Helpers.framework */; };
 		37A502061DD8EEA8004DD6BC /* ConcentricView.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A502041DD8EEA8004DD6BC /* ConcentricView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		37A502071DD8EEA9004DD6BC /* ConcentricView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A502051DD8EEA8004DD6BC /* ConcentricView.m */; };
-		37A5023E1DD90C66004DD6BC /* UnderscoredButtonsControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A5023C1DD90C66004DD6BC /* UnderscoredButtonsControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		37A5023F1DD90C66004DD6BC /* UnderscoredButtonsControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A5023D1DD90C66004DD6BC /* UnderscoredButtonsControl.m */; };
+		37A5023E1DD90C66004DD6BC /* TabControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A5023C1DD90C66004DD6BC /* TabControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		37A5023F1DD90C66004DD6BC /* TabControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A5023D1DD90C66004DD6BC /* TabControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +36,8 @@
 		37A501FD1DD8EE83004DD6BC /* Framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Framework.xcodeproj; path = ../../../../Helpers/Framework/Framework.xcodeproj; sourceTree = "<group>"; };
 		37A502041DD8EEA8004DD6BC /* ConcentricView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcentricView.h; sourceTree = "<group>"; };
 		37A502051DD8EEA8004DD6BC /* ConcentricView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcentricView.m; sourceTree = "<group>"; };
-		37A5023C1DD90C66004DD6BC /* UnderscoredButtonsControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderscoredButtonsControl.h; sourceTree = "<group>"; };
-		37A5023D1DD90C66004DD6BC /* UnderscoredButtonsControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderscoredButtonsControl.m; sourceTree = "<group>"; };
+		37A5023C1DD90C66004DD6BC /* TabControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabControl.h; sourceTree = "<group>"; };
+		37A5023D1DD90C66004DD6BC /* TabControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +75,8 @@
 				37A501F31DD8EE24004DD6BC /* Controls.h */,
 				37A502041DD8EEA8004DD6BC /* ConcentricView.h */,
 				37A502051DD8EEA8004DD6BC /* ConcentricView.m */,
-				37A5023C1DD90C66004DD6BC /* UnderscoredButtonsControl.h */,
-				37A5023D1DD90C66004DD6BC /* UnderscoredButtonsControl.m */,
+				37A5023C1DD90C66004DD6BC /* TabControl.h */,
+				37A5023D1DD90C66004DD6BC /* TabControl.m */,
 				3701E2631DDA10C800E3DC7A /* GradientSlider.h */,
 				3701E2641DDA10C800E3DC7A /* GradientSlider.m */,
 				37A501F41DD8EE24004DD6BC /* Info.plist */,
@@ -115,7 +115,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37A5023E1DD90C66004DD6BC /* UnderscoredButtonsControl.h in Headers */,
+				37A5023E1DD90C66004DD6BC /* TabControl.h in Headers */,
 				37A501F51DD8EE24004DD6BC /* Controls.h in Headers */,
 				37A502061DD8EEA8004DD6BC /* ConcentricView.h in Headers */,
 				3701E2651DDA10C800E3DC7A /* GradientSlider.h in Headers */,
@@ -207,7 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37A502071DD8EEA9004DD6BC /* ConcentricView.m in Sources */,
-				37A5023F1DD90C66004DD6BC /* UnderscoredButtonsControl.m in Sources */,
+				37A5023F1DD90C66004DD6BC /* TabControl.m in Sources */,
 				3701E2661DDA10C800E3DC7A /* GradientSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,7 +256,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -301,7 +301,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

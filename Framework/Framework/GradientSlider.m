@@ -48,7 +48,8 @@
 }
 
 - (void)setValue:(double)value animated:(BOOL)animated {
-    self.value = value;
+    
+    self.value = [self stepRoundedValue:value];
     
     NSTimeInterval duration = self.duration * animated;
     self.valueConstraint.constant = [self constantForValue:value];
@@ -111,6 +112,8 @@
 #pragma mark - Helpers
 
 - (double)valueForConstant:(CGFloat)constant {
+    constant = fmax(0.0, constant);
+    constant = fmin(self.frame.size.width, constant);
     double percent = constant / self.frame.size.width;
     double range = self.maxValue - self.minValue;
     double value = self.minValue + range * percent;
@@ -123,8 +126,15 @@
     return constant;
 }
 
+- (double)stepRoundedValue:(double)value {
+    double integral = floor(value / self.step);
+    double remainder = value - integral;
+    value = (remainder < 0.5 * self.step) ? integral : integral + self.step;
+    return value;
+}
+
 - (void)reportValueChanged:(double)oldValue {
-    if (fabs(self.value - oldValue) >= self.step) {
+    if (self.value != oldValue) {
         [self sendActionsForControlEvents:UIControlEventValueChanged];
     }
 }

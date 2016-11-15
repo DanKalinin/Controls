@@ -6,11 +6,11 @@
 //  Copyright © 2016 Dan Kalinin. All rights reserved.
 //
 
-#import "UnderscoredButtonsControl.h"
+#import "TabControl.h"
 
 
 
-@interface UnderscoredButtonsControl ()
+@interface TabControl ()
 
 @property UIButton *selectedButton;
 
@@ -18,7 +18,7 @@
 
 
 
-@implementation UnderscoredButtonsControl
+@implementation TabControl
 
 - (void)setButtons:(NSArray *)buttons {
     _buttons = buttons;

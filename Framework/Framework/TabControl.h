@@ -10,7 +10,7 @@
 
 
 
-@interface UnderscoredButtonsControl : UIControl
+@interface TabControl : UIControl
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIStackView *stackView;
