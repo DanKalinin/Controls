@@ -18,3 +18,4 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/ConcentricView.h>
 #import <Controls/TabControl.h>
 #import <Controls/GradientSlider.h>
+#import <Controls/PickerControl.h>
