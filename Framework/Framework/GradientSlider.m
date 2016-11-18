@@ -1,142 +1,189 @@
 //
 //  GradientSlider.m
-//  Framework
+//  Slider
 //
-//  Created by Dan Kalinin on 14/11/16.
+//  Created by Dan Kalinin on 18/11/16.
 //  Copyright © 2016 Dan Kalinin. All rights reserved.
 //
 
 #import "GradientSlider.h"
+#import <Helpers/Helpers.h>
 
 
 
 @interface GradientSlider ()
 
-@property double value;
-@property CAGradientLayer *gradientLayer;
+@property (nonatomic) double value;
 
 @end
 
 
 
-@implementation GradientSlider
+@implementation GradientSlider {
+    NSTimer *buttonTimer;
+    double downValue;
+    double oldValue;
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.valueConstraint.constant = 0.0;
+    self.minusButton.tag = -1;
+    [self.minusButton addTarget:self action:@selector(onDown:) forControlEvents:UIControlEventTouchDown];
+    [self.minusButton addTarget:self action:@selector(onUp:) forControlEvents:(UIControlEventTouchUpInside | UIControlEventTouchUpOutside)];
+    [self.minusButton addTarget:self action:@selector(onCancel:) forControlEvents:UIControlEventTouchCancel];
     
-    [self.minButton addTarget:self action:@selector(onStep:) forControlEvents:UIControlEventTouchDown];
-    [self.maxButton addTarget:self action:@selector(onStep:) forControlEvents:UIControlEventTouchDown];
-
-    UIColor *minTitleColor = [self.minButton titleColorForState:UIControlStateHighlighted];
-    UIColor *maxTitleColor = [self.maxButton titleColorForState:UIControlStateHighlighted];
-    [self.minButton setTitleColor:minTitleColor forState:(UIControlStateHighlighted | UIControlStateSelected)];
-    [self.maxButton setTitleColor:maxTitleColor forState:(UIControlStateHighlighted | UIControlStateSelected)];
+    self.plusButton.tag = +1;
+    [self.plusButton addTarget:self action:@selector(onDown:) forControlEvents:UIControlEventTouchDown];
+    [self.plusButton addTarget:self action:@selector(onUp:) forControlEvents:(UIControlEventTouchUpInside | UIControlEventTouchUpOutside)];
+    [self.plusButton addTarget:self action:@selector(onCancel:) forControlEvents:UIControlEventTouchCancel];
     
-    self.gradientLayer = [CAGradientLayer layer];
-    self.gradientLayer.colors = @[(id)self.minColor.CGColor, (id)self.maxColor.CGColor];
-    self.gradientLayer.startPoint = CGPointMake(0.0, 0.0);
-    self.gradientLayer.endPoint = CGPointMake(1.0, 0.0);
-    [self.valueView.layer insertSublayer:self.gradientLayer atIndex:0];
+    [self.minusButton setTitleColor:[self.minusButton titleColorForState:UIControlStateHighlighted] forState:(UIControlStateHighlighted | UIControlStateSelected)];
+    [self.plusButton setTitleColor:[self.plusButton titleColorForState:UIControlStateHighlighted] forState:(UIControlStateHighlighted | UIControlStateSelected)];
+    
+    GradientLayerView *gradientView = [GradientLayerView new];
+    gradientView.layer.colors = @[(id)self.minimumColor.CGColor, (id)self.maximumColor.CGColor];
+    gradientView.layer.startPoint = CGPointMake(0.0, 0.0);
+    gradientView.layer.endPoint = CGPointMake(1.0, 0.0);
+    [self.valueView addSubview:gradientView];
+    
+    gradientView.translatesAutoresizingMaskIntoConstraints = NO;
+    [gradientView.leadingAnchor constraintEqualToAnchor:self.leadingAnchor].active = YES;
+    [gradientView.trailingAnchor constraintEqualToAnchor:self.trailingAnchor].active = YES;
+    [gradientView.topAnchor constraintEqualToAnchor:self.topAnchor].active = YES;
+    [gradientView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
+    
+    [self setValue:self.value animated:NO];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
-    self.gradientLayer.frame = self.bounds;
+    self.valueConstraint.constant = [self constantForValue:self.value];
 }
 
-- (void)setValue:(double)value animated:(BOOL)animated {
-    
-    self.value = [self stepRoundedValue:value];
-    
-    NSTimeInterval duration = self.duration * animated;
-    self.valueConstraint.constant = [self constantForValue:value];
-    [UIView animateWithDuration:duration animations:^{
-        [self.valueView.superview layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        BOOL minButtonSelected = (self.valueConstraint.constant > self.minButton.center.x);
-        BOOL valueLabelHighlighted = (self.valueConstraint.constant > self.valueLabel.center.x);
-        BOOL maxButtonSelected = (self.valueConstraint.constant > self.maxButton.center.x);
-        
-        self.minButton.selected = minButtonSelected;
-        self.valueLabel.highlighted = valueLabelHighlighted;
-        self.maxButton.selected = maxButtonSelected;
-    }];
+#pragma mark - Accessors
+
+- (void)setMinimumValue:(double)minimumValue {
+    _minimumValue = minimumValue;
+    [self setValue:self.value animated:NO];
+}
+
+- (void)setMaximumValue:(double)maximumValue {
+    _maximumValue = maximumValue;
+    [self setValue:self.value animated:NO];
+}
+
+- (void)setValue:(double)value {
+    _value = value;
+    self.valueLabel.text = [NSString stringWithFormat:self.valueFormat, value];
 }
 
 #pragma mark - Actions
 
-- (void)onStep:(UIButton *)sender {
-    if (!(sender.state & UIControlStateHighlighted)) return;
+// Buttons
+
+- (void)onDown:(UIButton *)sender {
+    downValue = self.value;
     
-    double value;
-    if ([sender isEqual:self.minButton]) {
-        value = self.value - self.step;
-        value = fmax(self.minValue, value);
-    } else {
-        value = self.value + self.step;
-        value = fmin(self.maxValue, value);
-    }
-    
-    double oldValue = self.value;
-    [self setValue:value animated:sender.tag];
-    [self reportValueChanged:oldValue];
-    
-    [self performSelector:@selector(onStep:) withObject:sender afterDelay:0.1];
+    buttonTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(onChanged:) userInfo:sender repeats:YES];
+    [buttonTimer fire];
 }
 
+- (void)onChanged:(NSTimer *)sender {
+    UIButton *button = sender.userInfo;
+    oldValue = self.value;
+    double value = self.value + self.stepValue * button.tag;
+    if (self.continuous && (value != oldValue)) {
+        [self sendActionsForControlEvents:UIControlEventValueChanged];
+    }
+    
+    [self setValue:value animated:NO];
+}
+
+- (void)onUp:(UIButton *)sender {
+    [buttonTimer invalidate];
+    
+    if (!self.continuous && (self.value != downValue)) {
+        [self sendActionsForControlEvents:UIControlEventValueChanged];
+    }
+}
+
+- (void)onCancel:(UIButton *)sender {
+    [buttonTimer invalidate];
+}
+
+// Control
+
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
-    CGPoint point = [touch locationInView:self];
-    double value = [self valueForConstant:point.x];
-    
-    double oldValue = self.value;
-    [self setValue:value animated:self.tag];
-    [self reportValueChanged:oldValue];
-    
+    [self valueUpdatedWithTouch:touch];
     return YES;
 }
 
 - (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
-    CGPoint point = [touch locationInView:self];
-    double value = [self valueForConstant:point.x];
-    
-    double oldValue = self.value;
-    [self setValue:value animated:NO];
-    [self reportValueChanged:oldValue];
-    
+    [self valueUpdatedWithTouch:touch];
     return YES;
+}
+
+- (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
+    if (!self.continuous) {
+        [self sendActionsForControlEvents:UIControlEventValueChanged];
+    }
 }
 
 #pragma mark - Helpers
 
-- (double)valueForConstant:(CGFloat)constant {
-    constant = fmax(0.0, constant);
+- (void)valueUpdatedWithTouch:(UITouch *)touch {
+    CGPoint location = [touch locationInView:self];
+    
+    CGFloat constant = fmax(0.0, location.x);
     constant = fmin(self.frame.size.width, constant);
-    double percent = constant / self.frame.size.width;
-    double range = self.maxValue - self.minValue;
-    double value = self.minValue + range * percent;
+    
+    oldValue = self.value;
+    double value = [self valueForConstant:constant];
+    self.value = [self roudedValue:value];
+    if (self.continuous && (self.value != oldValue)) {
+        [self sendActionsForControlEvents:UIControlEventValueChanged];
+    }
+    
+    [self setConstant:constant animated:NO];
+}
+
+- (double)roudedValue:(double)value {
+    double steps = floor(value / self.stepValue);
+    double integral = steps * self.stepValue;
+    double remainder = value - integral;
+    value = (remainder < 0.5 * self.stepValue) ? integral : integral + self.stepValue;
     return value;
+}
+
+- (void)setConstant:(CGFloat)constant animated:(BOOL)animated {
+    
+    self.minusButton.selected = (constant > self.minusButton.center.x);
+    self.valueLabel.highlighted = (constant > [self convertPoint:self.valueLabel.center fromView:self.valueLabel.superview].x);
+    self.plusButton.selected = (constant > self.plusButton.center.x);
+    
+    NSTimeInterval duration = 0.25 * animated;
+    self.valueConstraint.constant = constant;
+    [UIView animateWithDuration:duration animations:^{
+        [self.valueView.superview layoutIfNeeded];
+    }];
+}
+
+- (void)setValue:(double)value animated:(BOOL)animated {
+    value = fmax(self.minimumValue, value);
+    self.value = fmin(self.maximumValue, value);
+    CGFloat constant = [self constantForValue:self.value];
+    [self setConstant:constant animated:animated];
 }
 
 - (CGFloat)constantForValue:(double)value {
-    double percent = (value - self.minValue) / (self.maxValue - self.minValue);
-    CGFloat constant = self.frame.size.width * percent;
+    CGFloat constant = (value - self.minimumValue) / (self.maximumValue - self.minimumValue) * self.frame.size.width;
     return constant;
 }
 
-- (double)stepRoundedValue:(double)value {
-    double integral = floor(value / self.step);
-    double remainder = value - integral;
-    value = (remainder < 0.5 * self.step) ? integral : integral + self.step;
+- (double)valueForConstant:(CGFloat)constant {
+    double value = constant / self.frame.size.width * (self.maximumValue - self.minimumValue) + self.minimumValue;
     return value;
-}
-
-- (void)reportValueChanged:(double)oldValue {
-    if (self.value != oldValue) {
-        [self sendActionsForControlEvents:UIControlEventValueChanged];
-    }
 }
 
 @end

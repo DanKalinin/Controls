@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3701E2651DDA10C800E3DC7A /* GradientSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 3701E2631DDA10C800E3DC7A /* GradientSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3701E2661DDA10C800E3DC7A /* GradientSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701E2641DDA10C800E3DC7A /* GradientSlider.m */; };
+		379FA30E1DDF28FC00985D1F /* GradientSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 379FA30C1DDF28FC00985D1F /* GradientSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		379FA30F1DDF28FC00985D1F /* GradientSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 379FA30D1DDF28FC00985D1F /* GradientSlider.m */; };
 		37A501F51DD8EE24004DD6BC /* Controls.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A501F31DD8EE24004DD6BC /* Controls.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		37A502031DD8EE8A004DD6BC /* Helpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A502021DD8EE83004DD6BC /* Helpers.framework */; };
 		37A502061DD8EEA8004DD6BC /* ConcentricView.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A502041DD8EEA8004DD6BC /* ConcentricView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -28,8 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3701E2631DDA10C800E3DC7A /* GradientSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientSlider.h; sourceTree = "<group>"; };
-		3701E2641DDA10C800E3DC7A /* GradientSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientSlider.m; sourceTree = "<group>"; };
+		379FA30C1DDF28FC00985D1F /* GradientSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientSlider.h; sourceTree = "<group>"; };
+		379FA30D1DDF28FC00985D1F /* GradientSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientSlider.m; sourceTree = "<group>"; };
 		37A501F01DD8EE24004DD6BC /* Controls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Controls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		37A501F31DD8EE24004DD6BC /* Controls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Controls.h; sourceTree = "<group>"; };
 		37A501F41DD8EE24004DD6BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,8 +77,8 @@
 				37A502051DD8EEA8004DD6BC /* ConcentricView.m */,
 				37A5023C1DD90C66004DD6BC /* TabControl.h */,
 				37A5023D1DD90C66004DD6BC /* TabControl.m */,
-				3701E2631DDA10C800E3DC7A /* GradientSlider.h */,
-				3701E2641DDA10C800E3DC7A /* GradientSlider.m */,
+				379FA30C1DDF28FC00985D1F /* GradientSlider.h */,
+				379FA30D1DDF28FC00985D1F /* GradientSlider.m */,
 				37A501F41DD8EE24004DD6BC /* Info.plist */,
 			);
 			path = Framework;
@@ -118,7 +118,7 @@
 				37A5023E1DD90C66004DD6BC /* TabControl.h in Headers */,
 				37A501F51DD8EE24004DD6BC /* Controls.h in Headers */,
 				37A502061DD8EEA8004DD6BC /* ConcentricView.h in Headers */,
-				3701E2651DDA10C800E3DC7A /* GradientSlider.h in Headers */,
+				379FA30E1DDF28FC00985D1F /* GradientSlider.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +208,7 @@
 			files = (
 				37A502071DD8EEA9004DD6BC /* ConcentricView.m in Sources */,
 				37A5023F1DD90C66004DD6BC /* TabControl.m in Sources */,
-				3701E2661DDA10C800E3DC7A /* GradientSlider.m in Sources */,
+				379FA30F1DDF28FC00985D1F /* GradientSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
