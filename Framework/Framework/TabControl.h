@@ -18,9 +18,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leadingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 
-@property IBInspectable NSTimeInterval duration;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
-@property (readonly) UIButton *selectedButton;
+@property (readonly) UIButton *button;
 - (void)selectButton:(UIButton *)button animated:(BOOL)animated;
 
 @end

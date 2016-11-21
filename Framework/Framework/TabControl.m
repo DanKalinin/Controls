@@ -12,7 +12,7 @@
 
 @interface TabControl ()
 
-@property UIButton *selectedButton;
+@property UIButton *button;
 
 @end
 
@@ -39,14 +39,14 @@
 
 - (void)selectButton:(UIButton *)button animated:(BOOL)animated {
     
-    self.selectedButton.selected = NO;
+    self.button.selected = NO;
     button.selected = YES;
     
-    self.selectedButton = button;
+    self.button = button;
     
     self.leadingConstraint.constant = button.frame.origin.x;
     self.widthConstraint.constant = button.frame.size.width;
-    NSTimeInterval duration = self.duration * animated;
+    NSTimeInterval duration = 0.25 * animated;
     [UIView animateWithDuration:duration animations:^{
         [self.underscoreView.superview layoutIfNeeded];
     }];
@@ -61,7 +61,7 @@
 
 - (void)onClick:(UIButton *)sender {
     
-    if ([sender isEqual:self.selectedButton]) return;
+    if ([sender isEqual:self.button]) return;
     
     [self selectButton:sender animated:YES];
     [self sendActionsForControlEvents:UIControlEventValueChanged];

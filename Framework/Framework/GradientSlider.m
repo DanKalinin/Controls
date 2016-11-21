@@ -13,16 +13,19 @@
 
 @interface GradientSlider ()
 
-@property (nonatomic) double value;
+@property (nonatomic) CGFloat value;
 
 @end
 
 
 
 @implementation GradientSlider {
+    CGFloat minimumValue;
+    CGFloat maximumValue;
+    
     NSTimer *buttonTimer;
-    double downValue;
-    double oldValue;
+    CGFloat downValue;
+    CGFloat oldValue;
 }
 
 - (void)awakeFromNib {
@@ -63,17 +66,17 @@
 
 #pragma mark - Accessors
 
-- (void)setMinimumValue:(double)minimumValue {
-    _minimumValue = minimumValue;
+- (void)setValueRange:(CGPoint)valueRange {
+    if (CGPointEqualToPoint(valueRange, _valueRange)) return;
+    
+    _valueRange = valueRange;
+    
+    minimumValue = valueRange.x;
+    maximumValue = valueRange.x + valueRange.y;
     [self setValue:self.value animated:NO];
 }
 
-- (void)setMaximumValue:(double)maximumValue {
-    _maximumValue = maximumValue;
-    [self setValue:self.value animated:NO];
-}
-
-- (void)setValue:(double)value {
+- (void)setValue:(CGFloat)value {
     _value = value;
     self.valueLabel.text = [NSString stringWithFormat:self.valueFormat, value];
 }
@@ -92,7 +95,7 @@
 - (void)onChanged:(NSTimer *)sender {
     UIButton *button = sender.userInfo;
     oldValue = self.value;
-    double value = self.value + self.stepValue * button.tag;
+    CGFloat value = self.value + self.stepValue * button.tag;
     if (self.continuous && (value != oldValue)) {
         [self sendActionsForControlEvents:UIControlEventValueChanged];
     }
@@ -139,7 +142,7 @@
     constant = fmin(self.frame.size.width, constant);
     
     oldValue = self.value;
-    double value = [self valueForConstant:constant];
+    CGFloat value = [self valueForConstant:constant];
     self.value = [self roudedValue:value];
     if (self.continuous && (self.value != oldValue)) {
         [self sendActionsForControlEvents:UIControlEventValueChanged];
@@ -148,10 +151,10 @@
     [self setConstant:constant animated:NO];
 }
 
-- (double)roudedValue:(double)value {
-    double steps = floor(value / self.stepValue);
-    double integral = steps * self.stepValue;
-    double remainder = value - integral;
+- (CGFloat)roudedValue:(CGFloat)value {
+    CGFloat steps = floor(value / self.stepValue);
+    CGFloat integral = steps * self.stepValue;
+    CGFloat remainder = value - integral;
     value = (remainder < 0.5 * self.stepValue) ? integral : integral + self.stepValue;
     return value;
 }
@@ -169,20 +172,20 @@
     }];
 }
 
-- (void)setValue:(double)value animated:(BOOL)animated {
-    value = fmax(self.minimumValue, value);
-    self.value = fmin(self.maximumValue, value);
+- (void)setValue:(CGFloat)value animated:(BOOL)animated {
+    value = fmax(minimumValue, value);
+    self.value = fmin(maximumValue, value);
     CGFloat constant = [self constantForValue:self.value];
     [self setConstant:constant animated:animated];
 }
 
-- (CGFloat)constantForValue:(double)value {
-    CGFloat constant = (value - self.minimumValue) / (self.maximumValue - self.minimumValue) * self.frame.size.width;
+- (CGFloat)constantForValue:(CGFloat)value {
+    CGFloat constant = (value - minimumValue) / (maximumValue - minimumValue) * self.frame.size.width;
     return constant;
 }
 
-- (double)valueForConstant:(CGFloat)constant {
-    double value = constant / self.frame.size.width * (self.maximumValue - self.minimumValue) + self.minimumValue;
+- (CGFloat)valueForConstant:(CGFloat)constant {
+    CGFloat value = constant / self.frame.size.width * (maximumValue - minimumValue) + minimumValue;
     return value;
 }
 
