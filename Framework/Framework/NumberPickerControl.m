@@ -162,15 +162,15 @@
     
     _valueRange = valueRange;
     
-    NSUInteger location = valueRange.location / self.divider;
-    NSUInteger length = valueRange.length / self.divider;
-    self.leftPickerControl.valueRange = NSMakeRange(location, length);
+    NSUInteger min = valueRange.location / self.divider;
+    NSUInteger max = NSMaxRange(valueRange) / self.divider;
+    self.leftPickerControl.valueRange = NSMakeRange(min, max - min);
     
-    location = valueRange.location % self.divider;
-    length = valueRange.length % self.divider;
-    minRightValueRange = NSMakeRange(location, self.divider - 1 - location);
+    min = valueRange.location % self.divider;
+    max = NSMaxRange(valueRange) % self.divider;
+    minRightValueRange = NSMakeRange(min, self.divider - 1 - min);
     standardRightValueRange = NSMakeRange(0, self.divider - 1);
-    maxRightValueRange = NSMakeRange(0, location + length);
+    maxRightValueRange = NSMakeRange(0, max);
     [self updateRightValueRange];
 }
 
