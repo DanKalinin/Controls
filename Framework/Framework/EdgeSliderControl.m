@@ -7,6 +7,7 @@
 //
 
 #import "EdgeSliderControl.h"
+#import <Helpers/Helpers.h>
 
 
 
@@ -18,8 +19,6 @@
 
 @implementation EdgeSliderControl {
     BOOL loaded;
-    
-    CGSize intrinsicContentSize;
     
     NSLayoutConstraint *topConstraint;
     NSLayoutConstraint *bottomConstraint;
@@ -36,11 +35,6 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return self;
-}
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    intrinsicContentSize = self.frame.size;
 }
 
 - (void)didMoveToSuperview {
@@ -103,15 +97,6 @@
 }
 
 #pragma mark - Accessors
-
-- (void)setIntrinsicContentSize:(CGSize)size {
-    intrinsicContentSize = size;
-    [self invalidateIntrinsicContentSize];
-}
-
-- (CGSize)intrinsicContentSize {
-    return intrinsicContentSize;
-}
 
 - (BOOL)shown {
     return bottomConstraint.active;

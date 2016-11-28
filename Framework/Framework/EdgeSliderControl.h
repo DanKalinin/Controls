@@ -16,8 +16,6 @@
 @property IBInspectable CGFloat inset;
 @property IBInspectable UIColor *dimmingColor;
 
-@property CGSize intrinsicContentSize;
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated;
 - (void)toggleAnimated:(BOOL)animated;
 
