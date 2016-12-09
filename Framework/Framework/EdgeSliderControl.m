@@ -83,10 +83,11 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     self.selected = selected;
-    topConstraint.active = !selected;
-    bottomConstraint.active = selected;
     NSTimeInterval duration = 0.25 * animated;
+    [self.superview layoutIfNeeded];
     [UIView animateWithDuration:duration animations:^{
+        topConstraint.active = !selected;
+        bottomConstraint.active = selected;
         [self.superview layoutIfNeeded];
         dimmingView.alpha = selected;
     }];

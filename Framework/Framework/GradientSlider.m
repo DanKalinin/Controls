@@ -166,8 +166,9 @@
     self.plusButton.selected = (constant > self.plusButton.center.x);
     
     NSTimeInterval duration = 0.25 * animated;
-    self.valueConstraint.constant = constant;
+    [self.valueView.superview layoutIfNeeded];
     [UIView animateWithDuration:duration animations:^{
+        self.valueConstraint.constant = constant;
         [self.valueView.superview layoutIfNeeded];
     }];
 }

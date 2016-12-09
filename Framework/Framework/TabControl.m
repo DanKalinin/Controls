@@ -44,10 +44,11 @@
     
     self.button = button;
     
-    self.leadingConstraint.constant = button.frame.origin.x;
-    self.widthConstraint.constant = button.frame.size.width;
     NSTimeInterval duration = 0.25 * animated;
+    [self.underscoreView.superview layoutIfNeeded];
     [UIView animateWithDuration:duration animations:^{
+        self.leadingConstraint.constant = button.frame.origin.x;
+        self.widthConstraint.constant = button.frame.size.width;
         [self.underscoreView.superview layoutIfNeeded];
     }];
     
