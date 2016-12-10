@@ -19,6 +19,8 @@
 		37A502071DD8EEA9004DD6BC /* ConcentricView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A502051DD8EEA8004DD6BC /* ConcentricView.m */; };
 		37A5023E1DD90C66004DD6BC /* TabControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A5023C1DD90C66004DD6BC /* TabControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		37A5023F1DD90C66004DD6BC /* TabControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A5023D1DD90C66004DD6BC /* TabControl.m */; };
+		E7894EAA1DFB7F9D00B5145E /* DropdownMenuVC.h in Headers */ = {isa = PBXBuildFile; fileRef = E7894EA81DFB7F9D00B5145E /* DropdownMenuVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7894EAB1DFB7F9D00B5145E /* DropdownMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7894EA91DFB7F9D00B5145E /* DropdownMenuVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		37A502051DD8EEA8004DD6BC /* ConcentricView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcentricView.m; sourceTree = "<group>"; };
 		37A5023C1DD90C66004DD6BC /* TabControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabControl.h; sourceTree = "<group>"; };
 		37A5023D1DD90C66004DD6BC /* TabControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabControl.m; sourceTree = "<group>"; };
+		E7894EA81DFB7F9D00B5145E /* DropdownMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropdownMenuVC.h; sourceTree = "<group>"; };
+		E7894EA91DFB7F9D00B5145E /* DropdownMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropdownMenuVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,8 @@
 				37A092EF1DE326D500ADA05B /* NumberPickerControl.m */,
 				37A093EC1DE851E900ADA05B /* EdgeSliderControl.h */,
 				37A093ED1DE851E900ADA05B /* EdgeSliderControl.m */,
+				E7894EA81DFB7F9D00B5145E /* DropdownMenuVC.h */,
+				E7894EA91DFB7F9D00B5145E /* DropdownMenuVC.m */,
 				37A501F41DD8EE24004DD6BC /* Info.plist */,
 			);
 			path = Framework;
@@ -132,6 +138,7 @@
 				37A093EE1DE851E900ADA05B /* EdgeSliderControl.h in Headers */,
 				37A502061DD8EEA8004DD6BC /* ConcentricView.h in Headers */,
 				379FA30E1DDF28FC00985D1F /* GradientSlider.h in Headers */,
+				E7894EAA1DFB7F9D00B5145E /* DropdownMenuVC.h in Headers */,
 				37A092F01DE326D500ADA05B /* NumberPickerControl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,6 +229,7 @@
 			files = (
 				37A502071DD8EEA9004DD6BC /* ConcentricView.m in Sources */,
 				37A5023F1DD90C66004DD6BC /* TabControl.m in Sources */,
+				E7894EAB1DFB7F9D00B5145E /* DropdownMenuVC.m in Sources */,
 				37A093EF1DE851E900ADA05B /* EdgeSliderControl.m in Sources */,
 				37A092F11DE326D500ADA05B /* NumberPickerControl.m in Sources */,
 				379FA30F1DDF28FC00985D1F /* GradientSlider.m in Sources */,
