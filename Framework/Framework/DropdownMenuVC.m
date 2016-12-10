@@ -27,6 +27,8 @@
 @implementation DropdownMenuVC {
     __weak UITableViewController *menuTVC;
     __weak UIViewController *childVC;
+    
+    NSString *buttonTitle, *selectedButtonTitle;
 }
 
 - (void)awakeFromNib {
@@ -37,6 +39,9 @@
     [self.sliderControl addTarget:self action:@selector(onDimmingView:) forControlEvents:UIControlEventTouchUpOutside];
     
     [self.button addTarget:self action:@selector(onButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+    buttonTitle = [self.button titleForState:UIControlStateNormal];
+    selectedButtonTitle = [self.button titleForState:UIControlStateSelected];
 }
 
 - (void)viewDidLoad {
@@ -67,8 +72,8 @@
     [self embedViewController:vc toView:self.view];
     childVC = vc;
     
-    NSString *title = vc.title ? vc.title : [self.button titleForState:UIControlStateNormal];
-    NSString *selectedTitle = title;
+    NSString *title = vc.title ? vc.title : buttonTitle;
+    NSString *selectedTitle = vc.title ? vc.title : selectedButtonTitle;
     
     if (self.downArrow) {
         title = [NSString stringWithFormat:@"%@ %@", title, self.downArrow];
