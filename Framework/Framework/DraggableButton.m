@@ -6,18 +6,17 @@
 //  Copyright © 2016 Dan Kalinin. All rights reserved.
 //
 
-#import "DraggableControl.h"
-#import <Helpers/Helpers.h>
+#import "DraggableButton.h"
 
 
 
-@interface DraggableControl ()
+@interface DraggableButton ()
 
 @end
 
 
 
-@implementation DraggableControl {
+@implementation DraggableButton {
     CGRect baseFrame;
     CGRect targetFrame;
 }
@@ -29,33 +28,30 @@
     [self addGestureRecognizer:pgr];
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    
-    baseFrame = [self.window convertRect:self.baseView.frame fromView:self.baseView.superview];
-    targetFrame = [self.window convertRect:self.targetView.frame fromView:self.targetView.superview];
-}
-
-- (BOOL)intersectsControl:(DraggableControl *)control {
-    BOOL intersects = CGRectIntersectsRect(self.frame, control.frame);
+- (BOOL)intersectsButton:(DraggableButton *)button {
+    BOOL intersects = CGRectIntersectsRect(self.frame, button.frame);
     return intersects;
 }
 
 - (NSArray *)intersectedControls {
-    NSMutableArray *controls = [NSMutableArray array];
-    for (DraggableControl *control in self.superview.subviews) {
-        if ([control isEqual:self]) continue;
-        if ([self intersectsControl:control]) {
-            [controls addObject:control];
+    NSMutableArray *buttons = [NSMutableArray array];
+    for (DraggableButton *button in self.superview.subviews) {
+        if ([button isEqual:self]) continue;
+        if ([self intersectsButton:button]) {
+            [buttons addObject:button];
         }
     }
-    return controls;
+    return buttons;
 }
 
 #pragma mark - Actions
 
 - (void)onPan:(UIPanGestureRecognizer *)pgr {
     if (pgr.state == UIGestureRecognizerStateBegan) {
+        
+        [self sendActionsForControlEvents:UIControlEventTouchDragEnter];
+        
+        [self setFrames];
         
         CGPoint center = [self.window convertPoint:self.center fromView:self.superview];
         [self.window addSubview:self];
@@ -76,6 +72,8 @@
         [self.targetView addSubview:self];
         self.center = center;
         
+        [self sendActionsForControlEvents:UIControlEventTouchDragExit];
+        
     }
 }
 
@@ -83,10 +81,15 @@
 
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
     [self.superview bringSubviewToFront:self];
-    return NO;
+    return YES;
 }
 
 #pragma mark - Helpers
+
+- (void)setFrames {
+    baseFrame = [self.window convertRect:self.baseView.frame fromView:self.baseView.superview];
+    targetFrame = [self.window convertRect:self.targetView.frame fromView:self.targetView.superview];
+}
 
 - (CGRect)clampingFrame {
     

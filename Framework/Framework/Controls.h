@@ -22,4 +22,4 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/EdgeSliderControl.h>
 #import <Controls/DropdownMenuVC.h>
 #import <Controls/GridView.h>
-#import <Controls/DraggableControl.h>
+#import <Controls/DraggableButton.h>

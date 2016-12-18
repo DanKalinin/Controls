@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Helpers/Helpers.h>
 
 
 
-@interface DraggableControl : UIControl
+@interface DraggableButton : FilledButton
 
 @property (weak, nonatomic) IBOutlet UIView *baseView;
 @property (weak, nonatomic) IBOutlet UIView *sourceView;
@@ -20,7 +21,7 @@
 @property (nonatomic) IBInspectable CGFloat inset;
 @property (nonatomic) IBInspectable UIEdgeInsets insets;
 
-@property (readonly) NSArray *intersectedControls;
-- (BOOL)intersectsControl:(DraggableControl *)control;
+@property (readonly) NSArray *intersectedButtons;
+- (BOOL)intersectsButton:(DraggableButton *)button;
 
 @end
