@@ -24,4 +24,6 @@
 @property (readonly) NSArray *intersectedButtons;
 - (BOOL)intersectsButton:(DraggableButton *)button;
 
+- (void)returnAnimated:(BOOL)animated;
+
 @end

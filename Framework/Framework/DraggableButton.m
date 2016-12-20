@@ -7,6 +7,7 @@
 //
 
 #import "DraggableButton.h"
+#import <Helpers/Helpers.h>
 
 
 
@@ -44,19 +45,28 @@
     return buttons;
 }
 
+- (void)returnAnimated:(BOOL)animated {
+    [self moveToView:self.window];
+    
+    CGPoint center = CGRectGetMidXMidY(self.sourceView.bounds);
+    center = [self.window convertPoint:center fromView:self.sourceView];
+    
+    NSTimeInterval duration = 0.25 * animated;
+    [UIView animateWithDuration:duration animations:^{
+        self.center = center;
+    } completion:^(BOOL finished) {
+        [self moveToView:self.sourceView];
+    }];
+}
+
 #pragma mark - Actions
 
 - (void)onPan:(UIPanGestureRecognizer *)pgr {
     if (pgr.state == UIGestureRecognizerStateBegan) {
         
         [self sendActionsForControlEvents:UIControlEventTouchDragEnter];
-        
         [self setFrames];
-        
-        CGPoint center = [self.window convertPoint:self.center fromView:self.superview];
-        [self.window addSubview:self];
-        self.center = center;
-        
+        [self moveToView:self.window];
         [pgr setTranslation:self.center inView:self.window];
         
     } else if (pgr.state == UIGestureRecognizerStateChanged) {
@@ -68,10 +78,7 @@
         
     } else if (pgr.state >= UIGestureRecognizerStateEnded) {
         
-        CGPoint center = [self.targetView convertPoint:self.center fromView:self.window];
-        [self.targetView addSubview:self];
-        self.center = center;
-        
+        [self moveToView:self.targetView];
         [self sendActionsForControlEvents:UIControlEventTouchDragExit];
         
     }
