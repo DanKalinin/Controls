@@ -59,6 +59,12 @@
     }];
 }
 
+#pragma mark - Accessors
+
+- (UIWindow *)window {
+    return UIApplication.sharedApplication.keyWindow;
+}
+
 #pragma mark - Actions
 
 - (void)onPan:(UIPanGestureRecognizer *)pgr {
