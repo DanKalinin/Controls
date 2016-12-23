@@ -23,3 +23,4 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/DropdownMenuVC.h>
 #import <Controls/GridView.h>
 #import <Controls/DraggableButton.h>
+#import <Controls/CircularSlider.h>
