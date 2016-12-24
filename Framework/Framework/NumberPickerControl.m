@@ -33,6 +33,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.valueFormat = @"%i";
+        self.valueMultiplier = 1;
     }
     return self;
 }
@@ -88,7 +89,7 @@
         label = self.prototypeLabel.copy;
     }
     int value = (int)[self valueFromRow:row];
-    label.text = [NSString stringWithFormat:self.valueFormat, value];
+    label.text = [NSString stringWithFormat:self.valueFormat, value * self.valueMultiplier];
     return label;
 }
 

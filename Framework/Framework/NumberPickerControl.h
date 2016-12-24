@@ -25,6 +25,7 @@
 
 @property (nonatomic) IBInspectable NSRange valueRange;
 
+@property IBInspectable NSUInteger valueMultiplier;
 @property IBInspectable NSString *valueFormat;
 
 @property (readonly) NSUInteger value;
