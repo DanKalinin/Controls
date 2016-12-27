@@ -1,6 +1,6 @@
 //
-//  DraggableControl.m
-//  Control
+//  DraggableButton.m
+//  Controls
 //
 //  Created by Dan Kalinin on 12/16/16.
 //  Copyright © 2016 Dan Kalinin. All rights reserved.
@@ -33,7 +33,7 @@
     return intersects;
 }
 
-- (NSArray *)intersectedControls {
+- (NSArray *)intersectedButtons {
     NSMutableArray *buttons = [NSMutableArray array];
     for (DraggableButton *button in self.superview.subviews) {
         if ([button isEqual:self]) continue;

@@ -1,6 +1,6 @@
 //
-//  DraggableControl.h
-//  Control
+//  DraggableButton.h
+//  Controls
 //
 //  Created by Dan Kalinin on 12/16/16.
 //  Copyright © 2016 Dan Kalinin. All rights reserved.
