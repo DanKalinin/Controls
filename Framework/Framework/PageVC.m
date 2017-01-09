@@ -15,7 +15,6 @@ static NSString *const PageSegue = @"Page";
 @interface PageVC ()
 
 @property UIPageViewController *pageViewController;
-@property UIPageControl *pageControl;
 @property NSArray *pages;
 @property UIViewController *page;
 
@@ -31,10 +30,10 @@ static NSString *const PageSegue = @"Page";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self != %@", self.pageViewController];
     self.pages = [self.childViewControllers filteredArrayUsingPredicate:predicate];
     
-    self.page = self.pages[self.index];
+    self.page = self.pages[self.pageControl.currentPage];
     [self.pageViewController setViewControllers:@[self.page] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
-    self.pageControl = [self.pageViewController valueForKey:@"pageControl"];
+    self.pageControl.numberOfPages = self.pages.count;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -81,17 +80,9 @@ static NSString *const PageSegue = @"Page";
     return vc;
 }
 
-- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
-    return self.pages.count;
-}
-
-- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
-    return self.index;
-}
-
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
     self.page = pageViewController.viewControllers.firstObject;
-    self.index = self.pageControl.currentPage;
+    self.pageControl.currentPage = [self.pages indexOfObject:self.page];
 }
 
 @end
