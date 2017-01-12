@@ -30,7 +30,7 @@
     for (NSUInteger index = 0; index < self.circles; index++) {
         width *= self.multiplier;
         CGRect frame = CGRectMake(0.0, 0.0, width, width);
-        UIView *view = [[UIView alloc] initWithFrame:frame];
+        UIView *view = [UIView.alloc initWithFrame:frame];
         view.backgroundColor = self.color;
         view.layer.cornerRadius = 0.5 * width;
         [self insertSubview:view atIndex:0];
