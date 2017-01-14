@@ -31,8 +31,8 @@ static NSString *const PageSegue = @"Page";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self != %@", self.pageViewController];
     self.pages = [self.childViewControllers filteredArrayUsingPredicate:predicate];
     
-    UIViewController *vc = self.pages[self.index];
-    [self.pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    self.page = self.pages[self.index];
+    [self.pageViewController setViewControllers:@[self.page] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     self.pageControl = [self.pageViewController valueForKey:@"pageControl"];
 }
