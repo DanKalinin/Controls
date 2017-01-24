@@ -153,6 +153,7 @@
     NSUInteger rightValue = value % self.divider;
     
     [self.leftPickerControl setValue:leftValue animated:animated];
+    [self updateRightValueRange];
     [self.rightPickerControl setValue:rightValue animated:animated];
 }
 
