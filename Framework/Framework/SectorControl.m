@@ -143,7 +143,7 @@
             sector = nil;
         }
         [self selectSector:sector animated:NO];
-        if (!same) {
+        if (!same || !sector) {
             [self sendActionsForControlEvents:UIControlEventValueChanged];
         }
     }
