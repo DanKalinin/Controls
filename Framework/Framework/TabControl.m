@@ -29,6 +29,8 @@
 - (void)setButtons:(NSArray *)buttons {
     _buttons = buttons;
     
+    self.button = buttons.firstObject;
+    
     for (UIView *view in self.stackView.arrangedSubviews) {
         [self.stackView removeArrangedSubview:view];
         [view removeFromSuperview];
