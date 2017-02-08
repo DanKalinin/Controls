@@ -20,16 +20,8 @@
 
 @implementation TabControl
 
-- (void)didMoveToWindow {
-    [super didMoveToWindow];
-    
-    [self selectButton:self.buttons.firstObject animated:NO];
-}
-
 - (void)setButtons:(NSArray *)buttons {
     _buttons = buttons;
-    
-    self.button = buttons.firstObject;
     
     for (UIView *view in self.stackView.arrangedSubviews) {
         [self.stackView removeArrangedSubview:view];
@@ -42,6 +34,7 @@
     }
     
     [self.stackView layoutIfNeeded];
+    [self selectButton:buttons.firstObject animated:NO];
 }
 
 - (void)selectButton:(UIButton *)button animated:(BOOL)animated {
