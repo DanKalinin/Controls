@@ -31,6 +31,8 @@
 		E7894EAB1DFB7F9D00B5145E /* DropdownMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7894EA91DFB7F9D00B5145E /* DropdownMenuVC.m */; };
 		E79776681E29B8910054B1AE /* PageVC.h in Headers */ = {isa = PBXBuildFile; fileRef = E79776661E29B8910054B1AE /* PageVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E79776691E29B8910054B1AE /* PageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E79776671E29B8910054B1AE /* PageVC.m */; };
+		E7A8CDA41E5129E3000C090A /* CircleControl.h in Headers */ = {isa = PBXBuildFile; fileRef = E7A8CDA21E5129E3000C090A /* CircleControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7A8CDA51E5129E3000C090A /* CircleControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A8CDA31E5129E3000C090A /* CircleControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		E7894EA91DFB7F9D00B5145E /* DropdownMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropdownMenuVC.m; sourceTree = "<group>"; };
 		E79776661E29B8910054B1AE /* PageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageVC.h; sourceTree = "<group>"; };
 		E79776671E29B8910054B1AE /* PageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageVC.m; sourceTree = "<group>"; };
+		E7A8CDA21E5129E3000C090A /* CircleControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleControl.h; sourceTree = "<group>"; };
+		E7A8CDA31E5129E3000C090A /* CircleControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,8 @@
 				E79776671E29B8910054B1AE /* PageVC.m */,
 				E74E305C1E41F57700E6989B /* SectorControl.h */,
 				E74E305D1E41F57700E6989B /* SectorControl.m */,
+				E7A8CDA21E5129E3000C090A /* CircleControl.h */,
+				E7A8CDA31E5129E3000C090A /* CircleControl.m */,
 				37A501F41DD8EE24004DD6BC /* Info.plist */,
 			);
 			path = Framework;
@@ -175,6 +181,7 @@
 				E7894EAA1DFB7F9D00B5145E /* DropdownMenuVC.h in Headers */,
 				E74E305E1E41F57700E6989B /* SectorControl.h in Headers */,
 				37A092F01DE326D500ADA05B /* NumberPickerControl.h in Headers */,
+				E7A8CDA41E5129E3000C090A /* CircleControl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37A502071DD8EEA9004DD6BC /* ConcentricView.m in Sources */,
+				E7A8CDA51E5129E3000C090A /* CircleControl.m in Sources */,
 				E7488F241E0559FC000AF809 /* DraggableButton.m in Sources */,
 				37A5023F1DD90C66004DD6BC /* TabControl.m in Sources */,
 				E74E305F1E41F57700E6989B /* SectorControl.m in Sources */,

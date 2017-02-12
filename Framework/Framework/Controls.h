@@ -26,3 +26,4 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/CircularSlider.h>
 #import <Controls/PageVC.h>
 #import <Controls/SectorControl.h>
+#import <Controls/CircleControl.h>
