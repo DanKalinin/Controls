@@ -11,6 +11,32 @@
 
 
 
+
+
+
+
+
+
+
+@interface SectorControlConfiguration ()
+
+@end
+
+
+
+@implementation SectorControlConfiguration
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface SectorControl ()
 
 @property FilledButton *sector;
@@ -25,26 +51,26 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self.sectors setValue:@YES forKey:@"hidden"];
+    [self.configuration.sectors setValue:@YES forKey:@"hidden"];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     
     CGPoint center = CGRectGetMidXMidY(self.bounds);
-    CGFloat outerRadius = 0.5 * (self.bounds.size.width - self.borderWidth);
-    CGFloat innerRadius = outerRadius - self.sectorWidth;
-    CGFloat startAngle = GLKMathDegreesToRadians(self.startAngle);
-    CGFloat sectorAngle = 2.0 * M_PI / self.sectors.count;
+    CGFloat outerRadius = 0.5 * (self.bounds.size.width - self.configuration.borderWidth);
+    CGFloat innerRadius = outerRadius - self.configuration.sectorWidth;
+    CGFloat startAngle = GLKMathDegreesToRadians(self.configuration.startAngle);
+    CGFloat sectorAngle = 2.0 * M_PI / self.configuration.sectors.count;
     
     NSMutableArray *paths = [NSMutableArray array];
-    for (NSUInteger index = 0; index < self.sectors.count; index++) {
+    for (NSUInteger index = 0; index < self.configuration.sectors.count; index++) {
         CGFloat endAngle = startAngle + sectorAngle;
         
         UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center radius:outerRadius startAngle:startAngle endAngle:endAngle clockwise:YES];
         [path addArcWithCenter:center radius:innerRadius startAngle:endAngle endAngle:startAngle clockwise:NO];
         [path closePath];
-        path.lineWidth = self.borderWidth;
+        path.lineWidth = self.configuration.borderWidth;
         [paths addObject:path];
         startAngle = endAngle;
     }
@@ -55,8 +81,8 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    for (NSUInteger index = 0; index < self.sectors.count; index++) {
-        FilledButton *sector = self.sectors[index];
+    for (NSUInteger index = 0; index < self.configuration.sectors.count; index++) {
+        FilledButton *sector = self.configuration.sectors[index];
         UIBezierPath *path = self.paths[index];
         
         UIColor *fillColor = sector.backgroundColor;
@@ -71,9 +97,9 @@
         }
         
         if (sector.state & UIControlStateDisabled) {
-            fillColor = [fillColor colorWithAlphaComponent:self.disabledAlpha];
-            strokeColor = [strokeColor colorWithAlphaComponent:self.disabledAlpha];
-            titleColor = [titleColor colorWithAlphaComponent:self.disabledAlpha];
+            fillColor = [fillColor colorWithAlphaComponent:self.configuration.disabledAlpha];
+            strokeColor = [strokeColor colorWithAlphaComponent:self.configuration.disabledAlpha];
+            titleColor = [titleColor colorWithAlphaComponent:self.configuration.disabledAlpha];
         }
         
         [fillColor setFill];
@@ -106,7 +132,7 @@
     
     self.sector = sector;
     
-    [self.sectors setValue:@NO forKey:@"selected"];
+    [self.configuration.sectors setValue:@NO forKey:@"selected"];
     sector.selected = YES;
     
     [self setNeedsDisplay];
@@ -117,7 +143,7 @@
 - (void)setEnabled:(BOOL)enabled {
     [super setEnabled:enabled];
     
-    [self.sectors setValue:@(enabled) forKey:@"enabled"];
+    [self.configuration.sectors setValue:@(enabled) forKey:@"enabled"];
     [self setNeedsDisplay];
 }
 
@@ -137,9 +163,9 @@
     }
     
     if (index != NSNotFound) {
-        FilledButton *sector = self.sectors[index];
+        FilledButton *sector = self.configuration.sectors[index];
         BOOL same = [sector isEqual:self.sector];
-        if (same && self.deselactable && self.sector.selected) {
+        if (same && self.configuration.deselactable && self.sector.selected) {
             sector = nil;
         }
         [self selectSector:sector animated:NO];
