@@ -26,6 +26,15 @@
 
 @implementation SectorControlConfiguration
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.disabledAlpha = 0.5;
+        self.enabled = YES;
+    }
+    return self;
+}
+
 @end
 
 
@@ -51,7 +60,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self.configuration.sectors setValue:@YES forKey:@"hidden"];
+    [self setConfiguration:self.configuration];
 }
 
 - (void)layoutSubviews {
@@ -96,12 +105,6 @@
             titleColor = [sector titleColorForState:UIControlStateSelected];
         }
         
-        if (sector.state & UIControlStateDisabled) {
-            fillColor = [fillColor colorWithAlphaComponent:self.configuration.disabledAlpha];
-            strokeColor = [strokeColor colorWithAlphaComponent:self.configuration.disabledAlpha];
-            titleColor = [titleColor colorWithAlphaComponent:self.configuration.disabledAlpha];
-        }
-        
         [fillColor setFill];
         [strokeColor setStroke];
         
@@ -140,11 +143,18 @@
 
 #pragma mark - Accessors
 
+- (void)setConfiguration:(SectorControlConfiguration *)configuration {
+    _configuration = configuration;
+    
+    [configuration.sectors setValue:@YES forKey:@"hidden"];
+    
+    self.enabled = configuration.enabled;
+}
+
 - (void)setEnabled:(BOOL)enabled {
     [super setEnabled:enabled];
     
-    [self.configuration.sectors setValue:@(enabled) forKey:@"enabled"];
-    [self setNeedsDisplay];
+    self.alpha = enabled ? 1.0 : self.configuration.disabledAlpha;
 }
 
 #pragma mark - Actions

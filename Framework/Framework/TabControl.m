@@ -25,6 +25,14 @@
 
 @implementation TabControlConfiguration
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.disabledAlpha = 0.5;
+    }
+    return self;
+}
+
 @end
 
 
@@ -69,6 +77,12 @@
         [configuration.stackView layoutIfNeeded];
         [self selectButton:configuration.button animated:NO];
     }
+}
+
+- (void)setEnabled:(BOOL)enabled {
+    [super setEnabled:enabled];
+    
+    self.alpha = enabled ? 1.0 : self.configuration.disabledAlpha;
 }
 
 - (void)selectButton:(UIButton *)button animated:(BOOL)animated {

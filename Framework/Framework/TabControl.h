@@ -19,6 +19,8 @@
 
 @interface TabControlConfiguration : UIView
 
+@property IBInspectable CGFloat disabledAlpha;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIStackView *stackView;
 @property (weak, nonatomic) IBOutlet UIView *underscoreView;

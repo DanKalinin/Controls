@@ -20,12 +20,14 @@
 
 @interface SectorControlConfiguration : UIView
 
-@property (strong, nonatomic) IBOutletCollection(FilledButton) NSArray *sectors;
 @property IBInspectable CGFloat sectorWidth;
 @property IBInspectable CGFloat borderWidth;
 @property IBInspectable CGFloat startAngle;
 @property IBInspectable CGFloat disabledAlpha;
 @property IBInspectable BOOL deselactable;
+@property IBInspectable BOOL enabled;
+
+@property (strong, nonatomic) IBOutletCollection(FilledButton) NSArray *sectors;
 
 @end
 
