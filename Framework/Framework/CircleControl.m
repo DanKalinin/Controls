@@ -67,6 +67,12 @@
 
 #pragma mark - Accessors
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    [self setConfiguration:self.configuration];
+}
+
 - (void)setConfiguration:(CircleControlConfiguration *)configuration {
     _configuration = configuration;
     

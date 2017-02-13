@@ -32,6 +32,13 @@
 
 
 
+
+
+
+
+
+
+
 @interface CircleControl : UIControl
 
 @property (strong, nonatomic) IBOutlet CircleControlConfiguration *configuration;
@@ -57,6 +64,13 @@
 @property IBInspectable CGFloat valueStep;
 
 @end
+
+
+
+
+
+
+
 
 
 

@@ -10,6 +10,32 @@
 
 
 
+
+
+
+
+
+
+
+@interface TabControlConfiguration ()
+
+@end
+
+
+
+@implementation TabControlConfiguration
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface TabControl ()
 
 @property UIButton *button;
@@ -20,21 +46,29 @@
 
 @implementation TabControl
 
-- (void)setButtons:(NSArray *)buttons {
-    _buttons = buttons;
+- (void)awakeFromNib {
+    [super awakeFromNib];
     
-    for (UIView *view in self.stackView.arrangedSubviews) {
-        [self.stackView removeArrangedSubview:view];
+    [self setConfiguration:self.configuration];
+}
+
+- (void)setConfiguration:(TabControlConfiguration *)configuration {
+    _configuration = configuration;
+    
+    for (UIView *view in configuration.stackView.arrangedSubviews) {
+        [configuration.stackView removeArrangedSubview:view];
         [view removeFromSuperview];
     }
     
-    for (UIButton *button in buttons) {
-        [self.stackView addArrangedSubview:button];
+    for (UIButton *button in configuration.buttons) {
+        [configuration.stackView addArrangedSubview:button];
         [button addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     
-    [self.stackView layoutIfNeeded];
-    [self selectButton:buttons.firstObject animated:NO];
+    if (configuration.button) {
+        [configuration.stackView layoutIfNeeded];
+        [self selectButton:configuration.button animated:NO];
+    }
 }
 
 - (void)selectButton:(UIButton *)button animated:(BOOL)animated {
@@ -45,17 +79,17 @@
     self.button = button;
     
     NSTimeInterval duration = 0.25 * animated;
-    [self.underscoreView.superview layoutIfNeeded];
+    [self.configuration.underscoreView.superview layoutIfNeeded];
     [UIView animateWithDuration:duration animations:^{
-        self.leadingConstraint.constant = button.frame.origin.x;
-        self.widthConstraint.constant = button.frame.size.width;
-        [self.underscoreView.superview layoutIfNeeded];
+        self.configuration.leadingConstraint.constant = button.frame.origin.x;
+        self.configuration.widthConstraint.constant = button.frame.size.width;
+        [self.configuration.underscoreView.superview layoutIfNeeded];
     }];
     
-    CGFloat x = button.frame.origin.x - self.stackView.spacing;
-    CGFloat width = button.frame.size.width + 2.0 * self.stackView.spacing;
+    CGFloat x = button.frame.origin.x - self.configuration.stackView.spacing;
+    CGFloat width = button.frame.size.width + 2.0 * self.configuration.stackView.spacing;
     CGRect rect = CGRectMake(x, 0.0, width, 1.0);
-    [self.scrollView scrollRectToVisible:rect animated:animated];
+    [self.configuration.scrollView scrollRectToVisible:rect animated:animated];
 }
 
 #pragma mark - Actions
