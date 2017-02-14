@@ -18,7 +18,9 @@
 
 
 
-@interface SectorControlConfiguration : UIView
+@interface SectorControl : UIControl
+
+@property (strong, nonatomic) IBOutletCollection(FilledButton) NSArray *sectors;
 
 @property IBInspectable CGFloat sectorWidth;
 @property IBInspectable CGFloat borderWidth;
@@ -26,23 +28,6 @@
 @property IBInspectable CGFloat disabledAlpha;
 @property IBInspectable BOOL deselactable;
 @property IBInspectable BOOL enabled;
-
-@property (strong, nonatomic) IBOutletCollection(FilledButton) NSArray *sectors;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface SectorControl : UIControl
-
-@property (strong, nonatomic) IBOutlet SectorControlConfiguration *configuration;
 
 @property (readonly) FilledButton *sector;
 - (void)selectSector:(FilledButton *)sector animated:(BOOL)animated;
