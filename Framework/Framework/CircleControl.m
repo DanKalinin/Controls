@@ -50,6 +50,10 @@
     [super awakeFromNib];
     
     _angularRange = UIFloatRangeMake(self.minAngle, self.maxAngle);
+    
+    if (self.initialAngle != 0.0) {
+        [self setAngle:self.initialAngle animated:NO];
+    }
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
@@ -203,6 +207,10 @@
     
     _k = (self.maxValue - self.minValue) / (self.maxAngle - self.minAngle);
     self.angularStep = self.valueStep / _k;
+    
+    if (self.initialValue != 0.0) {
+        [self setValue:self.initialValue animated:NO];
+    }
 }
 
 - (CGFloat)value {

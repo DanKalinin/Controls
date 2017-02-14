@@ -26,6 +26,7 @@
 @property IBInspectable CGFloat maxAngle;
 @property IBInspectable CGFloat angularStep;
 @property IBInspectable BOOL respectBounds;
+@property IBInspectable CGFloat initialAngle;
 
 @property (readonly) CGFloat angle;
 - (void)setAngle:(CGFloat)angle animated:(BOOL)animated;
@@ -46,6 +47,7 @@
 @property IBInspectable CGFloat minValue;
 @property IBInspectable CGFloat maxValue;
 @property IBInspectable CGFloat valueStep;
+@property IBInspectable CGFloat initialValue;
 
 @property (readonly) CGFloat value;
 - (void)setValue:(CGFloat)value animated:(BOOL)animated;

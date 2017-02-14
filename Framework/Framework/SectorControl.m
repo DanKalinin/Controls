@@ -35,6 +35,10 @@
     [super awakeFromNib];
     
     [self.sectors setValue:@YES forKey:@"hidden"];
+    
+    if (self.initialSector) {
+        [self selectSector:self.initialSector animated:NO];
+    }
 }
 
 - (void)layoutSubviews {
@@ -68,8 +72,8 @@
         FilledButton *sector = self.sectors[index];
         UIBezierPath *path = self.paths[index];
         
-        UIColor *fillColor = sector.backgroundColor;
-        UIColor *strokeColor = sector.borderColor;
+        UIColor *fillColor = sector.defaultBackgroundColor;
+        UIColor *strokeColor = sector.defaultBorderColor;
         NSString *title = [sector titleForState:UIControlStateNormal];
         UIColor *titleColor = [sector titleColorForState:UIControlStateNormal];
         

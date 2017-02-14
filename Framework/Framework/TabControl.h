@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *underscoreView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leadingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *initialButton;
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
 

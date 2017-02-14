@@ -31,17 +31,13 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    for (UIView *view in self.stackView.arrangedSubviews) {
-        [self.stackView removeArrangedSubview:view];
-        [view removeFromSuperview];
-    }
-    
     for (UIButton *button in self.buttons) {
-        [self.stackView addArrangedSubview:button];
         [button addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     
-//    [self.stackView layoutIfNeeded];
+    if (self.initialButton) {
+        [self selectButton:self.initialButton animated:NO];
+    }
 }
 
 - (void)setEnabled:(BOOL)enabled {

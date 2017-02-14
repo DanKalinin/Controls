@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) IBOutletCollection(FilledButton) NSArray *sectors;
 
+@property (weak, nonatomic) IBOutlet FilledButton *initialSector;
+
 @property IBInspectable CGFloat sectorWidth;
 @property IBInspectable CGFloat borderWidth;
 @property IBInspectable CGFloat startAngle;
