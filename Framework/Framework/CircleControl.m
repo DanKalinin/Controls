@@ -18,35 +18,6 @@
 
 
 
-@interface CircleControlConfiguration ()
-
-@end
-
-
-
-@implementation CircleControlConfiguration
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        self.minAngle = -M_PI;
-        self.maxAngle = M_PI;
-        self.angularStep = 0.5 / M_PI;
-    }
-    return self;
-}
-
-@end
-
-
-
-
-
-
-
-
-
-
 @interface CircleControl ()
 
 @property CGFloat angle;
@@ -65,25 +36,26 @@
     CGFloat _cSteps;
 }
 
-#pragma mark - Accessors
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.minAngle = -M_PI;
+        self.maxAngle = M_PI;
+        self.angularStep = 0.5 / M_PI;
+    }
+    return self;
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self setConfiguration:self.configuration];
-}
-
-- (void)setConfiguration:(CircleControlConfiguration *)configuration {
-    _configuration = configuration;
-    
-    _angularRange = UIFloatRangeMake(configuration.minAngle, configuration.maxAngle);
-    [self setAngle:_currentAngle animated:NO];
+    _angularRange = UIFloatRangeMake(self.minAngle, self.maxAngle);
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
     [super setHighlighted:highlighted];
     
-    self.configuration.imageView.highlighted = highlighted;
+    self.imageView.highlighted = highlighted;
 }
 
 - (void)setAngle:(CGFloat)angle animated:(BOOL)animated {
@@ -124,7 +96,7 @@
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
     
     CGFloat outerRadius = 0.5 * self.bounds.size.width;
-    CGFloat innerRadius = outerRadius - self.configuration.circleWidth;
+    CGFloat innerRadius = outerRadius - self.circleWidth;
     
     CGPoint center = CGRectGetMidXMidY(self.bounds);
     CGPoint location = [touch locationInView:self];
@@ -155,7 +127,7 @@
     }
     
     _currentAngle += deltaAngle;
-    if (self.configuration.respectBounds) {
+    if (self.respectBounds) {
         _currentAngle = CGFloatClampToRange(_currentAngle, _angularRange);
     }
     self.transform = CGAffineTransformMakeRotation(_currentAngle);
@@ -163,7 +135,7 @@
     NSUInteger steps = [self steps];
     if (steps != _cSteps) {
         _cSteps = steps;
-        self.angle = self.configuration.minAngle + self.configuration.angularStep * steps;
+        self.angle = self.minAngle + self.angularStep * steps;
         [self sendActionsForControlEvents:UIControlEventEditingChanged];
     }
     
@@ -191,37 +163,8 @@
 }
 
 - (NSUInteger)steps {
-    NSUInteger steps = (_currentAngle - self.configuration.minAngle) / self.configuration.angularStep;
+    NSUInteger steps = (_currentAngle - self.minAngle) / self.angularStep;
     return steps;
-}
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface CircleValueControlConfiguration ()
-
-@end
-
-
-
-@implementation CircleValueControlConfiguration
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        self.minValue = self.minAngle;
-        self.maxValue = self.maxAngle;
-        self.valueStep = self.angularStep;
-    }
-    return self;
 }
 
 @end
@@ -245,22 +188,30 @@
     CGFloat _k;
 }
 
-@dynamic configuration;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.minValue = self.minAngle;
+        self.maxValue = self.maxAngle;
+        self.valueStep = self.angularStep;
+    }
+    return self;
+}
 
-- (void)setConfiguration:(CircleValueControlConfiguration *)configuration {
-    [super setConfiguration:configuration];
+- (void)awakeFromNib {
+    [super awakeFromNib];
     
-    _k = (configuration.maxValue - configuration.minValue) / (configuration.maxAngle - configuration.minAngle);
-    configuration.angularStep = configuration.valueStep / _k;
+    _k = (self.maxValue - self.minValue) / (self.maxAngle - self.minAngle);
+    self.angularStep = self.valueStep / _k;
 }
 
 - (CGFloat)value {
-    CGFloat value = self.configuration.minValue + _k * (self.angle - self.configuration.minAngle);
+    CGFloat value = self.minValue + _k * (self.angle - self.minAngle);
     return value;
 }
 
 - (void)setValue:(CGFloat)value animated:(BOOL)animated {
-    CGFloat angle = self.configuration.minAngle + (value - self.configuration.minValue) / _k;
+    CGFloat angle = self.minAngle + (value - self.minValue) / _k;
     [self setAngle:angle animated:animated];
 }
 
