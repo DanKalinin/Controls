@@ -117,10 +117,10 @@
 
 - (void)selectSector:(FilledButton *)sector animated:(BOOL)animated {
     
-    self.sector = sector;
-    
-    [self.sectors setValue:@NO forKey:@"selected"];
+    self.sector.selected = NO;
     sector.selected = YES;
+    
+    self.sector = sector;
     
     [self setNeedsDisplay];
 }
