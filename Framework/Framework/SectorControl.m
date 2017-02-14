@@ -11,13 +11,6 @@
 
 
 
-
-
-
-
-
-
-
 @interface SectorControl ()
 
 @property FilledButton *sector;
@@ -112,6 +105,12 @@
     }
 }
 
+- (void)setEnabled:(BOOL)enabled {
+    [super setEnabled:enabled];
+    
+    self.alpha = enabled ? 1.0 : self.disabledAlpha;
+}
+
 - (void)selectSector:(FilledButton *)sector animated:(BOOL)animated {
     
     self.sector = sector;
@@ -120,12 +119,6 @@
     sector.selected = YES;
     
     [self setNeedsDisplay];
-}
-
-- (void)setEnabled:(BOOL)enabled {
-    [super setEnabled:enabled];
-    
-    self.alpha = enabled ? 1.0 : self.disabledAlpha;
 }
 
 #pragma mark - Actions

@@ -11,13 +11,6 @@
 
 
 
-
-
-
-
-
-
-
 @interface SectorControl : UIControl
 
 @property (strong, nonatomic) IBOutletCollection(FilledButton) NSArray *sectors;
@@ -27,7 +20,6 @@
 @property IBInspectable CGFloat startAngle;
 @property IBInspectable CGFloat disabledAlpha;
 @property IBInspectable BOOL deselactable;
-@property IBInspectable BOOL enabled;
 
 @property (readonly) FilledButton *sector;
 - (void)selectSector:(FilledButton *)sector animated:(BOOL)animated;

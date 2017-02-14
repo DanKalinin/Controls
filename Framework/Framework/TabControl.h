@@ -10,16 +10,7 @@
 
 
 
-
-
-
-
-
-
-
-@interface TabControlConfiguration : UIView
-
-@property IBInspectable CGFloat disabledAlpha;
+@interface TabControl : UIControl
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIStackView *stackView;
@@ -28,22 +19,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
-@property (weak, nonatomic) IBOutlet UIButton *button;
 
-@end
-
-
-
-
-
-
-
-
-
-
-@interface TabControl : UIControl
-
-@property (strong, nonatomic) IBOutlet TabControlConfiguration *configuration;
+@property IBInspectable CGFloat disabledAlpha;
 
 @property (readonly) UIButton *button;
 - (void)selectButton:(UIButton *)button animated:(BOOL)animated;
