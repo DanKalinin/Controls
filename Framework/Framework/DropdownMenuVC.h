@@ -23,9 +23,6 @@
 @property (strong, nonatomic) IBOutlet EdgeSliderControl *sliderControl;
 @property (weak, nonatomic) IBOutlet UIButton *button;
 
-@property IBInspectable NSString *upArrow;
-@property IBInspectable NSString *downArrow;
-
 - (void)showViewController:(UIViewController *)vc;
 
 @end

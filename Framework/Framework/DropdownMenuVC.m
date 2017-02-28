@@ -75,14 +75,7 @@
     NSString *title = vc.title ? vc.title : buttonTitle;
     NSString *selectedTitle = vc.title ? vc.title : selectedButtonTitle;
     
-    if (self.downArrow) {
-        title = [NSString stringWithFormat:@"%@ %@", title, self.downArrow];
-    }
     [self.button setTitle:title forState:UIControlStateNormal];
-    
-    if (self.upArrow) {
-        selectedTitle = [NSString stringWithFormat:@"%@ %@", selectedTitle, self.upArrow];
-    }
     [self.button setTitle:selectedTitle forState:UIControlStateSelected];
 }
 
