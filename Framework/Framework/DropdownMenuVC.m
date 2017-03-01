@@ -42,6 +42,9 @@
     
     buttonTitle = [self.button titleForState:UIControlStateNormal];
     selectedButtonTitle = [self.button titleForState:UIControlStateSelected];
+    
+    UIImage *image = [self.button imageForState:UIControlStateSelected];
+    [self.button setImage:image forState:(UIControlStateSelected | UIControlStateHighlighted)];
 }
 
 - (void)viewDidLoad {
