@@ -27,3 +27,5 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/PageVC.h>
 #import <Controls/SectorControl.h>
 #import <Controls/CircleControl.h>
+#import <Controls/MultiselectionControl.h>
+#import <Controls/Cells.h>
