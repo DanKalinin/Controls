@@ -61,6 +61,23 @@
 
 
 
+@interface TableViewCellVerticalSeparator : GradientLayerView
+
+@property IBInspectable UIColor *topColor;
+@property IBInspectable UIColor *centerColor;
+@property IBInspectable UIColor *bottomColor;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface CollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView1;
