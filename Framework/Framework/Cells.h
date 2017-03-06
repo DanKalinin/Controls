@@ -22,8 +22,6 @@
 
 @interface TableViewCell : UITableViewCell
 
-@property IBInspectable NSInteger selectedAccessoryType;
-
 @property (weak, nonatomic) IBOutlet ImageView *imageView1;
 
 @property (weak, nonatomic) IBOutlet UILabel *label1;
@@ -44,8 +42,12 @@
 
 @property (weak, nonatomic) IBOutlet MultiselectionControl *multiselectionControl1;
 
+@property IBInspectable NSInteger selectedAccessoryType;
+@property IBInspectable BOOL editable;
+
 @property IBInspectable NSString *storyboard;
 @property IBInspectable NSString *viewController;
+
 @property id userInfo;
 
 @end
