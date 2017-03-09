@@ -11,7 +11,7 @@
 
 
 
-@interface DraggableButton : FilledButton
+@interface DraggableButton : Button
 
 @property (weak, nonatomic) IBOutlet UIView *baseView;
 @property (weak, nonatomic) IBOutlet UIView *sourceView;

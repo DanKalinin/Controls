@@ -17,6 +17,25 @@
 
 
 
+@interface TableViewHeaderFooterView ()
+
+@end
+
+
+
+@implementation TableViewHeaderFooterView
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface TableViewCell ()
 
 @property UITableViewCellAccessoryType defaultAccessoryType;

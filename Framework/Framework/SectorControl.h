@@ -13,9 +13,9 @@
 
 @interface SectorControl : UIControl
 
-@property (strong, nonatomic) IBOutletCollection(FilledButton) NSArray *sectors;
+@property (strong, nonatomic) IBOutletCollection(Button) NSArray *sectors;
 
-@property (weak, nonatomic) IBOutlet FilledButton *initialSector;
+@property (weak, nonatomic) IBOutlet Button *initialSector;
 
 @property IBInspectable CGFloat sectorWidth;
 @property IBInspectable CGFloat borderWidth;
@@ -23,7 +23,7 @@
 @property IBInspectable CGFloat disabledAlpha;
 @property IBInspectable BOOL deselactable;
 
-@property (readonly) FilledButton *sector;
-- (void)selectSector:(FilledButton *)sector animated:(BOOL)animated;
+@property (readonly) Button *sector;
+- (void)selectSector:(Button *)sector animated:(BOOL)animated;
 
 @end

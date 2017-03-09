@@ -20,6 +20,23 @@
 
 
 
+@interface TableViewHeaderFooterView : UITableViewHeaderFooterView
+
+@property (weak, nonatomic) IBOutlet UIButton *button1;
+@property (weak, nonatomic) IBOutlet UIButton *button2;
+@property (weak, nonatomic) IBOutlet UIButton *button3;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface TableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet ImageView *imageView1;

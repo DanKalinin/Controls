@@ -13,7 +13,7 @@
 
 @interface SectorControl ()
 
-@property FilledButton *sector;
+@property Button *sector;
 @property NSArray *paths;
 
 @end
@@ -69,7 +69,7 @@
 
 - (void)drawRect:(CGRect)rect {
     for (NSUInteger index = 0; index < self.sectors.count; index++) {
-        FilledButton *sector = self.sectors[index];
+        Button *sector = self.sectors[index];
         UIBezierPath *path = self.paths[index];
         
         UIColor *fillColor = sector.defaultBackgroundColor;
@@ -115,7 +115,7 @@
     self.alpha = enabled ? 1.0 : self.disabledAlpha;
 }
 
-- (void)selectSector:(FilledButton *)sector animated:(BOOL)animated {
+- (void)selectSector:(Button *)sector animated:(BOOL)animated {
     
     self.sector.selected = NO;
     sector.selected = YES;
@@ -141,7 +141,7 @@
     }
     
     if (index != NSNotFound) {
-        FilledButton *sector = self.sectors[index];
+        Button *sector = self.sectors[index];
         BOOL same = [sector isEqual:self.sector];
         if (same && self.deselactable && self.sector.selected) {
             sector = nil;
