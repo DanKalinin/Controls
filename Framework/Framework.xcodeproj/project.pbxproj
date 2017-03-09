@@ -27,12 +27,16 @@
 		E7488F261E0559FC000AF809 /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7488F221E0559FC000AF809 /* GridView.m */; };
 		E74E305E1E41F57700E6989B /* SectorControl.h in Headers */ = {isa = PBXBuildFile; fileRef = E74E305C1E41F57700E6989B /* SectorControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E74E305F1E41F57700E6989B /* SectorControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E305D1E41F57700E6989B /* SectorControl.m */; };
+		E7533DEE1E71E91F00DDA141 /* TableView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7533DEC1E71E91F00DDA141 /* TableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7533DEF1E71E91F00DDA141 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7533DED1E71E91F00DDA141 /* TableView.m */; };
 		E7894EAA1DFB7F9D00B5145E /* DropdownMenuVC.h in Headers */ = {isa = PBXBuildFile; fileRef = E7894EA81DFB7F9D00B5145E /* DropdownMenuVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7894EAB1DFB7F9D00B5145E /* DropdownMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7894EA91DFB7F9D00B5145E /* DropdownMenuVC.m */; };
 		E79776681E29B8910054B1AE /* PageVC.h in Headers */ = {isa = PBXBuildFile; fileRef = E79776661E29B8910054B1AE /* PageVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E79776691E29B8910054B1AE /* PageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E79776671E29B8910054B1AE /* PageVC.m */; };
 		E7A8CDA41E5129E3000C090A /* CircleControl.h in Headers */ = {isa = PBXBuildFile; fileRef = E7A8CDA21E5129E3000C090A /* CircleControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7A8CDA51E5129E3000C090A /* CircleControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A8CDA31E5129E3000C090A /* CircleControl.m */; };
+		E7E4B64D1E720A08008D5AC9 /* CollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7E4B64B1E720A08008D5AC9 /* CollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7E4B64E1E720A08008D5AC9 /* CollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E4B64C1E720A08008D5AC9 /* CollectionView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,12 +72,16 @@
 		E7488F221E0559FC000AF809 /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
 		E74E305C1E41F57700E6989B /* SectorControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectorControl.h; sourceTree = "<group>"; };
 		E74E305D1E41F57700E6989B /* SectorControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorControl.m; sourceTree = "<group>"; };
+		E7533DEC1E71E91F00DDA141 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
+		E7533DED1E71E91F00DDA141 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
 		E7894EA81DFB7F9D00B5145E /* DropdownMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropdownMenuVC.h; sourceTree = "<group>"; };
 		E7894EA91DFB7F9D00B5145E /* DropdownMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropdownMenuVC.m; sourceTree = "<group>"; };
 		E79776661E29B8910054B1AE /* PageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageVC.h; sourceTree = "<group>"; };
 		E79776671E29B8910054B1AE /* PageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageVC.m; sourceTree = "<group>"; };
 		E7A8CDA21E5129E3000C090A /* CircleControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleControl.h; sourceTree = "<group>"; };
 		E7A8CDA31E5129E3000C090A /* CircleControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleControl.m; sourceTree = "<group>"; };
+		E7E4B64B1E720A08008D5AC9 /* CollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionView.h; sourceTree = "<group>"; };
+		E7E4B64C1E720A08008D5AC9 /* CollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +141,10 @@
 				E74E305D1E41F57700E6989B /* SectorControl.m */,
 				E7A8CDA21E5129E3000C090A /* CircleControl.h */,
 				E7A8CDA31E5129E3000C090A /* CircleControl.m */,
+				E7533DEC1E71E91F00DDA141 /* TableView.h */,
+				E7533DED1E71E91F00DDA141 /* TableView.m */,
+				E7E4B64B1E720A08008D5AC9 /* CollectionView.h */,
+				E7E4B64C1E720A08008D5AC9 /* CollectionView.m */,
 				37A501F41DD8EE24004DD6BC /* Info.plist */,
 			);
 			path = Framework;
@@ -171,12 +183,14 @@
 			files = (
 				E705044B1E0DE14600DF850C /* CircularSlider.h in Headers */,
 				E7488F251E0559FC000AF809 /* GridView.h in Headers */,
+				E7E4B64D1E720A08008D5AC9 /* CollectionView.h in Headers */,
 				37A5023E1DD90C66004DD6BC /* TabControl.h in Headers */,
 				37A501F51DD8EE24004DD6BC /* Controls.h in Headers */,
 				E7488F231E0559FC000AF809 /* DraggableButton.h in Headers */,
 				37A093EE1DE851E900ADA05B /* EdgeSliderControl.h in Headers */,
 				37A502061DD8EEA8004DD6BC /* ConcentricView.h in Headers */,
 				379FA30E1DDF28FC00985D1F /* GradientSlider.h in Headers */,
+				E7533DEE1E71E91F00DDA141 /* TableView.h in Headers */,
 				E79776681E29B8910054B1AE /* PageVC.h in Headers */,
 				E7894EAA1DFB7F9D00B5145E /* DropdownMenuVC.h in Headers */,
 				E74E305E1E41F57700E6989B /* SectorControl.h in Headers */,
@@ -273,9 +287,11 @@
 				E7A8CDA51E5129E3000C090A /* CircleControl.m in Sources */,
 				E7488F241E0559FC000AF809 /* DraggableButton.m in Sources */,
 				37A5023F1DD90C66004DD6BC /* TabControl.m in Sources */,
+				E7E4B64E1E720A08008D5AC9 /* CollectionView.m in Sources */,
 				E74E305F1E41F57700E6989B /* SectorControl.m in Sources */,
 				E79776691E29B8910054B1AE /* PageVC.m in Sources */,
 				E7894EAB1DFB7F9D00B5145E /* DropdownMenuVC.m in Sources */,
+				E7533DEF1E71E91F00DDA141 /* TableView.m in Sources */,
 				37A093EF1DE851E900ADA05B /* EdgeSliderControl.m in Sources */,
 				E705044C1E0DE14600DF850C /* CircularSlider.m in Sources */,
 				37A092F11DE326D500ADA05B /* NumberPickerControl.m in Sources */,

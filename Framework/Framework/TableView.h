@@ -20,6 +20,29 @@
 
 
 
+@interface TableView : UITableView
+
+@property (strong, nonatomic) IBOutlet UIView *backgroundView;
+@property (strong, nonatomic) IBOutlet UIView *emptyView;
+
+@property IBInspectable NSString *headerViewNibIdentifier;
+@property IBInspectable NSString *headerViewNibName;
+
+@property IBInspectable BOOL collapsible;
+
+- (IBAction)onHeaderView:(UIButton *)sender;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface TableViewHeaderFooterView : UITableViewHeaderFooterView
 
 @property (weak, nonatomic) IBOutlet UIButton *button1;
@@ -83,28 +106,5 @@
 @property IBInspectable UIColor *topColor;
 @property IBInspectable UIColor *centerColor;
 @property IBInspectable UIColor *bottomColor;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface CollectionViewCell : UICollectionViewCell
-
-@property (weak, nonatomic) IBOutlet UIImageView *imageView1;
-
-@property (weak, nonatomic) IBOutlet UILabel *label1;
-@property (weak, nonatomic) IBOutlet UILabel *label2;
-@property (weak, nonatomic) IBOutlet UILabel *label3;
-
-@property (weak, nonatomic) IBOutlet UITextField *textField1;
-
-@property (weak, nonatomic) IBOutlet UIControl *control1;
 
 @end
