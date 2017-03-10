@@ -31,6 +31,9 @@
 
 
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wprotocol"
+
 @implementation TableView
 
 @dynamic backgroundView;
@@ -70,14 +73,30 @@
 #pragma mark - Table view
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSInteger sections = [self.originalDataSource numberOfSectionsInTableView:tableView];
+    NSInteger sections;
+    
+    SEL selector = @selector(numberOfSectionsInTableView:);
+    if ([self.originalDataSource respondsToSelector:selector]) {
+        sections = [self.originalDataSource numberOfSectionsInTableView:tableView];
+    } else {
+        sections = tableView.numberOfSections;
+    }
     
     if (self.emptyView) {
         BOOL show = (sections == 0);
         if (sections == 1) {
-            NSInteger rows = [self.originalDataSource tableView:tableView numberOfRowsInSection:0];
+            NSInteger rows;
+            
+            selector = @selector(tableView:numberOfRowsInSection:);
+            if ([self.originalDataSource respondsToSelector:selector]) {
+                rows = [self.originalDataSource tableView:tableView numberOfRowsInSection:0];
+            } else {
+                rows = [tableView numberOfRowsInSection:0];
+            }
+            
             show = (rows == 0);
         }
+        
         tableView.backgroundView = show ? self.emptyView : nil;
     }
     
@@ -85,15 +104,18 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat height;
-    
     if (self.collapsible) {
         BOOL collapsed = [self.collapsedSections containsIndex:indexPath.section];
         if (collapsed) {
-            height = 0.0;
-        } else {
-            height = tableView.rowHeight;
+            return 0.0;
         }
+    }
+    
+    CGFloat height;
+    
+    SEL selector = @selector(tableView:heightForRowAtIndexPath:);
+    if ([self.originalDelegate respondsToSelector:selector]) {
+        height = [self.originalDelegate tableView:tableView heightForRowAtIndexPath:indexPath];
     } else {
         height = tableView.rowHeight;
     }
@@ -109,14 +131,24 @@
         UIImage *image = [view.button3 imageForState:UIControlStateSelected];
         [view.button3 setImage:image forState:(UIControlStateSelected | UIControlStateHighlighted)];
     }
-    if ([self.originalDelegate respondsToSelector:@selector(tableView:configureHeaderView:forSection:)]) {
+    SEL selector = @selector(tableView:configureHeaderView:forSection:);
+    if ([self.originalDelegate respondsToSelector:selector]) {
         [self.originalDelegate tableView:tableView configureHeaderView:view forSection:section];
     }
     return view;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return tableView.sectionHeaderHeight;
+    CGFloat height;
+    
+    SEL selector = @selector(tableView:heightForHeaderInSection:);
+    if ([self.originalDelegate respondsToSelector:selector]) {
+        height = [self.originalDelegate tableView:tableView heightForHeaderInSection:section];
+    } else {
+        height = tableView.sectionHeaderHeight;
+    }
+    
+    return height;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -128,15 +160,18 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    CGFloat height;
-    
     if (self.collapsible) {
         BOOL collapsed = [self.collapsedSections containsIndex:section];
-        if (collapsed) {
-            height = tableView.sectionFooterHeight;
-        } else {
-            height = CGFLOAT_MIN;
+        if (!collapsed) {
+            return CGFLOAT_MIN;
         }
+    }
+    
+    CGFloat height;
+    
+    SEL selector = @selector(tableView:heightForFooterInSection:);
+    if ([self.originalDelegate respondsToSelector:selector]) {
+        height = [self.originalDelegate tableView:tableView heightForFooterInSection:section];
     } else {
         height = tableView.sectionFooterHeight;
     }
@@ -158,6 +193,8 @@
 }
 
 @end
+
+#pragma clang diagnostic pop
 
 
 
