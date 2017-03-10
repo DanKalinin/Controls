@@ -37,6 +37,8 @@
 		E7A8CDA51E5129E3000C090A /* CircleControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A8CDA31E5129E3000C090A /* CircleControl.m */; };
 		E7E4B64D1E720A08008D5AC9 /* CollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7E4B64B1E720A08008D5AC9 /* CollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7E4B64E1E720A08008D5AC9 /* CollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E4B64C1E720A08008D5AC9 /* CollectionView.m */; };
+		E7E4B6621E72D0B7008D5AC9 /* MultiselectionControl.h in Headers */ = {isa = PBXBuildFile; fileRef = E7E4B6601E72D0B7008D5AC9 /* MultiselectionControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7E4B6631E72D0B7008D5AC9 /* MultiselectionControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E4B6611E72D0B7008D5AC9 /* MultiselectionControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		E7A8CDA31E5129E3000C090A /* CircleControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleControl.m; sourceTree = "<group>"; };
 		E7E4B64B1E720A08008D5AC9 /* CollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionView.h; sourceTree = "<group>"; };
 		E7E4B64C1E720A08008D5AC9 /* CollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionView.m; sourceTree = "<group>"; };
+		E7E4B6601E72D0B7008D5AC9 /* MultiselectionControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiselectionControl.h; sourceTree = "<group>"; };
+		E7E4B6611E72D0B7008D5AC9 /* MultiselectionControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiselectionControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,8 @@
 				E7533DED1E71E91F00DDA141 /* TableView.m */,
 				E7E4B64B1E720A08008D5AC9 /* CollectionView.h */,
 				E7E4B64C1E720A08008D5AC9 /* CollectionView.m */,
+				E7E4B6601E72D0B7008D5AC9 /* MultiselectionControl.h */,
+				E7E4B6611E72D0B7008D5AC9 /* MultiselectionControl.m */,
 				37A501F41DD8EE24004DD6BC /* Info.plist */,
 			);
 			path = Framework;
@@ -196,6 +202,7 @@
 				E74E305E1E41F57700E6989B /* SectorControl.h in Headers */,
 				37A092F01DE326D500ADA05B /* NumberPickerControl.h in Headers */,
 				E7A8CDA41E5129E3000C090A /* CircleControl.h in Headers */,
+				E7E4B6621E72D0B7008D5AC9 /* MultiselectionControl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +294,7 @@
 				E7A8CDA51E5129E3000C090A /* CircleControl.m in Sources */,
 				E7488F241E0559FC000AF809 /* DraggableButton.m in Sources */,
 				37A5023F1DD90C66004DD6BC /* TabControl.m in Sources */,
+				E7E4B6631E72D0B7008D5AC9 /* MultiselectionControl.m in Sources */,
 				E7E4B64E1E720A08008D5AC9 /* CollectionView.m in Sources */,
 				E74E305F1E41F57700E6989B /* SectorControl.m in Sources */,
 				E79776691E29B8910054B1AE /* PageVC.m in Sources */,

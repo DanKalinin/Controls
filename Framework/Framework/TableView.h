@@ -20,6 +20,23 @@
 
 
 
+@protocol TableViewDelegate <UITableViewDelegate>
+
+@optional
+- (void)tableView:(UITableView *)tableView configureHeaderView:(UITableViewHeaderFooterView *)headerView forSection:(NSInteger)section;
+- (void)tableView:(UITableView *)tableView configureFooterView:(UITableViewHeaderFooterView *)footerView forSection:(NSInteger)section;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface TableView : UITableView
 
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
@@ -28,7 +45,11 @@
 @property IBInspectable NSString *headerViewNibIdentifier;
 @property IBInspectable NSString *headerViewNibName;
 
+@property IBInspectable NSString *footerViewNibIdentifier;
+@property IBInspectable NSString *footerViewNibName;
+
 @property IBInspectable BOOL collapsible;
+@property IBInspectable BOOL collapsed;
 
 - (IBAction)onHeaderView:(UIButton *)sender;
 
