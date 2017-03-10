@@ -68,6 +68,8 @@
         NSRange range = NSMakeRange(0, self.numberOfSections);
         [self.collapsedSections addIndexesInRange:range];
     }
+    
+    [self.selectAllButton addTarget:self action:@selector(onSelectAll:) forControlEvents:UIControlEventValueChanged];
 }
 
 #pragma mark - Table view
@@ -179,6 +181,14 @@
     return height;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectAllButton.selected = (self.indexPathsForSelectedRows.count == self.numberOfRows);
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectAllButton.selected = NO;
+}
+
 #pragma mark - Actions
 
 - (IBAction)onHeaderView:(UIButton *)sender {
@@ -190,6 +200,20 @@
     
     [self beginUpdates];
     [self endUpdates];
+}
+
+- (void)onSelectAll:(Button *)sender {
+    for (NSInteger section = 0; section < self.numberOfSections; section++) {
+        NSInteger rows = [self numberOfRowsInSection:section];
+        for (NSInteger row = 0; row < rows; row++) {
+            NSIndexPath *ip = [NSIndexPath indexPathForRow:row inSection:section];
+            if (sender.selected) {
+                [self selectRowAtIndexPath:ip animated:YES scrollPosition:UITableViewScrollPositionNone];
+            } else {
+                [self deselectRowAtIndexPath:ip animated:YES];
+            }
+        }
+    }
 }
 
 @end

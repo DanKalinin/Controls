@@ -39,6 +39,8 @@
 
 @interface TableView : UITableView
 
+@property (weak, nonatomic) IBOutlet Button *selectAllButton;
+
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
 @property (strong, nonatomic) IBOutlet UIView *emptyView;
 
