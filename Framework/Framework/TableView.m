@@ -77,7 +77,9 @@
     
     if (!newWindow) return;
     
-    self.selectAllButton.selected = (self.indexPathsForSelectedRows.count == self.numberOfRows);
+    if (self.selectAllButton) {
+        self.selectAllButton.selected = (self.indexPathsForSelectedRows.count == self.numberOfRows);
+    }
 }
 
 #pragma mark - Table view
