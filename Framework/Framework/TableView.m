@@ -72,6 +72,14 @@
     [self.selectAllButton addTarget:self action:@selector(onSelectAll:) forControlEvents:UIControlEventValueChanged];
 }
 
+- (void)willMoveToWindow:(UIWindow *)newWindow {
+    [super didMoveToSuperview];
+    
+    if (!newWindow) return;
+    
+    self.selectAllButton.selected = (self.indexPathsForSelectedRows.count == self.numberOfRows);
+}
+
 #pragma mark - Table view
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
