@@ -111,6 +111,7 @@
 @property IBInspectable NSString *storyboard;
 @property IBInspectable NSString *viewController;
 
+@property NSIndexPath *indexPath;
 @property id userInfo;
 
 @end
