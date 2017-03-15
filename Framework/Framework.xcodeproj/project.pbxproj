@@ -29,6 +29,8 @@
 		E74E305F1E41F57700E6989B /* SectorControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E305D1E41F57700E6989B /* SectorControl.m */; };
 		E7533DEE1E71E91F00DDA141 /* TableView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7533DEC1E71E91F00DDA141 /* TableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7533DEF1E71E91F00DDA141 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7533DED1E71E91F00DDA141 /* TableView.m */; };
+		E7693E401E7997520038F0C5 /* PickerControl.h in Headers */ = {isa = PBXBuildFile; fileRef = E7693E3E1E7997520038F0C5 /* PickerControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7693E411E7997520038F0C5 /* PickerControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E7693E3F1E7997520038F0C5 /* PickerControl.m */; };
 		E7894EAA1DFB7F9D00B5145E /* DropdownMenuVC.h in Headers */ = {isa = PBXBuildFile; fileRef = E7894EA81DFB7F9D00B5145E /* DropdownMenuVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7894EAB1DFB7F9D00B5145E /* DropdownMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7894EA91DFB7F9D00B5145E /* DropdownMenuVC.m */; };
 		E79776681E29B8910054B1AE /* PageVC.h in Headers */ = {isa = PBXBuildFile; fileRef = E79776661E29B8910054B1AE /* PageVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -76,6 +78,8 @@
 		E74E305D1E41F57700E6989B /* SectorControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorControl.m; sourceTree = "<group>"; };
 		E7533DEC1E71E91F00DDA141 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		E7533DED1E71E91F00DDA141 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
+		E7693E3E1E7997520038F0C5 /* PickerControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerControl.h; sourceTree = "<group>"; };
+		E7693E3F1E7997520038F0C5 /* PickerControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerControl.m; sourceTree = "<group>"; };
 		E7894EA81DFB7F9D00B5145E /* DropdownMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropdownMenuVC.h; sourceTree = "<group>"; };
 		E7894EA91DFB7F9D00B5145E /* DropdownMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropdownMenuVC.m; sourceTree = "<group>"; };
 		E79776661E29B8910054B1AE /* PageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageVC.h; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 				37A5023D1DD90C66004DD6BC /* TabControl.m */,
 				379FA30C1DDF28FC00985D1F /* GradientSlider.h */,
 				379FA30D1DDF28FC00985D1F /* GradientSlider.m */,
+				E7693E3E1E7997520038F0C5 /* PickerControl.h */,
+				E7693E3F1E7997520038F0C5 /* PickerControl.m */,
 				37A092EE1DE326D500ADA05B /* NumberPickerControl.h */,
 				37A092EF1DE326D500ADA05B /* NumberPickerControl.m */,
 				37A093EC1DE851E900ADA05B /* EdgeSliderControl.h */,
@@ -203,6 +209,7 @@
 				37A092F01DE326D500ADA05B /* NumberPickerControl.h in Headers */,
 				E7A8CDA41E5129E3000C090A /* CircleControl.h in Headers */,
 				E7E4B6621E72D0B7008D5AC9 /* MultiselectionControl.h in Headers */,
+				E7693E401E7997520038F0C5 /* PickerControl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +306,7 @@
 				E74E305F1E41F57700E6989B /* SectorControl.m in Sources */,
 				E79776691E29B8910054B1AE /* PageVC.m in Sources */,
 				E7894EAB1DFB7F9D00B5145E /* DropdownMenuVC.m in Sources */,
+				E7693E411E7997520038F0C5 /* PickerControl.m in Sources */,
 				E7533DEF1E71E91F00DDA141 /* TableView.m in Sources */,
 				37A093EF1DE851E900ADA05B /* EdgeSliderControl.m in Sources */,
 				E705044C1E0DE14600DF850C /* CircularSlider.m in Sources */,
