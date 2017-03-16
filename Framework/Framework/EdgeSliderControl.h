@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "PickerControl.h"
+#import "NumberPickerControl.h"
 
 
 
 @interface EdgeSliderControl : UIControl
 
-@property (weak, nonatomic) IBOutlet PickerControl *picker1;
-@property (weak, nonatomic) IBOutlet PickerControl *picker2;
-@property (weak, nonatomic) IBOutlet PickerControl *picker3;
+@property (weak, nonatomic) IBOutlet PickerControl *pickerControl1;
+@property (weak, nonatomic) IBOutlet PickerControl *pickerControl2;
+
+@property (weak, nonatomic) IBOutlet NumberPickerControl *numberPickerControl1;
 
 @property IBInspectable UIRectEdge edge;
 @property IBInspectable CGFloat inset;

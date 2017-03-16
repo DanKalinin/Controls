@@ -22,12 +22,10 @@
     NSInteger _row;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        
-    }
-    return self;
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.view = self.views.firstObject;
 }
 
 - (void)setView:(UIView *)view animated:(BOOL)animated {
