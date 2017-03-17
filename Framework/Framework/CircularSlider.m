@@ -170,10 +170,23 @@
     CGFloat length = (self.valueRange.maximum - self.valueRange.minimum);
     CGFloat k = 2.0 * M_PI / length;
     CGFloat angle = k * (value - self.valueRange.minimum);
+    
+    if (self.mirrored) {
+        angle *= 0.5;
+    }
+    
     return angle;
 }
 
 - (CGFloat)valueFromAngle:(CGFloat)angle {
+    
+    if (self.mirrored) {
+        if (angle > M_PI) {
+            angle = 2.0 * M_PI - angle;
+        }
+        angle *= 2.0;
+    }
+    
     CGFloat length = (self.valueRange.maximum - self.valueRange.minimum);
     CGFloat k = length / (2.0 * M_PI);
     CGFloat value = self.valueRange.minimum + k * angle;

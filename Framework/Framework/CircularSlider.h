@@ -39,6 +39,7 @@
 @interface CircularValueSlider : CircularSlider
 
 @property IBInspectable UIFloatRange valueRange;
+@property IBInspectable BOOL mirrored;
 
 @property (readonly) CGFloat value;
 - (void)setValue:(CGFloat)value animated:(BOOL)animated;
