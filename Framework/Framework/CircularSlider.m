@@ -173,6 +173,9 @@
     
     if (self.mirrored) {
         angle *= 0.5;
+        if (self.angle > M_PI) {
+            angle = 2.0 * M_PI - angle;
+        }
     }
     
     return angle;
