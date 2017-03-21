@@ -93,6 +93,8 @@
 
 @property (weak, nonatomic) IBOutlet ImageView *imageView1;
 
+@property (weak, nonatomic) IBOutlet UIView *view1;
+
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
 @property (weak, nonatomic) IBOutlet UILabel *label3;
