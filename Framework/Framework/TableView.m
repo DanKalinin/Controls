@@ -26,6 +26,7 @@
 @property SurrogateContainer *delegates;
 
 @property NSMutableIndexSet *collapsedSections;
+@property NSMutableSet *collapsedRows;
 
 @end
 
@@ -51,6 +52,9 @@
     self.delegates.objects = @[self.originalDelegate, self];
     self.delegate = (id)self.delegates;
     
+    self.collapsedSections = [NSMutableIndexSet indexSet];
+    self.collapsedRows = [NSMutableSet set];
+    
     if (self.headerViewNibName) {
         NSBundle *bundle = [NSBundle bundleWithIdentifier:self.headerViewNibIdentifier];
         UINib *nib = [UINib nibWithNibName:self.headerViewNibName bundle:bundle];
@@ -61,12 +65,6 @@
         NSBundle *bundle = [NSBundle bundleWithIdentifier:self.footerViewNibIdentifier];
         UINib *nib = [UINib nibWithNibName:self.footerViewNibName bundle:bundle];
         [self registerNib:nib forHeaderFooterViewReuseIdentifier:self.footerViewNibName];
-    }
-    
-    self.collapsedSections = [NSMutableIndexSet indexSet];
-    if (self.collapsed) {
-        NSRange range = NSMakeRange(0, self.numberOfSections);
-        [self.collapsedSections addIndexesInRange:range];
     }
     
     [self.selectAllButton addTarget:self action:@selector(onSelectAll:) forControlEvents:UIControlEventValueChanged];
@@ -83,6 +81,19 @@
 }
 
 #pragma mark - Table view
+
+- (void)reloadData {
+    [super reloadData];
+    
+    if (self.sectionsCollapsed) {
+        NSRange range = NSMakeRange(0, self.numberOfSections);
+        [self.collapsedSections addIndexesInRange:range];
+    }
+    
+    if (self.rowsCollapsed) {
+        [self.collapsedRows addObjectsFromArray:self.indexPaths];
+    }
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     NSInteger sections;
@@ -116,20 +127,34 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.collapsible) {
+    if (self.sectionsCollapsible) {
         BOOL collapsed = [self.collapsedSections containsIndex:indexPath.section];
         if (collapsed) {
             return 0.0;
         }
     }
     
-    CGFloat height;
+    CGFloat height = tableView.rowHeight;
     
-    SEL selector = @selector(tableView:heightForRowAtIndexPath:);
-    if ([self.originalDelegate respondsToSelector:selector]) {
-        height = [self.originalDelegate tableView:tableView heightForRowAtIndexPath:indexPath];
+    SEL selector;
+    if (self.rowsCollapsible) {
+        BOOL collapsed = [self.collapsedRows containsObject:indexPath];
+        if (collapsed) {
+            selector = @selector(tableView:heightForCollapsedRowAtIndexPath:);
+            if ([self.originalDelegate respondsToSelector:selector]) {
+                height = [self.originalDelegate tableView:tableView heightForCollapsedRowAtIndexPath:indexPath];
+            }
+        } else {
+            selector = @selector(tableView:heightForExpandedRowAtIndexPath:);
+            if ([self.originalDelegate respondsToSelector:selector]) {
+                height = [self.originalDelegate tableView:tableView heightForExpandedRowAtIndexPath:indexPath];
+            }
+        }
     } else {
-        height = tableView.rowHeight;
+        selector = @selector(tableView:heightForRowAtIndexPath:);
+        if ([self.originalDelegate respondsToSelector:selector]) {
+            height = [self.originalDelegate tableView:tableView heightForRowAtIndexPath:indexPath];
+        }
     }
     
     return height;
@@ -137,7 +162,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     TableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.headerViewNibName];
-    if (self.collapsible) {
+    if (self.sectionsCollapsible) {
         view.button1.tag = section;
         view.button1.selected = [self.collapsedSections containsIndex:section];
         UIImage *image = [view.button3 imageForState:UIControlStateSelected];
@@ -172,7 +197,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    if (self.collapsible) {
+    if (self.sectionsCollapsible) {
         BOOL collapsed = [self.collapsedSections containsIndex:section];
         if (!collapsed) {
             return CGFLOAT_MIN;
@@ -193,10 +218,28 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.selectAllButton.selected = (self.indexPathsForSelectedRows.count == self.numberOfRows);
+    
+    if (self.rowsCollapsible) {
+        if ([self.collapsedRows containsObject:indexPath]) {
+            [self.collapsedRows removeObject:indexPath];
+        } else {
+            [self.collapsedRows addObject:indexPath];
+        }
+        
+        [tableView beginUpdates];
+        [tableView endUpdates];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.selectAllButton.selected = NO;
+    
+    if (self.rowsCollapsible) {
+        [self.collapsedRows addObject:indexPath];
+        
+        [tableView beginUpdates];
+        [tableView endUpdates];
+    }
 }
 
 #pragma mark - Actions

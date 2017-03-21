@@ -26,6 +26,9 @@
 - (void)tableView:(UITableView *)tableView configureHeaderView:(UITableViewHeaderFooterView *)headerView forSection:(NSInteger)section;
 - (void)tableView:(UITableView *)tableView configureFooterView:(UITableViewHeaderFooterView *)footerView forSection:(NSInteger)section;
 
+- (CGFloat)tableView:(UITableView *)tableView heightForCollapsedRowAtIndexPath:(NSIndexPath *)indexPath;
+- (CGFloat)tableView:(UITableView *)tableView heightForExpandedRowAtIndexPath:(NSIndexPath *)indexPath;
+
 @end
 
 
@@ -50,8 +53,11 @@
 @property IBInspectable NSString *footerViewNibIdentifier;
 @property IBInspectable NSString *footerViewNibName;
 
-@property IBInspectable BOOL collapsible;
-@property IBInspectable BOOL collapsed;
+@property IBInspectable BOOL sectionsCollapsible;
+@property IBInspectable BOOL sectionsCollapsed;
+
+@property IBInspectable BOOL rowsCollapsible;
+@property IBInspectable BOOL rowsCollapsed;
 
 - (IBAction)onHeaderView:(UIButton *)sender;
 
