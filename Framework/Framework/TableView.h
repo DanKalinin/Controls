@@ -93,7 +93,13 @@
 
 @property (weak, nonatomic) IBOutlet ImageView *imageView1;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint1;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint2;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint3;
+
 @property (weak, nonatomic) IBOutlet UIView *view1;
+@property (weak, nonatomic) IBOutlet UIView *view2;
+@property (weak, nonatomic) IBOutlet UIView *view3;
 
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
