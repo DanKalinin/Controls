@@ -13,6 +13,7 @@
 @interface PickerControl : UIControl
 
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet UIView *defaultView;
 
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *views;
 

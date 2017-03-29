@@ -25,7 +25,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.view = self.views.firstObject;
+    if (self.defaultView) {
+        [self setView:self.defaultView animated:NO];
+    } else {
+        self.view = self.views.firstObject;
+    }
 }
 
 - (void)setView:(UIView *)view animated:(BOOL)animated {
