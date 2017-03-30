@@ -28,6 +28,8 @@
 @property NSMutableIndexSet *collapsedSections;
 @property NSMutableSet *collapsedRows;
 
+@property UITableViewCellSeparatorStyle defaultSeparatorStyle;
+
 @end
 
 
@@ -41,6 +43,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.defaultSeparatorStyle = self.separatorStyle;
     
     self.originalDataSource = self.dataSource;
     self.dataSources = [SurrogateContainer new];
@@ -121,6 +125,7 @@
         }
         
         tableView.backgroundView = show ? self.emptyView : nil;
+        tableView.separatorStyle = show ? UITableViewCellSeparatorStyleNone : self.defaultSeparatorStyle;
     }
     
     return sections;
