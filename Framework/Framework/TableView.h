@@ -40,6 +40,21 @@
 
 
 
+@interface TableViewController : UITableViewController
+
+@property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cells;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface TableView : UITableView
 
 @property (weak, nonatomic) IBOutlet Button *selectAllButton;
@@ -123,6 +138,7 @@
 
 @property IBInspectable NSInteger selectedAccessoryType;
 @property IBInspectable BOOL editable;
+@property IBInspectable CGFloat height;
 
 @property IBInspectable NSString *storyboard;
 @property IBInspectable NSString *viewController;

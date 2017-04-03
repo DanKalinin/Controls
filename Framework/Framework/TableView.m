@@ -17,6 +17,25 @@
 
 
 
+@implementation TableViewController
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TableViewCell *cell = self.cells[indexPath.row];
+    CGFloat height = cell.height * !cell.hidden;
+    return height;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface TableView () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak) id <UITableViewDataSource> originalDataSource;
