@@ -94,7 +94,7 @@
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {
-    [super didMoveToSuperview];
+    [super willMoveToWindow:newWindow];
     
     if (!newWindow) return;
     
@@ -286,8 +286,28 @@
             NSIndexPath *ip = [NSIndexPath indexPathForRow:row inSection:section];
             if (sender.selected) {
                 [self selectRowAtIndexPath:ip animated:YES scrollPosition:UITableViewScrollPositionNone];
+                
+                SEL selector = @selector(tableView:willSelectRowAtIndexPath:);
+                if ([self.originalDelegate respondsToSelector:selector]) {
+                    ip = [self.originalDelegate tableView:self willSelectRowAtIndexPath:ip];
+                }
+                
+                selector = @selector(tableView:didSelectRowAtIndexPath:);
+                if ([self.originalDelegate respondsToSelector:selector]) {
+                    [self.originalDelegate tableView:self didSelectRowAtIndexPath:ip];
+                }
             } else {
                 [self deselectRowAtIndexPath:ip animated:YES];
+                
+                SEL selector = @selector(tableView:willDeselectRowAtIndexPath:);
+                if ([self.originalDelegate respondsToSelector:selector]) {
+                    ip = [self.originalDelegate tableView:self willDeselectRowAtIndexPath:ip];
+                }
+                
+                selector = @selector(tableView:didDeselectRowAtIndexPath:);
+                if ([self.originalDelegate respondsToSelector:selector]) {
+                    [self.originalDelegate tableView:self didDeselectRowAtIndexPath:ip];
+                }
             }
         }
     }
