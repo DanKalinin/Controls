@@ -327,21 +327,17 @@
 
 @interface TableViewCell ()
 
-@property UITableViewCellAccessoryType defaultAccessoryType;
-
 @end
 
 
 
 @implementation TableViewCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    self.defaultAccessoryType = self.accessoryType;
-}
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+    
+    if (self.selectedAccessoryType == self.defaultAccessoryType) return;
+    
     self.accessoryType = selected ? self.selectedAccessoryType : self.defaultAccessoryType;
 }
 

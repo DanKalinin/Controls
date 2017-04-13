@@ -136,6 +136,7 @@
 
 @property (weak, nonatomic) IBOutlet MultiselectionControl *multiselectionControl1;
 
+@property IBInspectable NSInteger defaultAccessoryType;
 @property IBInspectable NSInteger selectedAccessoryType;
 @property IBInspectable BOOL editable;
 @property IBInspectable CGFloat height;
