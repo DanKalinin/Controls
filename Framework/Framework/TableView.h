@@ -29,6 +29,8 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForCollapsedRowAtIndexPath:(NSIndexPath *)indexPath;
 - (CGFloat)tableView:(UITableView *)tableView heightForExpandedRowAtIndexPath:(NSIndexPath *)indexPath;
 
+- (void)tableView:(UITableView *)tableView didToggleSelectAllButton:(UIButton *)button;
+
 @end
 
 
