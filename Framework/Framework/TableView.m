@@ -185,17 +185,26 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    TableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.headerViewNibName];
-    if (self.sectionsCollapsible) {
-        view.button1.tag = section;
-        view.button1.selected = [self.collapsedSections containsIndex:section];
-        UIImage *image = [view.button3 imageForState:UIControlStateSelected];
-        [view.button3 setImage:image forState:(UIControlStateSelected | UIControlStateHighlighted)];
-    }
-    SEL selector = @selector(tableView:configureHeaderView:forSection:);
+    UIView *view;
+    
+    SEL selector = @selector(tableView:viewForHeaderInSection:);
     if ([self.originalDelegate respondsToSelector:selector]) {
-        [self.originalDelegate tableView:tableView configureHeaderView:view forSection:section];
+        view = [self.originalDelegate tableView:tableView viewForHeaderInSection:section];
+    } else {
+        TableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.headerViewNibName];
+        if (self.sectionsCollapsible) {
+            headerView.button1.tag = section;
+            headerView.button1.selected = [self.collapsedSections containsIndex:section];
+            UIImage *image = [headerView.button3 imageForState:UIControlStateSelected];
+            [headerView.button3 setImage:image forState:(UIControlStateSelected | UIControlStateHighlighted)];
+        }
+        selector = @selector(tableView:configureHeaderView:forSection:);
+        if ([self.originalDelegate respondsToSelector:selector]) {
+            [self.originalDelegate tableView:tableView configureHeaderView:headerView forSection:section];
+        }
+        view = headerView;
     }
+    
     return view;
 }
 
@@ -213,10 +222,20 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    TableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.footerViewNibName];
-    if ([self.originalDelegate respondsToSelector:@selector(tableView:configureFooterView:forSection:)]) {
-        [self.originalDelegate tableView:tableView configureFooterView:view forSection:section];
+    UIView *view;
+    
+    SEL selector = @selector(tableView:viewForFooterInSection:);
+    if ([self.originalDelegate respondsToSelector:selector]) {
+        view = [self.originalDelegate tableView:tableView viewForFooterInSection:section];
+    } else {
+        TableViewHeaderFooterView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.footerViewNibName];
+        selector = @selector(tableView:configureFooterView:forSection:);
+        if ([self.originalDelegate respondsToSelector:selector]) {
+            [self.originalDelegate tableView:tableView configureFooterView:footerView forSection:section];
+        }
+        view = footerView;
     }
+    
     return view;
 }
 
