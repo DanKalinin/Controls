@@ -18,4 +18,10 @@
 
 @implementation CollectionViewCell
 
+- (void)setSelected:(BOOL)selected {
+    [super setSelected:selected];
+    
+    self.button1.selected = selected;
+}
+
 @end
