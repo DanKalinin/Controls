@@ -38,6 +38,8 @@
 
 @interface TableView () <UITableViewDataSource, UITableViewDelegate>
 
+@property IBInspectable UITableViewCellSeparatorStyle defaultSeparatorStyle;
+
 @property (weak) id <UITableViewDataSource> originalDataSource;
 @property (weak) id <TableViewDelegate> originalDelegate;
 
@@ -46,8 +48,6 @@
 
 @property NSMutableIndexSet *collapsedSections;
 @property NSMutableSet *collapsedRows;
-
-@property UITableViewCellSeparatorStyle defaultSeparatorStyle;
 
 @end
 
