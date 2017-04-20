@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *label2;
 @property (weak, nonatomic) IBOutlet UILabel *label3;
 
+@property (weak, nonatomic) IBOutlet UIButton *button1;
+
 @property (weak, nonatomic) IBOutlet UITextField *textField1;
 
 @property (weak, nonatomic) IBOutlet UIControl *control1;
