@@ -95,9 +95,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *label2;
 @property (weak, nonatomic) IBOutlet UILabel *label3;
 
-@property (weak, nonatomic) IBOutlet UIButton *button1;
-@property (weak, nonatomic) IBOutlet UIButton *button2;
-@property (weak, nonatomic) IBOutlet UIButton *button3;
+@property (weak, nonatomic) IBOutlet Button *button1;
+@property (weak, nonatomic) IBOutlet Button *button2;
+@property (weak, nonatomic) IBOutlet Button *button3;
 
 @end
 
@@ -132,7 +132,7 @@
 
 @property (weak, nonatomic) IBOutlet UIControl *control1;
 
-@property (weak, nonatomic) IBOutlet UIButton *button1;
+@property (weak, nonatomic) IBOutlet Button *button1;
 
 @property (weak, nonatomic) IBOutlet UISwitch *switch1;
 
