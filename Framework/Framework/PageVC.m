@@ -29,11 +29,10 @@ static NSString *const PageSegue = @"Page";
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self != %@", self.pageViewController];
     self.pages = [self.childViewControllers filteredArrayUsingPredicate:predicate];
-    
-    self.page = self.pages[self.pageControl.currentPage];
-    [self.pageViewController setViewControllers:@[self.page] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    
     self.pageControl.numberOfPages = self.pages.count;
+    
+    UIViewController *page = self.pages[self.currentPage];
+    [self setPage:page animated:NO];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -42,6 +41,31 @@ static NSString *const PageSegue = @"Page";
         self.pageViewController.dataSource = self;
         self.pageViewController.delegate = self;
     }
+}
+
+- (void)setPage:(UIViewController *)page animated:(BOOL)animated {
+    if (!page) return;
+    if (![self.pages containsObject:page]) return;
+    
+    __weak typeof(self) this = self;
+    [self.pageViewController setViewControllers:@[page] direction:UIPageViewControllerNavigationDirectionForward animated:animated completion:^(BOOL finished) {
+        [this pageDidSet];
+    }];
+}
+
+- (void)setNextPage:(BOOL)animated {
+    UIViewController *page = [self pageViewController:self.pageViewController viewControllerAfterViewController:self.page];
+    [self setPage:page animated:animated];
+}
+
+- (void)setPreviousPage:(BOOL)animated {
+    UIViewController *page = [self pageViewController:self.pageViewController viewControllerBeforeViewController:self.page];
+    [self setPage:page animated:animated];
+}
+
+- (void)pageDidSet {
+    self.page = self.pageViewController.viewControllers.firstObject;
+    self.pageControl.currentPage = [self.pages indexOfObject:self.page];
 }
 
 #pragma mark - Page view controller
@@ -81,8 +105,7 @@ static NSString *const PageSegue = @"Page";
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
-    self.page = pageViewController.viewControllers.firstObject;
-    self.pageControl.currentPage = [self.pages indexOfObject:self.page];
+    [self pageDidSet];
 }
 
 @end
