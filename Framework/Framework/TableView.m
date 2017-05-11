@@ -60,20 +60,19 @@
 
 @dynamic backgroundView;
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.dataSource = nil;
+        self.delegate = nil;
+    }
+    return self;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     
     self.defaultSeparatorStyle = self.separatorStyle;
-    
-    self.originalDataSource = self.dataSource;
-    self.dataSources = [SurrogateContainer new];
-    self.dataSources.objects = @[self.originalDataSource, self];
-    self.dataSource = (id)self.dataSources;
-    
-    self.originalDelegate = (id)self.delegate;
-    self.delegates = [SurrogateContainer new];
-    self.delegates.objects = @[self.originalDelegate, self];
-    self.delegate = (id)self.delegates;
     
     self.collapsedSections = [NSMutableIndexSet indexSet];
     self.collapsedRows = [NSMutableSet set];
@@ -100,6 +99,30 @@
     
     if (self.selectAllButton) {
         self.selectAllButton.selected = (self.indexPathsForSelectedRows.count == self.numberOfRows);
+    }
+}
+
+#pragma mark - Accessors
+
+- (void)setDataSource:(id<UITableViewDataSource>)dataSource {
+    if (dataSource) {
+        self.originalDataSource = dataSource;
+        self.dataSources = [SurrogateContainer new];
+        self.dataSources.objects = @[dataSource, self];
+        [super setDataSource:(id)self.dataSources];
+    } else {
+        [super setDataSource:self];
+    }
+}
+
+- (void)setDelegate:(id<UITableViewDelegate>)delegate {
+    if (delegate) {
+        self.originalDelegate = (id)delegate;
+        self.delegates = [SurrogateContainer new];
+        self.delegates.objects = @[delegate, self];
+        [super setDelegate:(id)self.delegates];
+    } else {
+        [super setDelegate:self];
     }
 }
 
