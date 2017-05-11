@@ -63,8 +63,8 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.dataSource = nil;
-        self.delegate = nil;
+        [super setDataSource:self];
+        [super setDelegate:self];
     }
     return self;
 }
