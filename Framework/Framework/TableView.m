@@ -308,6 +308,36 @@
     }
 }
 
+// Reordering rows
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    BOOL canMove;
+    if (self.hideReorderingHandleForSingleRow) {
+        NSInteger rowsInSection = [tableView numberOfRowsInSection:indexPath.section];
+        canMove = (rowsInSection > 1);
+    } else {
+        canMove = YES;
+    }
+    return canMove;
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
+    NSIndexPath *ip;
+    if (self.rowReorderingPolicy == TableViewRowReorderingPolicyNone) {
+        ip = proposedDestinationIndexPath;
+    } else if (self.rowReorderingPolicy == TableViewRowReorderingPolicyInSection) {
+        if (proposedDestinationIndexPath.section > sourceIndexPath.section) {
+            NSInteger rowsInSection = [tableView numberOfRowsInSection:sourceIndexPath.section];
+            ip = [NSIndexPath indexPathForRow:(rowsInSection - 1) inSection:sourceIndexPath.section];
+        } else if (proposedDestinationIndexPath.section < sourceIndexPath.section) {
+            ip = [NSIndexPath indexPathForRow:0 inSection:sourceIndexPath.section];
+        } else {
+            ip = proposedDestinationIndexPath;
+        }
+    }
+    return ip;
+}
+
 #pragma mark - Actions
 
 - (IBAction)onHeaderView:(UIButton *)sender {

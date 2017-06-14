@@ -11,6 +11,11 @@
 #import "NumberPickerControl.h"
 #import "MultiselectionControl.h"
 
+typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
+    TableViewRowReorderingPolicyNone,
+    TableViewRowReorderingPolicyInSection
+};
+
 
 
 
@@ -75,6 +80,9 @@
 
 @property IBInspectable BOOL rowsCollapsible;
 @property IBInspectable BOOL rowsCollapsed;
+
+@property IBInspectable BOOL hideReorderingHandleForSingleRow;
+@property IBInspectable TableViewRowReorderingPolicy rowReorderingPolicy;
 
 - (IBAction)onHeaderView:(UIButton *)sender;
 
