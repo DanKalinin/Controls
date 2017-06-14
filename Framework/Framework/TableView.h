@@ -168,6 +168,8 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @property NSIndexPath *indexPath;
 @property id userInfo;
 
+@property (readonly) UITableViewCellStateMask state;
+
 @end
 
 

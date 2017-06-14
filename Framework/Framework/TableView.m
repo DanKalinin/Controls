@@ -406,6 +406,8 @@
 
 @interface TableViewCell ()
 
+@property UITableViewCellStateMask state;
+
 @end
 
 
@@ -418,6 +420,12 @@
     if (self.selectedAccessoryType == self.defaultAccessoryType) return;
     
     self.accessoryType = selected ? self.selectedAccessoryType : self.defaultAccessoryType;
+}
+
+- (void)willTransitionToState:(UITableViewCellStateMask)state {
+    [super willTransitionToState:state];
+    
+    self.state = state;
 }
 
 @end
