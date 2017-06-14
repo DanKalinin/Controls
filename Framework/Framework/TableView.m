@@ -65,6 +65,8 @@
     if (self) {
         [super setDataSource:self];
         [super setDelegate:self];
+        
+        self.canMoveSingleRow = YES;
     }
     return self;
 }
@@ -312,11 +314,11 @@
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     BOOL canMove;
-    if (self.hideReorderingHandleForSingleRow) {
+    if (self.canMoveSingleRow) {
+        canMove = YES;
+    } else {
         NSInteger rowsInSection = [tableView numberOfRowsInSection:indexPath.section];
         canMove = (rowsInSection > 1);
-    } else {
-        canMove = YES;
     }
     return canMove;
 }
