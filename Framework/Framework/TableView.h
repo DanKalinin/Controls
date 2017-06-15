@@ -190,7 +190,7 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @property IBInspectable NSString *storyboard;
 @property IBInspectable NSString *viewController;
 
-@property IBInspectable UIEdgeInsets groupInsets;
+@property IBInspectable CGFloat groupInset;
 
 @property NSIndexPath *indexPath;
 @property id userInfo;

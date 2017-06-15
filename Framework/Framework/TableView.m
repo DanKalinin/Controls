@@ -50,6 +50,8 @@
 @property NSMutableSet *collapsedRows;
 
 @property TableViewCell *sourceCell;
+@property TableViewCell *destinationCell;
+@property NSIndexPath *sourceIndexPath;
 
 @end
 
@@ -389,21 +391,86 @@
 
 - (void)onPan:(UIPanGestureRecognizer *)pgr {
     if (pgr.state == UIGestureRecognizerStateBegan) {
+        
         CGPoint location = [pgr locationInView:self];
         UIView *view = [self hitTest:location withEvent:nil];
         if (view && [NSStringFromClass(view.class) isEqualToString:@"UITableViewCellReorderControl"]) {
             UIView *superview = view.superview;
             if (superview && [superview isKindOfClass:TableViewCell.class]) {
                 self.sourceCell = (TableViewCell *)view.superview;
-                NSIndexPath *indexPath = [self indexPathForCell:self.sourceCell];
-                NSLog(@"ip - %@", indexPath);
+                self.sourceIndexPath = [self indexPathForCell:self.sourceCell];
+                self.destinationCell = nil;
             }
         }
+        
     } else if (pgr.state == UIGestureRecognizerStateChanged) {
+        
+        CGFloat xCenter = CGRectGetMidX(self.sourceCell.frame);
+        CGFloat yTop = CGRectGetMinY(self.sourceCell.frame) + self.sourceCell.groupInset;
+        CGFloat yBottom = CGRectGetMaxY(self.sourceCell.frame) - self.sourceCell.groupInset;
+        
+        CGPoint pTop = CGPointMake(xCenter, yTop);
+        CGPoint pBottom = CGPointMake(xCenter, yBottom);
+        
+        TableViewCell *destinationCell = nil;
+        for (TableViewCell *cell in self.visibleCells) {
+            if ([cell isEqual:self.sourceCell]) continue;
+            if (CGRectContainsPoint(cell.frame, pTop)) {
+                destinationCell = cell;
+                break;
+            }
+            if (CGRectContainsPoint(cell.frame, pBottom)) {
+                destinationCell = cell;
+                break;
+            }
+        }
+        
+        if (destinationCell && ![destinationCell isEqual:self.destinationCell]) {
+            self.destinationCell = destinationCell;
+            
+            SEL selector = @selector(tableView:canGroupRowAtIndexPath:withIndexPath:);
+            if ([self.originalDataSource respondsToSelector:selector]) {
+                NSIndexPath *destinationIndexPath = [self indexPathForCell:destinationCell];
+                BOOL canGroup = [self.originalDataSource tableView:self canGroupRowAtIndexPath:self.sourceIndexPath withIndexPath:destinationIndexPath];
+                if (canGroup) {
+                    
+                }
+            }
+        }
+        
+//        NSLog(@"cell - %@", destinationCell);
+        
+        
+//        TableViewCell *topCell = [self cellHitTest:pTop withEvent:nil];
+//        TableViewCell *bottomCell = [self cellHitTest:pBottom withEvent:nil];
+        
+        
+        
+//        if ([topCell isEqual:self.sourceCell]) topCell = nil;
+//        if ([bottomCell isEqual:self.sourceCell]) bottomCell = nil;
+//        
+//        NSLog(@"topCell - %@", topCell);
+//        NSLog(@"bottomCell - %@", bottomCell);
+        
+//        UIView *vTop = [self hitTest:pTop withEvent:nil];
+//        UIView *vBottom = [self hitTest:pBottom withEvent:nil];
+//        
+//        NSLog(@"frame - %@", vBottom);
         
     } else if (pgr.state >= UIGestureRecognizerStateEnded) {
         
     }
+}
+
+#pragma mark - Helpers
+
+- (TableViewCell *)cellHitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    TableViewCell *cell = nil;
+    UIView *view = [self hitTest:point withEvent:event].superview;
+    if (view && [view isKindOfClass:TableViewCell.class]) {
+        cell = (TableViewCell *)view;
+    }
+    return cell;
 }
 
 @end
