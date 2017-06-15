@@ -25,16 +25,39 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 
 
 
-@protocol TableViewDelegate <UITableViewDelegate>
+@protocol TableViewDataSource <UITableViewDataSource>
 
 @optional
 - (void)tableView:(UITableView *)tableView configureHeaderView:(UITableViewHeaderFooterView *)headerView forSection:(NSInteger)section;
 - (void)tableView:(UITableView *)tableView configureFooterView:(UITableViewHeaderFooterView *)footerView forSection:(NSInteger)section;
 
+// Grouping
+
+- (BOOL)tableView:(UITableView *)tableView canGroupRowAtIndexPath:(NSIndexPath *)sourceIndexPath withIndexPath:(NSIndexPath *)destinationIndexPath;
+- (void)tableView:(UITableView *)tableView groupRowAtIndexPath:(NSIndexPath *)sourceIndexPath withIndexPath:(NSIndexPath *)destinationIndexPath;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@protocol TableViewDelegate <UITableViewDelegate>
+
+@optional
 - (CGFloat)tableView:(UITableView *)tableView heightForCollapsedRowAtIndexPath:(NSIndexPath *)indexPath;
 - (CGFloat)tableView:(UITableView *)tableView heightForExpandedRowAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)tableView:(UITableView *)tableView didToggleSelectAllButton:(UIButton *)button;
+
+// Grouping
+
+- (void)tableView:(UITableView *)tableView indexPath:(NSIndexPath *)sourceIndexPath didIntersect:(BOOL)intersect indexPath:(NSIndexPath *)destinationIndexPath;
 
 @end
 
@@ -83,6 +106,8 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 
 @property IBInspectable BOOL canMoveSingleRow;
 @property IBInspectable TableViewRowReorderingPolicy rowReorderingPolicy;
+
+@property IBInspectable BOOL groupCells;
 
 - (IBAction)onHeaderView:(UIButton *)sender;
 
@@ -164,6 +189,8 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 
 @property IBInspectable NSString *storyboard;
 @property IBInspectable NSString *viewController;
+
+@property IBInspectable UIEdgeInsets groupInsets;
 
 @property NSIndexPath *indexPath;
 @property id userInfo;

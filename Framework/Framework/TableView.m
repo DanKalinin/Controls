@@ -36,11 +36,11 @@
 
 
 
-@interface TableView () <UITableViewDataSource, UITableViewDelegate>
+@interface TableView () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 
 @property IBInspectable UITableViewCellSeparatorStyle defaultSeparatorStyle;
 
-@property (weak) id <UITableViewDataSource> originalDataSource;
+@property (weak) id <TableViewDataSource> originalDataSource;
 @property (weak) id <TableViewDelegate> originalDelegate;
 
 @property SurrogateContainer *dataSources;
@@ -48,6 +48,8 @@
 
 @property NSMutableIndexSet *collapsedSections;
 @property NSMutableSet *collapsedRows;
+
+@property TableViewCell *sourceCell;
 
 @end
 
@@ -92,6 +94,13 @@
     }
     
     [self.selectAllButton addTarget:self action:@selector(onSelectAll:) forControlEvents:UIControlEventValueChanged];
+    
+    if (self.groupCells) {
+        UIPanGestureRecognizer *pgr = [UIPanGestureRecognizer.alloc initWithTarget:self action:@selector(onPan:)];
+        pgr.cancelsTouchesInView = NO;
+        pgr.delegate = self;
+        [self addGestureRecognizer:pgr];
+    }
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {
@@ -108,7 +117,7 @@
 
 - (void)setDataSource:(id<UITableViewDataSource>)dataSource {
     if (dataSource) {
-        self.originalDataSource = dataSource;
+        self.originalDataSource = (id)dataSource;
         self.dataSources = [SurrogateContainer new];
         self.dataSources.objects = @[dataSource, self];
         [super setDataSource:(id)self.dataSources];
@@ -224,8 +233,8 @@
             [headerView.button3 setImage:image forState:(UIControlStateSelected | UIControlStateHighlighted)];
         }
         selector = @selector(tableView:configureHeaderView:forSection:);
-        if ([self.originalDelegate respondsToSelector:selector]) {
-            [self.originalDelegate tableView:tableView configureHeaderView:headerView forSection:section];
+        if ([self.originalDataSource respondsToSelector:selector]) {
+            [self.originalDataSource tableView:tableView configureHeaderView:headerView forSection:section];
         }
         view = headerView;
     }
@@ -255,8 +264,8 @@
     } else {
         TableViewHeaderFooterView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.footerViewNibName];
         selector = @selector(tableView:configureFooterView:forSection:);
-        if ([self.originalDelegate respondsToSelector:selector]) {
-            [self.originalDelegate tableView:tableView configureFooterView:footerView forSection:section];
+        if ([self.originalDataSource respondsToSelector:selector]) {
+            [self.originalDataSource tableView:tableView configureFooterView:footerView forSection:section];
         }
         view = footerView;
     }
@@ -310,7 +319,7 @@
     }
 }
 
-// Reordering rows
+// Reordering
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     BOOL canMove;
@@ -338,6 +347,12 @@
         }
     }
     return ip;
+}
+
+#pragma mark - Gesture recognizer
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 
 #pragma mark - Actions
@@ -369,6 +384,25 @@
     SEL selector = @selector(tableView:didToggleSelectAllButton:);
     if ([self.originalDelegate respondsToSelector:selector]) {
         [self.originalDelegate tableView:self didToggleSelectAllButton:sender];
+    }
+}
+
+- (void)onPan:(UIPanGestureRecognizer *)pgr {
+    if (pgr.state == UIGestureRecognizerStateBegan) {
+        CGPoint location = [pgr locationInView:self];
+        UIView *view = [self hitTest:location withEvent:nil];
+        if (view && [NSStringFromClass(view.class) isEqualToString:@"UITableViewCellReorderControl"]) {
+            UIView *superview = view.superview;
+            if (superview && [superview isKindOfClass:TableViewCell.class]) {
+                self.sourceCell = (TableViewCell *)view.superview;
+                NSIndexPath *indexPath = [self indexPathForCell:self.sourceCell];
+                NSLog(@"ip - %@", indexPath);
+            }
+        }
+    } else if (pgr.state == UIGestureRecognizerStateChanged) {
+        
+    } else if (pgr.state >= UIGestureRecognizerStateEnded) {
+        
     }
 }
 
