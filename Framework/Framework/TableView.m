@@ -405,6 +405,8 @@
         
     } else if (pgr.state >= UIGestureRecognizerStateChanged) {
         
+        if (!self.sourceCell) return;
+        
         CGFloat xCenter = CGRectGetMidX(self.sourceCell.frame);
         CGFloat yTop = CGRectGetMinY(self.sourceCell.frame) + self.sourceCell.groupInset;
         CGFloat yBottom = CGRectGetMaxY(self.sourceCell.frame) - self.sourceCell.groupInset;
@@ -457,6 +459,8 @@
                     [self.originalDataSource tableView:self groupRowAtIndexPath:self.sourceIndexPath withIndexPath:destinationIndexPath];
                 }
             }
+            
+            self.sourceCell = nil;
         }
         
     }
