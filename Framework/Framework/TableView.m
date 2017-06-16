@@ -403,7 +403,7 @@
             }
         }
         
-    } else if (pgr.state == UIGestureRecognizerStateChanged) {
+    } else if (pgr.state >= UIGestureRecognizerStateChanged) {
         
         CGFloat xCenter = CGRectGetMidX(self.sourceCell.frame);
         CGFloat yTop = CGRectGetMinY(self.sourceCell.frame) + self.sourceCell.groupInset;
@@ -425,53 +425,44 @@
             }
         }
         
-        if (destinationCell && ![destinationCell isEqual:self.destinationCell]) {
-            self.destinationCell = destinationCell;
-            
-            SEL selector = @selector(tableView:canGroupRowAtIndexPath:withIndexPath:);
-            if ([self.originalDataSource respondsToSelector:selector]) {
-                NSIndexPath *destinationIndexPath = [self indexPathForCell:destinationCell];
-                BOOL canGroup = [self.originalDataSource tableView:self canGroupRowAtIndexPath:self.sourceIndexPath withIndexPath:destinationIndexPath];
-                if (canGroup) {
-                    
+        if (pgr.state == UIGestureRecognizerStateChanged) {
+            if (destinationCell && ![destinationCell isEqual:self.destinationCell]) {
+                self.destinationCell = destinationCell;
+                
+                SEL selector = @selector(tableView:canGroupRowAtIndexPath:withIndexPath:);
+                if ([self.originalDataSource respondsToSelector:selector]) {
+                    NSIndexPath *destinationIndexPath = [self indexPathForCell:destinationCell];
+                    BOOL canGroup = [self.originalDataSource tableView:self canGroupRowAtIndexPath:self.sourceIndexPath withIndexPath:destinationIndexPath];
+                    if (canGroup) {
+                        selector = @selector(tableView:indexPath:didIntersect:indexPath:);
+                        if ([self.originalDelegate respondsToSelector:selector]) {
+                            [self.originalDelegate tableView:self indexPath:self.sourceIndexPath didIntersect:YES indexPath:destinationIndexPath];
+                        }
+                    }
+                }
+            } else if (self.destinationCell && ![self.destinationCell isEqual:destinationCell]) {
+                SEL selector = @selector(tableView:indexPath:didIntersect:indexPath:);
+                if ([self.originalDelegate respondsToSelector:selector]) {
+                    NSIndexPath *destinationIndexPath = [self indexPathForCell:self.destinationCell];
+                    [self.originalDelegate tableView:self indexPath:self.sourceIndexPath didIntersect:NO indexPath:destinationIndexPath];
+                }
+                
+                self.destinationCell = destinationCell;
+            }
+        } else {
+            if (destinationCell) {
+                SEL selector = @selector(tableView:groupRowAtIndexPath:withIndexPath:);
+                if ([self.originalDataSource respondsToSelector:selector]) {
+                    NSIndexPath *destinationIndexPath = [self indexPathForCell:destinationCell];
+                    [self.originalDataSource tableView:self groupRowAtIndexPath:self.sourceIndexPath withIndexPath:destinationIndexPath];
                 }
             }
         }
-        
-//        NSLog(@"cell - %@", destinationCell);
-        
-        
-//        TableViewCell *topCell = [self cellHitTest:pTop withEvent:nil];
-//        TableViewCell *bottomCell = [self cellHitTest:pBottom withEvent:nil];
-        
-        
-        
-//        if ([topCell isEqual:self.sourceCell]) topCell = nil;
-//        if ([bottomCell isEqual:self.sourceCell]) bottomCell = nil;
-//        
-//        NSLog(@"topCell - %@", topCell);
-//        NSLog(@"bottomCell - %@", bottomCell);
-        
-//        UIView *vTop = [self hitTest:pTop withEvent:nil];
-//        UIView *vBottom = [self hitTest:pBottom withEvent:nil];
-//        
-//        NSLog(@"frame - %@", vBottom);
-        
-    } else if (pgr.state >= UIGestureRecognizerStateEnded) {
         
     }
 }
 
 #pragma mark - Helpers
-
-- (TableViewCell *)cellHitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    TableViewCell *cell = nil;
-    UIView *view = [self hitTest:point withEvent:event].superview;
-    if (view && [view isKindOfClass:TableViewCell.class]) {
-        cell = (TableViewCell *)view;
-    }
-    return cell;
-}
 
 @end
 
