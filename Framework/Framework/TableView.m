@@ -453,10 +453,17 @@
             }
         } else {
             if (destinationCell) {
-                SEL selector = @selector(tableView:groupRowAtIndexPath:withIndexPath:);
+                SEL selector = @selector(tableView:canGroupRowAtIndexPath:withIndexPath:);
                 if ([self.originalDataSource respondsToSelector:selector]) {
                     NSIndexPath *destinationIndexPath = [self indexPathForCell:destinationCell];
-                    [self.originalDataSource tableView:self groupRowAtIndexPath:self.sourceIndexPath withIndexPath:destinationIndexPath];
+                    BOOL canGroup = [self.originalDataSource tableView:self canGroupRowAtIndexPath:self.sourceIndexPath withIndexPath:destinationIndexPath];
+                    if (canGroup) {
+                        selector = @selector(tableView:groupRowAtIndexPath:withIndexPath:);
+                        if ([self.originalDataSource respondsToSelector:selector]) {
+                            NSIndexPath *destinationIndexPath = [self indexPathForCell:destinationCell];
+                            [self.originalDataSource tableView:self groupRowAtIndexPath:self.sourceIndexPath withIndexPath:destinationIndexPath];
+                        }
+                    }
                 }
             }
             
