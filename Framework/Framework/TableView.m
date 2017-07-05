@@ -53,6 +53,8 @@
 @property TableViewCell *destinationCell;
 @property NSIndexPath *sourceIndexPath;
 
+@property UIPanGestureRecognizer *pgrGroup;
+
 @end
 
 
@@ -98,10 +100,10 @@
     [self.selectAllButton addTarget:self action:@selector(onSelectAll:) forControlEvents:UIControlEventValueChanged];
     
     if (self.groupCells) {
-        UIPanGestureRecognizer *pgr = [UIPanGestureRecognizer.alloc initWithTarget:self action:@selector(onPan:)];
-        pgr.cancelsTouchesInView = NO;
-        pgr.delegate = self;
-        [self addGestureRecognizer:pgr];
+        self.pgrGroup = [UIPanGestureRecognizer.alloc initWithTarget:self action:@selector(onPan:)];
+        self.pgrGroup.cancelsTouchesInView = NO;
+        self.pgrGroup.delegate = self;
+        [self addGestureRecognizer:self.pgrGroup];
     }
 }
 
@@ -356,7 +358,8 @@
 #pragma mark - Gesture recognizer
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return YES;
+    BOOL shouldRecognize = (self.pgrGroup && ([gestureRecognizer isEqual:self.pgrGroup] || [otherGestureRecognizer isEqual:self.pgrGroup]));
+    return shouldRecognize;
 }
 
 #pragma mark - Actions
