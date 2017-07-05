@@ -324,12 +324,14 @@
 // Reordering
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    BOOL canMove;
-    if (self.canMoveSingleRow) {
-        canMove = YES;
-    } else {
-        NSInteger rowsInSection = [tableView numberOfRowsInSection:indexPath.section];
-        canMove = (rowsInSection > 1);
+    BOOL canMove = NO;
+    if (self.canMoveRows) {
+        if (self.canMoveSingleRow) {
+            canMove = YES;
+        } else {
+            NSInteger rowsInSection = [tableView numberOfRowsInSection:indexPath.section];
+            canMove = (rowsInSection > 1);
+        }
     }
     return canMove;
 }

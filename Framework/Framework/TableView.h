@@ -104,6 +104,7 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @property IBInspectable BOOL rowsCollapsible;
 @property IBInspectable BOOL rowsCollapsed;
 
+@property IBInspectable BOOL canMoveRows;
 @property IBInspectable BOOL canMoveSingleRow;
 @property IBInspectable TableViewRowReorderingPolicy rowReorderingPolicy;
 
