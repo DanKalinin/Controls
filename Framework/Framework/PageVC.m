@@ -36,6 +36,8 @@ static NSString *const PageSegue = @"Page";
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
+    
     if ([segue.identifier isEqualToString:PageSegue]) {
         self.pageViewController = segue.destinationViewController;
         self.pageViewController.dataSource = self;
