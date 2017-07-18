@@ -48,6 +48,7 @@
 
 @property NSMutableIndexSet *collapsedSections;
 @property NSMutableSet *collapsedRows;
+@property NSMutableDictionary<NSNumber *, NSTimer *> *collapseTimers;
 
 @property TableViewCell *sourceCell;
 @property TableViewCell *destinationCell;
@@ -84,6 +85,7 @@
     
     self.collapsedSections = [NSMutableIndexSet indexSet];
     self.collapsedRows = [NSMutableSet set];
+    self.collapseTimers = [NSMutableDictionary dictionary];
     
     if (self.headerViewNibName) {
         NSBundle *bundle = [NSBundle bundleWithIdentifier:self.headerViewNibIdentifier];
@@ -149,6 +151,16 @@
     if (self.sectionsCollapsed) {
         NSRange range = NSMakeRange(0, self.numberOfSections);
         [self.collapsedSections addIndexesInRange:range];
+    } else {
+        SEL selector = @selector(tableView:isCollapsedSection:);
+        if ([self.originalDataSource respondsToSelector:selector]) {
+            for (NSInteger section = 0; section < self.numberOfSections; section++) {
+                BOOL collapsed = [self.originalDataSource tableView:self isCollapsedSection:section];
+                if (collapsed) {
+                    [self.collapsedSections addIndex:section];
+                }
+            }
+        }
     }
     
     if (self.rowsCollapsed) {
@@ -373,6 +385,20 @@
     
     [self beginUpdates];
     [self endUpdates];
+    
+    SEL selector = @selector(tableView:didCollapse:section:);
+    if ([self.originalDelegate respondsToSelector:selector]) {
+        [self.originalDelegate tableView:self didCollapse:sender.selected section:sender.tag];
+    }
+    
+    NSTimer *timer = self.collapseTimers[@(sender.tag)];
+    [timer invalidate];
+    NSTimeInterval interval = 0.25 * sender.selected;
+    timer = [NSTimer scheduledTimerWithTimeInterval:interval repeats:NO block:^(NSTimer *timer) {
+        NSArray *cells = [self cellsForSection:sender.tag];
+        [cells setValue:@(sender.selected) forKey:@"hidden"];
+    }];
+    self.collapseTimers[@(sender.tag)] = timer;
 }
 
 - (void)onSelectAll:(Button *)sender {

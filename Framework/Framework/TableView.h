@@ -31,6 +31,10 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 - (void)tableView:(UITableView *)tableView configureHeaderView:(UITableViewHeaderFooterView *)headerView forSection:(NSInteger)section;
 - (void)tableView:(UITableView *)tableView configureFooterView:(UITableViewHeaderFooterView *)footerView forSection:(NSInteger)section;
 
+// Collapsing
+
+- (BOOL)tableView:(UITableView *)tableView isCollapsedSection:(NSInteger)section;
+
 // Grouping
 
 - (BOOL)tableView:(UITableView *)tableView canGroupRowAtIndexPath:(NSIndexPath *)sourceIndexPath withIndexPath:(NSIndexPath *)destinationIndexPath;
@@ -54,6 +58,10 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 - (CGFloat)tableView:(UITableView *)tableView heightForExpandedRowAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)tableView:(UITableView *)tableView didToggleSelectAllButton:(UIButton *)button;
+
+// Collapsing
+
+- (void)tableView:(UITableView *)tableView didCollapse:(BOOL)collapse section:(NSInteger)section;
 
 // Grouping
 
