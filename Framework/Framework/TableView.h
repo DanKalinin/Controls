@@ -78,6 +78,71 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 
 
 
+@interface TableViewCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet ImageView *imageView1;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint1;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint2;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint3;
+
+@property (weak, nonatomic) IBOutlet UIView *view1;
+@property (weak, nonatomic) IBOutlet UIView *view2;
+@property (weak, nonatomic) IBOutlet UIView *view3;
+
+@property (weak, nonatomic) IBOutlet UIStackView *stackView1;
+
+@property (weak, nonatomic) IBOutlet UILabel *label1;
+@property (weak, nonatomic) IBOutlet UILabel *label2;
+@property (weak, nonatomic) IBOutlet UILabel *label3;
+@property (weak, nonatomic) IBOutlet UILabel *label4;
+@property (weak, nonatomic) IBOutlet UILabel *label5;
+@property (weak, nonatomic) IBOutlet UILabel *label6;
+@property (weak, nonatomic) IBOutlet UILabel *label7;
+@property (weak, nonatomic) IBOutlet UILabel *label8;
+@property (weak, nonatomic) IBOutlet UILabel *label9;
+@property (weak, nonatomic) IBOutlet UILabel *label10;
+
+@property (weak, nonatomic) IBOutlet UITextField *textField1;
+
+@property (weak, nonatomic) IBOutlet UIControl *control1;
+
+@property (weak, nonatomic) IBOutlet Button *button1;
+
+@property (weak, nonatomic) IBOutlet UISwitch *switch1;
+
+@property (weak, nonatomic) IBOutlet UISlider *slider1;
+
+@property (weak, nonatomic) IBOutlet TimePickerControl *timePickerControl1;
+
+@property (weak, nonatomic) IBOutlet MultiselectionControl *multiselectionControl1;
+
+@property IBInspectable UITableViewCellAccessoryType defaultAccessoryType;
+@property IBInspectable UITableViewCellAccessoryType selectedAccessoryType;
+@property IBInspectable BOOL editable;
+@property IBInspectable CGFloat height;
+
+@property IBInspectable NSString *storyboard;
+@property IBInspectable NSString *viewController;
+
+@property IBInspectable CGFloat groupInset;
+
+@property NSIndexPath *indexPath;
+@property id userInfo;
+
+@property (readonly) UITableViewCellStateMask state;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface TableViewController : UITableViewController
 
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cells;
@@ -140,73 +205,6 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @property (weak, nonatomic) IBOutlet Button *button1;
 @property (weak, nonatomic) IBOutlet Button *button2;
 @property (weak, nonatomic) IBOutlet Button *button3;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface TableViewCell : UITableViewCell
-
-@property (weak, nonatomic) IBOutlet ImageView *imageView1;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint1;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint2;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint3;
-
-@property (weak, nonatomic) IBOutlet UIView *view1;
-@property (weak, nonatomic) IBOutlet UIView *view2;
-@property (weak, nonatomic) IBOutlet UIView *view3;
-
-@property (weak, nonatomic) IBOutlet UIStackView *stackView1;
-
-@property (weak, nonatomic) IBOutlet UILabel *label1;
-@property (weak, nonatomic) IBOutlet UILabel *label2;
-@property (weak, nonatomic) IBOutlet UILabel *label3;
-@property (weak, nonatomic) IBOutlet UILabel *label4;
-@property (weak, nonatomic) IBOutlet UILabel *label5;
-@property (weak, nonatomic) IBOutlet UILabel *label6;
-@property (weak, nonatomic) IBOutlet UILabel *label7;
-@property (weak, nonatomic) IBOutlet UILabel *label8;
-@property (weak, nonatomic) IBOutlet UILabel *label9;
-@property (weak, nonatomic) IBOutlet UILabel *label10;
-
-@property (weak, nonatomic) IBOutlet UITextField *textField1;
-
-@property (weak, nonatomic) IBOutlet UIControl *control1;
-
-@property (weak, nonatomic) IBOutlet Button *button1;
-
-@property (weak, nonatomic) IBOutlet UISwitch *switch1;
-
-@property (weak, nonatomic) IBOutlet UISlider *slider1;
-
-@property (weak, nonatomic) IBOutlet TimePickerControl *timePickerControl1;
-
-@property (weak, nonatomic) IBOutlet MultiselectionControl *multiselectionControl1;
-
-@property IBInspectable UITableViewCellAccessoryType defaultAccessoryType;
-@property IBInspectable UITableViewCellAccessoryType selectedAccessoryType;
-@property IBInspectable BOOL editable;
-@property IBInspectable CGFloat height;
-
-@property IBInspectable NSString *storyboard;
-@property IBInspectable NSString *viewController;
-
-@property IBInspectable CGFloat groupInset;
-
-@property IBInspectable BOOL hideOnCollapse;
-
-@property NSIndexPath *indexPath;
-@property id userInfo;
-
-@property (readonly) UITableViewCellStateMask state;
 
 @end
 

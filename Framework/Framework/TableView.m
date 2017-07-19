@@ -17,6 +17,41 @@
 
 
 
+@interface TableViewCell ()
+
+@property UITableViewCellStateMask state;
+
+@end
+
+
+
+@implementation TableViewCell
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    
+    if (self.selectedAccessoryType == self.defaultAccessoryType) return;
+    
+    self.accessoryType = selected ? self.selectedAccessoryType : self.defaultAccessoryType;
+}
+
+- (void)willTransitionToState:(UITableViewCellStateMask)state {
+    [super willTransitionToState:state];
+    
+    self.state = state;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
 @implementation TableViewController
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -515,51 +550,6 @@
 
 
 @implementation TableViewHeaderFooterView
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface TableViewCell ()
-
-@property UITableViewCellStateMask state;
-
-@end
-
-
-
-@implementation TableViewCell
-
-- (void)setFrame:(CGRect)frame {
-    if (self.hideOnCollapse && ((frame.size.height != self.frame.size.height) || (self.frame.size.height == 0.0))) {
-        [UIView animateWithDuration:0.25 animations:^{
-            self.alpha = (frame.size.height > 1.0);
-        }];
-    }
-    
-    [super setFrame:frame];
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-    
-    if (self.selectedAccessoryType == self.defaultAccessoryType) return;
-    
-    self.accessoryType = selected ? self.selectedAccessoryType : self.defaultAccessoryType;
-}
-
-- (void)willTransitionToState:(UITableViewCellStateMask)state {
-    [super willTransitionToState:state];
-    
-    self.state = state;
-}
 
 @end
 
