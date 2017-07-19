@@ -201,6 +201,8 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 
 @property IBInspectable CGFloat groupInset;
 
+@property IBInspectable BOOL hideOnCollapse;
+
 @property NSIndexPath *indexPath;
 @property id userInfo;
 

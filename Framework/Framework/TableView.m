@@ -537,6 +537,16 @@
 
 @implementation TableViewCell
 
+- (void)setFrame:(CGRect)frame {
+    if (self.hideOnCollapse && ((frame.size.height != self.frame.size.height) || (self.frame.size.height == 0.0))) {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.alpha = (frame.size.height > 1.0);
+        }];
+    }
+    
+    [super setFrame:frame];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     
