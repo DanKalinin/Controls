@@ -102,8 +102,8 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [super setDataSource:self];
-        [super setDelegate:self];
+        super.dataSource = self;
+        super.delegate = self;
         
         self.canMoveSingleRow = YES;
     }
