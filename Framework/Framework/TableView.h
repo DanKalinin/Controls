@@ -165,6 +165,8 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
 @property (strong, nonatomic) IBOutlet UIView *emptyView;
 
+@property IBInspectable UITableViewCellSeparatorStyle defaultSeparatorStyle;
+
 @property IBInspectable NSString *headerViewNibIdentifier;
 @property IBInspectable NSString *headerViewNibName;
 

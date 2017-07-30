@@ -71,15 +71,13 @@
 
 
 
-@interface TableView () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
+@interface TableView () <TableViewDataSource, TableViewDelegate, UIGestureRecognizerDelegate>
 
-@property IBInspectable UITableViewCellSeparatorStyle defaultSeparatorStyle;
+@property SurrogateArray<TableViewDataSource> *dataSources;
+@property SurrogateArray<TableViewDelegate> *delegates;
 
 @property (weak) id <TableViewDataSource> originalDataSource;
 @property (weak) id <TableViewDelegate> originalDelegate;
-
-@property SurrogateContainer *dataSources;
-@property SurrogateContainer *delegates;
 
 @property NSMutableIndexSet *collapsedSections;
 @property NSMutableSet *collapsedRows;
@@ -157,9 +155,10 @@
 - (void)setDataSource:(id<UITableViewDataSource>)dataSource {
     if (dataSource) {
         self.originalDataSource = (id)dataSource;
-        self.dataSources = [SurrogateContainer new];
-        self.dataSources.objects = @[dataSource, self];
-        [super setDataSource:(id)self.dataSources];
+        self.dataSources = (id)SurrogateArray.new;
+        [self.dataSources addObject:dataSource];
+        [self.dataSources addObject:self];
+        [super setDataSource:self.dataSources];
     } else {
         [super setDataSource:self];
     }
@@ -168,9 +167,10 @@
 - (void)setDelegate:(id<UITableViewDelegate>)delegate {
     if (delegate) {
         self.originalDelegate = (id)delegate;
-        self.delegates = [SurrogateContainer new];
-        self.delegates.objects = @[delegate, self];
-        [super setDelegate:(id)self.delegates];
+        self.delegates = (id)SurrogateArray.new;
+        [self.delegates addObject:delegate];
+        [self.delegates addObject:self];
+        [super setDelegate:self.delegates];
     } else {
         [super setDelegate:self];
     }
