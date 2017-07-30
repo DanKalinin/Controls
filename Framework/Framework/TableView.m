@@ -201,7 +201,7 @@
     }
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(TableView *)tableView {
     NSInteger sections;
     
     SEL selector = @selector(numberOfSectionsInTableView:);
@@ -233,7 +233,7 @@
     return sections;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(TableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.sectionsCollapsible) {
         BOOL collapsed = [self.collapsedSections containsIndex:indexPath.section];
         if (collapsed) {
@@ -267,7 +267,7 @@
     return height;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+- (UIView *)tableView:(TableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *view;
     
     SEL selector = @selector(tableView:viewForHeaderInSection:);
@@ -291,7 +291,7 @@
     return view;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+- (CGFloat)tableView:(TableView *)tableView heightForHeaderInSection:(NSInteger)section {
     CGFloat height;
     
     SEL selector = @selector(tableView:heightForHeaderInSection:);
@@ -304,7 +304,7 @@
     return height;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+- (UIView *)tableView:(TableView *)tableView viewForFooterInSection:(NSInteger)section {
     UIView *view;
     
     SEL selector = @selector(tableView:viewForFooterInSection:);
@@ -322,7 +322,7 @@
     return view;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+- (CGFloat)tableView:(TableView *)tableView heightForFooterInSection:(NSInteger)section {
     if (self.sectionsCollapsible) {
         BOOL collapsed = [self.collapsedSections containsIndex:section];
         if (!collapsed) {
@@ -342,7 +342,7 @@
     return height;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(TableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.selectAllButton.selected = (self.indexPathsForSelectedRows.count == self.numberOfRows);
     
     if (self.rowsCollapsible) {
@@ -357,7 +357,7 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(TableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.selectAllButton.selected = NO;
     
     if (self.rowsCollapsible) {
@@ -370,7 +370,7 @@
 
 // Reordering
 
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)tableView:(TableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     BOOL canMove = NO;
     if (self.canMoveRows) {
         if (self.canMoveSingleRow) {
@@ -383,7 +383,7 @@
     return canMove;
 }
 
-- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
+- (NSIndexPath *)tableView:(TableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
     NSIndexPath *ip;
     if (self.rowReorderingPolicy == TableViewRowReorderingPolicyNone) {
         ip = proposedDestinationIndexPath;

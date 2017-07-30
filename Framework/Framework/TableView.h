@@ -11,6 +11,8 @@
 #import "NumberPickerControl.h"
 #import "MultiselectionControl.h"
 
+@class TableView;
+
 typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
     TableViewRowReorderingPolicyNone,
     TableViewRowReorderingPolicyInSection
@@ -28,17 +30,17 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @protocol TableViewDataSource <UITableViewDataSource>
 
 @optional
-- (void)tableView:(UITableView *)tableView configureHeaderView:(UITableViewHeaderFooterView *)headerView forSection:(NSInteger)section;
-- (void)tableView:(UITableView *)tableView configureFooterView:(UITableViewHeaderFooterView *)footerView forSection:(NSInteger)section;
+- (void)tableView:(TableView *)tableView configureHeaderView:(UITableViewHeaderFooterView *)headerView forSection:(NSInteger)section;
+- (void)tableView:(TableView *)tableView configureFooterView:(UITableViewHeaderFooterView *)footerView forSection:(NSInteger)section;
 
 // Collapsing
 
-- (BOOL)tableView:(UITableView *)tableView isCollapsedSection:(NSInteger)section;
+- (BOOL)tableView:(TableView *)tableView isCollapsedSection:(NSInteger)section;
 
 // Grouping
 
-- (BOOL)tableView:(UITableView *)tableView canGroupRowAtIndexPath:(NSIndexPath *)sourceIndexPath withIndexPath:(NSIndexPath *)destinationIndexPath;
-- (void)tableView:(UITableView *)tableView groupRowAtIndexPath:(NSIndexPath *)sourceIndexPath withIndexPath:(NSIndexPath *)destinationIndexPath;
+- (BOOL)tableView:(TableView *)tableView canGroupRowAtIndexPath:(NSIndexPath *)sourceIndexPath withIndexPath:(NSIndexPath *)destinationIndexPath;
+- (void)tableView:(TableView *)tableView groupRowAtIndexPath:(NSIndexPath *)sourceIndexPath withIndexPath:(NSIndexPath *)destinationIndexPath;
 
 @end
 
@@ -54,18 +56,18 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @protocol TableViewDelegate <UITableViewDelegate>
 
 @optional
-- (CGFloat)tableView:(UITableView *)tableView heightForCollapsedRowAtIndexPath:(NSIndexPath *)indexPath;
-- (CGFloat)tableView:(UITableView *)tableView heightForExpandedRowAtIndexPath:(NSIndexPath *)indexPath;
+- (CGFloat)tableView:(TableView *)tableView heightForCollapsedRowAtIndexPath:(NSIndexPath *)indexPath;
+- (CGFloat)tableView:(TableView *)tableView heightForExpandedRowAtIndexPath:(NSIndexPath *)indexPath;
 
-- (void)tableView:(UITableView *)tableView didToggleSelectAllButton:(UIButton *)button;
+- (void)tableView:(TableView *)tableView didToggleSelectAllButton:(UIButton *)button;
 
 // Collapsing
 
-- (void)tableView:(UITableView *)tableView didCollapse:(BOOL)collapse section:(NSInteger)section;
+- (void)tableView:(TableView *)tableView didCollapse:(BOOL)collapse section:(NSInteger)section;
 
 // Grouping
 
-- (void)tableView:(UITableView *)tableView indexPath:(NSIndexPath *)sourceIndexPath didIntersect:(BOOL)intersect indexPath:(NSIndexPath *)destinationIndexPath;
+- (void)tableView:(TableView *)tableView indexPath:(NSIndexPath *)sourceIndexPath didIntersect:(BOOL)intersect indexPath:(NSIndexPath *)destinationIndexPath;
 
 @end
 
