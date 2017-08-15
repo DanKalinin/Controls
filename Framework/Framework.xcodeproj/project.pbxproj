@@ -19,6 +19,8 @@
 		37A502071DD8EEA9004DD6BC /* ConcentricView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A502051DD8EEA8004DD6BC /* ConcentricView.m */; };
 		37A5023E1DD90C66004DD6BC /* TabControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A5023C1DD90C66004DD6BC /* TabControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		37A5023F1DD90C66004DD6BC /* TabControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A5023D1DD90C66004DD6BC /* TabControl.m */; };
+		37E57D011F43A95C009BCC63 /* GraphView.h in Headers */ = {isa = PBXBuildFile; fileRef = 37E57CFF1F43A95C009BCC63 /* GraphView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		37E57D021F43A95C009BCC63 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E57D001F43A95C009BCC63 /* GraphView.m */; };
 		E705044B1E0DE14600DF850C /* CircularSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = E70504491E0DE14600DF850C /* CircularSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E705044C1E0DE14600DF850C /* CircularSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = E705044A1E0DE14600DF850C /* CircularSlider.m */; };
 		E7488F231E0559FC000AF809 /* DraggableButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E7488F1F1E0559FC000AF809 /* DraggableButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -68,6 +70,8 @@
 		37A502051DD8EEA8004DD6BC /* ConcentricView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcentricView.m; sourceTree = "<group>"; };
 		37A5023C1DD90C66004DD6BC /* TabControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabControl.h; sourceTree = "<group>"; };
 		37A5023D1DD90C66004DD6BC /* TabControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabControl.m; sourceTree = "<group>"; };
+		37E57CFF1F43A95C009BCC63 /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
+		37E57D001F43A95C009BCC63 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 		E70504491E0DE14600DF850C /* CircularSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularSlider.h; sourceTree = "<group>"; };
 		E705044A1E0DE14600DF850C /* CircularSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircularSlider.m; sourceTree = "<group>"; };
 		E7488F1F1E0559FC000AF809 /* DraggableButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableButton.h; sourceTree = "<group>"; };
@@ -157,6 +161,8 @@
 				E7E4B64C1E720A08008D5AC9 /* CollectionView.m */,
 				E7E4B6601E72D0B7008D5AC9 /* MultiselectionControl.h */,
 				E7E4B6611E72D0B7008D5AC9 /* MultiselectionControl.m */,
+				37E57CFF1F43A95C009BCC63 /* GraphView.h */,
+				37E57D001F43A95C009BCC63 /* GraphView.m */,
 				37A501F41DD8EE24004DD6BC /* Info.plist */,
 			);
 			path = Framework;
@@ -193,6 +199,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37E57D011F43A95C009BCC63 /* GraphView.h in Headers */,
 				E705044B1E0DE14600DF850C /* CircularSlider.h in Headers */,
 				E7488F251E0559FC000AF809 /* GridView.h in Headers */,
 				E7E4B64D1E720A08008D5AC9 /* CollectionView.h in Headers */,
@@ -312,6 +319,7 @@
 				E705044C1E0DE14600DF850C /* CircularSlider.m in Sources */,
 				37A092F11DE326D500ADA05B /* NumberPickerControl.m in Sources */,
 				E7488F261E0559FC000AF809 /* GridView.m in Sources */,
+				37E57D021F43A95C009BCC63 /* GraphView.m in Sources */,
 				379FA30F1DDF28FC00985D1F /* GradientSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

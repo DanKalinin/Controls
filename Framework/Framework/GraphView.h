@@ -55,6 +55,9 @@ typedef NS_ENUM(NSUInteger, GraphViewType) {
 
 @property IBInspectable GraphViewType type;
 
+@property IBInspectable UIColor *graphColor;
+@property IBInspectable UIColor *axisColor;
+
 @property UIFloatRange xRange;
 @property UIFloatRange yRange;
 @property NSArray<UILabel *> *xLabels;
