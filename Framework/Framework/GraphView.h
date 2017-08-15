@@ -10,6 +10,11 @@
 
 @class GraphView;
 
+typedef NS_ENUM(NSUInteger, GraphViewType) {
+    GraphViewTypeLine,
+    GraphViewTypeColumn
+};
+
 
 
 
@@ -47,6 +52,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *yMaximumLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *noDataLabel;
+
+@property IBInspectable GraphViewType type;
 
 @property UIFloatRange xRange;
 @property UIFloatRange yRange;
