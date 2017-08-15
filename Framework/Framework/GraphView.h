@@ -12,6 +12,13 @@
 
 
 
+
+
+
+
+
+
+
 @protocol GraphViewDataSource <NSObject>
 
 - (NSUInteger)numberOfPointsOnGraphView:(GraphView *)graphView;
@@ -21,19 +28,45 @@
 
 
 
+
+
+
+
+
+
+
 @interface GraphView : GradientLayerView
 
-@property UILabel *headerLeftLabel;
-@property UILabel *headerLeftDetailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *headerLeftLabel;
+@property (weak, nonatomic) IBOutlet UILabel *headerLeftDetailLabel;
 
-@property UILabel *headerRightLabel;
-@property UILabel *headerRightDetailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *headerRightLabel;
+@property (weak, nonatomic) IBOutlet UILabel *headerRightDetailLabel;
 
-@property UILabel *yMinimumLabel;
-@property UILabel *yMaximumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *yMinimumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *yMaximumLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *noDataLabel;
 
 @property UIFloatRange xRange;
 @property UIFloatRange yRange;
 @property NSArray<UILabel *> *xLabels;
+
+@property (weak) id <GraphViewDataSource> dataSource;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface GraphViewController : UIViewController <GraphViewDataSource>
+
+@property (nonatomic) GraphView *view;
 
 @end

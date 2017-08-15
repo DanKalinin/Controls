@@ -10,6 +10,19 @@
 
 
 
+
+
+
+
+
+
+
+@interface GraphView ()
+
+@end
+
+
+
 @implementation GraphView
 
 /*
@@ -19,5 +32,36 @@
     // Drawing code
 }
 */
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface GraphViewController ()
+
+@end
+
+
+
+@implementation GraphViewController
+
+@dynamic view;
+
+#pragma mark - Graph view
+
+- (NSUInteger)numberOfPointsOnGraphView:(GraphView *)graphView {
+    return 0;
+}
+
+- (CGPoint)graphView:(GraphView *)graphView pointAtIndex:(NSUInteger)index {
+    return CGPointZero;
+}
 
 @end
