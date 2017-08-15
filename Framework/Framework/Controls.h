@@ -31,3 +31,4 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/MultiselectionControl.h>
 #import <Controls/TableView.h>
 #import <Controls/CollectionView.h>
+#import <Controls/GraphView.h>
