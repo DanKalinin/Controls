@@ -101,6 +101,10 @@
     
     CGFloat pattern[] = {2.0, 1.0};
     
+    UIColor *fillColor = [UIColor colorWithColors:self.layer.uiColors];
+    
+    CGPoint radialPoint;
+    
     // Lines
     
     path = UIBezierPath.bezierPath;
@@ -121,13 +125,19 @@
     
     path.lineWidth = 2.0;
     [self.graphColor setStroke];
+    [fillColor setFill];
     
     for (NSUInteger index = 0; index < count; index++) {
         point = points[index];
-        [path moveToPoint:point];
+        
+        radialPoint = point;
+        radialPoint.x += 2.5;
+        
+        [path moveToPoint:radialPoint];
         [path addArcWithCenter:point radius:2.5 startAngle:0.0 endAngle:(2.0 * M_PI) clockwise:YES];
     }
     
+    [path fill];
     [path stroke];
     
     // Average
