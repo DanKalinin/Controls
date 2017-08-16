@@ -19,6 +19,8 @@
 
 @interface GraphView ()
 
+@property CGFloat average;
+
 @end
 
 
@@ -75,6 +77,75 @@
     
     // Preparation
     
+    CGFloat dx = self.xRange.maximum - self.xRange.minimum;
+    CGFloat dy = self.yRange.maximum - self.yRange.minimum;
+    CGFloat kx = axisRect.size.width / dx;
+    CGFloat ky = axisRect.size.height / dy;
+    
+    CGPoint points[count];
+    self.average = 0.0;
+    CGFloat average = 0.0;
+    for (NSUInteger index = 0; index < count; index++) {
+        point = [self.dataSource graphView:self pointAtIndex:index];
+        self.average += point.y;
+        
+        point.x = CGRectGetMinX(axisRect) + point.x * kx;
+        point.y = CGRectGetMaxY(axisRect) - point.y * ky;
+        average += point.y;
+        
+        points[index] = point;
+    }
+    
+    self.average /= count;
+    average /= count;
+    
+    CGFloat pattern[] = {2.0, 1.0};
+    
+    // Lines
+    
+    path = UIBezierPath.bezierPath;
+    
+    path.lineWidth = 1.0;
+    [self.graphColor setStroke];
+    
+    for (NSUInteger index = 0; index < count; index++) {
+        point = points[index];
+        (index == 0) ? [path moveToPoint:point] : [path addLineToPoint:point];
+    }
+    
+    [path stroke];
+    
+    // Points
+    
+    path = UIBezierPath.bezierPath;
+    
+    path.lineWidth = 2.0;
+    [self.graphColor setStroke];
+    
+    for (NSUInteger index = 0; index < count; index++) {
+        point = points[index];
+        [path moveToPoint:point];
+        [path addArcWithCenter:point radius:2.5 startAngle:0.0 endAngle:(2.0 * M_PI) clockwise:YES];
+    }
+    
+    [path stroke];
+    
+    // Average
+    
+    path = UIBezierPath.bezierPath;
+    
+    path.lineWidth = 0.5;
+    [path setLineDash:pattern count:2 phase:0.0];
+    [self.axisColor setStroke];
+    
+    point.x = CGRectGetMinX(axisRect);
+    point.y = average;
+    [path moveToPoint:point];
+    
+    point.x = CGRectGetMaxX(axisRect);
+    [path addLineToPoint:point];
+    
+    [path stroke];
     
     
     
