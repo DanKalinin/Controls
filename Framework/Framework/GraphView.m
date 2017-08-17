@@ -19,8 +19,6 @@
 
 @interface GraphView ()
 
-@property CGFloat average;
-
 @end
 
 
@@ -84,21 +82,18 @@
     CGFloat ky = axisRect.size.height / dy;
     
     CGPoint points[count];
-    self.average = 0.0;
     CGFloat average = 0.0;
     NSUInteger index;
     for (index = 0; index < count; index++) {
         point = [self.dataSource graphView:self pointAtIndex:index];
-        self.average += point.y;
         
-        point.x = CGRectGetMinX(axisRect) + point.x * kx;
-        point.y = CGRectGetMaxY(axisRect) - point.y * ky;
+        point.x = CGRectGetMinX(axisRect) + kx * point.x;
+        point.y = CGRectGetMaxY(axisRect) - ky * point.y;
         average += point.y;
         
         points[index] = point;
     }
     
-    self.average /= count;
     average /= count;
     
     CGFloat pattern[] = {2.0, 1.0};
