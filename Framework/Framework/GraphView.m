@@ -74,6 +74,7 @@
     NSUInteger count = [self.dataSource numberOfPointsOnGraphView:self];
     BOOL hasData = (count > 0);
     self.noDataLabel.hidden = hasData;
+    if (!hasData) return;
     
     // Preparation
     
@@ -195,7 +196,21 @@
         
     } else if (self.type == GraphViewTypeColumn) {
         
+        path = UIBezierPath.bezierPath;
         
+        path.lineWidth = 5.0;
+        path.lineCapStyle = kCGLineCapRound;
+        [self.graphColor setStroke];
+        
+        for (index = 0; index < count; index++) {
+            point = points[index];
+            [path moveToPoint:point];
+            
+            point.y = CGRectGetMaxY(axisRect) - 5.0;
+            [path addLineToPoint:point];
+        }
+        
+        [path stroke];
         
     }
     
