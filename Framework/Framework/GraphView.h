@@ -53,6 +53,8 @@ typedef NS_ENUM(NSUInteger, GraphViewType) {
 
 @property (weak, nonatomic) IBOutlet UILabel *noDataLabel;
 
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *xLabels;
+
 @property IBInspectable GraphViewType type;
 
 @property IBInspectable UIColor *graphColor;
@@ -60,7 +62,6 @@ typedef NS_ENUM(NSUInteger, GraphViewType) {
 
 @property UIFloatRange xRange;
 @property UIFloatRange yRange;
-@property NSArray<UILabel *> *xLabels;
 
 @property (weak) id <GraphViewDataSource> dataSource;
 
