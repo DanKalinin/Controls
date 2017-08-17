@@ -45,7 +45,7 @@
     [self.plusButton setTitleColor:[self.plusButton titleColorForState:UIControlStateHighlighted] forState:(UIControlStateHighlighted | UIControlStateSelected)];
     
     GradientLayerView *gradientView = [GradientLayerView new];
-    gradientView.layer.colors = @[(id)self.minimumColor.CGColor, (id)self.maximumColor.CGColor];
+    gradientView.layer.uiColors = @[self.minimumColor, self.maximumColor];
     gradientView.layer.startPoint = CGPointMake(0.0, 0.0);
     gradientView.layer.endPoint = CGPointMake(1.0, 0.0);
     [self.valueView addSubview:gradientView];

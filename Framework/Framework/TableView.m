@@ -583,7 +583,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.layer.colors = @[(id)self.topColor.CGColor, (id)self.centerColor.CGColor, (id)self.bottomColor.CGColor];
+    self.layer.uiColors = @[self.topColor, self.centerColor, self.bottomColor];
     self.layer.startPoint = CGPointZero;
     self.layer.endPoint = CGPointMake(0.0, 1.0);
 }
