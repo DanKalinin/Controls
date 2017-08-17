@@ -85,7 +85,8 @@
     CGPoint points[count];
     self.average = 0.0;
     CGFloat average = 0.0;
-    for (NSUInteger index = 0; index < count; index++) {
+    NSUInteger index;
+    for (index = 0; index < count; index++) {
         point = [self.dataSource graphView:self pointAtIndex:index];
         self.average += point.y;
         
@@ -101,44 +102,101 @@
     
     CGFloat pattern[] = {2.0, 1.0};
     
-    UIColor *fillColor = [UIColor colorWithColors:self.layer.uiColors];
-    
-    CGPoint radialPoint;
-    
-    // Lines
-    
-    path = UIBezierPath.bezierPath;
-    
-    path.lineWidth = 1.0;
-    [self.graphColor setStroke];
-    
-    for (NSUInteger index = 0; index < count; index++) {
-        point = points[index];
-        (index == 0) ? [path moveToPoint:point] : [path addLineToPoint:point];
-    }
-    
-    [path stroke];
-    
-    // Points
-    
-    path = UIBezierPath.bezierPath;
-    
-    path.lineWidth = 2.0;
-    [self.graphColor setStroke];
-    [fillColor setFill];
-    
-    for (NSUInteger index = 0; index < count; index++) {
-        point = points[index];
+    if (self.type == GraphViewTypeLine) {
         
-        radialPoint = point;
-        radialPoint.x += 2.5;
+        // Preparation
         
-        [path moveToPoint:radialPoint];
-        [path addArcWithCenter:point radius:2.5 startAngle:0.0 endAngle:(2.0 * M_PI) clockwise:YES];
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        
+        UIColor *fillColor = [UIColor colorWithColors:self.layer.uiColors];
+        
+        CGPoint radialPoint;
+        
+        // Gradient
+        
+        CGContextSaveGState(context);
+        
+        path = UIBezierPath.bezierPath;
+        
+        path.lineWidth = 0.0;
+        
+        for (index = 0; index < count; index++) {
+            point = points[index];
+            (index == 0) ? [path moveToPoint:point] : [path addLineToPoint:point];
+        }
+        
+        point = path.currentPoint;
+        point.y = CGRectGetMaxY(axisRect);
+        [path addLineToPoint:point];
+        
+        point.x = CGRectGetMinX(axisRect);
+        [path addLineToPoint:point];
+        
+        [path closePath];
+        [path addClip];
+        
+        CGFloat rStart, gStart, bStart, aStart;
+        CGFloat rEnd, gEnd, bEnd, aEnd;
+        
+        UIColor *startColor = [self.graphColor colorWithAlphaComponent:0.75];
+        UIColor *endColor = [self.graphColor colorWithAlphaComponent:0.05];
+        
+        [startColor getRed:&rStart green:&gStart blue:&bStart alpha:&aStart];
+        [endColor getRed:&rEnd green:&gEnd blue:&bEnd alpha:&aEnd];
+        
+        CGColorSpaceRef space = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
+        CGFloat components[8] = {rStart, gStart, bStart, aStart, rEnd, gEnd, bEnd, aEnd};
+        CGFloat locations[2] = {0.0, 1.0};
+        
+        CGGradientRef gradient = CGGradientCreateWithColorComponents(space, components, locations, 2);
+        
+        CGPoint startPoint = CGPointMake(0.0, CGRectGetMinY(axisRect));
+        CGPoint endPoint = CGPointMake(0.0, CGRectGetMaxY(axisRect));
+        
+        CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
+        
+        CGContextRestoreGState(context);
+        
+        // Lines
+        
+        path = UIBezierPath.bezierPath;
+        
+        path.lineWidth = 1.0;
+        [self.graphColor setStroke];
+        
+        for (index = 0; index < count; index++) {
+            point = points[index];
+            (index == 0) ? [path moveToPoint:point] : [path addLineToPoint:point];
+        }
+        
+        [path stroke];
+        
+        // Points
+        
+        path = UIBezierPath.bezierPath;
+        
+        path.lineWidth = 2.0;
+        [self.graphColor setStroke];
+        [fillColor setFill];
+        
+        for (index = 0; index < count; index++) {
+            point = points[index];
+            
+            radialPoint = point;
+            radialPoint.x += 2.5;
+            
+            [path moveToPoint:radialPoint];
+            [path addArcWithCenter:point radius:2.5 startAngle:0.0 endAngle:(2.0 * M_PI) clockwise:YES];
+        }
+        
+        [path fill];
+        [path stroke];
+        
+    } else if (self.type == GraphViewTypeColumn) {
+        
+        
+        
     }
-    
-    [path fill];
-    [path stroke];
     
     // Average
     
@@ -156,73 +214,6 @@
     [path addLineToPoint:point];
     
     [path stroke];
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//    NSUInteger count = [self.dataSource numberOfPointsOnGraphView:self];
-//    self.noDataLabel.hidden = (count > 0);
-//    if (count == 0) return;
-//    
-//    UIEdgeInsets graphInsets;
-//    graphInsets.top = 44.0;
-//    graphInsets.bottom = 34.0;
-//    graphInsets.left = 12.0;
-//    graphInsets.right = 12.0;
-//    
-//    CGRect graphRect = UIEdgeInsetsInsetRect(self.bounds, graphInsets);
-//    CGFloat dx = self.xRange.maximum - self.xRange.minimum;
-//    CGFloat dy = self.yRange.maximum - self.yRange.minimum;
-//    CGFloat kx = graphRect.size.width / dx;
-//    CGFloat ky = graphRect.size.height / dy;
-    
-//    CGAffineTransform graphTransform = CGAffineTransformMakeTranslation(graphInsets.left, graphInsets.top + graphRect.size.height);
-//    graphTransform = CGAffineTransformScale(graphTransform, kx, -ky);
-//    
-//    path = UIBezierPath.bezierPath;
-//    
-//    path.lineWidth = 1.0;
-//    [self.graphColor setStroke];
-//    
-//    CGFloat avg = 0;
-//    for (NSUInteger index = 0; index < count; index++) {
-//        point = [self.dataSource graphView:self pointAtIndex:index];
-//        (index == 0) ? [path moveToPoint:point] : [path addLineToPoint:point];
-//        avg += point.y;
-//    }
-//    avg /= count;
-//    
-//    [path applyTransform:graphTransform];
-//    [path stroke];
-//    
-//    CGFloat pattern[] = {2.0, 1.0};
-//    
-//    path = UIBezierPath.bezierPath;
-//    
-//    path.lineWidth = 0.5;
-//    [path setLineDash:pattern count:2 phase:0];
-//    [self.axisColor setStroke];
-//    
-//    point.x = 0.0;
-//    point.y = avg;
-//    [path moveToPoint:point];
-//    
-//    point.x = graphRect.size.width;
-//    [path addLineToPoint:point];
-//    
-//    [path applyTransform:graphTransform];
-//    [path stroke];
 }
 
 @end
