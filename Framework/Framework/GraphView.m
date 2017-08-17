@@ -129,7 +129,8 @@
         point.y = CGRectGetMaxY(axisRect);
         [path addLineToPoint:point];
         
-        point.x = CGRectGetMinX(axisRect);
+        point = points[0];
+        point.y = CGRectGetMaxY(axisRect);
         [path addLineToPoint:point];
         
         [path closePath];
