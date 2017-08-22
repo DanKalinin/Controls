@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		374186331F4C98F00061DA0A /* ScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 374186311F4C98F00061DA0A /* ScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		374186341F4C98F00061DA0A /* ScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 374186321F4C98F00061DA0A /* ScrollView.m */; };
 		379FA30E1DDF28FC00985D1F /* GradientSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 379FA30C1DDF28FC00985D1F /* GradientSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		379FA30F1DDF28FC00985D1F /* GradientSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 379FA30D1DDF28FC00985D1F /* GradientSlider.m */; };
 		37A092F01DE326D500ADA05B /* NumberPickerControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A092EE1DE326D500ADA05B /* NumberPickerControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -56,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		374186311F4C98F00061DA0A /* ScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollView.h; sourceTree = "<group>"; };
+		374186321F4C98F00061DA0A /* ScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollView.m; sourceTree = "<group>"; };
 		379FA30C1DDF28FC00985D1F /* GradientSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientSlider.h; sourceTree = "<group>"; };
 		379FA30D1DDF28FC00985D1F /* GradientSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientSlider.m; sourceTree = "<group>"; };
 		37A092EE1DE326D500ADA05B /* NumberPickerControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberPickerControl.h; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 				E7E4B6611E72D0B7008D5AC9 /* MultiselectionControl.m */,
 				37E57CFF1F43A95C009BCC63 /* GraphView.h */,
 				37E57D001F43A95C009BCC63 /* GraphView.m */,
+				374186311F4C98F00061DA0A /* ScrollView.h */,
+				374186321F4C98F00061DA0A /* ScrollView.m */,
 				37A501F41DD8EE24004DD6BC /* Info.plist */,
 			);
 			path = Framework;
@@ -203,6 +209,7 @@
 				E705044B1E0DE14600DF850C /* CircularSlider.h in Headers */,
 				E7488F251E0559FC000AF809 /* GridView.h in Headers */,
 				E7E4B64D1E720A08008D5AC9 /* CollectionView.h in Headers */,
+				374186331F4C98F00061DA0A /* ScrollView.h in Headers */,
 				37A5023E1DD90C66004DD6BC /* TabControl.h in Headers */,
 				37A501F51DD8EE24004DD6BC /* Controls.h in Headers */,
 				E7488F231E0559FC000AF809 /* DraggableButton.h in Headers */,
@@ -315,6 +322,7 @@
 				E7894EAB1DFB7F9D00B5145E /* DropdownMenuVC.m in Sources */,
 				E7693E411E7997520038F0C5 /* PickerControl.m in Sources */,
 				E7533DEF1E71E91F00DDA141 /* TableView.m in Sources */,
+				374186341F4C98F00061DA0A /* ScrollView.m in Sources */,
 				37A093EF1DE851E900ADA05B /* EdgeSliderControl.m in Sources */,
 				E705044C1E0DE14600DF850C /* CircularSlider.m in Sources */,
 				37A092F11DE326D500ADA05B /* NumberPickerControl.m in Sources */,
