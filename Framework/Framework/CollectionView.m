@@ -10,6 +10,13 @@
 
 
 
+
+
+
+
+
+
+
 @interface CollectionViewCell ()
 
 @end
@@ -23,5 +30,43 @@
     
     self.button1.selected = selected;
 }
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface CollectionReusableView ()
+
+@end
+
+
+
+@implementation CollectionReusableView
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface CollectionView ()
+
+@end
+
+
+
+@implementation CollectionView
 
 @end

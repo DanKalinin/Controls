@@ -11,6 +11,13 @@
 
 
 
+
+
+
+
+
+
+
 @interface CollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet ImageView *imageView1;
@@ -24,5 +31,33 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField1;
 
 @property (weak, nonatomic) IBOutlet UIControl *control1;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface CollectionReusableView : UICollectionReusableView
+
+@property (weak, nonatomic) IBOutlet UILabel *label1;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface CollectionView : UICollectionView
 
 @end
