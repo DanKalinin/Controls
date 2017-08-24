@@ -70,3 +70,16 @@
 @implementation CollectionView
 
 @end
+
+
+
+
+
+
+
+
+
+
+@implementation UICollectionViewController (Controls)
+
+@end

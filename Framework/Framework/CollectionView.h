@@ -18,6 +18,32 @@
 
 
 
+@protocol CollectionViewDataSource <UICollectionViewDataSource>
+
+@end
+
+
+
+
+
+
+
+
+
+
+@protocol CollectionViewDelegate <UICollectionViewDelegate>
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface CollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet ImageView *imageView1;
@@ -59,5 +85,18 @@
 
 
 @interface CollectionView : UICollectionView
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UICollectionViewController (Controls) <CollectionViewDataSource, CollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @end

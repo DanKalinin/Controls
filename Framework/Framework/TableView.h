@@ -228,3 +228,16 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @property IBInspectable UIColor *bottomColor;
 
 @end
+
+
+
+
+
+
+
+
+
+
+@interface UITableViewController (Controls) <TableViewDataSource, TableViewDelegate>
+
+@end

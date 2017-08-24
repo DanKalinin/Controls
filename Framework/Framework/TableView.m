@@ -152,7 +152,7 @@
 
 #pragma mark - Accessors
 
-- (void)setDataSource:(id<UITableViewDataSource>)dataSource {
+- (void)setDataSource:(id<TableViewDataSource>)dataSource {
     if (dataSource) {
         self.originalDataSource = (id)dataSource;
         self.dataSources = (id)SurrogateArray.new;
@@ -164,7 +164,7 @@
     }
 }
 
-- (void)setDelegate:(id<UITableViewDelegate>)delegate {
+- (void)setDelegate:(id<TableViewDelegate>)delegate {
     if (delegate) {
         self.originalDelegate = (id)delegate;
         self.delegates = (id)SurrogateArray.new;
@@ -587,5 +587,18 @@
     self.layer.startPoint = CGPointZero;
     self.layer.endPoint = CGPointMake(0.0, 1.0);
 }
+
+@end
+
+
+
+
+
+
+
+
+
+
+@implementation UITableViewController (Controls)
 
 @end
