@@ -202,34 +202,16 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(TableView *)tableView {
-    NSInteger sections;
-    
-    SEL selector = @selector(numberOfSectionsInTableView:);
-    if ([self.originalDataSource respondsToSelector:selector]) {
-        sections = [self.originalDataSource numberOfSectionsInTableView:tableView];
-    } else {
-        sections = tableView.numberOfSections;
-    }
-    
+    NSInteger sections = [self.dataSources.lastReturnValue integerValue];
     if (self.emptyView) {
         BOOL show = (sections == 0);
         if (sections == 1) {
-            NSInteger rows;
-            
-            selector = @selector(tableView:numberOfRowsInSection:);
-            if ([self.originalDataSource respondsToSelector:selector]) {
-                rows = [self.originalDataSource tableView:tableView numberOfRowsInSection:0];
-            } else {
-                rows = [tableView numberOfRowsInSection:0];
-            }
-            
+            NSInteger rows = [self.originalDataSource tableView:self numberOfRowsInSection:0];
             show = (rows == 0);
         }
-        
         tableView.backgroundView = show ? self.emptyView : nil;
         tableView.separatorStyle = show ? UITableViewCellSeparatorStyleNone : self.defaultSeparatorStyle;
     }
-    
     return sections;
 }
 
