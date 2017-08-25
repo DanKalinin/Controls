@@ -73,11 +73,11 @@
 
 @interface TableView () <TableViewDataSource, TableViewDelegate, UIGestureRecognizerDelegate>
 
+@property SurrogateArray<TableViewDataSource> *originalDataSource;
+@property SurrogateArray<TableViewDelegate> *originalDelegate;
+
 @property SurrogateArray<TableViewDataSource> *dataSources;
 @property SurrogateArray<TableViewDelegate> *delegates;
-
-@property (weak) id <TableViewDataSource> originalDataSource;
-@property (weak) id <TableViewDelegate> originalDelegate;
 
 @property NSMutableIndexSet *collapsedSections;
 @property NSMutableSet *collapsedRows;
@@ -154,7 +154,9 @@
 
 - (void)setDataSource:(id<TableViewDataSource>)dataSource {
     if (dataSource) {
-        self.originalDataSource = (id)dataSource;
+        self.originalDataSource = (id)SurrogateArray.new;
+        [self.originalDataSource addObject:dataSource];
+        
         self.dataSources = (id)SurrogateArray.new;
         [self.dataSources addObject:dataSource];
         [self.dataSources addObject:self];
@@ -166,7 +168,9 @@
 
 - (void)setDelegate:(id<TableViewDelegate>)delegate {
     if (delegate) {
-        self.originalDelegate = (id)delegate;
+        self.originalDelegate = (id)SurrogateArray.new;
+        [self.originalDelegate addObject:delegate];
+        
         self.delegates = (id)SurrogateArray.new;
         [self.delegates addObject:delegate];
         [self.delegates addObject:self];
@@ -209,8 +213,8 @@
             NSInteger rows = [self.originalDataSource tableView:self numberOfRowsInSection:0];
             show = (rows == 0);
         }
-        tableView.backgroundView = show ? self.emptyView : nil;
-        tableView.separatorStyle = show ? UITableViewCellSeparatorStyleNone : self.defaultSeparatorStyle;
+        self.backgroundView = show ? self.emptyView : nil;
+        self.separatorStyle = show ? UITableViewCellSeparatorStyleNone : self.defaultSeparatorStyle;
     }
     return sections;
 }
