@@ -100,6 +100,21 @@
 
 
 
+@interface UICollectionView (Controls)
+
+@property UICollectionViewFlowLayout *flowLayout;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface UICollectionViewController (Controls) <CollectionViewDataSource, CollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @end

@@ -115,7 +115,8 @@
         [self.delegates addObject:self];
         [super setDelegate:self.delegates];
     } else {
-        [super setDelegate:self];
+        // TODO: Workaround
+        // [super setDelegate:self];
     }
 }
 
@@ -137,6 +138,27 @@
 @end
 
 #pragma clang diagnostic pop
+
+
+
+
+
+
+
+
+
+
+@implementation UICollectionView (Controls)
+
+- (void)setFlowLayout:(UICollectionViewFlowLayout *)flowLayout {
+    self.collectionViewLayout = flowLayout;
+}
+
+- (UICollectionViewFlowLayout *)flowLayout {
+    return (UICollectionViewFlowLayout *)self.collectionViewLayout;
+}
+
+@end
 
 
 
