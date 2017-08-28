@@ -69,6 +69,8 @@
 @property SurrogateArray<CollectionViewDataSource> *dataSources;
 @property SurrogateArray<CollectionViewDelegate> *delegates;
 
+@property NSTimer *longPressTimer;
+
 @end
 
 
@@ -85,6 +87,8 @@
     if (self) {
         super.dataSource = self;
         super.delegate = self;
+        
+        self.longPressDuration = 0.5;
     }
     return self;
 }
@@ -133,6 +137,16 @@
         self.backgroundView = show ? self.emptyView : nil;
     }
     return sections;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    self.longPressTimer = [NSTimer scheduledTimerWithTimeInterval:self.longPressDuration repeats:NO block:^(NSTimer *timer) {
+        [self.originalDelegate collectionView:self didLongPressItemAtIndexPath:indexPath];
+    }];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self.longPressTimer invalidate];
 }
 
 @end

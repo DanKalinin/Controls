@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Helpers/Helpers.h>
 
+@class CollectionView;
+
 
 
 
@@ -32,6 +34,8 @@
 
 
 @protocol CollectionViewDelegate <UICollectionViewDelegate>
+
+- (void)collectionView:(CollectionView *)collectionView didLongPressItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -90,6 +94,8 @@
 
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
 @property (strong, nonatomic) IBOutlet UIView *emptyView;
+
+@property IBInspectable NSTimeInterval longPressDuration;
 
 @end
 
