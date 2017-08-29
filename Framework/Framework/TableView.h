@@ -145,9 +145,32 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 
 
 
-@interface TableViewController : UITableViewController
+@interface TableViewHeaderFooterView : UITableViewHeaderFooterView
 
-@property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cells;
+@property (weak, nonatomic) IBOutlet UILabel *label1;
+@property (weak, nonatomic) IBOutlet UILabel *label2;
+@property (weak, nonatomic) IBOutlet UILabel *label3;
+
+@property (weak, nonatomic) IBOutlet Button *button1;
+@property (weak, nonatomic) IBOutlet Button *button2;
+@property (weak, nonatomic) IBOutlet Button *button3;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface TableViewCellVerticalSeparator : GradientLayerView
+
+@property IBInspectable UIColor *topColor;
+@property IBInspectable UIColor *centerColor;
+@property IBInspectable UIColor *bottomColor;
 
 @end
 
@@ -200,32 +223,9 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 
 
 
-@interface TableViewHeaderFooterView : UITableViewHeaderFooterView
+@interface TableViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *label1;
-@property (weak, nonatomic) IBOutlet UILabel *label2;
-@property (weak, nonatomic) IBOutlet UILabel *label3;
-
-@property (weak, nonatomic) IBOutlet Button *button1;
-@property (weak, nonatomic) IBOutlet Button *button2;
-@property (weak, nonatomic) IBOutlet Button *button3;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface TableViewCellVerticalSeparator : GradientLayerView
-
-@property IBInspectable UIColor *topColor;
-@property IBInspectable UIColor *centerColor;
-@property IBInspectable UIColor *bottomColor;
+@property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cells;
 
 @end
 

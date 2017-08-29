@@ -52,12 +52,49 @@
 
 
 
-@implementation TableViewController
+@interface TableViewHeaderFooterView ()
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TableViewCell *cell = self.cells[indexPath.row];
-    CGFloat height = cell.height * !cell.hidden;
-    return height;
+@end
+
+
+
+@implementation TableViewHeaderFooterView
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface TableViewCellVerticalSeparator ()
+
+@end
+
+
+
+@implementation TableViewCellVerticalSeparator
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.topColor = [UIColor whiteColor];
+        self.centerColor = [UIColor colorWithHexString:@"c8c7cc"];
+        self.bottomColor = self.centerColor;
+    }
+    return self;
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.layer.uiColors = @[self.topColor, self.centerColor, self.bottomColor];
+    self.layer.startPoint = CGPointZero;
+    self.layer.endPoint = CGPointMake(0.0, 1.0);
 }
 
 @end
@@ -529,49 +566,12 @@
 
 
 
-@interface TableViewHeaderFooterView ()
+@implementation TableViewController
 
-@end
-
-
-
-@implementation TableViewHeaderFooterView
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface TableViewCellVerticalSeparator ()
-
-@end
-
-
-
-@implementation TableViewCellVerticalSeparator
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        self.topColor = [UIColor whiteColor];
-        self.centerColor = [UIColor colorWithHexString:@"c8c7cc"];
-        self.bottomColor = self.centerColor;
-    }
-    return self;
-}
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    self.layer.uiColors = @[self.topColor, self.centerColor, self.bottomColor];
-    self.layer.startPoint = CGPointZero;
-    self.layer.endPoint = CGPointMake(0.0, 1.0);
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TableViewCell *cell = self.cells[indexPath.row];
+    CGFloat height = cell.height * !cell.hidden;
+    return height;
 }
 
 @end
