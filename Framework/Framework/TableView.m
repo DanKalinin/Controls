@@ -583,16 +583,3 @@
 }
 
 @end
-
-
-
-
-
-
-
-
-
-
-@implementation UITableViewController (Controls)
-
-@end

@@ -121,7 +121,7 @@
 
 
 
-@interface CollectionViewController : UICollectionViewController
+@interface CollectionViewController : UICollectionViewController <CollectionViewDataSource, CollectionViewDelegate>
 
 @property (nonatomic) CollectionView *view;
 @property (nonatomic) CollectionView *collectionView;
@@ -152,6 +152,6 @@
 
 
 
-@interface UICollectionViewController (Controls) <CollectionViewDataSource, CollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface UICollectionViewController (Controls) <UICollectionViewDelegateFlowLayout>
 
 @end
