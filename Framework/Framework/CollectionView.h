@@ -22,6 +22,8 @@
 
 @protocol CollectionViewDataSource <UICollectionViewDataSource>
 
+@optional
+
 @end
 
 
@@ -35,6 +37,7 @@
 
 @protocol CollectionViewDelegate <UICollectionViewDelegate>
 
+@optional
 - (void)collectionView:(CollectionView *)collectionView didLongPressItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
