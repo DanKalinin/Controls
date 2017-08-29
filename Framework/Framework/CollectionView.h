@@ -118,6 +118,22 @@
 
 
 
+@interface CollectionViewController : UICollectionViewController
+
+@property (nonatomic) CollectionView *view;
+@property (nonatomic) CollectionView *collectionView;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface UICollectionView (Controls)
 
 @property UICollectionViewFlowLayout *flowLayout;

@@ -568,9 +568,17 @@
 
 @implementation TableViewController
 
+@dynamic view;
+@dynamic tableView;
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TableViewCell *cell = self.cells[indexPath.row];
-    CGFloat height = cell.height * !cell.hidden;
+    CGFloat height;
+    if (self.cells.count > 0) {
+        TableViewCell *cell = self.cells[indexPath.row];
+        height = cell.height * !cell.hidden;
+    } else {
+        height = tableView.rowHeight;
+    }
     return height;
 }
 

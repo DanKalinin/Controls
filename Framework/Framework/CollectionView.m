@@ -165,6 +165,28 @@
 
 
 
+@interface CollectionViewController ()
+
+@end
+
+
+
+@implementation CollectionViewController
+
+@dynamic view;
+@dynamic collectionView;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @implementation UICollectionView (Controls)
 
 - (void)setFlowLayout:(UICollectionViewFlowLayout *)flowLayout {
