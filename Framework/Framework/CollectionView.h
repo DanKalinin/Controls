@@ -11,6 +11,11 @@
 
 @class CollectionView;
 
+typedef NS_ENUM(NSUInteger, CollectionViewItemReorderingPolicy) {
+    CollectionViewItemReorderingPolicyNone,
+    CollectionViewItemReorderingPolicyInSection
+};
+
 
 
 
@@ -109,6 +114,10 @@
 @property (strong, nonatomic) IBOutlet UIView *emptyView;
 
 @property (readonly) UILongPressGestureRecognizer *lpgr;
+
+@property IBInspectable BOOL canMoveItems;
+@property IBInspectable BOOL canMoveSingleItem;
+@property IBInspectable CollectionViewItemReorderingPolicy itemReorderingPolicy;
 
 @end
 

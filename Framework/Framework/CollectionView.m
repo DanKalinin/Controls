@@ -88,6 +88,8 @@
         super.dataSource = self;
         super.delegate = self;
         
+        self.canMoveSingleItem = YES;
+        
         self.lpgr = [UILongPressGestureRecognizer.alloc initWithTarget:self action:@selector(onLongPress:)];
         [self addGestureRecognizer:self.lpgr];
     }
@@ -150,6 +152,38 @@
         self.backgroundView = show ? self.emptyView : nil;
     }
     return sections;
+}
+
+// Reordering
+
+- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath {
+    BOOL canMove = NO;
+    if (self.canMoveItems) {
+        if (self.canMoveSingleItem) {
+            canMove = YES;
+        } else {
+            NSInteger itemsInSection = [self numberOfItemsInSection:indexPath.section];
+            canMove = (itemsInSection > 1);
+        }
+    }
+    return canMove;
+}
+
+- (NSIndexPath *)collectionView:(UICollectionView *)collectionView targetIndexPathForMoveFromItemAtIndexPath:(NSIndexPath *)originalIndexPath toProposedIndexPath:(NSIndexPath *)proposedIndexPath {
+    NSIndexPath *ip;
+    if (self.itemReorderingPolicy == CollectionViewItemReorderingPolicyNone) {
+        ip = proposedIndexPath;
+    } else if (self.itemReorderingPolicy == CollectionViewItemReorderingPolicyInSection) {
+        if (proposedIndexPath.section > originalIndexPath.section) {
+            NSInteger itemsInSection = [self numberOfItemsInSection:originalIndexPath.section];
+            ip = [NSIndexPath indexPathForItem:(itemsInSection - 1) inSection:originalIndexPath.section];
+        } else if (proposedIndexPath.section < originalIndexPath.section) {
+            ip = [NSIndexPath indexPathForItem:0 inSection:originalIndexPath.section];
+        } else {
+            ip = proposedIndexPath;
+        }
+    }
+    return ip;
 }
 
 @end

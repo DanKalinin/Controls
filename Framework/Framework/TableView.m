@@ -399,7 +399,7 @@
         if (self.canMoveSingleRow) {
             canMove = YES;
         } else {
-            NSInteger rowsInSection = [tableView numberOfRowsInSection:indexPath.section];
+            NSInteger rowsInSection = [self numberOfRowsInSection:indexPath.section];
             canMove = (rowsInSection > 1);
         }
     }
@@ -412,7 +412,7 @@
         ip = proposedDestinationIndexPath;
     } else if (self.rowReorderingPolicy == TableViewRowReorderingPolicyInSection) {
         if (proposedDestinationIndexPath.section > sourceIndexPath.section) {
-            NSInteger rowsInSection = [tableView numberOfRowsInSection:sourceIndexPath.section];
+            NSInteger rowsInSection = [self numberOfRowsInSection:sourceIndexPath.section];
             ip = [NSIndexPath indexPathForRow:(rowsInSection - 1) inSection:sourceIndexPath.section];
         } else if (proposedDestinationIndexPath.section < sourceIndexPath.section) {
             ip = [NSIndexPath indexPathForRow:0 inSection:sourceIndexPath.section];
