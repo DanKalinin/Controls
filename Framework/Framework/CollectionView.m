@@ -69,7 +69,7 @@
 @property SurrogateArray<CollectionViewDataSource> *dataSources;
 @property SurrogateArray<CollectionViewDelegate> *delegates;
 
-@property NSTimer *longPressTimer;
+@property UILongPressGestureRecognizer *lpgr;
 
 @end
 
@@ -88,7 +88,8 @@
         super.dataSource = self;
         super.delegate = self;
         
-        self.longPressDuration = 0.5;
+        self.lpgr = [UILongPressGestureRecognizer.alloc initWithTarget:self action:@selector(onLongPress:)];
+        [self addGestureRecognizer:self.lpgr];
     }
     return self;
 }
@@ -124,6 +125,18 @@
     }
 }
 
+#pragma mark - Actions
+
+- (void)onLongPress:(UILongPressGestureRecognizer *)lpgr {
+    if (lpgr.state == UIGestureRecognizerStateEnded) {
+        CGPoint location = [lpgr locationInView:self];
+        NSIndexPath *indexPath = [self indexPathForItemAtPoint:location];
+        if (indexPath) {
+            [self.originalDelegate collectionView:self didLongPressItemAtIndexPath:indexPath];
+        }
+    }
+}
+
 #pragma mark - Collection view
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -137,20 +150,6 @@
         self.backgroundView = show ? self.emptyView : nil;
     }
     return sections;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-    self.longPressTimer = [NSTimer scheduledTimerWithTimeInterval:self.longPressDuration repeats:NO block:^(NSTimer *timer) {
-        [self.originalDelegate collectionView:self didLongPressItemAtIndexPath:indexPath];
-    }];
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return self.longPressTimer.valid;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self.longPressTimer invalidate];
 }
 
 @end

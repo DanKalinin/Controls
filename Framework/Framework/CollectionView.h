@@ -105,7 +105,7 @@
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
 @property (strong, nonatomic) IBOutlet UIView *emptyView;
 
-@property IBInspectable NSTimeInterval longPressDuration;
+@property (readonly) UILongPressGestureRecognizer *lpgr;
 
 @end
 
