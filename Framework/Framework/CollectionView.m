@@ -128,7 +128,7 @@
 #pragma mark - Actions
 
 - (void)onLongPress:(UILongPressGestureRecognizer *)lpgr {
-    if (lpgr.state == UIGestureRecognizerStateEnded) {
+    if (lpgr.state == UIGestureRecognizerStateBegan) {
         CGPoint location = [lpgr locationInView:self];
         NSIndexPath *indexPath = [self indexPathForItemAtPoint:location];
         if (indexPath) {
