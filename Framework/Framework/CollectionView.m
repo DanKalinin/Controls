@@ -27,6 +27,12 @@
 
 @implementation CollectionViewCell
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.buttonDelete.hidden = YES;
+}
+
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
     
@@ -35,6 +41,8 @@
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     self.editing = editing;
+    
+    self.buttonDelete.hidden = !editing;
     
     if (self.shakeOnEditing) {
         NSLog(@"start shaking");
