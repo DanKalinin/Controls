@@ -19,6 +19,8 @@
 
 @interface CollectionViewCell ()
 
+@property BOOL editing;
+
 @end
 
 
@@ -29,6 +31,14 @@
     [super setSelected:selected];
     
     self.button1.selected = selected;
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    self.editing = editing;
+    
+    if (self.shakeOnEditing) {
+        NSLog(@"start shaking");
+    }
 }
 
 @end
@@ -70,6 +80,7 @@
 @property SurrogateArray<CollectionViewDelegate> *delegates;
 
 @property UILongPressGestureRecognizer *lpgr;
+@property BOOL editing;
 
 @end
 
@@ -124,6 +135,14 @@
     } else {
         // TODO: Workaround
         // [super setDelegate:self];
+    }
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    self.editing = editing;
+    
+    for (CollectionViewCell *cell in self.visibleCells) {
+        [cell setEditing:editing animated:animated];
     }
 }
 
@@ -210,38 +229,10 @@
 @dynamic view;
 @dynamic collectionView;
 
-@end
-
-
-
-
-
-
-
-
-
-
-@implementation UICollectionView (Controls)
-
-- (void)setFlowLayout:(UICollectionViewFlowLayout *)flowLayout {
-    self.collectionViewLayout = flowLayout;
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    
+    [self.collectionView setEditing:editing animated:animated];
 }
-
-- (UICollectionViewFlowLayout *)flowLayout {
-    return (UICollectionViewFlowLayout *)self.collectionViewLayout;
-}
-
-@end
-
-
-
-
-
-
-
-
-
-
-@implementation UICollectionViewController (Controls)
 
 @end

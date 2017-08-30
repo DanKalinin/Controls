@@ -82,6 +82,12 @@ typedef NS_ENUM(NSUInteger, CollectionViewItemReorderingPolicy) {
 
 @property (weak, nonatomic) IBOutlet UIControl *control1;
 
+@property IBInspectable BOOL shakeOnEditing;
+
+@property (readonly) BOOL editing;
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated;
+
 @end
 
 
@@ -113,11 +119,14 @@ typedef NS_ENUM(NSUInteger, CollectionViewItemReorderingPolicy) {
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
 @property (strong, nonatomic) IBOutlet UIView *emptyView;
 
-@property (readonly) UILongPressGestureRecognizer *lpgr;
-
 @property IBInspectable BOOL canMoveItems;
 @property IBInspectable BOOL canMoveSingleItem;
 @property IBInspectable CollectionViewItemReorderingPolicy itemReorderingPolicy;
+
+@property (readonly) UILongPressGestureRecognizer *lpgr;
+@property (readonly) BOOL editing;
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated;
 
 @end
 
@@ -134,33 +143,5 @@ typedef NS_ENUM(NSUInteger, CollectionViewItemReorderingPolicy) {
 
 @property (nonatomic) CollectionView *view;
 @property (nonatomic) CollectionView *collectionView;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface UICollectionView (Controls)
-
-@property UICollectionViewFlowLayout *flowLayout;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface UICollectionViewController (Controls) <UICollectionViewDelegateFlowLayout>
 
 @end
