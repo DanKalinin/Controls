@@ -20,12 +20,28 @@
 @interface CollectionViewCell ()
 
 @property BOOL editing;
+@property CABasicAnimation *shakeAnimation;
 
 @end
 
 
 
 @implementation CollectionViewCell
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        CGFloat angle = M_PI_4 / 20.0;
+        
+        self.shakeAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+        self.shakeAnimation.fromValue = @(-angle);
+        self.shakeAnimation.toValue = @(angle);
+        self.shakeAnimation.duration = 0.1;
+        self.shakeAnimation.autoreverses = YES;
+        self.shakeAnimation.repeatCount = FLT_MAX;
+    }
+    return self;
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -51,7 +67,11 @@
     self.buttonDelete.hidden = !editing;
     
     if (self.shakeOnEditing) {
-        NSLog(@"start shaking");
+        if (editing) {
+            [self.layer addAnimation:self.shakeAnimation forKey:self.shakeAnimation.keyPath];
+        } else {
+            [self.layer removeAnimationForKey:self.shakeAnimation.keyPath];
+        }
     }
 }
 
