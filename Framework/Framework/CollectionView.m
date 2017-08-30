@@ -33,10 +33,16 @@
     self.buttonDelete.hidden = YES;
 }
 
+#pragma mark - Accessors
+
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
-    
-    self.button1.selected = selected;
+    [self updateState];
+}
+
+- (void)setHighlighted:(BOOL)highlighted {
+    [super setHighlighted:highlighted];
+    [self updateState];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -46,6 +52,19 @@
     
     if (self.shakeOnEditing) {
         NSLog(@"start shaking");
+    }
+}
+
+#pragma mark - Helpers
+
+- (void)updateState {
+    if (self.selected) {
+        self.button1.selected = self.selected;
+        self.viewColor.backgroundColor = self.selectedColor;
+    } else if (self.highlighted) {
+        self.viewColor.backgroundColor = self.highlightedColor;
+    } else {
+        self.viewColor.backgroundColor = self.defaultColor;
     }
 }
 

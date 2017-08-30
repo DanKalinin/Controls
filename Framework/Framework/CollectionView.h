@@ -63,6 +63,7 @@ typedef NS_ENUM(NSUInteger, CollectionViewItemReorderingPolicy) {
 @property (weak, nonatomic) IBOutlet UIView *view1;
 @property (weak, nonatomic) IBOutlet UIView *view2;
 @property (weak, nonatomic) IBOutlet UIView *view3;
+@property (weak, nonatomic) IBOutlet UIView *viewColor;
 
 @property (weak, nonatomic) IBOutlet ShapeLayerView *shapeLayerView1;
 
@@ -84,6 +85,10 @@ typedef NS_ENUM(NSUInteger, CollectionViewItemReorderingPolicy) {
 @property (weak, nonatomic) IBOutlet UITextField *textField1;
 
 @property (weak, nonatomic) IBOutlet UIControl *control1;
+
+@property IBInspectable UIColor *defaultColor;
+@property IBInspectable UIColor *selectedColor;
+@property IBInspectable UIColor *highlightedColor;
 
 @property IBInspectable BOOL shakeOnEditing;
 
