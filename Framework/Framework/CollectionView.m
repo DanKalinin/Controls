@@ -54,6 +54,8 @@
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
     [self updateState];
+    
+    self.button1.selected = selected;
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
@@ -79,7 +81,6 @@
 
 - (void)updateState {
     if (self.selected) {
-        self.button1.selected = self.selected;
         self.viewColor.backgroundColor = self.selectedColor;
     } else if (self.highlighted) {
         self.viewColor.backgroundColor = self.highlightedColor;
