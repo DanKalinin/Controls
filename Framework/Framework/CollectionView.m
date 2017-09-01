@@ -257,6 +257,10 @@
     return sections;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(CollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    [cell setEditing:self.editing animated:NO];
+}
+
 // Reordering
 
 - (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath {
