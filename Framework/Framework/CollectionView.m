@@ -127,7 +127,9 @@
 @property SurrogateArray<CollectionViewDelegate> *delegates;
 
 @property UILongPressGestureRecognizer *lpgr;
+@property UIPanGestureRecognizer *pgrReorder;
 @property BOOL editing;
+@property BOOL movementBegan;
 
 @end
 
@@ -149,7 +151,12 @@
         self.canMoveSingleItem = YES;
         
         self.lpgr = [UILongPressGestureRecognizer.alloc initWithTarget:self action:@selector(onLongPress:)];
+        self.lpgr.enabled = NO;
         [self addGestureRecognizer:self.lpgr];
+        
+        self.pgrReorder = [UIPanGestureRecognizer.alloc initWithTarget:self action:@selector(onPan:)];
+        self.pgrReorder.enabled = NO;
+        [self addGestureRecognizer:self.pgrReorder];
     }
     return self;
 }
@@ -191,6 +198,10 @@
     for (CollectionViewCell *cell in self.visibleCells) {
         [cell setEditing:editing animated:animated];
     }
+    
+    if (self.reorderOnEditing) {
+        self.pgrReorder.enabled = editing;
+    }
 }
 
 #pragma mark - Actions
@@ -201,6 +212,31 @@
         NSIndexPath *indexPath = [self indexPathForItemAtPoint:location];
         if (indexPath) {
             [self.originalDelegate collectionView:self didLongPressItemAtIndexPath:indexPath];
+        }
+    }
+}
+
+- (void)onPan:(UIPanGestureRecognizer *)pgr {
+    if (pgr.state == UIGestureRecognizerStateBegan) {
+        self.movementBegan = NO;
+        CGPoint location = [pgr locationInView:self];
+        NSIndexPath *indexPath = [self indexPathForItemAtPoint:location];
+        if (indexPath) {
+            [self beginInteractiveMovementForItemAtIndexPath:indexPath];
+            self.movementBegan = YES;
+        }
+    } else if (pgr.state == UIGestureRecognizerStateChanged) {
+        if (self.movementBegan) {
+            CGPoint location = [pgr locationInView:self];
+            [self updateInteractiveMovementTargetPosition:location];
+        }
+    } else if (pgr.state == UIGestureRecognizerStateEnded) {
+        if (self.movementBegan) {
+            [self endInteractiveMovement];
+        }
+    } else if (pgr.state == UIGestureRecognizerStateCancelled) {
+        if (self.movementBegan) {
+            [self cancelInteractiveMovement];
         }
     }
 }

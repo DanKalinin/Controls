@@ -143,6 +143,12 @@
         super.delegate = self;
         
         self.canMoveSingleRow = YES;
+        
+        self.pgrGroup = [UIPanGestureRecognizer.alloc initWithTarget:self action:@selector(onPan:)];
+        self.pgrGroup.enabled = NO;
+        self.pgrGroup.cancelsTouchesInView = NO;
+        self.pgrGroup.delegate = self;
+        [self addGestureRecognizer:self.pgrGroup];
     }
     return self;
 }
@@ -168,13 +174,6 @@
     }
     
     [self.selectAllButton addTarget:self action:@selector(onSelectAll:) forControlEvents:UIControlEventValueChanged];
-    
-    if (self.groupCells) {
-        self.pgrGroup = [UIPanGestureRecognizer.alloc initWithTarget:self action:@selector(onPan:)];
-        self.pgrGroup.cancelsTouchesInView = NO;
-        self.pgrGroup.delegate = self;
-        [self addGestureRecognizer:self.pgrGroup];
-    }
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {

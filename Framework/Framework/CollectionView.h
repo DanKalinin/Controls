@@ -129,9 +129,11 @@ typedef NS_ENUM(NSUInteger, CollectionViewItemReorderingPolicy) {
 
 @property IBInspectable BOOL canMoveItems;
 @property IBInspectable BOOL canMoveSingleItem;
+@property IBInspectable BOOL reorderOnEditing; // Enables @ pgrReorder on editing
 @property IBInspectable CollectionViewItemReorderingPolicy itemReorderingPolicy;
 
-@property (readonly) UILongPressGestureRecognizer *lpgr;
+@property (readonly) UILongPressGestureRecognizer *lpgr; // Enable to support long press. - collectionView:didLongPressItemAtIndexPath: will be called.
+@property (readonly) UIPanGestureRecognizer *pgrReorder; // Enable to support custom reordering. Do not enable if @ reorderOnEditing = YES.
 @property (readonly) BOOL editing;
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated;
