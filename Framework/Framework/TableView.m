@@ -565,6 +565,12 @@
 
 
 
+@interface TableViewController ()
+
+@end
+
+
+
 @implementation TableViewController
 
 @dynamic view;
