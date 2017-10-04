@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet PickerControl *pickerControl2;
 
 @property (weak, nonatomic) IBOutlet NumberPickerControl *numberPickerControl1;
+@property (weak, nonatomic) IBOutlet NumberPickerControl *numberPickerControl2;
 
 @property IBInspectable UIRectEdge edge;
 @property IBInspectable CGFloat inset;
