@@ -7,6 +7,72 @@
 //
 
 #import "ScrollView.h"
+#import <Helpers/Helpers.h>
+
+
+
+
+
+
+
+
+
+
+@interface ScrollView ()
+
+@end
+
+
+
+@implementation ScrollView
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    if (self.handleKeyboard) {
+        NSNotificationCenter *nc = NSNotificationCenter.defaultCenter;
+        [nc addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
+        [nc addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
+    }
+}
+
+#pragma mark - Notifications
+
+- (void)keyboardWillShowNotification:(NSNotification *)note {
+    BOOL local = [note.userInfo[UIKeyboardIsLocalUserInfoKey] boolValue];
+    if (local) {
+        CGRect frame = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        NSTimeInterval duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        UIViewAnimationCurve curve = [note.userInfo[UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
+        
+        (void)duration;
+        (void)curve;
+        
+        self.contentInset = self.scrollIndicatorInsets = UIEdgeInsetsMake(0.0, 0.0, frame.size.height, 0.0);
+        
+        CGRect bottomViewFrame = UIEdgeInsetsOutsetRect(self.bottomView.frame, self.bottomView.layoutMargins);
+        [self scrollRectToVisible:bottomViewFrame animated:NO];
+    }
+}
+
+- (void)keyboardWillHideNotification:(NSNotification *)note {
+    self.contentInset = self.scrollIndicatorInsets = UIEdgeInsetsZero;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface ScrollViewController ()
+
+@end
 
 
 

@@ -10,8 +10,32 @@
 
 
 
+
+
+
+
+
+
+
+@interface ScrollView : UIScrollView
+
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
+
+@property IBInspectable BOOL handleKeyboard;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface ScrollViewController : UIViewController
 
-@property (nonatomic) UIScrollView *view;
+@property (nonatomic) ScrollView *view;
 
 @end
