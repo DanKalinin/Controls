@@ -17,11 +17,9 @@
 
 
 
-@interface ScrollView : UIScrollView
+@interface ScrollView : UIScrollView // To handle the keyboard set @ keyboardWillShowNotification, @ keyboardWillHideNotification to YES in IB
 
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
-
-@property IBInspectable BOOL handleKeyboard;
 
 @end
 

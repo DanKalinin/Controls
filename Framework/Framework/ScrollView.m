@@ -26,16 +26,6 @@
 
 @implementation ScrollView
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    if (self.handleKeyboard) {
-        NSNotificationCenter *nc = NSNotificationCenter.defaultCenter;
-        [nc addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
-        [nc addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
-    }
-}
-
 #pragma mark - Notifications
 
 - (void)keyboardWillShowNotification:(NSNotification *)note {

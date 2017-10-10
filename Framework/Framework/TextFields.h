@@ -15,4 +15,9 @@
 @property (strong, nonatomic) IBOutletCollection(TextField) NSArray *textFields;
 @property (strong, nonatomic) IBOutletCollection(Button) NSArray *buttons;
 
+@property IBInspectable NSString *separator;
+
+@property (readonly) BOOL valid;
+@property (readonly) NSString *text;
+
 @end
