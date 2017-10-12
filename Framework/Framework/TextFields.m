@@ -12,7 +12,6 @@
 @interface TextFields ()
 
 @property BOOL valid;
-@property NSString *text;
 
 @end
 
@@ -36,6 +35,19 @@
     }
 }
 
+#pragma mark - Accessors
+
+- (void)setText:(NSString *)text {
+    NSArray *components = [text componentsSeparatedByString:self.separator];
+    [self.textFields setValues:components forKey:@"text"];
+}
+
+- (NSString *)text {
+    NSArray *components = [self.textFields valueForKey:@"text"];
+    NSString *text = [components componentsJoinedByString:self.separator];
+    return text;
+}
+
 #pragma mark - Actions
 
 - (void)editingChanged:(TextField *)sender {
@@ -43,9 +55,6 @@
     NSArray *validTextFields = [self.textFields filteredArrayUsingPredicate:predicate];
     self.valid = (validTextFields.count == self.textFields.count);
     [self.buttons setValue:@(self.valid) forKey:@"enabled"];
-    
-    NSArray *components = [self.textFields valueForKey:@"text"];
-    self.text = [components componentsJoinedByString:self.separator];
     
     [self sendActionsForControlEvents:UIControlEventEditingChanged];
 }

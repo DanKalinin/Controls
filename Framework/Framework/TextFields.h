@@ -17,7 +17,8 @@
 
 @property IBInspectable NSString *separator;
 
+@property NSString *text;
+
 @property (readonly) BOOL valid;
-@property (readonly) NSString *text;
 
 @end
