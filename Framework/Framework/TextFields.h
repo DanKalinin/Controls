@@ -12,13 +12,13 @@
 
 @interface TextFields : UIControl
 
-@property (strong, nonatomic) IBOutletCollection(TextField) NSArray *textFields;
-@property (strong, nonatomic) IBOutletCollection(Button) NSArray *buttons;
+@property (strong, nonatomic) IBOutletCollection(TextField) NSArray *textFields; // Maintainable text fields
+@property (strong, nonatomic) IBOutletCollection(Button) NSArray *buttons; // Buttons to enable/disable based on input validity
 
-@property IBInspectable NSString *separator;
+@property IBInspectable NSString *separator; // . - default separator
 
-@property NSString *text;
+@property NSString *text; // Text from @ textFields joined by @ separator
 
-@property (readonly) BOOL valid;
+@property (readonly) BOOL valid; // Input validity. YES if all @ textFields are valid.
 
 @end
