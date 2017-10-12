@@ -11,8 +11,6 @@
 
 @interface TextFields ()
 
-@property BOOL valid;
-
 @end
 
 
@@ -48,14 +46,17 @@
     return text;
 }
 
+- (BOOL)valid {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"valid = YES"];
+    NSArray *validTextFields = [self.textFields filteredArrayUsingPredicate:predicate];
+    BOOL valid = (validTextFields.count == self.textFields.count);
+    return valid;
+}
+
 #pragma mark - Actions
 
 - (void)editingChanged:(TextField *)sender {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"valid = YES"];
-    NSArray *validTextFields = [self.textFields filteredArrayUsingPredicate:predicate];
-    self.valid = (validTextFields.count == self.textFields.count);
     [self.buttons setValue:@(self.valid) forKey:@"enabled"];
-    
     [self sendActionsForControlEvents:UIControlEventEditingChanged];
 }
 
