@@ -40,7 +40,7 @@ typedef NS_ENUM(NSUInteger, GraphViewType) {
 
 
 
-@interface GraphView : GradientLayerView
+@interface GraphView : GradientLayerView2
 
 @property (weak, nonatomic) IBOutlet UILabel *headerLeftLabel;
 @property (weak, nonatomic) IBOutlet UILabel *headerLeftDetailLabel;
