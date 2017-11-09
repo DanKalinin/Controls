@@ -7,7 +7,7 @@
 
 #import "PickerPresentingVC.h"
 
-typedef NS_ENUM(NSUInteger, PickerActionTag) {
+typedef NS_ENUM(NSInteger, PickerActionTag) {
     PickerActionTagNone,
     PickerActionTagSettings
 };
@@ -15,9 +15,6 @@ typedef NS_ENUM(NSUInteger, PickerActionTag) {
 
 
 @interface PickerPresentingVC ()
-
-@property NSString *title;
-@property NSString *message;
 
 @end
 
@@ -36,11 +33,14 @@ typedef NS_ENUM(NSUInteger, PickerActionTag) {
 
 - (void)presentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(VoidBlock)completion {
     if ([viewController isKindOfClass:CNContactPickerViewController.class]) {
+        CNAuthorizationStatus status = [CNContactStore authorizationStatusForEntityType:self.contactEntityType];
         [self.contactStore requestAccessForEntityType:self.contactEntityType completionHandler:^(BOOL granted, NSError *error) {
             if (granted) {
                 [super presentViewController:viewController animated:animated completion:completion];
-            } else {
-                UIAlertController *ac = [self alertControllerForPickerViewController:viewController];
+            } else if (status != CNAuthorizationStatusNotDetermined) {
+                UIAlertController *ac = [self alertControllerSettings];
+                ac.title = [self localize:@"Contacts access denied"];
+                ac.message = [self localize:@"You can allow access to contacts in Settings"];
                 [super presentViewController:ac animated:animated completion:completion];
             }
         }];
@@ -49,19 +49,19 @@ typedef NS_ENUM(NSUInteger, PickerActionTag) {
     }
 }
 
+#pragma mark - Actions
+
+- (void)didHandleAction:(id<Action>)action {
+    if (action.tag == PickerActionTagSettings) {
+        NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        [UIApplication.sharedApplication openURL:url options:@{} completionHandler:nil];
+    }
+}
+
 #pragma mark - Helpers
 
-- (UIAlertController *)alertControllerForPickerViewController:(UIViewController *)viewController {
-    NSString *title, *message;
-    if ([viewController isKindOfClass:CNContactPickerViewController.class]) {
-        title = [self localize:@"Contacts access denied"];
-        message = [self localize:@"You can allow access to contacts in Settings"];
-    } else {
-        title = [self localize:@"Access denied"];
-        message = [self localize:@"You can allow access in Settings"];
-    }
-    
-    UIAlertController *ac = [UIAlertController alertControllerWithTitle:self.title message:self.message preferredStyle:UIAlertControllerStyleAlert];
+- (UIAlertController *)alertControllerSettings {
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle:[self localize:@"Access denied"] message:[self localize:@"You can allow access in Settings"] preferredStyle:UIAlertControllerStyleAlert];
     
     AlertAction *settingsAction = [AlertAction actionWithTitle:[self localize:@"Settings"] style:UIAlertActionStyleDefault delegate:self tag:PickerActionTagSettings];
     AlertAction *cancelAction = [AlertAction actionWithTitle:[self localize:@"Cancel"] style:UIAlertActionStyleCancel delegate:self tag:PickerActionTagNone];
