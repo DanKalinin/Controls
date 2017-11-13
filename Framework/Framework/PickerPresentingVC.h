@@ -9,6 +9,10 @@
 #import <Helpers/Helpers.h>
 #import <ContactsUI/ContactsUI.h>
 
+typedef NS_ENUM(NSInteger, PickerTag) {
+    PickerTagContacts = 1
+};
+
 
 
 @interface PickerPresentingVC : UIViewController

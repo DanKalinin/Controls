@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, PickerActionTag) {
 }
 
 - (void)presentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(VoidBlock)completion {
-    if ([viewController isKindOfClass:CNContactPickerViewController.class]) {
+    if (viewController.view.tag == PickerTagContacts) {
         CNAuthorizationStatus status = [CNContactStore authorizationStatusForEntityType:self.contactEntityType];
         [self.contactStore requestAccessForEntityType:self.contactEntityType completionHandler:^(BOOL granted, NSError *error) {
             if (granted) {
