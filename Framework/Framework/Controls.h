@@ -11,6 +11,7 @@
 FOUNDATION_EXPORT double ControlsVersionNumber;
 FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 
+#import <Controls/View.h>
 #import <Controls/ConcentricView.h>
 #import <Controls/TabControl.h>
 #import <Controls/GradientSlider.h>

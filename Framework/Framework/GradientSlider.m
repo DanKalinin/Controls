@@ -7,6 +7,7 @@
 //
 
 #import "GradientSlider.h"
+#import "View.h"
 #import <Helpers/Helpers.h>
 
 

@@ -6,7 +6,8 @@
 //
 //
 
-#import <Helpers/Helpers.h>
+#import <UIKit/UIKit.h>
+#import "View.h"
 
 @class GraphView;
 

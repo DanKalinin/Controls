@@ -7,6 +7,7 @@
 //
 
 #import "CollectionView.h"
+#import <Helpers/Helpers.h>
 
 
 
