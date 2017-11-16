@@ -583,7 +583,7 @@
         TableViewCell *cell = self.cells[indexPath.row];
         height = cell.height * !cell.hidden;
     } else {
-        height = tableView.rowHeight;
+        height = [super tableView:tableView heightForRowAtIndexPath:indexPath];
     }
     return height;
 }

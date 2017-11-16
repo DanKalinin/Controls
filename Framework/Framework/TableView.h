@@ -229,6 +229,10 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @property (nonatomic) TableView *view;
 @property (nonatomic) TableView *tableView;
 
+@property (weak, nonatomic) IBOutlet TableViewCell *cell1;
+@property (weak, nonatomic) IBOutlet TableViewCell *cell2;
+@property (weak, nonatomic) IBOutlet TableViewCell *cell3;
+
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cells;
 
 @end
