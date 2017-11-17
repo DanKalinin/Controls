@@ -20,6 +20,7 @@
 
 @property NSTimer *timer;
 @property NSRunLoop *runLoop;
+@property NSUInteger value;
 
 @end
 
@@ -33,6 +34,7 @@
         self.runLoop = NSRunLoop.currentRunLoop;
         self.interval = 1.0;
         self.repeats = 1;
+        self.resettable = NO;
     }
     return self;
 }
@@ -40,17 +42,27 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.timer = [NSTimer timerWithTimeInterval:self.interval target:self selector:@selector(onFire) userInfo:nil repeats:YES];
+    [self reset];
 }
 
 #pragma mark - Actions
 
 - (void)onFire {
-    self.repeats--;
+    self.value--;
     [self sendActionsForControlEvents:UIControlEventValueChanged];
-    if (self.repeats == 0) {
+    if (self.value == 0) {
         [self.timer invalidate];
+        if (self.resettable) {
+            [self reset];
+        }
     }
+}
+
+#pragma mark - Helpers
+
+- (void)reset {
+    self.timer = [NSTimer timerWithTimeInterval:self.interval target:self selector:@selector(onFire) userInfo:nil repeats:YES];
+    self.value = self.repeats;
 }
 
 @end

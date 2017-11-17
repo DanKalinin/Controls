@@ -209,4 +209,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
 
+@property (strong, nonatomic) IBOutlet UILabel *strongLabel1;
+@property (strong, nonatomic) IBOutlet UILabel *strongLabel2;
+
 @end
