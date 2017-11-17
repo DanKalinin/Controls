@@ -40,7 +40,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.timer = [NSTimer timerWithTimeInterval:self.interval target:self selector:@selector(onFire) userInfo:nil repeats:NO];
+    self.timer = [NSTimer timerWithTimeInterval:self.interval target:self selector:@selector(onFire) userInfo:nil repeats:YES];
 }
 
 #pragma mark - Actions
@@ -48,9 +48,9 @@
 - (void)onFire {
     self.repeats--;
     [self sendActionsForControlEvents:UIControlEventValueChanged];
-    if (self.repeats == 0) return;
-    
-    [self.runLoop addTimer:self.timer forMode:NSDefaultRunLoopMode];
+    if (self.repeats == 0) {
+        [self.timer invalidate];
+    }
 }
 
 @end
@@ -73,5 +73,9 @@
 @implementation TimerViewController
 
 @dynamic view;
+
+- (void)dealloc {
+    [self.view.timer invalidate];
+}
 
 @end
