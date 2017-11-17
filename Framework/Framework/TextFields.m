@@ -92,7 +92,13 @@
 - (void)editingChanged:(TextField *)sender {
     [super editingChanged:sender];
     
-    
+    NSInteger offset = (sender.text.length == 1) ? 1 : -1;
+    TextField *textField = [self.textFields objectWithOffset:offset fromObject:sender recursively:NO];
+    if (textField) {
+        [textField becomeFirstResponder];
+    } else {
+        [self endEditing:YES];
+    }
 }
 
 @end
