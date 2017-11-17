@@ -7,6 +7,7 @@
 //
 
 #import "PageVC.h"
+#import <Helpers/Helpers.h>
 
 static NSString *const PageSegue = @"Page";
 
@@ -73,36 +74,12 @@ static NSString *const PageSegue = @"Page";
 #pragma mark - Page view controller
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-    NSUInteger index = [self.pages indexOfObject:viewController];
-    UIViewController *vc;
-    if (index > 0) {
-        index--;
-        vc = self.pages[index];
-    } else {
-        if (self.recursive) {
-            index = self.pages.count - 1;
-            vc = self.pages[index];
-        } else {
-            vc = nil;
-        }
-    }
+    UIViewController *vc = [self.pages objectWithOffset:-1 fromObject:viewController recursively:self.recursive];
     return vc;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-    NSUInteger index = [self.pages indexOfObject:viewController];
-    UIViewController *vc;
-    if (index < self.pages.count - 1) {
-        index++;
-        vc = self.pages[index];
-    } else {
-        if (self.recursive) {
-            index = 0;
-            vc = self.pages[index];
-        } else {
-            vc = nil;
-        }
-    }
+    UIViewController *vc = [self.pages objectWithOffset:1 fromObject:viewController recursively:self.recursive];
     return vc;
 }
 

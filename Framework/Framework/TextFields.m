@@ -10,6 +10,13 @@
 
 
 
+
+
+
+
+
+
+
 @interface TextFields ()
 
 @end
@@ -59,6 +66,33 @@
 - (void)editingChanged:(TextField *)sender {
     [self.buttons setValue:@(self.valid) forKey:@"enabled"];
     [self sendActionsForControlEvents:UIControlEventEditingChanged];
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface CodeTextFields ()
+
+@end
+
+
+
+@implementation CodeTextFields
+
+#pragma mark - Actions
+
+- (void)editingChanged:(TextField *)sender {
+    [super editingChanged:sender];
+    
+    
 }
 
 @end

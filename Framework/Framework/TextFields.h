@@ -10,6 +10,13 @@
 
 
 
+
+
+
+
+
+
+
 @interface TextFields : UIControl
 
 @property (strong, nonatomic) IBOutletCollection(TextField) NSArray *textFields; // Maintainable text fields
@@ -20,5 +27,18 @@
 @property NSString *text; // Text from @ textFields joined by @ separator
 
 @property (readonly) BOOL valid; // Input validity. YES if all @ textFields are valid.
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface CodeTextFields : TextFields
 
 @end
