@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class TextFields;
 @class View, ImageView, TextField, Button, KeyboardContainerView, ShapeLayerView, GradientLayerView, GradientLayerView2, EmitterLayerView;
 
 
@@ -208,6 +209,12 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
+
+@property (weak, nonatomic) IBOutlet TextField *textField1;
+@property (weak, nonatomic) IBOutlet TextField *textField2;
+
+@property (weak, nonatomic) IBOutlet TextFields *textFields1;
+@property (weak, nonatomic) IBOutlet TextFields *textFields2;
 
 @property (strong, nonatomic) IBOutlet UILabel *strongLabel1;
 @property (strong, nonatomic) IBOutlet UILabel *strongLabel2;
