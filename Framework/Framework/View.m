@@ -7,6 +7,7 @@
 
 #import "View.h"
 #import "TextFields.h"
+#import "TimerControl.h"
 #import <Helpers/Helpers.h>
 
 
@@ -74,7 +75,7 @@
     NSString *text = textField.text;
     textField.text = [textField.text stringByReplacingCharactersInRange:range withString:string];
     
-    if (textField.validateOnEditing && !textField.valid && (textField.text.length > 0)) {
+    if (textField.validateOnEditing && !textField.valid && (textField.text.length > textField.validLength)) {
         textField.text = text;
     } else {
         [textField sendActionsForControlEvents:UIControlEventEditingChanged];
@@ -445,5 +446,50 @@
 
 
 @implementation ViewController
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface KeyboardViewController ()
+
+@end
+
+
+
+@implementation KeyboardViewController
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    
+    if (!editing) {
+        [self.view endEditing:YES];
+    }
+}
+
+#pragma mark - Notifications
+
+- (void)keyboardWillShowNotification:(NSNotification *)note {
+    [self setEditing:YES animated:YES];
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)keyboardWillHideNotification:(NSNotification *)note {
+    [self setEditing:NO animated:YES];
+    self.navigationItem.rightBarButtonItem = nil;
+}
+
+#pragma mark - Actions
+
+- (IBAction)onTap:(UITapGestureRecognizer *)sender {
+    [self.view endEditing:YES];
+}
 
 @end

@@ -10,13 +10,6 @@
 
 
 
-
-
-
-
-
-
-
 @interface TextFields ()
 
 @end
@@ -66,39 +59,6 @@
 - (void)editingChanged:(TextField *)sender {
     [self.buttons setValue:@(self.valid) forKey:@"enabled"];
     [self sendActionsForControlEvents:UIControlEventEditingChanged];
-}
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface CodeTextFields ()
-
-@end
-
-
-
-@implementation CodeTextFields
-
-#pragma mark - Actions
-
-- (void)editingChanged:(TextField *)sender {
-    [super editingChanged:sender];
-    
-    NSInteger offset = (sender.text.length == 1) ? 1 : -1;
-    TextField *textField = [self.textFields objectWithOffset:offset fromObject:sender recursively:NO];
-    if (textField) {
-        [textField becomeFirstResponder];
-    } else {
-        [self endEditing:YES];
-    }
 }
 
 @end

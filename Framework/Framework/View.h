@@ -7,7 +7,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class TextFields, CodeTextFields;
+@class TextFields;
+@class TimerControl;
 @class View, ImageView, TextField, Button, KeyboardContainerView, ShapeLayerView, GradientLayerView, GradientLayerView2, EmitterLayerView;
 
 
@@ -58,6 +59,7 @@
 
 @property IBInspectable BOOL validateOnEditing;
 @property IBInspectable NSString *pattern;
+@property IBInspectable NSUInteger validLength;
 
 @property (readonly) BOOL valid;
 
@@ -214,6 +216,19 @@
 
 @property (weak, nonatomic) IBOutlet TextFields *textFields1;
 
-@property (weak, nonatomic) IBOutlet CodeTextFields *codeTextFields1;
+@property (weak, nonatomic) IBOutlet TimerControl *timerControl1;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface KeyboardViewController : ViewController
 
 @end
