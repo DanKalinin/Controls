@@ -588,4 +588,10 @@
     return height;
 }
 
+#pragma mark - Actions
+
+- (IBAction)onTap:(UITapGestureRecognizer *)sender {
+    [self.tableView endEditing:YES];
+}
+
 @end

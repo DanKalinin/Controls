@@ -106,7 +106,7 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @property (weak, nonatomic) IBOutlet UILabel *label10;
 @property (weak, nonatomic) IBOutlet UILabel *label11;
 
-@property (weak, nonatomic) IBOutlet UITextField *textField1;
+@property (weak, nonatomic) IBOutlet TextField *textField1;
 
 @property (weak, nonatomic) IBOutlet UIControl *control1;
 
