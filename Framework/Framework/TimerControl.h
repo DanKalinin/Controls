@@ -21,9 +21,8 @@
 
 @property IBInspectable NSTimeInterval interval;
 @property IBInspectable NSUInteger repeats;
-@property IBInspectable BOOL resettable;
 
-@property (readonly) NSTimer *timer;
+@property (readonly, nonatomic) NSTimer *timer;
 @property (readonly) NSRunLoop *runLoop;
 @property (readonly) NSUInteger value;
 
