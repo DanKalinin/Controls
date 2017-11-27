@@ -222,6 +222,10 @@
 
 @property (weak, nonatomic) IBOutlet TimerControl *timerControl1;
 
+@property (weak, readonly) UIViewController *overlay;
+
+- (void)embedOverlayWithIdentifier:(NSString *)identifier fromStoryboard:(NSString *)storyboard;
+
 @end
 
 

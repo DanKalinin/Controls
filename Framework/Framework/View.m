@@ -441,11 +441,21 @@
 
 @interface ViewController ()
 
+@property (weak) UIViewController *overlay;
+
 @end
 
 
 
 @implementation ViewController
+
+- (void)embedOverlayWithIdentifier:(NSString *)identifier fromStoryboard:(NSString *)storyboard {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:storyboard bundle:nil];
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:identifier];
+    [self embedViewController:vc toView:self.view];
+    [self.view bringSubviewToFront:vc.view];
+    self.overlay = vc;
+}
 
 @end
 
