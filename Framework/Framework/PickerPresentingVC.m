@@ -33,7 +33,7 @@ typedef NS_ENUM(NSInteger, PickerActionTag) {
         self.contactEntityType = CNEntityTypeContacts;
         
         self.userNotificationCenter = UNUserNotificationCenter.currentNotificationCenter;
-        self.userNotificationAuthorizationOptions = (UNAuthorizationOptionSound | UNAuthorizationOptionAlert);
+        self.userNotificationAuthorizationOptions = (UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert);
     }
     return self;
 }
