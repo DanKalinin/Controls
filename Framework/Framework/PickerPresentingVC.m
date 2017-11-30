@@ -16,6 +16,8 @@ typedef NS_ENUM(NSInteger, PickerActionTag) {
 
 @interface PickerPresentingVC ()
 
+@property NSOperationQueue *mainQueue;
+
 @end
 
 
@@ -25,6 +27,8 @@ typedef NS_ENUM(NSInteger, PickerActionTag) {
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        self.mainQueue = NSOperationQueue.mainQueue;
+        
         self.contactStore = CNContactStore.new;
         self.contactEntityType = CNEntityTypeContacts;
         
@@ -38,26 +42,30 @@ typedef NS_ENUM(NSInteger, PickerActionTag) {
     if (viewController.view.tag == PickerTagContacts) {
         CNAuthorizationStatus status = [CNContactStore authorizationStatusForEntityType:self.contactEntityType];
         [self.contactStore requestAccessForEntityType:self.contactEntityType completionHandler:^(BOOL granted, NSError *error) {
-            if (granted) {
-                [super presentViewController:viewController animated:animated completion:completion];
-            } else if (status != CNAuthorizationStatusNotDetermined) {
-                UIAlertController *ac = [self alertControllerSettings];
-                ac.title = [self localize:@"Contacts access denied"];
-                ac.message = [self localize:@"You can allow access to contacts in Settings"];
-                [super presentViewController:ac animated:animated completion:completion];
-            }
+            [self.mainQueue addOperationWithBlock:^{
+                if (granted) {
+                    [super presentViewController:viewController animated:animated completion:completion];
+                } else if (status != CNAuthorizationStatusNotDetermined) {
+                    UIAlertController *ac = [self alertControllerSettings];
+                    ac.title = [self localize:@"Contacts access denied"];
+                    ac.message = [self localize:@"You can allow access to contacts in Settings"];
+                    [super presentViewController:ac animated:animated completion:completion];
+                }
+            }];
         }];
     } else if (viewController.view.tag == PickerTagUserNotifications) {
         [self.userNotificationCenter getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings *settings) {
             [self.userNotificationCenter requestAuthorizationWithOptions:0 completionHandler:^(BOOL granted, NSError *error) {
-                if (granted) {
-                    [super presentViewController:viewController animated:animated completion:completion];
-                } else if (settings.authorizationStatus != UNAuthorizationStatusNotDetermined) {
-                    UIAlertController *ac = [self alertControllerSettings];
-                    ac.title = [self localize:@"Notifications disabled"];
-                    ac.message = [self localize:@"You can enable notifications in Settings"];
-                    [super presentViewController:ac animated:animated completion:completion];
-                }
+                [self.mainQueue addOperationWithBlock:^{
+                    if (granted) {
+                        [super presentViewController:viewController animated:animated completion:completion];
+                    } else if (settings.authorizationStatus != UNAuthorizationStatusNotDetermined) {
+                        UIAlertController *ac = [self alertControllerSettings];
+                        ac.title = [self localize:@"Notifications disabled"];
+                        ac.message = [self localize:@"You can enable notifications in Settings"];
+                        [super presentViewController:ac animated:animated completion:completion];
+                    }
+                }];
             }];
         }];
     } else {
