@@ -27,6 +27,9 @@ typedef NS_ENUM(NSInteger, PickerActionTag) {
     if (self) {
         self.contactStore = CNContactStore.new;
         self.contactEntityType = CNEntityTypeContacts;
+        
+        self.userNotificationCenter = UNUserNotificationCenter.currentNotificationCenter;
+        self.userNotificationAuthorizationOptions = (UNAuthorizationOptionSound | UNAuthorizationOptionAlert);
     }
     return self;
 }
@@ -43,6 +46,19 @@ typedef NS_ENUM(NSInteger, PickerActionTag) {
                 ac.message = [self localize:@"You can allow access to contacts in Settings"];
                 [super presentViewController:ac animated:animated completion:completion];
             }
+        }];
+    } else if (viewController.view.tag == PickerTagUserNotifications) {
+        [self.userNotificationCenter getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings *settings) {
+            [self.userNotificationCenter requestAuthorizationWithOptions:0 completionHandler:^(BOOL granted, NSError *error) {
+                if (granted) {
+                    [super presentViewController:viewController animated:animated completion:completion];
+                } else if (settings.authorizationStatus != UNAuthorizationStatusNotDetermined) {
+                    UIAlertController *ac = [self alertControllerSettings];
+                    ac.title = [self localize:@"Notifications disabled"];
+                    ac.message = [self localize:@"You can enable notifications in Settings"];
+                    [super presentViewController:ac animated:animated completion:completion];
+                }
+            }];
         }];
     } else {
         [super presentViewController:viewController animated:animated completion:completion];

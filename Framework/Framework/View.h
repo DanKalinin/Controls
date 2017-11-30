@@ -6,10 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Helpers/Helpers.h>
 
 @class TextFields;
 @class TimerControl;
 @class View, ImageView, TextField, Button, KeyboardContainerView, ShapeLayerView, GradientLayerView, GradientLayerView2, EmitterLayerView;
+
+extern const UIModalPresentationStyle UIModalPresentationPush;
 
 
 
@@ -225,6 +228,7 @@
 @property (weak, readonly) UIViewController *overlay;
 
 - (void)embedOverlayWithIdentifier:(NSString *)identifier fromStoryboard:(NSString *)storyboard;
+- (void)presentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(VoidBlock)completion;
 
 @end
 

@@ -8,7 +8,8 @@
 #import "View.h"
 #import "TextFields.h"
 #import "TimerControl.h"
-#import <Helpers/Helpers.h>
+
+const UIModalPresentationStyle UIModalPresentationPush = -10;
 
 
 
@@ -455,6 +456,15 @@
     [self embedViewController:vc toView:self.view];
     [self.view bringSubviewToFront:vc.view];
     self.overlay = vc;
+}
+
+- (void)presentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(VoidBlock)completion {
+    if (viewController.modalPresentationStyle == UIModalPresentationPush) {
+        [self.navigationController pushViewController:viewController animated:animated];
+        [self invokeHandler:completion];
+    } else {
+        [super presentViewController:viewController animated:animated completion:completion];
+    }
 }
 
 @end
