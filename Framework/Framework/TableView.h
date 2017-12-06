@@ -246,4 +246,8 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cells;
 
+@property IBInspectable NSString *string1;
+@property IBInspectable NSString *string2;
+@property IBInspectable NSString *string3;
+
 @end
