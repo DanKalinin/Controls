@@ -21,6 +21,7 @@
 @interface TableViewCell ()
 
 @property UITableViewCellStateMask state;
+@property BOOL enabled;
 
 @end
 
@@ -28,12 +29,27 @@
 
 @implementation TableViewCell
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.disabledAlpha = 0.5;
+        self.enabled = YES;
+    }
+    return self;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     
     if (self.selectedAccessoryType == self.defaultAccessoryType) return;
     
     self.accessoryType = selected ? self.selectedAccessoryType : self.defaultAccessoryType;
+}
+
+- (void)setEnabled:(BOOL)enabled animated:(BOOL)animated {
+    self.enabled = enabled;
+    self.userInteractionEnabled = enabled;
+    self.contentView.alpha = enabled ? 1.0 : self.disabledAlpha;
 }
 
 - (void)willTransitionToState:(UITableViewCellStateMask)state {

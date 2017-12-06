@@ -130,10 +130,15 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 
 @property IBInspectable CGFloat groupInset;
 
+@property IBInspectable CGFloat disabledAlpha;
+
 @property NSIndexPath *indexPath;
 @property id userInfo;
 
 @property (readonly) UITableViewCellStateMask state;
+
+@property (readonly) BOOL enabled;
+- (void)setEnabled:(BOOL)enabled animated:(BOOL)animated;
 
 @end
 
