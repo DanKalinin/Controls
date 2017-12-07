@@ -120,6 +120,7 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 
 @property (weak, nonatomic) IBOutlet MultiselectionControl *multiselectionControl1;
 
+@property IBInspectable NSString *string0;
 @property IBInspectable NSString *string1;
 @property IBInspectable NSString *string2;
 @property IBInspectable NSString *string3;
