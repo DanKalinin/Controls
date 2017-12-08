@@ -63,6 +63,7 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 @property IBInspectable BOOL validateOnEditing;
 @property IBInspectable NSString *pattern;
 @property IBInspectable NSUInteger validLength;
+@property IBInspectable CGFloat disabledAlpha;
 
 @property (readonly) BOOL valid;
 

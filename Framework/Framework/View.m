@@ -113,6 +113,7 @@ const UIModalPresentationStyle UIModalPresentationPush = -10;
         self.textFieldDelegate = TextFieldDelegate.new;
         super.delegate = self.textFieldDelegate;
         self.pattern = @"*";
+        self.disabledAlpha = 0.5;
     }
     return self;
 }
@@ -141,6 +142,11 @@ const UIModalPresentationStyle UIModalPresentationPush = -10;
     NSRange range = [self.text rangeOfString:self.pattern options:NSRegularExpressionSearch];
     BOOL valid = (range.location != NSNotFound);
     return valid;
+}
+
+- (void)setEnabled:(BOOL)enabled {
+    [super setEnabled:enabled];
+    self.alpha = enabled ? 1.0 : self.disabledAlpha;
 }
 
 #pragma mark - Actions
