@@ -8,6 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+@class ScrollView;
+
+
+
+
+
+
+
+
+
+
+@protocol ScrollViewDelegate <UIScrollViewDelegate>
+
+@optional
+- (void)scrollViewDidEndScrolling:(ScrollView *)scrollView;
+
+@end
+
 
 
 
