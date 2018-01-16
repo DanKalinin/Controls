@@ -21,6 +21,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
+- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;
+
 @end
 
 
