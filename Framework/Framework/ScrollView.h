@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Helpers/Helpers.h>
 
 @class ScrollView;
 
@@ -37,6 +38,7 @@
 
 @interface ScrollView : UIScrollView // To handle the keyboard set @ keyboardWillShowNotification, @ keyboardWillHideNotification to YES in IB
 
+@property (readonly) SurrogateArray<ScrollViewDelegate> *delegates;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
 - (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;

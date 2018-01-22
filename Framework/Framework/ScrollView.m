@@ -7,7 +7,6 @@
 //
 
 #import "ScrollView.h"
-#import <Helpers/Helpers.h>
 
 
 
@@ -18,13 +17,27 @@
 
 
 
-@interface ScrollView ()
+@interface ScrollView () <ScrollViewDelegate>
+
+@property SurrogateArray<ScrollViewDelegate> *delegates;
 
 @end
 
 
 
 @implementation ScrollView
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.delegates = (id)SurrogateArray.new;
+        [self.delegates addObject:self];
+        self.delegate = self.delegates;
+    }
+    return self;
+}
+
+#pragma mark - Scroll view
 
 - (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated {
     UIFloatRange xRange = UIFloatRangeZero;
@@ -37,6 +50,20 @@
     contentOffset.y = CGFloatClampToRange(contentOffset.y, yRange);
     
     [super setContentOffset:contentOffset animated:animated];
+}
+
+- (void)scrollViewDidEndDragging:(ScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (decelerate) {
+    } else {
+        [self.delegates scrollViewDidEndScrolling:scrollView];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(ScrollView *)scrollView {
+    [self.delegates scrollViewDidEndScrolling:scrollView];
+}
+
+- (void)scrollViewDidEndScrolling:(ScrollView *)scrollView {
 }
 
 #pragma mark - Notifications
