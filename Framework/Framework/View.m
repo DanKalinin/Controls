@@ -39,6 +39,31 @@ const UIModalPresentationStyle UIModalPresentationPush = -10;
 
 
 
+@interface Label ()
+
+@end
+
+
+
+@implementation Label
+
+- (void)setHighlighted:(BOOL)highlighted {
+    [super setHighlighted:highlighted];
+    
+    self.backgroundColor = highlighted ? self.highlightedBackgroundColor : self.defaultBackgroundColor;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface ImageView ()
 
 @end

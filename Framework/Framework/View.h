@@ -42,6 +42,22 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 
 
 
+@interface Label : UILabel
+
+@property IBInspectable UIColor *defaultBackgroundColor;
+@property IBInspectable UIColor *highlightedBackgroundColor;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface ImageView : UIImageView // Customized image view
 
 @property IBInspectable UIColor *defaultBackgroundColor;
