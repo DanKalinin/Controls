@@ -10,6 +10,7 @@
 #import "View.h"
 #import "NumberPickerControl.h"
 #import "MultiselectionControl.h"
+#import "EdgeSliderControl.h"
 
 @class TableView;
 
@@ -250,6 +251,8 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @property (weak, nonatomic) IBOutlet TableViewCell *cell1;
 @property (weak, nonatomic) IBOutlet TableViewCell *cell2;
 @property (weak, nonatomic) IBOutlet TableViewCell *cell3;
+
+@property (strong, nonatomic) IBOutlet EdgeSliderControl *sliderControl1;
 
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cells;
 
