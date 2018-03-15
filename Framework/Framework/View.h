@@ -249,6 +249,8 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 @property (weak, nonatomic) IBOutlet Button *button2;
 
 @property (weak, nonatomic) IBOutlet TextField *textField1;
+@property (weak, nonatomic) IBOutlet TextField *textField2;
+@property (weak, nonatomic) IBOutlet TextField *textField3;
 
 @property (weak, nonatomic) IBOutlet TextFields *textFields1;
 
