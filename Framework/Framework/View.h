@@ -245,6 +245,10 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 @property (strong, nonatomic) IBOutlet UILabel *sLabel2;
 @property (strong, nonatomic) IBOutlet UILabel *sLabel3;
 
+@property (weak, nonatomic) IBOutlet UISwitch *switch1;
+@property (weak, nonatomic) IBOutlet UISwitch *switch2;
+@property (weak, nonatomic) IBOutlet UISwitch *switch3;
+
 @property (weak, nonatomic) IBOutlet Button *button1;
 @property (weak, nonatomic) IBOutlet Button *button2;
 @property (weak, nonatomic) IBOutlet Button *button3;
