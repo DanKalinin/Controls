@@ -33,3 +33,4 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/TextFields.h>
 #import <Controls/PickerPresentingVC.h>
 #import <Controls/TimerControl.h>
+#import <Controls/CircleView.h>
