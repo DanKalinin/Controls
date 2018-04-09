@@ -251,6 +251,7 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @property (weak, nonatomic) IBOutlet TableViewCell *cell1;
 @property (weak, nonatomic) IBOutlet TableViewCell *cell2;
 @property (weak, nonatomic) IBOutlet TableViewCell *cell3;
+@property (weak, nonatomic) IBOutlet TableViewCell *cell4;
 
 @property (strong, nonatomic) IBOutlet EdgeSliderControl *sliderControl1;
 
