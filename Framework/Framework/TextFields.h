@@ -12,6 +12,14 @@
 
 @interface TextFields : UIControl
 
+@property (weak, nonatomic) IBOutlet TextField *textField1;
+@property (weak, nonatomic) IBOutlet TextField *textField2;
+@property (weak, nonatomic) IBOutlet TextField *textField3;
+
+@property (weak, nonatomic) IBOutlet Button *button1;
+@property (weak, nonatomic) IBOutlet Button *button2;
+@property (weak, nonatomic) IBOutlet Button *button3;
+
 @property (strong, nonatomic) IBOutletCollection(TextField) NSArray *textFields; // Maintainable text fields
 @property (strong, nonatomic) IBOutletCollection(Button) NSArray *buttons; // Buttons to enable/disable based on input validity
 
