@@ -11,6 +11,8 @@
 FOUNDATION_EXPORT double ControlsVersionNumber;
 FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 
+// Deprecated
+
 #import <Controls/View.h>
 #import <Controls/ConcentricView.h>
 #import <Controls/TabControl.h>
