@@ -1,6 +1,6 @@
 //
-//  Framework.h
-//  Framework
+//  Controls.h
+//  Controls
 //
 //  Created by Dan Kalinin on 13/11/16.
 //  Copyright © 2016 Dan Kalinin. All rights reserved.
@@ -10,6 +10,8 @@
 
 FOUNDATION_EXPORT double ControlsVersionNumber;
 FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
+
+#import <Controls/CTLView.h>
 
 // Deprecated
 
