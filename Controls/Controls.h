@@ -12,6 +12,11 @@ FOUNDATION_EXPORT double ControlsVersionNumber;
 FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 
 #import <Controls/CTLView.h>
+#import <Controls/CTLTableView.h>
+#import <Controls/CTLCollectionView.h>
+#import <Controls/CTLViewController.h>
+#import <Controls/CTLTableViewController.h>
+#import <Controls/CTLCollectionViewController.h>
 
 // Deprecated
 
