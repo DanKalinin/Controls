@@ -6,13 +6,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Helpers/Helpers.h>
 
 @class CTLApplication;
 
 
 
-@interface CTLApplication : UIApplication
+@protocol CTLApplicationDelegate <HLPOperationDelegate, UIApplicationDelegate>
+
+@end
+
+
+
+@interface CTLApplication : UIApplication <CTLApplicationDelegate>
+
+@property (nonatomic) UIWindow *window;
+
+@property (readonly) NSOperationQueue *operationQueue;
+@property (readonly) SurrogateArray<CTLApplicationDelegate> *delegates;
 
 + (instancetype)shared;
+
+- (void)addOperation:(HLPOperation *)operation;
 
 @end
