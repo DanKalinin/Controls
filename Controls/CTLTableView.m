@@ -16,6 +16,25 @@
 
 
 
+@interface CTLTableViewCell ()
+
+@end
+
+
+
+@implementation CTLTableViewCell
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface CTLTableView ()
 
 @end

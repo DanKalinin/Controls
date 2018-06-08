@@ -7,7 +7,20 @@
 
 #import <UIKit/UIKit.h>
 
-@class CTLTableView, CTLTableViewController;
+@class CTLTableViewCell, CTLTableView, CTLTableViewController;
+
+
+
+
+
+
+
+
+
+
+@interface CTLTableViewCell : UITableViewCell
+
+@end
 
 
 
