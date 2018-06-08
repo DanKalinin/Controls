@@ -9,6 +9,13 @@
 
 
 
+
+
+
+
+
+
+
 @interface CTLTableView ()
 
 @end
@@ -16,5 +23,26 @@
 
 
 @implementation CTLTableView
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface CTLTableViewController ()
+
+@end
+
+
+
+@implementation CTLTableViewController
+
+@dynamic tableView;
 
 @end

@@ -7,10 +7,32 @@
 
 #import <UIKit/UIKit.h>
 
-@class CTLCollectionView;
+@class CTLCollectionView, CTLCollectionViewController;
+
+
+
+
+
+
+
 
 
 
 @interface CTLCollectionView : UICollectionView
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface CTLCollectionViewController : UICollectionViewController
+
+@property (nonatomic) CTLCollectionView *collectionView;
 
 @end

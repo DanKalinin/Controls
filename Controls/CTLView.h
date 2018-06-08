@@ -6,11 +6,49 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Helpers/Helpers.h>
 
-@class CTLView;
+@class CTLView, CTLViewController;
+
+
+
+
+
+
+
 
 
 
 @interface CTLView : UIView
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface CTLViewController : UIViewController
+
+@property (nonatomic) CTLView *view;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIViewController (CTL)
+
+@property UIStoryboardSegue *segue;
 
 @end

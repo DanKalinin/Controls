@@ -7,10 +7,32 @@
 
 #import <UIKit/UIKit.h>
 
-@class CTLTableView;
+@class CTLTableView, CTLTableViewController;
+
+
+
+
+
+
+
 
 
 
 @interface CTLTableView : UITableView
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface CTLTableViewController : UITableViewController
+
+@property (nonatomic) CTLTableView *tableView;
 
 @end

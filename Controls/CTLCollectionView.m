@@ -9,6 +9,13 @@
 
 
 
+
+
+
+
+
+
+
 @interface CTLCollectionView ()
 
 @end
@@ -16,5 +23,26 @@
 
 
 @implementation CTLCollectionView
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface CTLCollectionViewController ()
+
+@end
+
+
+
+@implementation CTLCollectionViewController
+
+@dynamic collectionView;
 
 @end
