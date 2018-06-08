@@ -11,6 +11,28 @@
 
 
 
+
+
+
+
+
+
+
 @interface CTLViewController : UIViewController
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIViewController (CTL)
+
+@property UIStoryboardSegue *segue;
 
 @end
