@@ -24,6 +24,10 @@
 
 @implementation CTLTableViewCell
 
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    [super setHighlighted:highlighted animated:animated];
+}
+
 @end
 
 

@@ -15,6 +15,7 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/CTLView.h>
 #import <Controls/CTLTableView.h>
 #import <Controls/CTLCollectionView.h>
+#import <Controls/CTLButton.h>
 
 // Deprecated
 
