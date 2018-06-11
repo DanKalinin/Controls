@@ -18,14 +18,21 @@
 
 @interface CTLTableViewCell ()
 
+@property BOOL enabled;
+
 @end
 
 
 
 @implementation CTLTableViewCell
 
-- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
-    [super setHighlighted:highlighted animated:animated];
+- (void)setEnabled:(BOOL)enabled animated:(BOOL)animated {
+    self.enabled = enabled;
+    
+    self.userInteractionEnabled = enabled;
+    
+    self.weakButton1.enabled = enabled;
+    self.weakButton2.enabled = enabled;
 }
 
 @end
