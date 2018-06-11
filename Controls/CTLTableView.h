@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CTLButton.h"
+#import "CTLActivityIndicatorView.h"
 
 @class CTLTableViewCell, CTLTableView, CTLTableViewController;
 
@@ -23,6 +24,8 @@
 
 @property (weak) IBOutlet CTLButton *weakButton1;
 @property (weak) IBOutlet CTLButton *weakButton2;
+
+@property (weak) IBOutlet CTLActivityIndicatorView *weakActivityIndicatorView1;
 
 @property (readonly) BOOL enabled;
 

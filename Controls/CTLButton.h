@@ -7,6 +7,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class CTLButton;
+
+
+
 @interface CTLButton : UIButton
 
 @end
