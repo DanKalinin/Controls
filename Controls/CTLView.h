@@ -50,5 +50,6 @@
 @interface UIViewController (CTL)
 
 @property UIStoryboardSegue *segue;
+@property UIAlertController *alert;
 
 @end
