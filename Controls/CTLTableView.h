@@ -8,8 +8,9 @@
 #import <UIKit/UIKit.h>
 #import "CTLButton.h"
 #import "CTLActivityIndicatorView.h"
+#import "CTLAlert.h"
 
-@class CTLTableViewCell, CTLTableView, CTLTableViewController;
+@class CTLTableViewCell, CTLTableView, CTLTableViewController, CTLTableViewRowAction;
 
 
 
@@ -58,5 +59,33 @@
 @interface CTLTableViewController : UITableViewController
 
 @property (nonatomic) CTLTableView *tableView;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@protocol CTLTableViewRowActionDelegate <CTLActionDelegate>
+
+@optional
+- (void)CTLTableViewRowActionDidEnd:(CTLTableViewRowAction *)action;
+
+@end
+
+
+
+@interface CTLTableViewRowAction : CTLAction <CTLTableViewRowActionDelegate>
+
+@property (readonly) SurrogateArray<CTLTableViewRowActionDelegate> *delegates;
+@property (readonly) UITableViewRowAction *action;
+@property (readonly) NSIndexPath *indexPath;
+
+- (instancetype)initWithTitle:(NSString *)title style:(UITableViewRowActionStyle)style identifier:(NSString *)identifier delegate:(id<CTLTableViewRowActionDelegate>)delegate;
 
 @end
