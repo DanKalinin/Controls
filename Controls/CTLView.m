@@ -80,11 +80,11 @@
     self.weakDictionary[NSStringFromSelector(@selector(segue))] = segue;
 }
 
-- (UIAlertController *)alert {
+- (CTLAlertController *)alert {
     return self.weakDictionary[NSStringFromSelector(@selector(alert))];
 }
 
-- (void)setAlert:(UIAlertController *)alert {
+- (void)setAlert:(CTLAlertController *)alert {
     self.weakDictionary[NSStringFromSelector(@selector(alert))] = alert;
 }
 

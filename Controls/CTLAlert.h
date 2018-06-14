@@ -8,7 +8,14 @@
 #import <UIKit/UIKit.h>
 #import "CTLAction.h"
 
-@class CTLAlertAction;
+@class CTLAlertAction, CTLAlertController;
+
+
+
+
+
+
+
 
 
 
@@ -27,5 +34,21 @@
 @property (readonly) UIAlertAction *action;
 
 - (instancetype)initWithTitle:(NSString *)title style:(UIAlertActionStyle)style identifier:(NSString *)identifier delegate:(id<CTLAlertActionDelegate>)delegate;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface CTLAlertController : UIAlertController
+
+- (CTLAlertAction *)addActionWithTitle:(NSString *)title style:(UIAlertActionStyle)style identifier:(NSString *)identifier delegate:(id<CTLAlertActionDelegate>)delegate;
+- (UITextField *)addTextField;
 
 @end
