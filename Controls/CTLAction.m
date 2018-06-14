@@ -34,6 +34,8 @@
 #pragma mark - Helpers
 
 - (void)updateState:(HLPOperationState)state {
+    [super updateState:state];
+    
     [self.delegates CTLActionDidEnd:self];
 }
 

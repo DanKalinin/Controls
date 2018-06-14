@@ -7,8 +7,9 @@
 
 #import <UIKit/UIKit.h>
 #import <Helpers/Helpers.h>
+#import "CTLAlert.h"
 
-@class CTLView, CTLViewController;
+@class CTLView, CTLViewController, CTLPreviewAction;
 
 
 
@@ -51,5 +52,33 @@
 
 @property UIStoryboardSegue *segue;
 @property UIAlertController *alert;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@protocol CTLPreviewActionDelegate <CTLActionDelegate>
+
+@optional
+- (void)CTLPreviewActionDidEnd:(CTLPreviewAction *)action;
+
+@end
+
+
+
+@interface CTLPreviewAction : CTLAction <CTLPreviewActionDelegate>
+
+@property (readonly) SurrogateArray<CTLPreviewActionDelegate> *delegates;
+@property (readonly) UIPreviewAction *action;
+@property (readonly) UIViewController *previewViewController;
+
+- (instancetype)initWithTitle:(NSString *)title style:(UIPreviewActionStyle)style identifier:(NSString *)identifier delegate:(id<CTLPreviewActionDelegate>)delegate;
 
 @end

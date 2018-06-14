@@ -89,3 +89,47 @@
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+@interface CTLPreviewAction ()
+
+@property UIPreviewAction *action;
+@property UIViewController *previewViewController;
+
+@end
+
+
+
+@implementation CTLPreviewAction
+
+@dynamic delegates;
+
+- (instancetype)initWithTitle:(NSString *)title style:(UIPreviewActionStyle)style identifier:(NSString *)identifier delegate:(id<CTLPreviewActionDelegate>)delegate {
+    self = [super initWithIdentifier:identifier delegate:delegate];
+    if (self) {
+        self.action = [UIPreviewAction actionWithTitle:title style:style handler:^(UIPreviewAction *action, UIViewController *previewViewController) {
+            self.previewViewController = previewViewController;
+            
+            [self updateState:HLPOperationStateDidEnd];
+        }];
+    }
+    return self;
+}
+
+#pragma mark - Helpers
+
+- (void)updateState:(HLPOperationState)state {
+    [super updateState:state];
+    
+    [self.delegates CTLPreviewActionDidEnd:self];
+}
+
+@end
