@@ -9,13 +9,6 @@
 
 
 
-
-
-
-
-
-
-
 @interface CTLAlertAction ()
 
 @property UIAlertAction *action;
@@ -44,39 +37,6 @@
     [super updateState:state];
     
     [self.delegates CTLAlertActionDidEnd:self];
-}
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface CTLAlertController ()
-
-@end
-
-
-
-@implementation CTLAlertController
-
-- (CTLAlertAction *)addActionWithTitle:(NSString *)title style:(UIAlertActionStyle)style identifier:(NSString *)identifier delegate:(id<CTLAlertActionDelegate>)delegate {
-    CTLAlertAction *action = [CTLAlertAction.alloc initWithTitle:title style:style identifier:identifier delegate:delegate];
-    [self addAction:action.action];
-    return action;
-}
-
-- (UITextField *)addTextField {
-    __block UITextField *tf = nil;
-    [self addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        tf = textField;
-    }];
-    return tf;
 }
 
 @end
