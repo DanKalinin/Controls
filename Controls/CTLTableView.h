@@ -82,7 +82,7 @@
 
 @interface CTLTableViewRowAction : CTLAction <CTLTableViewRowActionDelegate>
 
-@property (readonly) SurrogateArray<CTLTableViewRowActionDelegate> *delegates;
+@property (readonly) HLPArray<CTLTableViewRowActionDelegate> *delegates;
 @property (readonly) UITableViewRowAction *action;
 @property (readonly) NSIndexPath *indexPath;
 

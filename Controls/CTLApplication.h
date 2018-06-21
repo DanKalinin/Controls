@@ -23,7 +23,7 @@
 @property (nonatomic) UIWindow *window;
 
 @property (readonly) NSOperationQueue *operationQueue;
-@property (readonly) SurrogateArray<CTLApplicationDelegate> *delegates;
+@property (readonly) HLPArray<CTLApplicationDelegate> *delegates;
 
 + (instancetype)shared;
 

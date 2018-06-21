@@ -23,7 +23,7 @@
 
 @interface CTLAlertAction : CTLAction <CTLAlertActionDelegate>
 
-@property (readonly) SurrogateArray<CTLAlertActionDelegate> *delegates;
+@property (readonly) HLPArray<CTLAlertActionDelegate> *delegates;
 @property (readonly) UIAlertAction *action;
 
 - (instancetype)initWithTitle:(NSString *)title style:(UIAlertActionStyle)style identifier:(NSString *)identifier delegate:(id<CTLAlertActionDelegate>)delegate;

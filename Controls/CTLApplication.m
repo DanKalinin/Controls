@@ -11,7 +11,7 @@
 
 @interface CTLApplication ()
 
-@property SurrogateArray<CTLApplicationDelegate> *delegates;
+@property HLPArray<CTLApplicationDelegate> *delegates;
 
 @end
 
@@ -26,7 +26,7 @@
 - (instancetype)init {
     self = super.init;
     if (self) {
-        self.delegates = (id)SurrogateArray.new;
+        self.delegates = (id)HLPArray.weakArray;
         self.delegates.operationQueue = NSOperationQueue.mainQueue;
         [self.delegates addObject:self];
         

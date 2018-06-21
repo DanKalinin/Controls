@@ -23,7 +23,7 @@
 
 @interface CTLAction : HLPOperation <CTLActionDelegate>
 
-@property (readonly) SurrogateArray<CTLActionDelegate> *delegates;
+@property (readonly) HLPArray<CTLActionDelegate> *delegates;
 @property (readonly) NSString *identifier;
 
 - (instancetype)initWithIdentifier:(NSString *)identifier delegate:(id<CTLActionDelegate>)delegate;

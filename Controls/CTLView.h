@@ -74,7 +74,7 @@
 
 @interface CTLPreviewAction : CTLAction <CTLPreviewActionDelegate>
 
-@property (readonly) SurrogateArray<CTLPreviewActionDelegate> *delegates;
+@property (readonly) HLPArray<CTLPreviewActionDelegate> *delegates;
 @property (readonly) UIPreviewAction *action;
 @property (readonly) UIViewController *previewViewController;
 
