@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "View.h"
+#import "PickerControl.h"
 #import "NumberPickerControl.h"
 #import "MultiselectionControl.h"
 #import "EdgeSliderControl.h"
@@ -123,6 +124,12 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @property (weak, nonatomic) IBOutlet UISwitch *switch1;
 
 @property (weak, nonatomic) IBOutlet UISlider *slider1;
+
+@property (weak, nonatomic) IBOutlet PickerControl *pickerControl1;
+
+@property (weak, nonatomic) IBOutlet NumberPickerControl *numberPickerControl1;
+
+@property (weak, nonatomic) IBOutlet DoubleNumberPickerControl *doubleNumberPickerControl1;
 
 @property (weak, nonatomic) IBOutlet TimePickerControl *timePickerControl1;
 
@@ -252,6 +259,7 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @property (weak, nonatomic) IBOutlet TableViewCell *cell2;
 @property (weak, nonatomic) IBOutlet TableViewCell *cell3;
 @property (weak, nonatomic) IBOutlet TableViewCell *cell4;
+@property (weak, nonatomic) IBOutlet TableViewCell *cell5;
 
 @property (weak, nonatomic) IBOutlet Button *button1;
 @property (weak, nonatomic) IBOutlet Button *button2;
