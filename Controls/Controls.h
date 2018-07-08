@@ -13,6 +13,7 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 
 #import <Controls/CTLApplication.h>
 #import <Controls/CTLWindow.h>
+#import <Controls/CTLKeyboard.h>
 #import <Controls/CTLAction.h>
 #import <Controls/CTLView.h>
 #import <Controls/CTLTableView.h>

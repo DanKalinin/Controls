@@ -55,6 +55,7 @@
 
 @interface CTLKeyboard ()
 
+@property NSNotificationCenter *notificationCenter;
 @property CTLKeyboardInfo *info;
 
 @end
@@ -65,12 +66,70 @@
 
 @dynamic delegates;
 
++ (instancetype)shared {
+    static CTLKeyboard *shared = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shared = self.new;
+    });
+    return shared;
+}
+
+- (instancetype)init {
+    self = super.init;
+    if (self) {
+        self.notificationCenter = NSNotificationCenter.defaultCenter;
+    }
+    return self;
+}
+
 - (void)start {
+    [self.notificationCenter addObserver:self selector:@selector(UIKeyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
+    [self.notificationCenter addObserver:self selector:@selector(UIKeyboardDidShowNotification:) name:UIKeyboardDidShowNotification object:nil];
+    [self.notificationCenter addObserver:self selector:@selector(UIKeyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
+    [self.notificationCenter addObserver:self selector:@selector(UIKeyboardDidHideNotification:) name:UIKeyboardDidHideNotification object:nil];
+    [self.notificationCenter addObserver:self selector:@selector(UIKeyboardWillChangeFrameNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    [self.notificationCenter addObserver:self selector:@selector(UIKeyboardDidChangeFrameNotification:) name:UIKeyboardDidChangeFrameNotification object:nil];
     
+    [self updateState:HLPOperationStateDidBegin];
 }
 
 - (void)cancel {
+    [self.notificationCenter removeObserver:self];
     
+    [self updateState:HLPOperationStateDidEnd];
+}
+
+#pragma mark - Notifications
+
+- (void)UIKeyboardWillShowNotification:(NSNotification *)notification {
+    self.info = [CTLKeyboardInfo.alloc initWithDictionary:notification.userInfo];
+    [self.delegates CTLKeyboardWillShow:self];
+}
+
+- (void)UIKeyboardDidShowNotification:(NSNotification *)notification {
+    self.info = [CTLKeyboardInfo.alloc initWithDictionary:notification.userInfo];
+    [self.delegates CTLKeyboardDidShow:self];
+}
+
+- (void)UIKeyboardWillHideNotification:(NSNotification *)notification {
+    self.info = [CTLKeyboardInfo.alloc initWithDictionary:notification.userInfo];
+    [self.delegates CTLKeyboardWillHide:self];
+}
+
+- (void)UIKeyboardDidHideNotification:(NSNotification *)notification {
+    self.info = [CTLKeyboardInfo.alloc initWithDictionary:notification.userInfo];
+    [self.delegates CTLKeyboardDidHide:self];
+}
+
+- (void)UIKeyboardWillChangeFrameNotification:(NSNotification *)notification {
+    self.info = [CTLKeyboardInfo.alloc initWithDictionary:notification.userInfo];
+    [self.delegates CTLKeyboardWillChangeFrame:self];
+}
+
+- (void)UIKeyboardDidChangeFrameNotification:(NSNotification *)notification {
+    self.info = [CTLKeyboardInfo.alloc initWithDictionary:notification.userInfo];
+    [self.delegates CTLKeyboardDidChangeFrame:self];
 }
 
 @end
