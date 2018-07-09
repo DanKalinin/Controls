@@ -12,6 +12,7 @@
 @interface CTLApplication ()
 
 @property HLPArray<CTLApplicationDelegate> *delegates;
+@property CTLKeyboard *keyboard;
 
 @end
 
@@ -31,6 +32,10 @@
         [self.delegates addObject:self];
         
         self.delegate = self.delegates;
+        
+        self.keyboard = CTLKeyboard.shared;
+        [self.keyboard.delegates addObject:self.delegates];
+        [self.keyboard start];
     }
     return self;
 }
