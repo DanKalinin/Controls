@@ -54,7 +54,7 @@ typedef NS_ENUM(NSUInteger, GraphViewType) {
 
 @property (weak, nonatomic) IBOutlet UILabel *noDataLabel;
 
-@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *xLabels;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray<UILabel *> *xLabels;
 
 @property IBInspectable GraphViewType type;
 
