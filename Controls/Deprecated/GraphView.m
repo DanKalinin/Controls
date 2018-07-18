@@ -200,6 +200,7 @@
         
         for (index = 0; index < count; index++) {
             point = points[index];
+            point.y -= 5.0;
             [path moveToPoint:point];
             
             point.y = CGRectGetMaxY(axisRect) - 5.0;
