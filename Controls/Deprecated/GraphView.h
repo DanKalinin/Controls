@@ -27,8 +27,10 @@ typedef NS_ENUM(NSUInteger, GraphViewType) {
 
 @protocol GraphViewDataSource <NSObject>
 
-- (NSUInteger)numberOfPointsOnGraphView:(GraphView *)graphView;
-- (CGPoint)graphView:(GraphView *)graphView pointAtIndex:(NSUInteger)index;
+- (NSInteger)numberOfDimensionsInGraphView:(GraphView *)graphView;
+- (NSInteger)graphView:(GraphView *)graphView numberOfPointsInDimension:(NSInteger)dimension;
+- (CGPoint)graphView:(GraphView *)graphView pointAtIndexPath:(NSIndexPath *)indexPath;
+- (UIColor *)graphView:(GraphView *)graphView graphColorForDimension:(NSInteger)dimension;
 
 @end
 
@@ -58,7 +60,6 @@ typedef NS_ENUM(NSUInteger, GraphViewType) {
 
 @property IBInspectable GraphViewType type;
 
-@property IBInspectable UIColor *graphColor;
 @property IBInspectable UIColor *axisColor;
 
 @property UIFloatRange xRange;

@@ -70,7 +70,7 @@
     
     // No data
     
-    NSUInteger count = [self.dataSource numberOfPointsOnGraphView:self];
+    NSInteger count = [self.dataSource graphView:self numberOfPointsInDimension:0];
     BOOL hasData = (count > 0);
     self.noDataLabel.hidden = hasData;
     if (!hasData) return;
@@ -86,7 +86,8 @@
     CGFloat average = 0.0;
     NSUInteger index;
     for (index = 0; index < count; index++) {
-        point = [self.dataSource graphView:self pointAtIndex:index];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        point = [self.dataSource graphView:self pointAtIndexPath:indexPath];
         
         point.x = CGRectGetMinX(axisRect) + kx * point.x;
         point.y = CGRectGetMaxY(axisRect) - ky * point.y;
@@ -136,8 +137,9 @@
         CGFloat rStart, gStart, bStart, aStart;
         CGFloat rEnd, gEnd, bEnd, aEnd;
         
-        UIColor *startColor = [self.graphColor colorWithAlphaComponent:0.75];
-        UIColor *endColor = [self.graphColor colorWithAlphaComponent:0.05];
+        UIColor *graphColor = [self.dataSource graphView:self graphColorForDimension:0];
+        UIColor *startColor = [graphColor colorWithAlphaComponent:0.75];
+        UIColor *endColor = [graphColor colorWithAlphaComponent:0.05];
         
         [startColor getRed:&rStart green:&gStart blue:&bStart alpha:&aStart];
         [endColor getRed:&rEnd green:&gEnd blue:&bEnd alpha:&aEnd];
@@ -160,7 +162,7 @@
         path = UIBezierPath.bezierPath;
         
         path.lineWidth = 1.0;
-        [self.graphColor setStroke];
+        [graphColor setStroke];
         
         for (index = 0; index < count; index++) {
             point = points[index];
@@ -174,7 +176,7 @@
         path = UIBezierPath.bezierPath;
         
         path.lineWidth = 2.0;
-        [self.graphColor setStroke];
+        [graphColor setStroke];
         [fillColor setFill];
         
         for (index = 0; index < count; index++) {
@@ -196,7 +198,8 @@
         
         path.lineWidth = 5.0;
         path.lineCapStyle = kCGLineCapRound;
-        [self.graphColor setStroke];
+        UIColor *graphColor = [self.dataSource graphView:self graphColorForDimension:0];
+        [graphColor setStroke];
         
         for (index = 0; index < count; index++) {
             point = points[index];
