@@ -77,6 +77,8 @@
     
     // Preparation
     
+    CGFloat yOffset = 0.0;
+    
     CGFloat dx = self.xRange.maximum - self.xRange.minimum;
     CGFloat dy = self.yRange.maximum - self.yRange.minimum;
     CGFloat kx = axisRect.size.width / dx;
@@ -193,6 +195,7 @@
         [path stroke];
         
     } else if (self.type == GraphViewTypeColumn) {
+        yOffset = 5.0;
         
         path = UIBezierPath.bezierPath;
         
@@ -203,10 +206,10 @@
         
         for (index = 0; index < count; index++) {
             point = points[index];
-            point.y -= 5.0;
+            point.y -= yOffset;
             [path moveToPoint:point];
             
-            point.y = CGRectGetMaxY(axisRect) - 5.0;
+            point.y = CGRectGetMaxY(axisRect) - yOffset;
             [path addLineToPoint:point];
         }
         
@@ -223,7 +226,7 @@
     [self.axisColor setStroke];
     
     point.x = CGRectGetMinX(axisRect);
-    point.y = average;
+    point.y = average - yOffset;
     [path moveToPoint:point];
     
     point.x = CGRectGetMaxX(axisRect);
