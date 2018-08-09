@@ -24,6 +24,8 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 
 @interface View : UIView // Customized view
 
+@property (weak, nonatomic) IBOutlet View *view1;
+
 @property (weak, nonatomic) IBOutlet ImageView *imageView1;
 
 @property (weak, nonatomic) IBOutlet UILabel *label1;
