@@ -31,6 +31,7 @@ typedef NS_ENUM(NSUInteger, GraphViewType) {
 - (NSInteger)graphView:(GraphView *)graphView numberOfPointsInDimension:(NSInteger)dimension;
 - (CGPoint)graphView:(GraphView *)graphView pointAtIndexPath:(NSIndexPath *)indexPath;
 - (UIColor *)graphView:(GraphView *)graphView graphColorForDimension:(NSInteger)dimension;
+- (UIColor *)graphView:(GraphView *)graphView averageColorForDimension:(NSInteger)dimension;
 
 @end
 
