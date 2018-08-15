@@ -7,6 +7,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class CTLLabel;
+
+
+
 @interface CTLLabel : UILabel
 
 @end

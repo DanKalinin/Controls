@@ -16,6 +16,8 @@
 
 @interface CTLPasscodeView : CTLControl
 
+@property IBOutlet CTLButton *buttonDelete;
+
 @property IBOutletCollection(CTLLabel) NSArray<CTLLabel *> *labels;
 @property IBOutletCollection(CTLButton) NSArray<CTLButton *> *buttons;
 

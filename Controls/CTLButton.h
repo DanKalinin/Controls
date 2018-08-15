@@ -13,6 +13,4 @@
 
 @interface CTLButton : UIButton
 
-@property IBInspectable CGSize intrinsicContentSize;
-
 @end
