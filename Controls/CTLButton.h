@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTLView.h"
 
 @class CTLButton;
 
