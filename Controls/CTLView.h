@@ -33,6 +33,21 @@
 
 
 
+@interface UIView (CTL)
+
+@property IBInspectable UIColor *layerBorderColor;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface CTLViewController : UIViewController
 
 @property (nonatomic) CTLView *view;

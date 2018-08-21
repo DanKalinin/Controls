@@ -35,6 +35,27 @@
 
 
 
+@implementation UIView (CTL)
+
+- (UIColor *)layerBorderColor {
+    return [UIColor colorWithCGColor:self.layer.borderColor];
+}
+
+- (void)setLayerBorderColor:(UIColor *)layerBorderColor {
+    self.layer.borderColor = layerBorderColor.CGColor;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface CTLViewController ()
 
 @end
