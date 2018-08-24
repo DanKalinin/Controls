@@ -14,6 +14,8 @@
 
 @interface CTLButton : UIButton
 
+@property IBInspectable NSString *stringTag;
+
 @property IBInspectable UIColor *defaultBackgroundColor;
 @property IBInspectable UIColor *highlightedBackgroundColor;
 @property IBInspectable UIColor *selectedBackgroundColor;
