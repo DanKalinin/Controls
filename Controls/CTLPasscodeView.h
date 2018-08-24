@@ -21,4 +21,6 @@
 @property IBOutletCollection(CTLLabel) NSArray<CTLLabel *> *labels;
 @property IBOutletCollection(CTLButton) NSArray<CTLButton *> *buttons;
 
+@property (readonly) NSMutableString *passcode;
+
 @end

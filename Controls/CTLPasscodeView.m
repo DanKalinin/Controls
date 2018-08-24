@@ -11,6 +11,8 @@
 
 @interface CTLPasscodeView ()
 
+@property NSMutableString *passcode;
+
 @end
 
 
@@ -20,6 +22,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    self.passcode = NSMutableString.string;
+    
     for (CTLButton *button in self.buttons) {
         [button addTarget:self action:@selector(button:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -28,7 +32,11 @@
 #pragma mark - Actions
 
 - (void)button:(CTLButton *)button {
-    NSLog(@"title - %@", button.stringTag);
+    [self.passcode appendString:button.stringTag];
+    
+    if (self.passcode.length == self.labels.count) {
+        NSLog(@"filled");
+    }
 }
 
 @end
