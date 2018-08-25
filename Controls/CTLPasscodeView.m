@@ -27,15 +27,24 @@
     for (CTLButton *button in self.buttons) {
         [button addTarget:self action:@selector(button:) forControlEvents:UIControlEventTouchUpInside];
     }
+    
+    [self.buttonDelete addTarget:self action:@selector(buttonDelete:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - Actions
 
-- (void)button:(CTLButton *)button {
-    [self.passcode appendString:button.stringTag];
-    
-    if (self.passcode.length == self.labels.count) {
-        NSLog(@"filled");
+- (void)button:(CTLButton *)sender {
+    if (self.passcode.length < self.labels.count) {
+        self.labels[self.passcode.length].highlighted = YES;
+        [self.passcode appendString:sender.stringTag];
+    }
+}
+
+- (void)buttonDelete:(CTLButton *)sender {
+    if (self.passcode.length > 0) {
+        NSRange range = NSMakeRange(self.passcode.length - 1, 1);
+        [self.passcode deleteCharactersInRange:range];
+        self.labels[self.passcode.length].highlighted = NO;
     }
 }
 
