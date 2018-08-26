@@ -37,6 +37,8 @@
     if (self.passcode.length < self.labels.count) {
         self.labels[self.passcode.length].highlighted = YES;
         [self.passcode appendString:sender.stringTag];
+        
+        self.buttonDelete.enabled = YES;
     }
 }
 
@@ -45,6 +47,8 @@
         NSRange range = NSMakeRange(self.passcode.length - 1, 1);
         [self.passcode deleteCharactersInRange:range];
         self.labels[self.passcode.length].highlighted = NO;
+        
+        self.buttonDelete.enabled = (self.passcode.length > 0);
     }
 }
 
