@@ -16,13 +16,16 @@
 
 @interface CTLPasscodeView : CTLControl
 
+@property IBOutlet CTLLabel *labelError;
 @property IBOutlet CTLButton *buttonDelete;
 
 @property IBOutletCollection(CTLLabel) NSArray<CTLLabel *> *labels;
 @property IBOutletCollection(CTLButton) NSArray<CTLButton *> *buttons;
 
 @property (readonly) NSMutableString *passcode;
+@property (readonly) UINotificationFeedbackGenerator *notificationFeedbackGenerator;
 
-- (void)resetWithError:(NSError *)error;
+- (void)reset;
+- (void)resetWithError:(NSError *)error completion:(HLPVoidBlock)completion;
 
 @end

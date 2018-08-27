@@ -12,6 +12,7 @@
 @interface CTLPasscodeView ()
 
 @property NSMutableString *passcode;
+@property UINotificationFeedbackGenerator *notificationFeedbackGenerator;
 
 @end
 
@@ -23,6 +24,7 @@
     [super awakeFromNib];
     
     self.passcode = NSMutableString.string;
+    self.notificationFeedbackGenerator = UINotificationFeedbackGenerator.new;
     
     for (CTLButton *button in self.buttons) {
         [button addTarget:self action:@selector(button:) forControlEvents:UIControlEventTouchUpInside];
@@ -33,9 +35,41 @@
 
 #pragma mark - Interface
 
-- (void)resetWithError:(NSError *)error {
+- (void)reset {
+    [self.passcode setString:@""];
     
+    for (CTLLabel *label in self.labels) {
+        label.text = @"";
+        label.highlighted = NO;
+    }
+    
+    self.buttonDelete.enabled = NO;
 }
+
+- (void)resetWithError:(NSError *)error completion:(HLPVoidBlock)completion {
+//    [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.2 initialSpringVelocity:0.5 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+//        self.labels.firstObject.superview.transform = CGAffineTransformMakeTranslation(20.0, 0.0);
+//    } completion:^(BOOL finished) {
+//        self.labelError.text = error.localizedDescription;
+//        [self reset];
+//        [self invokeHandler:completion];
+//    }];
+}
+
+//- (void)resetWithError:(NSError *)error {
+//    [self.notificationFeedbackGenerator notificationOccurred:UINotificationFeedbackTypeError];
+//    
+//    [HLPClock.shared tickWithInterval:0.5 completion:^{
+//        [self.passcode setString:@""];
+//        
+//        for (CTLLabel *label in self.labels) {
+//            label.text = @"";
+//            label.highlighted = NO;
+//        }
+//        
+//        self.buttonDelete.enabled = NO;
+//    }];
+//}
 
 #pragma mark - Actions
 
@@ -51,6 +85,7 @@
         
         [self sendActionsForControlEvents:UIControlEventEditingChanged];
         if (self.passcode.length == self.labels.count) {
+            [self.notificationFeedbackGenerator prepare];
             [self sendActionsForControlEvents:UIControlEventEditingDidEnd];
         }
     }
