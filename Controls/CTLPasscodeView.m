@@ -31,27 +31,20 @@
     [self.buttonDelete addTarget:self action:@selector(buttonDelete:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-#pragma mark - Accessors
+#pragma mark - Interface
 
-- (void)setEnabled:(BOOL)enabled {
-    [super setEnabled:enabled];
+- (void)resetWithError:(NSError *)error {
     
-    for (CTLLabel *label in self.labels) {
-        label.enabled = enabled;
-    }
-    
-    for (CTLButton *button in self.buttons) {
-        button.enabled = enabled;
-    }
-    
-    self.buttonDelete.enabled = enabled;
 }
 
 #pragma mark - Actions
 
 - (void)button:(CTLButton *)sender {
     if (self.passcode.length < self.labels.count) {
-        self.labels[self.passcode.length].highlighted = YES;
+        CTLLabel *label = self.labels[self.passcode.length];
+        label.text = sender.stringTag;
+        label.highlighted = YES;
+        
         [self.passcode appendString:sender.stringTag];
         
         self.buttonDelete.enabled = YES;
@@ -67,7 +60,10 @@
     if (self.passcode.length > 0) {
         NSRange range = NSMakeRange(self.passcode.length - 1, 1);
         [self.passcode deleteCharactersInRange:range];
-        self.labels[self.passcode.length].highlighted = NO;
+        
+        CTLLabel *label = self.labels[self.passcode.length];
+        label.text = @"";
+        label.highlighted = NO;
         
         self.buttonDelete.enabled = (self.passcode.length > 0);
         

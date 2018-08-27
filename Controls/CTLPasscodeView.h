@@ -23,4 +23,6 @@
 
 @property (readonly) NSMutableString *passcode;
 
+- (void)resetWithError:(NSError *)error;
+
 @end
