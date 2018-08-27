@@ -47,34 +47,30 @@
 }
 
 - (void)resetWithError:(NSError *)error completion:(HLPVoidBlock)completion {
-//    [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.2 initialSpringVelocity:0.5 options:UIViewAnimationOptionAllowUserInteraction animations:^{
-//        self.labels.firstObject.superview.transform = CGAffineTransformMakeTranslation(20.0, 0.0);
-//    } completion:^(BOOL finished) {
-//        self.labelError.text = error.localizedDescription;
-//        [self reset];
-//        [self invokeHandler:completion];
-//    }];
+    [self.notificationFeedbackGenerator notificationOccurred:UINotificationFeedbackTypeError];
+    
+    self.labelError.text = error.localizedDescription;
+    self.labelError.hidden = NO;
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        self.labels.firstObject.superview.transform = CGAffineTransformMakeTranslation(-40.0, 0.0);
+    } completion:^(BOOL finished) {
+        [self reset];
+        
+        [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.2 initialSpringVelocity:0.5 options:0 animations:^{
+            self.labels.firstObject.superview.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+            [self invokeHandler:completion];
+        }];
+    }];
 }
-
-//- (void)resetWithError:(NSError *)error {
-//    [self.notificationFeedbackGenerator notificationOccurred:UINotificationFeedbackTypeError];
-//    
-//    [HLPClock.shared tickWithInterval:0.5 completion:^{
-//        [self.passcode setString:@""];
-//        
-//        for (CTLLabel *label in self.labels) {
-//            label.text = @"";
-//            label.highlighted = NO;
-//        }
-//        
-//        self.buttonDelete.enabled = NO;
-//    }];
-//}
 
 #pragma mark - Actions
 
 - (void)button:(CTLButton *)sender {
     if (self.passcode.length < self.labels.count) {
+        self.labelError.hidden = YES;
+        
         CTLLabel *label = self.labels[self.passcode.length];
         label.text = sender.stringTag;
         label.highlighted = YES;
