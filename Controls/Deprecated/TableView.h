@@ -216,10 +216,8 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 
 @property (weak, nonatomic) IBOutlet Button *selectAllButton;
 
-@property (strong, nonatomic) IBOutlet View *backgroundView;
-@property (strong, nonatomic) IBOutlet View *emptyView;
-@property (strong, nonatomic) IBOutlet View *tableHeaderView;
-@property (strong, nonatomic) IBOutlet View *tableFooterView;
+@property (strong, nonatomic) IBOutlet UIView *backgroundView;
+@property (strong, nonatomic) IBOutlet UIView *emptyView;
 
 @property IBInspectable UITableViewCellSeparatorStyle defaultSeparatorStyle;
 
