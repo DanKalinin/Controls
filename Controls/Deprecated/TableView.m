@@ -152,6 +152,8 @@
 @implementation TableView
 
 @dynamic backgroundView;
+@dynamic tableHeaderView;
+@dynamic tableFooterView;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
