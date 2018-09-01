@@ -31,4 +31,34 @@
     return self;
 }
 
+#pragma mark - Text field
+
+- (BOOL)textFieldShouldBeginEditing:(CTLTextField *)textField {
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(CTLTextField *)textField {
+    
+}
+
+- (BOOL)textField:(CTLTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    return YES;
+}
+
+- (BOOL)textFieldShouldClear:(CTLTextField *)textField {
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(CTLTextField *)textField {
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(CTLTextField *)textField {
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(CTLTextField *)textField {
+    
+}
+
 @end

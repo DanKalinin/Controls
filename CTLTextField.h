@@ -18,7 +18,7 @@
 
 
 
-@interface CTLTextField : UITextField
+@interface CTLTextField : UITextField <CTLTextFieldDelegate>
 
 @property (readonly) HLPArray<CTLTextFieldDelegate> *delegates;
 
