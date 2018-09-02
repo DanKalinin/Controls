@@ -9,9 +9,17 @@
 
 
 
+
+
+
+
+
+
+
 @interface CTLTextField ()
 
 @property HLPArray<CTLTextFieldDelegate> *delegates;
+@property CTLTextFieldManager *manager;
 
 @end
 
@@ -22,14 +30,35 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        self.manager = CTLTextFieldManager.new;
+        
         self.delegates = (id)HLPArray.weakArray;
         self.delegates.operationQueue = NSOperationQueue.mainQueue;
-        [self.delegates addObject:self];
+        [self.delegates addObject:self.manager];
         
         self.delegate = self.delegates;
     }
     return self;
 }
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface CTLTextFieldManager ()
+
+@end
+
+
+
+@implementation CTLTextFieldManager
 
 #pragma mark - Text field
 
@@ -42,7 +71,21 @@
 }
 
 - (BOOL)textField:(CTLTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    return YES;
+    if (string.length > 0) {
+        if (textField.editingChangedPattern.length > 0) {
+            NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+            NSRange range = [text rangeOfString:textField.editingChangedPattern options:NSRegularExpressionSearch];
+            if (range.location == NSNotFound) {
+                return NO;
+            } else {
+                return YES;
+            }
+        } else {
+            return YES;
+        }
+    } else {
+        return YES;
+    }
 }
 
 - (BOOL)textFieldShouldClear:(CTLTextField *)textField {
@@ -54,7 +97,16 @@
 }
 
 - (BOOL)textFieldShouldEndEditing:(CTLTextField *)textField {
-    return YES;
+    if (textField.editingDidEndPattern.length > 0) {
+        NSRange range = [textField.text rangeOfString:textField.editingDidEndPattern options:NSRegularExpressionSearch];
+        if (range.location == NSNotFound) {
+            return NO;
+        } else {
+            return YES;
+        }
+    } else {
+        return YES;
+    }
 }
 
 - (void)textFieldDidEndEditing:(CTLTextField *)textField {
