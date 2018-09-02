@@ -71,15 +71,11 @@
 }
 
 - (BOOL)textField:(CTLTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    if (string.length > 0) {
-        if (textField.editingChangedPattern.length > 0) {
-            NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
-            NSRange range = [text rangeOfString:textField.editingChangedPattern options:NSRegularExpressionSearch];
-            if (range.location == NSNotFound) {
-                return NO;
-            } else {
-                return YES;
-            }
+    if (textField.editingChangedPattern.length > 0) {
+        NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        NSRange range = [text rangeOfString:textField.editingChangedPattern options:NSRegularExpressionSearch];
+        if (range.location == NSNotFound) {
+            return NO;
         } else {
             return YES;
         }
