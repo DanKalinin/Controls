@@ -89,7 +89,12 @@
 }
 
 - (BOOL)textFieldShouldReturn:(CTLTextField *)textField {
-    return YES;
+    if (textField.resignOnReturn) {
+        [textField resignFirstResponder];
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 - (BOOL)textFieldShouldEndEditing:(CTLTextField *)textField {

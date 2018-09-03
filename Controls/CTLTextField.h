@@ -32,6 +32,7 @@
 
 @property IBInspectable NSString *editingChangedPattern;
 @property IBInspectable NSString *editingDidEndPattern;
+@property IBInspectable BOOL resignOnReturn;
 
 @end
 

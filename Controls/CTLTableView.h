@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CTLButton.h"
+#import "CTLTextField.h"
 #import "CTLActivityIndicatorView.h"
 #import "CTLAlert.h"
 
@@ -25,6 +26,8 @@
 
 @property (weak) IBOutlet CTLButton *weakButton1;
 @property (weak) IBOutlet CTLButton *weakButton2;
+
+@property (weak) IBOutlet CTLTextField *weakTextField1;
 
 @property (weak) IBOutlet CTLActivityIndicatorView *weakActivityIndicatorView1;
 
