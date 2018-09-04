@@ -275,6 +275,12 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @property (weak, nonatomic) IBOutlet Button *button2;
 @property (weak, nonatomic) IBOutlet Button *button3;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonItem1;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonItem2;
+
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *sBarButtonItem1;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *sBarButtonItem2;
+
 @property (strong, nonatomic) IBOutlet EdgeSliderControl *sliderControl1;
 
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cells;
