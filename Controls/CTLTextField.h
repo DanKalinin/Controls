@@ -30,9 +30,8 @@
 @property (readonly) HLPArray<CTLTextFieldDelegate> *delegates;
 @property (readonly) CTLTextFieldManager *manager;
 
-@property IBInspectable NSString *editingChangedPattern;
-@property IBInspectable NSString *editingDidEndPattern;
-@property IBInspectable BOOL resignOnReturn;
+@property IBInspectable BOOL clearOnBegin;
+@property IBInspectable NSString *pattern;
 
 @end
 

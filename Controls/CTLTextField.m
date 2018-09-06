@@ -67,13 +67,15 @@
 }
 
 - (void)textFieldDidBeginEditing:(CTLTextField *)textField {
-    
+    if (textField.clearOnBegin) {
+        textField.text = @"";
+    }
 }
 
 - (BOOL)textField:(CTLTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    if (textField.editingChangedPattern.length > 0) {
+    if (textField.pattern.length > 0) {
         NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
-        NSRange range = [text rangeOfString:textField.editingChangedPattern options:NSRegularExpressionSearch];
+        NSRange range = [text rangeOfString:textField.pattern options:NSRegularExpressionSearch];
         if (range.location == NSNotFound) {
             return NO;
         } else {
@@ -89,25 +91,11 @@
 }
 
 - (BOOL)textFieldShouldReturn:(CTLTextField *)textField {
-    if (textField.resignOnReturn) {
-        [textField resignFirstResponder];
-        return NO;
-    } else {
-        return YES;
-    }
+    return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(CTLTextField *)textField {
-    if (textField.editingDidEndPattern.length > 0) {
-        NSRange range = [textField.text rangeOfString:textField.editingDidEndPattern options:NSRegularExpressionSearch];
-        if (range.location == NSNotFound) {
-            return NO;
-        } else {
-            return YES;
-        }
-    } else {
-        return YES;
-    }
+    return YES;
 }
 
 - (void)textFieldDidEndEditing:(CTLTextField *)textField {
