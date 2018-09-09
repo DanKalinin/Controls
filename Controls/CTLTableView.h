@@ -48,6 +48,8 @@
 
 @interface CTLTableView : UITableView
 
+@property IBOutlet UIView *emptyBackgroundView;
+
 @end
 
 

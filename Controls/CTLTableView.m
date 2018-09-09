@@ -54,6 +54,18 @@
 
 @implementation CTLTableView
 
+- (void)reloadData {
+    [super reloadData];
+    
+    if (self.emptyBackgroundView) {
+        if (self.numberOfSections == 0) {
+            self.backgroundView = self.emptyBackgroundView;
+        } else {
+            self.backgroundView = nil;
+        }
+    }
+}
+
 @end
 
 
