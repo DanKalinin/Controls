@@ -55,7 +55,6 @@
 
 @interface CTLKeyboard ()
 
-@property NSNotificationCenter *notificationCenter;
 @property CTLKeyboardInfo *info;
 
 @end
@@ -73,14 +72,6 @@
         shared = self.new;
     });
     return shared;
-}
-
-- (instancetype)init {
-    self = super.init;
-    if (self) {
-        self.notificationCenter = NSNotificationCenter.defaultCenter;
-    }
-    return self;
 }
 
 - (void)start {

@@ -62,7 +62,6 @@
 @interface CTLKeyboard : HLPOperation <CTLKeyboardDelegate>
 
 @property (readonly) HLPArray<CTLKeyboardDelegate> *delegates;
-@property (readonly) NSNotificationCenter *notificationCenter;
 @property (readonly) CTLKeyboardInfo *info;
 
 @end
