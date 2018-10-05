@@ -55,7 +55,7 @@ typedef NS_ENUM(NSInteger, PickerActionTag) {
         }];
     } else if (viewController.view.tag == PickerTagUserNotifications) {
         [self.userNotificationCenter getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings *settings) {
-            [self.userNotificationCenter requestAuthorizationWithOptions:0 completionHandler:^(BOOL granted, NSError *error) {
+            [self.userNotificationCenter requestAuthorizationWithOptions:self.userNotificationAuthorizationOptions completionHandler:^(BOOL granted, NSError *error) {
                 [self.mainQueue addOperationWithBlock:^{
                     if (granted) {
                         [super presentViewController:viewController animated:animated completion:completion];
