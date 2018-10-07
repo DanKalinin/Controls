@@ -82,7 +82,7 @@
     [self.notificationCenter addObserver:self selector:@selector(UIKeyboardWillChangeFrameNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
     [self.notificationCenter addObserver:self selector:@selector(UIKeyboardDidChangeFrameNotification:) name:UIKeyboardDidChangeFrameNotification object:nil];
     
-    [self updateState:HLPOperationStateDidStart];
+    [self updateState:HLPOperationStateDidBegin];
 }
 
 #pragma mark - Notifications
