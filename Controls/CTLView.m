@@ -88,7 +88,8 @@
 - (void)CTLViewControllerPrepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [self CTLViewControllerPrepareForSegue:segue sender:sender];
     
-    self.segue = segue;
+    __autoreleasing UIStoryboardSegue *autoreleasingSegue = segue;
+    self.segue = autoreleasingSegue;
 }
 
 #pragma mark - Accessors
