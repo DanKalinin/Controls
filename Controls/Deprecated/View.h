@@ -258,6 +258,12 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 @property (weak, nonatomic) IBOutlet Button *button2;
 @property (weak, nonatomic) IBOutlet Button *button3;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonItem1;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonItem2;
+
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *sBarButtonItem1;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *sBarButtonItem2;
+
 @property (weak, nonatomic) IBOutlet TextField *textField1;
 @property (weak, nonatomic) IBOutlet TextField *textField2;
 @property (weak, nonatomic) IBOutlet TextField *textField3;
