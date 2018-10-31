@@ -18,6 +18,8 @@
 
 @interface UIEApplication : NSEOperation <UIEApplicationDelegate>
 
+@property (nonatomic) UIWindow *window;
+
 @property (readonly) HLPArray<UIEApplicationDelegate> *delegates;
 @property (readonly) UIApplication *application;
 
