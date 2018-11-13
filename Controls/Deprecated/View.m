@@ -98,17 +98,44 @@ const UIModalPresentationStyle UIModalPresentationPush = -10;
 
 @implementation TextFieldDelegate
 
-- (BOOL)textField:(TextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    NSString *text = textField.text;
-    textField.text = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    
-    if (textField.validateOnEditing && !textField.valid && (textField.text.length > textField.validLength)) {
-        textField.text = text;
-    } else {
-        [textField sendActionsForControlEvents:UIControlEventEditingChanged];
+- (BOOL)textFieldShouldBeginEditing:(TextField *)textField {
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(TextField *)textField {
+    if (textField.clearOnBegin) {
+        textField.text = @"";
     }
+}
+
+- (BOOL)textField:(TextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {    
+    if (textField.pattern.length > 0) {
+        NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        NSRange range = [text rangeOfString:textField.pattern options:NSRegularExpressionSearch];
+        if (range.location == NSNotFound) {
+            return NO;
+        } else {
+            return YES;
+        }
+    } else {
+        return YES;
+    }
+}
+
+- (BOOL)textFieldShouldClear:(TextField *)textField {
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(TextField *)textField {
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(TextField *)textField {
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(TextField *)textField {
     
-    return NO;
 }
 
 @end
@@ -138,7 +165,6 @@ const UIModalPresentationStyle UIModalPresentationPush = -10;
     if (self) {
         self.textFieldDelegate = TextFieldDelegate.new;
         super.delegate = self.textFieldDelegate;
-        self.pattern = @"*";
         self.disabledAlpha = 0.5;
     }
     return self;

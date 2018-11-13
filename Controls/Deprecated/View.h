@@ -81,9 +81,8 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 
 @interface TextField : UITextField // Customized text field
 
-@property IBInspectable BOOL validateOnEditing;
+@property IBInspectable BOOL clearOnBegin;
 @property IBInspectable NSString *pattern;
-@property IBInspectable NSUInteger validLength;
 @property IBInspectable CGFloat disabledAlpha;
 
 @property (readonly) BOOL valid;
