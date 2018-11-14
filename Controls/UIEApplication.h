@@ -8,6 +8,8 @@
 #import <UIKit/UIKit.h>
 #import <Helpers/Helpers.h>
 
+@class UIEApplication;
+
 
 
 @protocol UIEApplicationDelegate <NSEOperationDelegate, UIApplicationDelegate>
