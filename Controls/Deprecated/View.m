@@ -191,9 +191,13 @@ const UIModalPresentationStyle UIModalPresentationPush = -10;
 }
 
 - (BOOL)valid {
-    NSRange range = [self.text rangeOfString:self.pattern options:NSRegularExpressionSearch];
-    BOOL valid = (range.location != NSNotFound);
-    return valid;
+    if (self.pattern.length > 0) {
+        NSRange range = [self.text rangeOfString:self.pattern options:NSRegularExpressionSearch];
+        BOOL valid = (range.location != NSNotFound);
+        return valid;
+    } else {
+        return YES;
+    }
 }
 
 - (void)setEnabled:(BOOL)enabled {
