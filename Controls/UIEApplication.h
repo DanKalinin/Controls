@@ -8,21 +8,8 @@
 #import <UIKit/UIKit.h>
 #import <Helpers/Helpers.h>
 
-@class UIEApplicationPrincipal;
 @class UIEApplication;
-
-
-
-
-
-
-
-
-
-
-@interface UIEApplicationPrincipal : UIApplication
-
-@end
+@class UIEApplicationPrincipal;
 
 
 
@@ -45,5 +32,20 @@
 
 @property (readonly) HLPArray<UIEApplicationDelegate> *delegates;
 @property (readonly) UIApplication *application;
+
+- (int)main:(int)argc argv:(char **)argv;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIEApplicationPrincipal : UIApplication
 
 @end

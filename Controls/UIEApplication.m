@@ -16,33 +16,6 @@
 
 
 
-@interface UIEApplicationPrincipal ()
-
-@end
-
-
-
-@implementation UIEApplicationPrincipal
-
-- (instancetype)init {
-    self = super.init;
-    if (self) {
-        (void)UIEApplication.shared;
-    }
-    return self;
-}
-
-@end
-
-
-
-
-
-
-
-
-
-
 @interface UIEApplication ()
 
 @property UIApplication *application;
@@ -67,8 +40,38 @@
 - (instancetype)init {
     self = super.init;
     if (self) {
-        self.application = UIApplication.sharedApplication;
-        self.application.delegate = self.delegates;
+    }
+    return self;
+}
+
+- (int)main:(int)argc argv:(char **)argv {
+    return UIApplicationMain(argc, argv, NSStringFromClass(UIEApplicationPrincipal.class), nil);
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIEApplicationPrincipal ()
+
+@end
+
+
+
+@implementation UIEApplicationPrincipal
+
+- (instancetype)init {
+    self = super.init;
+    if (self) {
+        UIEApplication.shared.application = self;
+        self.delegate = UIEApplication.shared.delegates;
     }
     return self;
 }
