@@ -9,6 +9,40 @@
 
 
 
+
+
+
+
+
+
+
+@interface UIEApplicationPrincipal ()
+
+@end
+
+
+
+@implementation UIEApplicationPrincipal
+
+- (instancetype)init {
+    self = super.init;
+    if (self) {
+        (void)UIEApplication.shared;
+    }
+    return self;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface UIEApplication ()
 
 @property UIApplication *application;
@@ -34,6 +68,7 @@
     self = super.init;
     if (self) {
         self.application = UIApplication.sharedApplication;
+        self.application.delegate = self.delegates;
     }
     return self;
 }

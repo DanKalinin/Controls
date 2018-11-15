@@ -8,7 +8,28 @@
 #import <UIKit/UIKit.h>
 #import <Helpers/Helpers.h>
 
+@class UIEApplicationPrincipal;
 @class UIEApplication;
+
+
+
+
+
+
+
+
+
+
+@interface UIEApplicationPrincipal : UIApplication
+
+@end
+
+
+
+
+
+
+
 
 
 
