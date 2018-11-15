@@ -71,7 +71,7 @@
     self = super.init;
     if (self) {
         UIEApplication.shared.application = self;
-        self.delegate = UIEApplication.shared.delegates;
+        UIEApplication.shared.application.delegate = UIEApplication.shared.delegates;
     }
     return self;
 }
