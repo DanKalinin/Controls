@@ -225,20 +225,24 @@
         NSIndexPath *indexPath = [self indexPathForItemAtPoint:location];
         if (indexPath) {
             [self beginInteractiveMovementForItemAtIndexPath:indexPath];
+            [self.originalDelegate collectionView:self didBeginInteractiveMovementForItemAtIndexPath:indexPath];
             self.movementBegan = YES;
         }
     } else if (pgr.state == UIGestureRecognizerStateChanged) {
         if (self.movementBegan) {
             CGPoint location = [pgr locationInView:self];
             [self updateInteractiveMovementTargetPosition:location];
+            [self.originalDelegate collectionView:self didUpdateInteractiveMovementTargetPosition:location];
         }
     } else if (pgr.state == UIGestureRecognizerStateEnded) {
         if (self.movementBegan) {
             [self endInteractiveMovement];
+            [self.originalDelegate collectionViewDidEndInteractiveMovement:self];
         }
     } else if (pgr.state == UIGestureRecognizerStateCancelled) {
         if (self.movementBegan) {
             [self cancelInteractiveMovement];
+            [self.originalDelegate collectionViewDidCancelInteractiveMovement:self];
         }
     }
 }

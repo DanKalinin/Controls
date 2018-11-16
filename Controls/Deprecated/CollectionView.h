@@ -45,6 +45,11 @@ typedef NS_ENUM(NSUInteger, CollectionViewItemReorderingPolicy) {
 @optional
 - (void)collectionView:(CollectionView *)collectionView didLongPressItemAtIndexPath:(NSIndexPath *)indexPath;
 
+- (void)collectionView:(CollectionView *)collectionView didBeginInteractiveMovementForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (void)collectionView:(CollectionView *)collectionView didUpdateInteractiveMovementTargetPosition:(CGPoint)targetPosition;
+- (void)collectionViewDidEndInteractiveMovement:(CollectionView *)collectionView;
+- (void)collectionViewDidCancelInteractiveMovement:(CollectionView *)collectionView;
+
 @end
 
 
