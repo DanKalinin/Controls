@@ -7,13 +7,13 @@
 
 #import <UIKit/UIKit.h>
 #import <Helpers/Helpers.h>
-#import "CTLKeyboard.h"
+#import "UIEKeyboard.h"
 
 @class CTLApplication;
 
 
 
-@protocol CTLApplicationDelegate <CTLKeyboardDelegate, UIApplicationDelegate>
+@protocol CTLApplicationDelegate <UIEKeyboardDelegate, UIApplicationDelegate>
 
 @end
 
@@ -25,7 +25,7 @@
 
 @property (readonly) NSOperationQueue *operationQueue;
 @property (readonly) HLPArray<CTLApplicationDelegate> *delegates;
-@property (readonly) CTLKeyboard *keyboard;
+@property (readonly) UIEKeyboard *keyboard;
 
 + (instancetype)shared;
 

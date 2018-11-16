@@ -1,11 +1,11 @@
 //
-//  CTLKeyboard.m
+//  UIEKeyboard.m
 //  Controls
 //
 //  Created by Dan Kalinin on 7/7/18.
 //
 
-#import "CTLKeyboard.h"
+#import "UIEKeyboard.h"
 
 
 
@@ -16,7 +16,7 @@
 
 
 
-@interface CTLKeyboardInfo ()
+@interface UIEKeyboardInfo ()
 
 @property CGRect frameBegin;
 @property CGRect frameEnd;
@@ -28,7 +28,7 @@
 
 
 
-@implementation CTLKeyboardInfo
+@implementation UIEKeyboardInfo
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = super.init;
@@ -53,20 +53,20 @@
 
 
 
-@interface CTLKeyboard ()
+@interface UIEKeyboard ()
 
-@property CTLKeyboardInfo *info;
+@property UIEKeyboardInfo *info;
 
 @end
 
 
 
-@implementation CTLKeyboard
+@implementation UIEKeyboard
 
 @dynamic delegates;
 
 + (instancetype)shared {
-    static CTLKeyboard *shared = nil;
+    static UIEKeyboard *shared = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         shared = self.new;
@@ -88,33 +88,33 @@
 #pragma mark - Notifications
 
 - (void)UIKeyboardWillShowNotification:(NSNotification *)notification {
-    self.info = [CTLKeyboardInfo.alloc initWithDictionary:notification.userInfo];
-    [self.delegates CTLKeyboardWillShow:self];
+    self.info = [UIEKeyboardInfo.alloc initWithDictionary:notification.userInfo];
+    [self.delegates UIEKeyboardWillShow:self];
 }
 
 - (void)UIKeyboardDidShowNotification:(NSNotification *)notification {
-    self.info = [CTLKeyboardInfo.alloc initWithDictionary:notification.userInfo];
-    [self.delegates CTLKeyboardDidShow:self];
+    self.info = [UIEKeyboardInfo.alloc initWithDictionary:notification.userInfo];
+    [self.delegates UIEKeyboardDidShow:self];
 }
 
 - (void)UIKeyboardWillHideNotification:(NSNotification *)notification {
-    self.info = [CTLKeyboardInfo.alloc initWithDictionary:notification.userInfo];
-    [self.delegates CTLKeyboardWillHide:self];
+    self.info = [UIEKeyboardInfo.alloc initWithDictionary:notification.userInfo];
+    [self.delegates UIEKeyboardWillHide:self];
 }
 
 - (void)UIKeyboardDidHideNotification:(NSNotification *)notification {
-    self.info = [CTLKeyboardInfo.alloc initWithDictionary:notification.userInfo];
-    [self.delegates CTLKeyboardDidHide:self];
+    self.info = [UIEKeyboardInfo.alloc initWithDictionary:notification.userInfo];
+    [self.delegates UIEKeyboardDidHide:self];
 }
 
 - (void)UIKeyboardWillChangeFrameNotification:(NSNotification *)notification {
-    self.info = [CTLKeyboardInfo.alloc initWithDictionary:notification.userInfo];
-    [self.delegates CTLKeyboardWillChangeFrame:self];
+    self.info = [UIEKeyboardInfo.alloc initWithDictionary:notification.userInfo];
+    [self.delegates UIEKeyboardWillChangeFrame:self];
 }
 
 - (void)UIKeyboardDidChangeFrameNotification:(NSNotification *)notification {
-    self.info = [CTLKeyboardInfo.alloc initWithDictionary:notification.userInfo];
-    [self.delegates CTLKeyboardDidChangeFrame:self];
+    self.info = [UIEKeyboardInfo.alloc initWithDictionary:notification.userInfo];
+    [self.delegates UIEKeyboardDidChangeFrame:self];
 }
 
 @end

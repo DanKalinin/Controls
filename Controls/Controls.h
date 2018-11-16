@@ -12,11 +12,12 @@ FOUNDATION_EXPORT double ControlsVersionNumber;
 FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 
 #import <Controls/UIEApplication.h>
+#import <Controls/UIEKeyboard.h>
 #import <Controls/UIEControl.h>
 
 #import <Controls/CTLApplication.h>
 #import <Controls/CTLWindow.h>
-#import <Controls/CTLKeyboard.h>
+#import <Controls/UIEKeyboard.h>
 #import <Controls/CTLAction.h>
 #import <Controls/CTLView.h>
 #import <Controls/CTLTableView.h>
