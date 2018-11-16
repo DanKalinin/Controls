@@ -22,6 +22,7 @@
 
 @interface UIEKeyboardInfo : HLPObject
 
+@property (readonly) NSDictionary *dictionary;
 @property (readonly) CGRect frameBegin;
 @property (readonly) CGRect frameEnd;
 @property (readonly) NSTimeInterval animationDuration;
@@ -41,7 +42,7 @@
 
 
 
-@protocol UIEKeyboardDelegate <HLPOperationDelegate>
+@protocol UIEKeyboardDelegate <NSEOperationDelegate>
 
 @optional
 - (void)UIEKeyboardDidUpdateState:(UIEKeyboard *)keyboard;
@@ -60,7 +61,7 @@
 
 
 
-@interface UIEKeyboard : HLPOperation <UIEKeyboardDelegate>
+@interface UIEKeyboard : NSEOperation <UIEKeyboardDelegate>
 
 @property (readonly) HLPArray<UIEKeyboardDelegate> *delegates;
 @property (readonly) UIEKeyboardInfo *info;

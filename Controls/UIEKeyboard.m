@@ -18,6 +18,7 @@
 
 @interface UIEKeyboardInfo ()
 
+@property NSDictionary *dictionary;
 @property CGRect frameBegin;
 @property CGRect frameEnd;
 @property NSTimeInterval animationDuration;
@@ -33,11 +34,13 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = super.init;
     if (self) {
-        self.frameBegin = [dictionary[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-        self.frameEnd = [dictionary[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-        self.animationDuration = [dictionary[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-        self.animationCurve = [dictionary[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-        self.isLocal = [dictionary[UIKeyboardIsLocalUserInfoKey] boolValue];
+        self.dictionary = dictionary;
+        
+        self.frameBegin = [self.dictionary[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+        self.frameEnd = [self.dictionary[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        self.animationDuration = [self.dictionary[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        self.animationCurve = [self.dictionary[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+        self.isLocal = [self.dictionary[UIKeyboardIsLocalUserInfoKey] boolValue];
     }
     return self;
 }
@@ -74,15 +77,17 @@
     return shared;
 }
 
-- (void)start {
-    [self.notificationCenter addObserver:self selector:@selector(UIKeyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
-    [self.notificationCenter addObserver:self selector:@selector(UIKeyboardDidShowNotification:) name:UIKeyboardDidShowNotification object:nil];
-    [self.notificationCenter addObserver:self selector:@selector(UIKeyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
-    [self.notificationCenter addObserver:self selector:@selector(UIKeyboardDidHideNotification:) name:UIKeyboardDidHideNotification object:nil];
-    [self.notificationCenter addObserver:self selector:@selector(UIKeyboardWillChangeFrameNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
-    [self.notificationCenter addObserver:self selector:@selector(UIKeyboardDidChangeFrameNotification:) name:UIKeyboardDidChangeFrameNotification object:nil];
-    
-    [self updateState:HLPOperationStateDidBegin];
+- (instancetype)init {
+    self = super.init;
+    if (self) {
+        [self.center addObserver:self selector:@selector(UIKeyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
+        [self.center addObserver:self selector:@selector(UIKeyboardDidShowNotification:) name:UIKeyboardDidShowNotification object:nil];
+        [self.center addObserver:self selector:@selector(UIKeyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
+        [self.center addObserver:self selector:@selector(UIKeyboardDidHideNotification:) name:UIKeyboardDidHideNotification object:nil];
+        [self.center addObserver:self selector:@selector(UIKeyboardWillChangeFrameNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
+        [self.center addObserver:self selector:@selector(UIKeyboardDidChangeFrameNotification:) name:UIKeyboardDidChangeFrameNotification object:nil];
+    }
+    return self;
 }
 
 #pragma mark - Notifications
