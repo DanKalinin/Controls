@@ -7,9 +7,16 @@
 
 #import <Helpers/Helpers.h>
 
+@class UIEControl;
+
 
 
 @protocol UIEControlDelegate <NSEOperationDelegate>
+
+@optional
+- (void)UIControlEventTouchDown:(UIEControl *)control;
+- (void)UIControlEventTouchDownRepeat:(UIEControl *)control;
+- (void)UIControlEventTouchDragInside:(UIEControl *)control;
 
 @end
 
