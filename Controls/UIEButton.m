@@ -53,4 +53,12 @@
 
 @implementation UIEButtonManager
 
+@dynamic delegates;
+
+#pragma mark - Button
+
+- (void)UIEControlEventTouchUpInside:(UIEControlManager *)manager {
+    [self.delegates UIEButtonEventTouchUpInside:self];
+}
+
 @end

@@ -37,7 +37,7 @@
 
 
 
-@protocol UIEControlManagerDelegate <NSEOperationDelegate>
+@protocol UIEControlDelegate <NSEOperationDelegate>
 
 @optional
 - (void)UIEControlEventTouchDown:(UIEControlManager *)manager;
@@ -60,9 +60,9 @@
 
 
 
-@interface UIEControlManager : NSEOperation <UIEControlManagerDelegate>
+@interface UIEControlManager : NSEOperation <UIEControlDelegate>
 
-@property (readonly) HLPArray<UIEControlManagerDelegate> *delegates;
+@property (readonly) HLPArray<UIEControlDelegate> *delegates;
 @property (weak, readonly) UIControl *control;
 @property (readonly) UIEControlActionInfo *actionInfo;
 

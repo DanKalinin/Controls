@@ -35,6 +35,17 @@
 
 
 
-@interface UIEButtonManager : UIEControlManager
+@protocol UIEButtonDelegate <UIEControlDelegate>
+
+@optional
+- (void)UIEButtonEventTouchUpInside:(UIEButtonManager *)manager;
+
+@end
+
+
+
+@interface UIEButtonManager : UIEControlManager <UIEButtonDelegate>
+
+@property (readonly) HLPArray<UIEButtonDelegate> *delegates;
 
 @end
