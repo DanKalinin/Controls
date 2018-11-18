@@ -47,8 +47,9 @@
 
 @interface UIEControlManager ()
 
-@property (weak) UIControl *control;
 @property UIEControlActionInfo *actionInfo;
+
+@property (weak) UIControl *control;
 
 @end
 

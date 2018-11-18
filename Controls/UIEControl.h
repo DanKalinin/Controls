@@ -63,8 +63,9 @@
 @interface UIEControlManager : NSEOperation <UIEControlDelegate>
 
 @property (readonly) HLPArray<UIEControlDelegate> *delegates;
-@property (weak, readonly) UIControl *control;
 @property (readonly) UIEControlActionInfo *actionInfo;
+
+@property (weak, readonly) UIControl *control;
 
 - (instancetype)initWithControl:(UIControl *)control;
 
