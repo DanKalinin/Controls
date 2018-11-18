@@ -11,7 +11,7 @@
 
 @interface UIEResponderManager ()
 
-@property UIResponder *responder;
+@property (weak) UIResponder *responder;
 
 @end
 

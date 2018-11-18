@@ -20,7 +20,7 @@
 
 @interface UIEResponderManager : NSEOperation <UIEResponderDelegate>
 
-@property (readonly) UIResponder *responder;
+@property (weak, readonly) UIResponder *responder;
 
 - (instancetype)initWithResponder:(UIResponder *)responder;
 
