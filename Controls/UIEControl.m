@@ -66,6 +66,11 @@
         [self.control addTarget:self action:@selector(UIControlEventTouchDown:event:) forControlEvents:UIControlEventTouchDown];
         [self.control addTarget:self action:@selector(UIControlEventTouchDownRepeat:event:) forControlEvents:UIControlEventTouchDownRepeat];
         [self.control addTarget:self action:@selector(UIControlEventTouchDragInside:event:) forControlEvents:UIControlEventTouchDragInside];
+        [self.control addTarget:self action:@selector(UIControlEventTouchDragOutside:event:) forControlEvents:UIControlEventTouchDragOutside];
+        [self.control addTarget:self action:@selector(UIControlEventTouchDragEnter:event:) forControlEvents:UIControlEventTouchDragEnter];
+        [self.control addTarget:self action:@selector(UIControlEventTouchDragExit:event:) forControlEvents:UIControlEventTouchDragExit];
+        [self.control addTarget:self action:@selector(UIControlEventTouchUpInside:event:) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     return self;
 }
@@ -87,10 +92,26 @@
     [self.delegates UIEControlEventTouchDragInside:self];
 }
 
-//- (void)UIControlEventTouchDragOutside:(UIEControl *)control;
-//- (void)UIControlEventTouchDragEnter:(UIEControl *)control;
-//- (void)UIControlEventTouchDragExit:(UIEControl *)control;
-//- (void)UIControlEventTouchUpInside:(UIEControl *)control;
+- (void)UIControlEventTouchDragOutside:(UIEControl *)control event:(UIEvent *)event {
+    self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
+    [self.delegates UIEControlEventTouchDragOutside:self];
+}
+
+- (void)UIControlEventTouchDragEnter:(UIEControl *)control event:(UIEvent *)event {
+    self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
+    [self.delegates UIEControlEventTouchDragEnter:self];
+}
+
+- (void)UIControlEventTouchDragExit:(UIEControl *)control event:(UIEvent *)event {
+    self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
+    [self.delegates UIEControlEventTouchDragExit:self];
+}
+
+- (void)UIControlEventTouchUpInside:(UIEControl *)control event:(UIEvent *)event {
+    self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
+    [self.delegates UIEControlEventTouchUpInside:self];
+}
+
 //- (void)UIControlEventTouchUpOutside:(UIEControl *)control;
 //- (void)UIControlEventTouchCancel:(UIEControl *)control;
 //- (void)UIControlEventValueChanged:(UIEControl *)control;
