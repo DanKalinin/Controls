@@ -65,6 +65,7 @@
         
         [self.control addTarget:self action:@selector(UIControlEventTouchDown:event:) forControlEvents:UIControlEventTouchDown];
         [self.control addTarget:self action:@selector(UIControlEventTouchDownRepeat:event:) forControlEvents:UIControlEventTouchDownRepeat];
+        [self.control addTarget:self action:@selector(UIControlEventTouchDragInside:event:) forControlEvents:UIControlEventTouchDragInside];
     }
     return self;
 }
@@ -81,7 +82,11 @@
     [self.delegates UIEControlEventTouchDownRepeat:self];
 }
 
-//- (void)UIControlEventTouchDragInside:(UIEControl *)control;
+- (void)UIControlEventTouchDragInside:(UIEControl *)control event:(UIEvent *)event {
+    self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
+    [self.delegates UIEControlEventTouchDragInside:self];
+}
+
 //- (void)UIControlEventTouchDragOutside:(UIEControl *)control;
 //- (void)UIControlEventTouchDragEnter:(UIEControl *)control;
 //- (void)UIControlEventTouchDragExit:(UIEControl *)control;
