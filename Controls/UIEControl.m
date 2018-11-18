@@ -70,7 +70,14 @@
         [self.control addTarget:self action:@selector(UIControlEventTouchDragEnter:event:) forControlEvents:UIControlEventTouchDragEnter];
         [self.control addTarget:self action:@selector(UIControlEventTouchDragExit:event:) forControlEvents:UIControlEventTouchDragExit];
         [self.control addTarget:self action:@selector(UIControlEventTouchUpInside:event:) forControlEvents:UIControlEventTouchUpInside];
-        
+        [self.control addTarget:self action:@selector(UIControlEventTouchUpOutside:event:) forControlEvents:UIControlEventTouchUpOutside];
+        [self.control addTarget:self action:@selector(UIControlEventTouchCancel:event:) forControlEvents:UIControlEventTouchCancel];
+        [self.control addTarget:self action:@selector(UIControlEventValueChanged:event:) forControlEvents:UIControlEventValueChanged];
+        [self.control addTarget:self action:@selector(UIControlEventPrimaryActionTriggered:event:) forControlEvents:UIControlEventPrimaryActionTriggered];
+        [self.control addTarget:self action:@selector(UIControlEventEditingDidBegin:event:) forControlEvents:UIControlEventEditingDidBegin];
+        [self.control addTarget:self action:@selector(UIControlEventEditingChanged:event:) forControlEvents:UIControlEventEditingChanged];
+        [self.control addTarget:self action:@selector(UIControlEventEditingDidEnd:event:) forControlEvents:UIControlEventEditingDidEnd];
+        [self.control addTarget:self action:@selector(UIControlEventEditingDidEndOnExit:event:) forControlEvents:UIControlEventEditingDidEndOnExit];
     }
     return self;
 }
@@ -112,13 +119,44 @@
     [self.delegates UIEControlEventTouchUpInside:self];
 }
 
-//- (void)UIControlEventTouchUpOutside:(UIEControl *)control;
-//- (void)UIControlEventTouchCancel:(UIEControl *)control;
-//- (void)UIControlEventValueChanged:(UIEControl *)control;
-//- (void)UIControlEventPrimaryActionTriggered:(UIEControl *)control;
-//- (void)UIControlEventEditingDidBegin:(UIEControl *)control;
-//- (void)UIControlEventEditingChanged:(UIEControl *)control;
-//- (void)UIControlEventEditingDidEnd:(UIEControl *)control;
-//- (void)UIControlEventEditingDidEndOnExit:(UIEControl *)control;
+- (void)UIControlEventTouchUpOutside:(UIEControl *)control event:(UIEvent *)event {
+    self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
+    [self.delegates UIEControlEventTouchUpOutside:self];
+}
+
+- (void)UIControlEventTouchCancel:(UIEControl *)control event:(UIEvent *)event {
+    self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
+    [self.delegates UIEControlEventTouchCancel:self];
+}
+
+- (void)UIControlEventValueChanged:(UIEControl *)control event:(UIEvent *)event {
+    self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
+    [self.delegates UIEControlEventValueChanged:self];
+}
+
+- (void)UIControlEventPrimaryActionTriggered:(UIEControl *)control event:(UIEvent *)event {
+    self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
+    [self.delegates UIEControlEventPrimaryActionTriggered:self];
+}
+
+- (void)UIControlEventEditingDidBegin:(UIEControl *)control event:(UIEvent *)event {
+    self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
+    [self.delegates UIEControlEventEditingDidBegin:self];
+}
+
+- (void)UIControlEventEditingChanged:(UIEControl *)control event:(UIEvent *)event {
+    self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
+    [self.delegates UIEControlEventEditingChanged:self];
+}
+
+- (void)UIControlEventEditingDidEnd:(UIEControl *)control event:(UIEvent *)event {
+    self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
+    [self.delegates UIEControlEventEditingDidEnd:self];
+}
+
+- (void)UIControlEventEditingDidEndOnExit:(UIEControl *)control event:(UIEvent *)event {
+    self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
+    [self.delegates UIEControlEventEditingDidEndOnExit:self];
+}
 
 @end
