@@ -16,6 +16,25 @@
 
 
 
+@interface UIEControl ()
+
+@end
+
+
+
+@implementation UIEControl
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface UIEControlActionInfo ()
 
 @property UIEvent *event;

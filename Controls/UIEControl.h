@@ -7,8 +7,22 @@
 
 #import "UIEResponder.h"
 
+@class UIEControl;
 @class UIEControlActionInfo;
 @class UIEControlManager;
+
+
+
+
+
+
+
+
+
+
+@interface UIEControl : UIControl
+
+@end
 
 
 
