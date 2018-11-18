@@ -29,7 +29,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.manager = [UIEButtonManager.alloc initWithControl:self];
+        self.manager = [UIEButtonManager.alloc initWithResponder:self];
     }
     return self;
 }

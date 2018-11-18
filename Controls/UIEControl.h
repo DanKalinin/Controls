@@ -5,8 +5,7 @@
 //  Created by Dan Kalinin on 10/31/18.
 //
 
-#import <UIKit/UIKit.h>
-#import <Helpers/Helpers.h>
+#import "UIEResponder.h"
 
 @class UIEControlActionInfo;
 @class UIEControlManager;
@@ -37,7 +36,7 @@
 
 
 
-@protocol UIEControlDelegate <NSEOperationDelegate>
+@protocol UIEControlDelegate <UIEResponderDelegate>
 
 @optional
 - (void)UIEControlEventTouchDown:(UIEControlManager *)manager;
@@ -60,13 +59,11 @@
 
 
 
-@interface UIEControlManager : NSEOperation <UIEControlDelegate>
+@interface UIEControlManager : UIEResponderManager <UIEControlDelegate>
 
 @property (readonly) HLPArray<UIEControlDelegate> *delegates;
 @property (readonly) UIEControlActionInfo *actionInfo;
 
-@property (weak, readonly) UIControl *control;
-
-- (instancetype)initWithControl:(UIControl *)control;
+@property (weak, readonly) UIControl *responder;
 
 @end

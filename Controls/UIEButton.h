@@ -5,7 +5,6 @@
 //  Created by Dan Kalinin on 11/18/18.
 //
 
-#import <UIKit/UIKit.h>
 #import "UIEControl.h"
 
 @class UIEButton;
