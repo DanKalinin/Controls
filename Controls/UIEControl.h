@@ -39,21 +39,21 @@
 @protocol UIEControlDelegate <NSEOperationDelegate>
 
 @optional
-- (void)UIControlEventTouchDown:(UIEControl *)control;
-- (void)UIControlEventTouchDownRepeat:(UIEControl *)control;
-- (void)UIControlEventTouchDragInside:(UIEControl *)control;
-- (void)UIControlEventTouchDragOutside:(UIEControl *)control;
-- (void)UIControlEventTouchDragEnter:(UIEControl *)control;
-- (void)UIControlEventTouchDragExit:(UIEControl *)control;
-- (void)UIControlEventTouchUpInside:(UIEControl *)control;
-- (void)UIControlEventTouchUpOutside:(UIEControl *)control;
-- (void)UIControlEventTouchCancel:(UIEControl *)control;
-- (void)UIControlEventValueChanged:(UIEControl *)control;
-- (void)UIControlEventPrimaryActionTriggered:(UIEControl *)control;
-- (void)UIControlEventEditingDidBegin:(UIEControl *)control;
-- (void)UIControlEventEditingChanged:(UIEControl *)control;
-- (void)UIControlEventEditingDidEnd:(UIEControl *)control;
-- (void)UIControlEventEditingDidEndOnExit:(UIEControl *)control;
+- (void)UIEControlEventTouchDown:(UIEControl *)control;
+- (void)UIEControlEventTouchDownRepeat:(UIEControl *)control;
+- (void)UIEControlEventTouchDragInside:(UIEControl *)control;
+- (void)UIEControlEventTouchDragOutside:(UIEControl *)control;
+- (void)UIEControlEventTouchDragEnter:(UIEControl *)control;
+- (void)UIEControlEventTouchDragExit:(UIEControl *)control;
+- (void)UIEControlEventTouchUpInside:(UIEControl *)control;
+- (void)UIEControlEventTouchUpOutside:(UIEControl *)control;
+- (void)UIEControlEventTouchCancel:(UIEControl *)control;
+- (void)UIEControlEventValueChanged:(UIEControl *)control;
+- (void)UIEControlEventPrimaryActionTriggered:(UIEControl *)control;
+- (void)UIEControlEventEditingDidBegin:(UIEControl *)control;
+- (void)UIEControlEventEditingChanged:(UIEControl *)control;
+- (void)UIEControlEventEditingDidEnd:(UIEControl *)control;
+- (void)UIEControlEventEditingDidEndOnExit:(UIEControl *)control;
 
 @end
 

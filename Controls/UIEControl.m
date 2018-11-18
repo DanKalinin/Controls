@@ -73,12 +73,12 @@
 
 - (void)UIControlEventTouchDown:(UIControl *)control event:(UIEvent *)event {
     self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
-    [self.delegates UIControlEventTouchDown:self];
+    [self.delegates UIEControlEventTouchDown:self];
 }
 
 - (void)UIControlEventTouchDownRepeat:(UIEControl *)control event:(UIEvent *)event {
     self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
-    [self.delegates UIControlEventTouchDownRepeat:self];
+    [self.delegates UIEControlEventTouchDownRepeat:self];
 }
 
 //- (void)UIControlEventTouchDragInside:(UIEControl *)control;
