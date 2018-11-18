@@ -48,8 +48,7 @@
 @interface UIEControl ()
 
 @property UIControl *control;
-@property UIEControlActionInfo *touchDownInfo;
-@property UIEControlActionInfo *touchDownRepeatInfo;
+@property UIEControlActionInfo *actionInfo;
 
 @end
 
@@ -73,12 +72,12 @@
 #pragma mark - Actions
 
 - (void)UIControlEventTouchDown:(UIControl *)control event:(UIEvent *)event {
-    self.touchDownInfo = [UIEControlActionInfo.alloc initWithEvent:event];
+    self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
     [self.delegates UIControlEventTouchDown:self];
 }
 
 - (void)UIControlEventTouchDownRepeat:(UIEControl *)control event:(UIEvent *)event {
-    self.touchDownRepeatInfo = [UIEControlActionInfo.alloc initWithEvent:event];
+    self.actionInfo = [UIEControlActionInfo.alloc initWithEvent:event];
     [self.delegates UIControlEventTouchDownRepeat:self];
 }
 

@@ -63,8 +63,7 @@
 
 @property (readonly) HLPArray<UIEControlDelegate> *delegates;
 @property (readonly) UIControl *control;
-@property (readonly) UIEControlActionInfo *touchDownInfo;
-@property (readonly) UIEControlActionInfo *touchDownRepeatInfo;
+@property (readonly) UIEControlActionInfo *actionInfo;
 
 - (instancetype)initWithControl:(UIControl *)control;
 
