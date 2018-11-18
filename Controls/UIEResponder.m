@@ -9,6 +9,32 @@
 
 
 
+
+
+
+
+
+
+
+@interface UIEResponder ()
+
+@end
+
+
+
+@implementation UIEResponder
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface UIEResponderManager ()
 
 @property (weak) UIResponder *responder;

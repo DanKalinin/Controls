@@ -8,7 +8,28 @@
 #import <UIKit/UIKit.h>
 #import <Helpers/Helpers.h>
 
+@class UIEResponder;
 @class UIEResponderManager;
+
+
+
+
+
+
+
+
+
+
+@interface UIEResponder : UIResponder
+
+@end
+
+
+
+
+
+
+
 
 
 
