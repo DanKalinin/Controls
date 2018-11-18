@@ -8,7 +8,7 @@
 #import <Helpers/Helpers.h>
 
 @class UIEControlActionInfo;
-@class UIEControl;
+@class UIEControlManager;
 
 
 
@@ -36,32 +36,32 @@
 
 
 
-@protocol UIEControlDelegate <NSEOperationDelegate>
+@protocol UIEControlManagerDelegate <NSEOperationDelegate>
 
 @optional
-- (void)UIEControlEventTouchDown:(UIEControl *)control;
-- (void)UIEControlEventTouchDownRepeat:(UIEControl *)control;
-- (void)UIEControlEventTouchDragInside:(UIEControl *)control;
-- (void)UIEControlEventTouchDragOutside:(UIEControl *)control;
-- (void)UIEControlEventTouchDragEnter:(UIEControl *)control;
-- (void)UIEControlEventTouchDragExit:(UIEControl *)control;
-- (void)UIEControlEventTouchUpInside:(UIEControl *)control;
-- (void)UIEControlEventTouchUpOutside:(UIEControl *)control;
-- (void)UIEControlEventTouchCancel:(UIEControl *)control;
-- (void)UIEControlEventValueChanged:(UIEControl *)control;
-- (void)UIEControlEventPrimaryActionTriggered:(UIEControl *)control;
-- (void)UIEControlEventEditingDidBegin:(UIEControl *)control;
-- (void)UIEControlEventEditingChanged:(UIEControl *)control;
-- (void)UIEControlEventEditingDidEnd:(UIEControl *)control;
-- (void)UIEControlEventEditingDidEndOnExit:(UIEControl *)control;
+- (void)UIEControlEventTouchDown:(UIEControlManager *)manager;
+- (void)UIEControlEventTouchDownRepeat:(UIEControlManager *)manager;
+- (void)UIEControlEventTouchDragInside:(UIEControlManager *)manager;
+- (void)UIEControlEventTouchDragOutside:(UIEControlManager *)manager;
+- (void)UIEControlEventTouchDragEnter:(UIEControlManager *)manager;
+- (void)UIEControlEventTouchDragExit:(UIEControlManager *)manager;
+- (void)UIEControlEventTouchUpInside:(UIEControlManager *)manager;
+- (void)UIEControlEventTouchUpOutside:(UIEControlManager *)manager;
+- (void)UIEControlEventTouchCancel:(UIEControlManager *)manager;
+- (void)UIEControlEventValueChanged:(UIEControlManager *)manager;
+- (void)UIEControlEventPrimaryActionTriggered:(UIEControlManager *)manager;
+- (void)UIEControlEventEditingDidBegin:(UIEControlManager *)manager;
+- (void)UIEControlEventEditingChanged:(UIEControlManager *)manager;
+- (void)UIEControlEventEditingDidEnd:(UIEControlManager *)manager;
+- (void)UIEControlEventEditingDidEndOnExit:(UIEControlManager *)manager;
 
 @end
 
 
 
-@interface UIEControl : NSEOperation <UIEControlDelegate>
+@interface UIEControlManager : NSEOperation <UIEControlManagerDelegate>
 
-@property (readonly) HLPArray<UIEControlDelegate> *delegates;
+@property (readonly) HLPArray<UIEControlManagerDelegate> *delegates;
 @property (readonly) UIControl *control;
 @property (readonly) UIEControlActionInfo *actionInfo;
 
