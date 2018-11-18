@@ -6,11 +6,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Helpers/Helpers.h>
 
-NS_ASSUME_NONNULL_BEGIN
+@class UIEResponderManager;
 
-@interface UIEResponder : UIResponder
+
+
+@protocol UIEResponderDelegate <NSEOperationDelegate>
 
 @end
 
-NS_ASSUME_NONNULL_END
+
+
+@interface UIEResponderManager : NSEOperation <UIEResponderDelegate>
+
+@property (readonly) UIResponder *responder;
+
+- (instancetype)initWithResponder:(UIResponder *)responder;
+
+@end
