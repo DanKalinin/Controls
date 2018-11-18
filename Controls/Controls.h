@@ -14,6 +14,7 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/UIEApplication.h>
 #import <Controls/UIEKeyboard.h>
 #import <Controls/UIEControl.h>
+#import <Controls/UIEButton.h>
 
 #import <Controls/CTLApplication.h>
 #import <Controls/CTLWindow.h>
