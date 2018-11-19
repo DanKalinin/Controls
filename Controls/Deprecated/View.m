@@ -183,12 +183,12 @@ const UIModalPresentationStyle UIModalPresentationPush = -10;
     }
 }
 
-- (void)setRightView:(UIButton *)btnEye {
-    [super setRightView:btnEye];
-    if (self.secureTextEntry) {
-        [btnEye addTarget:self action:@selector(onEye:) forControlEvents:UIControlEventTouchUpInside];
-    }
-}
+//- (void)setRightView:(UIButton *)btnEye {
+//    [super setRightView:btnEye];
+//    if (self.secureTextEntry) {
+//        [btnEye addTarget:self action:@selector(onEye:) forControlEvents:UIControlEventTouchUpInside];
+//    }
+//}
 
 - (BOOL)valid {
     if (self.pattern.length > 0) {
