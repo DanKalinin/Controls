@@ -54,3 +54,32 @@
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+@implementation UIResponder (UIE)
+
+#pragma mark - Accessors
+
+- (Class)managerClass {
+    return UIEResponderManager.class;
+}
+
+- (UIEResponderManager *)manager {
+    UIEResponderManager *manager = self.strongDictionary[NSStringFromSelector(@selector(manager))];
+    if (manager) {
+    } else {
+        manager = [self.managerClass.alloc initWithResponder:self];
+        self.strongDictionary[NSStringFromSelector(@selector(manager))] = manager;
+    }
+    return manager;
+}
+
+@end

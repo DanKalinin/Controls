@@ -46,3 +46,19 @@
 - (instancetype)initWithResponder:(UIResponder *)responder;
 
 @end
+
+
+
+
+
+
+
+
+
+
+@interface UIResponder (UIE)
+
+@property (readonly) Class managerClass;
+@property (readonly) UIEResponderManager *manager;
+
+@end
