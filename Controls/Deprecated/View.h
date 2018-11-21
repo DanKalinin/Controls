@@ -9,7 +9,7 @@
 #import <Helpers/Helpers.h>
 
 @class TextFields, TimerControl, CircleView;
-@class View, ImageView, TextField, Button, KeyboardContainerView, ShapeLayerView, GradientLayerView, GradientLayerView2, EmitterLayerView;
+@class View, ImageView, TextField, TextView, Button, KeyboardContainerView, ShapeLayerView, GradientLayerView, GradientLayerView2, EmitterLayerView;
 
 extern const UIModalPresentationStyle UIModalPresentationPush;
 
@@ -67,6 +67,19 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 
 @property IBInspectable UIColor *defaultBackgroundColor;
 @property IBInspectable UIColor *highlightedBackgroundColor;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface TextView : UITextView
 
 @end
 
@@ -265,6 +278,8 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sBarButtonItem1;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sBarButtonItem2;
+
+@property (weak, nonatomic) IBOutlet TextView *textView1;
 
 @property (weak, nonatomic) IBOutlet TextField *textField1;
 @property (weak, nonatomic) IBOutlet TextField *textField2;
