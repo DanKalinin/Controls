@@ -5,7 +5,7 @@
 //  Created by Dan Kalinin on 10/31/18.
 //
 
-#import "UIEResponder.h"
+#import "UIEResponderManager.h"
 
 @class UIEControl;
 @class UIEControlActionInfo;
@@ -50,7 +50,7 @@
 
 
 
-@protocol UIEControlDelegate <UIEResponderDelegate>
+@protocol UIEControlDelegate <UIEResponderManagerDelegate>
 
 @optional
 - (void)UIEControlEventTouchDown:(UIEControlManager *)manager;
