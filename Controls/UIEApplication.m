@@ -18,7 +18,7 @@
 
 @interface UIEApplication ()
 
-@property UIApplication *application;
+@property UIEApplicationOperation *operation;
 
 @end
 
@@ -26,26 +26,16 @@
 
 @implementation UIEApplication
 
-@dynamic delegates;
-
-+ (instancetype)shared {
-    static UIEApplication *shared = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        shared = self.new;
-    });
-    return shared;
-}
-
 - (instancetype)init {
     self = super.init;
     if (self) {
+        self.operation = [self.operationClass.alloc initWithApplication:self];
     }
     return self;
 }
 
-- (int)main:(int)argc argv:(char **)argv {
-    return UIApplicationMain(argc, argv, NSStringFromClass(UIEApplicationPrincipal.class), nil);
+- (Class)operationClass {
+    return UIEApplicationOperation.class;
 }
 
 @end
@@ -59,19 +49,23 @@
 
 
 
-@interface UIEApplicationPrincipal ()
+@interface UIEApplicationOperation ()
+
+@property (weak) UIEApplication *application;
 
 @end
 
 
 
-@implementation UIEApplicationPrincipal
+@implementation UIEApplicationOperation
 
-- (instancetype)init {
+@dynamic delegates;
+
+- (instancetype)initWithApplication:(UIEApplication *)application {
     self = super.init;
     if (self) {
-        UIEApplication.shared.application = self;
-        UIEApplication.shared.application.delegate = UIEApplication.shared.delegates;
+        self.application = application;
+        self.application.delegate = self.delegates;
     }
     return self;
 }

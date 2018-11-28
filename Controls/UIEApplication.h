@@ -9,7 +9,7 @@
 #import <Helpers/Helpers.h>
 
 @class UIEApplication;
-@class UIEApplicationPrincipal;
+@class UIEApplicationOperation;
 
 
 
@@ -20,32 +20,38 @@
 
 
 
-@protocol UIEApplicationDelegate <NSEOperationDelegate, UIApplicationDelegate>
+@interface UIEApplication : UIApplication
+
+@property (readonly) Class operationClass;
+@property (readonly) UIEApplicationOperation *operation;
+
++ (instancetype)sharedApplication;
 
 @end
 
 
 
-@interface UIEApplication : NSEOperation <UIEApplicationDelegate>
+
+
+
+
+
+
+
+@protocol UIEApplicationOperationDelegate <NSEOperationDelegate, UIApplicationDelegate>
+
+@end
+
+
+
+@interface UIEApplicationOperation : NSEOperation <UIEApplicationOperationDelegate>
 
 @property (nonatomic) UIWindow *window;
 
-@property (readonly) HLPArray<UIEApplicationDelegate> *delegates;
-@property (readonly) UIApplication *application;
+@property (readonly) HLPArray<UIEApplicationOperationDelegate> *delegates;
 
-- (int)main:(int)argc argv:(char **)argv;
+@property (weak, readonly) UIEApplication *application;
 
-@end
-
-
-
-
-
-
-
-
-
-
-@interface UIEApplicationPrincipal : UIApplication
+- (instancetype)initWithApplication:(UIEApplication *)application;
 
 @end
