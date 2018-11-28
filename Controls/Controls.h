@@ -13,10 +13,10 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 
 #import <Controls/UIEApplication.h>
 #import <Controls/UIEKeyboard.h>
+#import <Controls/UIETextField.h>
 
 #import <Controls/CTLApplication.h>
 #import <Controls/CTLWindow.h>
-#import <Controls/UIEKeyboard.h>
 #import <Controls/CTLAction.h>
 #import <Controls/CTLView.h>
 #import <Controls/CTLTableView.h>
@@ -27,7 +27,6 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/CTLControl.h>
 #import <Controls/CTLPasscodeView.h>
 #import <Controls/CTLLabel.h>
-#import <Controls/CTLTextField.h>
 
 // Deprecated
 

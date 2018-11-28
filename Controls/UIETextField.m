@@ -70,4 +70,46 @@
     return self;
 }
 
+#pragma mark - Text field
+
+- (BOOL)textFieldShouldBeginEditing:(UIETextField *)textField {
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UIETextField *)textField {
+    if (self.textField.clearOnBegin) {
+        self.textField.text = @"";
+    }
+}
+
+- (BOOL)textField:(UIETextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (self.textField.pattern.length > 0) {
+        NSString *text = [self.textField.text stringByReplacingCharactersInRange:range withString:string];
+        NSRange range = [text rangeOfString:self.textField.pattern options:NSRegularExpressionSearch];
+        if (range.location == NSNotFound) {
+            return NO;
+        } else {
+            return YES;
+        }
+    } else {
+        return YES;
+    }
+}
+
+- (BOOL)textFieldShouldClear:(UIETextField *)textField {
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UIETextField *)textField {
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UIETextField *)textField {
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UIETextField *)textField {
+    
+}
+
 @end
