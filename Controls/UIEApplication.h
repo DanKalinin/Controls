@@ -25,8 +25,6 @@
 @property (readonly) Class operationClass;
 @property (readonly) UIEApplicationOperation *operation;
 
-+ (instancetype)sharedApplication;
-
 @end
 
 
