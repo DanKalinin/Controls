@@ -80,7 +80,7 @@
 
 @interface UIETableViewOperationCellForRowInfo : HLPObject
 
-@property UITableViewCell *cell;
+@property UIETableViewCell *cell;
 
 @property (readonly) NSIndexPath *indexPath;
 
