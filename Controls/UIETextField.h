@@ -9,6 +9,7 @@
 #import <Helpers/Helpers.h>
 
 @class UIETextField;
+@class UIETextFieldOperationShouldReturnInfo;
 @class UIETextFieldOperation;
 
 
@@ -39,7 +40,25 @@
 
 
 
+@interface UIETextFieldOperationShouldReturnInfo : HLPObject
+
+@property BOOL shouldReturn;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @protocol UIETextFieldOperationDelegate <NSEOperationDelegate, UITextFieldDelegate>
+
+@optional
+- (void)UIETextFieldOperationShouldReturn:(UIETextFieldOperation *)operation;
 
 @end
 
@@ -48,6 +67,7 @@
 @interface UIETextFieldOperation : NSEOperation <UIETextFieldOperationDelegate>
 
 @property (readonly) HLPArray<UIETextFieldOperationDelegate> *delegates;
+@property (readonly) UIETextFieldOperationShouldReturnInfo *shouldReturnInfo;
 
 @property (weak, readonly) UIETextField *textField;
 

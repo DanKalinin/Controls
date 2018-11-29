@@ -49,7 +49,36 @@
 
 
 
+@interface UIETextFieldOperationShouldReturnInfo ()
+
+@end
+
+
+
+@implementation UIETextFieldOperationShouldReturnInfo
+
+- (instancetype)init {
+    self = super.init;
+    if (self) {
+        self.shouldReturn = YES;
+    }
+    return self;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface UIETextFieldOperation ()
+
+@property UIETextFieldOperationShouldReturnInfo *shouldReturnInfo;
 
 @property (weak) UIETextField *textField;
 
@@ -101,7 +130,9 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UIETextField *)textField {
-    return YES;
+    self.shouldReturnInfo = UIETextFieldOperationShouldReturnInfo.new;
+    [self.delegates UIETextFieldOperationShouldReturn:self];
+    return self.shouldReturnInfo.shouldReturn;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UIETextField *)textField {
