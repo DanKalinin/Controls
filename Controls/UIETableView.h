@@ -36,7 +36,27 @@
 
 
 
+@interface UIETableViewOperationDidSelectRowInfo : HLPObject
+
+@property (readonly) NSIndexPath *indexPath;
+
+- (instancetype)initWithIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @protocol UIETableViewOperationDelegate <NSEOperationDelegate, UITableViewDelegate, UITableViewDataSource>
+
+@optional
+- (void)UIETableViewOperationDidSelectRow:(UIETableViewOperation *)operation;
 
 @end
 
@@ -45,6 +65,7 @@
 @interface UIETableViewOperation : NSEOperation <UIETableViewOperationDelegate>
 
 @property (readonly) HLPArray<UIETableViewOperationDelegate> *delegates;
+@property (readonly) UIETableViewOperationDidSelectRowInfo *didSelectRowInfo;
 
 @property (weak, readonly) UIETableView *tableView;
 

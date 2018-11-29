@@ -49,7 +49,38 @@
 
 
 
+@interface UIETableViewOperationDidSelectRowInfo ()
+
+@property NSIndexPath *indexPath;
+
+@end
+
+
+
+@implementation UIETableViewOperationDidSelectRowInfo
+
+- (instancetype)initWithIndexPath:(NSIndexPath *)indexPath {
+    self = super.init;
+    if (self) {
+        self.indexPath = indexPath;
+    }
+    return self;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface UIETableViewOperation ()
+
+@property UIETableViewOperationDidSelectRowInfo *didSelectRowInfo;
 
 @property (weak) UIETableView *tableView;
 
@@ -69,6 +100,13 @@
         self.tableView.dataSource = self.delegates;
     }
     return self;
+}
+
+#pragma mark - Table view
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.didSelectRowInfo = [UIETableViewOperationDidSelectRowInfo.alloc initWithIndexPath:indexPath];
+    [self.delegates UIETableViewOperationDidSelectRow:self];
 }
 
 @end
