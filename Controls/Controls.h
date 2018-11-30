@@ -25,7 +25,6 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/CTLCollectionView.h>
 #import <Controls/CTLAlert.h>
 #import <Controls/CTLButton.h>
-#import <Controls/CTLActivityIndicatorView.h>
 #import <Controls/CTLControl.h>
 #import <Controls/CTLPasscodeView.h>
 #import <Controls/CTLLabel.h>

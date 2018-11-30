@@ -8,7 +8,6 @@
 #import <UIKit/UIKit.h>
 #import "CTLButton.h"
 #import "UIETextField.h"
-#import "CTLActivityIndicatorView.h"
 #import "CTLAlert.h"
 
 @class CTLTableViewCell, CTLTableView, CTLTableViewController, CTLTableViewRowAction;
@@ -29,7 +28,7 @@
 
 @property (weak) IBOutlet UIETextField *weakTextField1;
 
-@property (weak) IBOutlet CTLActivityIndicatorView *weakActivityIndicatorView1;
+@property (weak) IBOutlet UIActivityIndicatorView *weakActivityIndicatorView1;
 
 @property (readonly) BOOL enabled;
 
