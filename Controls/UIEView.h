@@ -7,10 +7,10 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
 
-@interface UIEView : UIView
+
+@interface UIView (UIE)
+
+@property IBInspectable UIColor *layerBorderColor;
 
 @end
-
-NS_ASSUME_NONNULL_END

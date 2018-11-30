@@ -7,14 +7,16 @@
 
 #import "UIEView.h"
 
-@implementation UIEView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+
+@implementation UIView (UIE)
+
+- (UIColor *)layerBorderColor {
+    return [UIColor colorWithCGColor:self.layer.borderColor];
 }
-*/
+
+- (void)setLayerBorderColor:(UIColor *)layerBorderColor {
+    self.layer.borderColor = layerBorderColor.CGColor;
+}
 
 @end
