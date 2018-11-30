@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CTLButton.h"
+#import "UIEButton.h"
 #import "UIETextField.h"
 #import "CTLAlert.h"
 
@@ -23,8 +23,8 @@
 
 @interface CTLTableViewCell : UITableViewCell
 
-@property (weak) IBOutlet CTLButton *weakButton1;
-@property (weak) IBOutlet CTLButton *weakButton2;
+@property (weak) IBOutlet UIEButton *weakButton1;
+@property (weak) IBOutlet UIEButton *weakButton2;
 
 @property (weak) IBOutlet UIETextField *weakTextField1;
 

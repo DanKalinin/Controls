@@ -13,6 +13,7 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 
 #import <Controls/UIEApplication.h>
 #import <Controls/UIEKeyboard.h>
+#import <Controls/UIEView.h>
 #import <Controls/UIEButton.h>
 #import <Controls/UIETextField.h>
 #import <Controls/UIETableView.h>
@@ -24,7 +25,6 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/CTLTableView.h>
 #import <Controls/CTLCollectionView.h>
 #import <Controls/CTLAlert.h>
-#import <Controls/CTLButton.h>
 #import <Controls/CTLControl.h>
 #import <Controls/CTLPasscodeView.h>
 #import <Controls/CTLLabel.h>

@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "CTLControl.h"
 #import "CTLLabel.h"
-#import "CTLButton.h"
+#import "UIEButton.h"
 
 @class CTLPasscodeView;
 
@@ -17,10 +17,10 @@
 @interface CTLPasscodeView : CTLControl
 
 @property IBOutlet CTLLabel *labelError;
-@property IBOutlet CTLButton *buttonDelete;
+@property IBOutlet UIEButton *buttonDelete;
 
 @property IBOutletCollection(CTLLabel) NSArray<CTLLabel *> *labels;
-@property IBOutletCollection(CTLButton) NSArray<CTLButton *> *buttons;
+@property IBOutletCollection(UIEButton) NSArray<UIEButton *> *buttons;
 
 @property (readonly) NSMutableString *passcode;
 @property (readonly) UINotificationFeedbackGenerator *notificationFeedbackGenerator;
