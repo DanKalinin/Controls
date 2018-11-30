@@ -9,6 +9,13 @@
 
 
 
+
+
+
+
+
+
+
 @implementation UIView (UIE)
 
 - (UIColor *)layerBorderColor {
@@ -18,5 +25,18 @@
 - (void)setLayerBorderColor:(UIColor *)layerBorderColor {
     self.layer.borderColor = layerBorderColor.CGColor;
 }
+
+@end
+
+
+
+
+
+
+
+
+
+
+@implementation UIViewController (UIE)
 
 @end

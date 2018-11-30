@@ -6,11 +6,32 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Helpers/Helpers.h>
+
+
+
+
+
+
+
 
 
 
 @interface UIView (UIE)
 
 @property IBInspectable UIColor *layerBorderColor;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIViewController (UIE)
 
 @end
