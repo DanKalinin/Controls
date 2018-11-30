@@ -16,6 +16,35 @@
 
 
 
+@interface UIEViewControllerPrepareForSegueInfo ()
+
+@property UIStoryboardSegue *segue;
+
+@end
+
+
+
+@implementation UIEViewControllerPrepareForSegueInfo
+
+- (instancetype)initWithSegue:(UIStoryboardSegue *)segue {
+    self = super.init;
+    if (self) {
+        self.segue = segue;
+    }
+    return self;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
 @implementation UIView (UIE)
 
 - (UIColor *)layerBorderColor {
@@ -38,5 +67,21 @@
 
 
 @implementation UIViewController (UIE)
+
+- (void)UIEViewControllerPrepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [self UIEViewControllerPrepareForSegue:segue sender:sender];
+    
+    self.prepareForSegueInfo = [UIEViewControllerPrepareForSegueInfo.alloc initWithSegue:segue];
+}
+
+#pragma mark - Accessors
+
+- (UIEViewControllerPrepareForSegueInfo *)prepareForSegueInfo {
+    return self.strongDictionary[NSStringFromSelector(@selector(prepareForSegueInfo))];
+}
+
+- (void)setPrepareForSegueInfo:(UIEViewControllerPrepareForSegueInfo *)prepareForSegueInfo {
+    self.strongDictionary[NSStringFromSelector(@selector(prepareForSegueInfo))] = prepareForSegueInfo;
+}
 
 @end

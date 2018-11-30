@@ -8,6 +8,25 @@
 #import <UIKit/UIKit.h>
 #import <Helpers/Helpers.h>
 
+@class UIEViewControllerPrepareForSegueInfo;
+
+
+
+
+
+
+
+
+
+
+@interface UIEViewControllerPrepareForSegueInfo : HLPObject
+
+@property (readonly) UIStoryboardSegue *segue;
+
+- (instancetype)initWithSegue:(UIStoryboardSegue *)segue;
+
+@end
+
 
 
 
@@ -33,5 +52,7 @@
 
 
 @interface UIViewController (UIE)
+
+@property UIEViewControllerPrepareForSegueInfo *prepareForSegueInfo;
 
 @end
