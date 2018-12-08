@@ -9,7 +9,7 @@
 #import <Helpers/Helpers.h>
 
 @class UIETextField;
-@class UIETextFieldOperationShouldChangeCharactersInfo;
+@class UIETextFieldOperationShouldChangeInfo;
 @class UIETextFieldOperationShouldReturnInfo;
 @class UIETextFieldOperation;
 
@@ -41,7 +41,7 @@
 
 
 
-@interface UIETextFieldOperationShouldChangeCharactersInfo : HLPObject
+@interface UIETextFieldOperationShouldChangeInfo : HLPObject
 
 @property BOOL shouldChange;
 
@@ -79,7 +79,7 @@
 @protocol UIETextFieldOperationDelegate <NSEOperationDelegate, UITextFieldDelegate>
 
 @optional
-- (void)UIETextFieldOperationShouldChangeCharacters:(UIETextFieldOperation *)operation;
+- (void)UIETextFieldOperationShouldChange:(UIETextFieldOperation *)operation;
 - (void)UIETextFieldOperationShouldReturn:(UIETextFieldOperation *)operation;
 
 @end
@@ -89,7 +89,7 @@
 @interface UIETextFieldOperation : NSEOperation <UIETextFieldOperationDelegate>
 
 @property (readonly) HLPArray<UIETextFieldOperationDelegate> *delegates;
-@property (readonly) UIETextFieldOperationShouldChangeCharactersInfo *shouldChangeCharactersInfo;
+@property (readonly) UIETextFieldOperationShouldChangeInfo *shouldChangeInfo;
 @property (readonly) UIETextFieldOperationShouldReturnInfo *shouldReturnInfo;
 
 @property (weak, readonly) UIETextField *textField;

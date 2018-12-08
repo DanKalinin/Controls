@@ -49,7 +49,7 @@
 
 
 
-@interface UIETextFieldOperationShouldChangeCharactersInfo ()
+@interface UIETextFieldOperationShouldChangeInfo ()
 
 @property NSRange range;
 @property NSString *string;
@@ -58,7 +58,7 @@
 
 
 
-@implementation UIETextFieldOperationShouldChangeCharactersInfo
+@implementation UIETextFieldOperationShouldChangeInfo
 
 - (instancetype)initWithRange:(NSRange)range string:(NSString *)string {
     self = super.init;
@@ -111,8 +111,8 @@
 
 @interface UIETextFieldOperation ()
 
+@property UIETextFieldOperationShouldChangeInfo *shouldChangeInfo;
 @property UIETextFieldOperationShouldReturnInfo *shouldReturnInfo;
-@property UIETextFieldOperationShouldChangeCharactersInfo *shouldChangeCharactersInfo;
 
 @property (weak) UIETextField *textField;
 
@@ -146,22 +146,22 @@
 }
 
 - (BOOL)textField:(UIETextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    self.shouldChangeCharactersInfo = [UIETextFieldOperationShouldChangeCharactersInfo.alloc initWithRange:range string:string];
+    self.shouldChangeInfo = [UIETextFieldOperationShouldChangeInfo.alloc initWithRange:range string:string];
     
     if (self.textField.pattern.length > 0) {
-        NSString *text = [self.textField.text stringByReplacingCharactersInRange:self.shouldChangeCharactersInfo.range withString:self.shouldChangeCharactersInfo.string];
+        NSString *text = [self.textField.text stringByReplacingCharactersInRange:self.shouldChangeInfo.range withString:self.shouldChangeInfo.string];
         NSRange range = [text rangeOfString:self.textField.pattern options:NSRegularExpressionSearch];
         if (range.location == NSNotFound) {
-            self.shouldChangeCharactersInfo.shouldChange = NO;
+            self.shouldChangeInfo.shouldChange = NO;
         } else {
-            self.shouldChangeCharactersInfo.shouldChange = YES;
+            self.shouldChangeInfo.shouldChange = YES;
         }
     } else {
-        self.shouldChangeCharactersInfo.shouldChange = YES;
+        self.shouldChangeInfo.shouldChange = YES;
     }
     
-    [self.delegates UIETextFieldOperationShouldChangeCharacters:self];
-    return self.shouldChangeCharactersInfo.shouldChange;
+    [self.delegates UIETextFieldOperationShouldChange:self];
+    return self.shouldChangeInfo.shouldChange;
 }
 
 - (BOOL)textFieldShouldClear:(UIETextField *)textField {
