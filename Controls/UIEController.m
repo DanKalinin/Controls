@@ -49,7 +49,7 @@
 
 @interface UIEControllerOperation ()
 
-@property UIViewController *controller;
+@property (weak) UIViewController *controller;
 
 @end
 

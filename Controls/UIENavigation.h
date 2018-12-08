@@ -8,8 +8,51 @@
 #import <UIKit/UIKit.h>
 #import "UIEController.h"
 
+@class UIENavigationBar;
+@class UIENavigationBarOperation;
 @class UIENavigationController;
 @class UIENavigationControllerOperation;
+
+
+
+
+
+
+
+
+
+
+@interface UIENavigationBar : UINavigationBar
+
+@property (readonly) Class operationClass;
+@property (readonly) UIENavigationBarOperation *operation;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@protocol UIENavigationBarOperationDelegate <NSEOperationDelegate, UINavigationBarDelegate>
+
+@end
+
+
+
+@interface UIENavigationBarOperation : NSEOperation <UIENavigationBarOperationDelegate>
+
+@property (readonly) HLPArray<UIENavigationBarOperationDelegate> *delegates;
+
+@property (weak, readonly) UIENavigationBar *navigationBar;
+
+- (instancetype)initWithNavigationBar:(UIENavigationBar *)navigationBar;
+
+@end
 
 
 
