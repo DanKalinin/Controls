@@ -49,6 +49,39 @@
 
 
 
+@interface UIETextFieldOperationShouldChangeCharactersInfo ()
+
+@property NSRange range;
+@property NSString *string;
+
+@end
+
+
+
+@implementation UIETextFieldOperationShouldChangeCharactersInfo
+
+- (instancetype)initWithRange:(NSRange)range string:(NSString *)string {
+    self = super.init;
+    if (self) {
+        self.range = range;
+        self.string = string;
+        
+        self.shouldChange = YES;
+    }
+    return self;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface UIETextFieldOperationShouldReturnInfo ()
 
 @end
@@ -79,6 +112,7 @@
 @interface UIETextFieldOperation ()
 
 @property UIETextFieldOperationShouldReturnInfo *shouldReturnInfo;
+@property UIETextFieldOperationShouldChangeCharactersInfo *shouldChangeCharactersInfo;
 
 @property (weak) UIETextField *textField;
 
@@ -112,17 +146,22 @@
 }
 
 - (BOOL)textField:(UIETextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    self.shouldChangeCharactersInfo = [UIETextFieldOperationShouldChangeCharactersInfo.alloc initWithRange:range string:string];
+    
     if (self.textField.pattern.length > 0) {
         NSString *text = [self.textField.text stringByReplacingCharactersInRange:range withString:string];
         NSRange range = [text rangeOfString:self.textField.pattern options:NSRegularExpressionSearch];
         if (range.location == NSNotFound) {
-            return NO;
+            self.shouldChangeCharactersInfo.shouldChange = NO;
         } else {
-            return YES;
+            self.shouldChangeCharactersInfo.shouldChange = YES;
         }
     } else {
-        return YES;
+        self.shouldChangeCharactersInfo.shouldChange = YES;
     }
+    
+    [self.delegates UIETextFieldOperationShouldChangeCharacters:self];
+    return self.shouldChangeCharactersInfo.shouldChange;
 }
 
 - (BOOL)textFieldShouldClear:(UIETextField *)textField {
