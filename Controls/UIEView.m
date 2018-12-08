@@ -50,7 +50,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.operation = [UIEViewControllerOperation.alloc initWithController:self];
+        self.operation = [self.operationClass.alloc initWithController:self];
     }
     return self;
 }
