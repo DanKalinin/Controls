@@ -20,9 +20,9 @@
 - (void)setEnabled:(BOOL)enabled {
     [super setEnabled:enabled];
     
-    self.button1.enabled = enabled;
+    self.button1.enabled = self.enabled;
     
-    if (enabled) {
+    if (self.enabled) {
         self.backgroundColor = self.defaultBackgroundColor;
         self.layerBorderColor = self.defaultLayerBorderColor;
     } else {
@@ -34,9 +34,9 @@
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
     
-    self.button1.selected = selected;
+    self.button1.selected = self.selected;
     
-    if (selected) {
+    if (self.selected) {
         self.backgroundColor = self.selectedBackgroundColor;
         self.layerBorderColor = self.selectedLayerBorderColor;
     } else {
@@ -48,9 +48,9 @@
 - (void)setHighlighted:(BOOL)highlighted {
     [super setHighlighted:highlighted];
     
-    self.button1.highlighted = highlighted;
+    self.button1.highlighted = self.highlighted;
     
-    if (highlighted) {
+    if (self.highlighted) {
         self.backgroundColor = self.highlightedBackgroundColor;
         self.layerBorderColor = self.highlightedLayerBorderColor;
     } else {

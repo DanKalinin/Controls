@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Helpers/Helpers.h>
+#import "UIEController.h"
 #import "UIEButton.h"
 #import "UIETextField.h"
 
@@ -18,6 +18,7 @@
 @class UIETableViewOperation;
 @class UIETableViewCell;
 @class UIETableViewController;
+@class UIETableViewControllerOperation;
 
 
 
@@ -176,5 +177,29 @@
 @interface UIETableViewController : UITableViewController <UIETableViewOperationDelegate>
 
 @property (nonatomic) UIETableView *tableView;
+
+@property (readonly) Class operationClass;
+@property (readonly) UIETableViewControllerOperation *operation;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@protocol UIETableViewControllerOperationDelegate <NSEOperationDelegate>
+
+@end
+
+
+
+@interface UIETableViewControllerOperation : UIEControllerOperation <UIETableViewControllerOperationDelegate>
+
+@property (weak, readonly) UIETableViewController *controller;
 
 @end
