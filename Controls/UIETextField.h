@@ -9,8 +9,8 @@
 #import <Helpers/Helpers.h>
 
 @class UIETextField;
-@class UIETextFieldOperationShouldReturnInfo;
 @class UIETextFieldOperationShouldChangeCharactersInfo;
+@class UIETextFieldOperationShouldReturnInfo;
 @class UIETextFieldOperation;
 
 

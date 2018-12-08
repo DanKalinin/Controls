@@ -149,7 +149,7 @@
     self.shouldChangeCharactersInfo = [UIETextFieldOperationShouldChangeCharactersInfo.alloc initWithRange:range string:string];
     
     if (self.textField.pattern.length > 0) {
-        NSString *text = [self.textField.text stringByReplacingCharactersInRange:range withString:string];
+        NSString *text = [self.textField.text stringByReplacingCharactersInRange:self.shouldChangeCharactersInfo.range withString:self.shouldChangeCharactersInfo.string];
         NSRange range = [text rangeOfString:self.textField.pattern options:NSRegularExpressionSearch];
         if (range.location == NSNotFound) {
             self.shouldChangeCharactersInfo.shouldChange = NO;
