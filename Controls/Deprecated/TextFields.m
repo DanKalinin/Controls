@@ -30,7 +30,7 @@
     [super awakeFromNib];
     
     for (TextField *textField in self.textFields) {
-        [textField addTarget:self action:@selector(editingChanged:) forControlEvents:UIControlEventEditingChanged];
+        [textField addTarget:self action:@selector(editingChanged:) forControlEvents:(UIControlEventEditingDidBegin | UIControlEventEditingChanged)];
     }
 }
 
