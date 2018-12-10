@@ -50,13 +50,13 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.operation = [self.operationClass.alloc initWithController:self];
+        self.operation = [self.operationClass.alloc initWithViewController:self];
     }
     return self;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    self.operation.prepareForSegueInfo = [UIEControllerOperationPrepareForSegueInfo.alloc initWithSegue:segue sender:sender];
+    self.operation.prepareForSegueInfo = [UIViewControllerOperationPrepareForSegueInfo.alloc initWithSegue:segue sender:sender];
 }
 
 - (Class)operationClass {
@@ -82,6 +82,6 @@
 
 @implementation UIEViewControllerOperation
 
-@dynamic controller;
+@dynamic viewController;
 
 @end

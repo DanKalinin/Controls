@@ -94,7 +94,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.operation = [self.operationClass.alloc initWithController:self];
+        self.operation = [self.operationClass.alloc initWithViewController:self];
     }
     return self;
 }
@@ -125,8 +125,8 @@
 @dynamic delegates;
 @dynamic controller;
 
-- (instancetype)initWithController:(UIENavigationController *)controller {
-    self = [super initWithController:controller];
+- (instancetype)initWithViewController:(UIENavigationController *)controller {
+    self = [super initWithViewController:controller];
     if (self) {
         self.controller.delegate = self.delegates;
     }

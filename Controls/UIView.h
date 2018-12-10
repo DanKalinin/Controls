@@ -1,5 +1,5 @@
 //
-//  UIEController.h
+//  UIView.h
 //  Controls
 //
 //  Created by Dan Kalinin on 12/8/18.
@@ -8,8 +8,8 @@
 #import <UIKit/UIKit.h>
 #import <Helpers/Helpers.h>
 
-@class UIEControllerOperation;
-@class UIEControllerOperationPrepareForSegueInfo;
+@class UIViewControllerOperation;
+@class UIViewControllerOperationPrepareForSegueInfo;
 
 
 
@@ -20,7 +20,7 @@
 
 
 
-@interface UIEControllerOperationPrepareForSegueInfo : HLPObject
+@interface UIViewControllerOperationPrepareForSegueInfo : HLPObject
 
 @property (readonly) UIStoryboardSegue *segue;
 @property (readonly) id sender;
@@ -44,14 +44,14 @@
 
 
 
-@interface UIEControllerOperation : NSEOperation <UIEControllerOperationDelegate>
+@interface UIViewControllerOperation : NSEOperation <UIEControllerOperationDelegate>
 
-@property UIEControllerOperationPrepareForSegueInfo *prepareForSegueInfo;
+@property UIViewControllerOperationPrepareForSegueInfo *prepareForSegueInfo;
 
 @property (readonly) HLPArray<UIEControllerOperationDelegate> *delegates;
 
-@property (weak, readonly) UIViewController *controller;
+@property (weak, readonly) UIViewController *viewController;
 
-- (instancetype)initWithController:(UIViewController *)controller;
+- (instancetype)initWithViewController:(UIViewController *)viewController;
 
 @end

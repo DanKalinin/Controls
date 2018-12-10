@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIEController.h"
+#import "UIView.h"
 
 @class UIEView;
 @class UIEViewController;
@@ -52,8 +52,8 @@
 
 
 
-@interface UIEViewControllerOperation : UIEControllerOperation
+@interface UIEViewControllerOperation : UIViewControllerOperation
 
-@property (weak, readonly) UIEViewController *controller;
+@property (weak, readonly) UIEViewController *viewController;
 
 @end

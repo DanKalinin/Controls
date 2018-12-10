@@ -2,13 +2,13 @@
 //  UIEStoryboard.m
 //  Controls
 //
-//  Created by Dan Kalinin on 12/9/18.
+//  Created by Dan Kalinin on 12/11/18.
 //
 
 #import "UIEStoryboard.h"
 
 
 
-@implementation UIEStoryboardSegue
+@implementation UIEStoryboard
 
 @end

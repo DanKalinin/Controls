@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIEController.h"
+#import "UIView.h"
 #import "UIEButton.h"
 #import "UIETextField.h"
 
@@ -198,8 +198,8 @@
 
 
 
-@interface UIETableViewControllerOperation : UIEControllerOperation <UIETableViewControllerOperationDelegate>
+@interface UIETableViewControllerOperation : UIViewControllerOperation <UIETableViewControllerOperationDelegate>
 
-@property (weak, readonly) UIETableViewController *controller;
+@property (weak, readonly) UIETableViewController *viewController;
 
 @end

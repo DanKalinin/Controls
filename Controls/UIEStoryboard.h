@@ -2,13 +2,13 @@
 //  UIEStoryboard.h
 //  Controls
 //
-//  Created by Dan Kalinin on 12/9/18.
+//  Created by Dan Kalinin on 12/11/18.
 //
 
 #import <UIKit/UIKit.h>
 
 
 
-@interface UIEStoryboardSegue : UIStoryboardSegue
+@interface UIEStoryboard : UIStoryboard
 
 @end

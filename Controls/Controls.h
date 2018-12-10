@@ -11,9 +11,10 @@
 FOUNDATION_EXPORT double ControlsVersionNumber;
 FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 
+#import <Controls/UIView.h>
+
 #import <Controls/UIEApplication.h>
 #import <Controls/UIEKeyboard.h>
-#import <Controls/UIEController.h>
 #import <Controls/UIEView.h>
 #import <Controls/UIETableView.h>
 #import <Controls/UIENavigation.h>

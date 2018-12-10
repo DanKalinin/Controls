@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIEController.h"
+#import "UIView.h"
 
 @class UIENavigationBar;
 @class UIENavigationBarOperation;
@@ -85,7 +85,7 @@
 
 
 
-@interface UIENavigationControllerOperation : UIEControllerOperation <UIENavigationControllerOperationDelegate>
+@interface UIENavigationControllerOperation : UIViewControllerOperation <UIENavigationControllerOperationDelegate>
 
 @property (readonly) HLPArray<UIENavigationControllerOperationDelegate> *delegates;
 
