@@ -89,6 +89,6 @@
 
 @property (readonly) HLPArray<UIENavigationControllerOperationDelegate> *delegates;
 
-@property (weak, readonly) UIENavigationController *controller;
+@property (weak, readonly) UIENavigationController *viewController;
 
 @end

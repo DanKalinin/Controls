@@ -6,9 +6,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIENavigation.h"
 
 
 
-@interface UIEStoryboard : UIStoryboard
+@interface UIEStoryboardSegue : UIStoryboardSegue
+
+@property (readonly) UIENavigationController *destinationNavigationViewController;
 
 @end

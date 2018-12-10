@@ -123,12 +123,12 @@
 @implementation UIENavigationControllerOperation
 
 @dynamic delegates;
-@dynamic controller;
+@dynamic viewController;
 
-- (instancetype)initWithViewController:(UIENavigationController *)controller {
-    self = [super initWithViewController:controller];
+- (instancetype)initWithViewController:(UIViewController *)viewController {
+    self = [super initWithViewController:viewController];
     if (self) {
-        self.controller.delegate = self.delegates;
+        self.viewController.delegate = self.delegates;
     }
     return self;
 }

@@ -9,6 +9,16 @@
 
 
 
-@implementation UIEStoryboard
+@interface UIEStoryboardSegue ()
+
+@end
+
+
+
+@implementation UIEStoryboardSegue
+
+- (UIENavigationController *)destinationNavigationViewController {
+    return self.destinationViewController;
+}
 
 @end
