@@ -38,17 +38,17 @@
 
 
 
-@protocol UIEControllerOperationDelegate <NSEOperationDelegate, UIViewControllerTransitioningDelegate>
+@protocol UIViewControllerOperationDelegate <NSEOperationDelegate, UIViewControllerTransitioningDelegate>
 
 @end
 
 
 
-@interface UIViewControllerOperation : NSEOperation <UIEControllerOperationDelegate>
+@interface UIViewControllerOperation : NSEOperation <UIViewControllerOperationDelegate>
 
 @property UIViewControllerOperationPrepareForSegueInfo *prepareForSegueInfo;
 
-@property (readonly) HLPArray<UIEControllerOperationDelegate> *delegates;
+@property (readonly) HLPArray<UIViewControllerOperationDelegate> *delegates;
 
 @property (weak, readonly) UIViewController *viewController;
 

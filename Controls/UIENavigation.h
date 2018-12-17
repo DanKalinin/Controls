@@ -79,7 +79,7 @@
 
 
 
-@protocol UIENavigationControllerOperationDelegate <UIEControllerOperationDelegate, UINavigationControllerDelegate>
+@protocol UIENavigationControllerOperationDelegate <UIViewControllerOperationDelegate, UINavigationControllerDelegate>
 
 @end
 
@@ -90,5 +90,20 @@
 @property (readonly) HLPArray<UIENavigationControllerOperationDelegate> *delegates;
 
 @property (weak, readonly) UIENavigationController *viewController;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIStoryboardSegue (UIENavigation)
+
+@property (readonly) UIENavigationController *destinationNavigationController;
 
 @end

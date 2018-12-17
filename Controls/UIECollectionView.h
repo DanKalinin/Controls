@@ -6,10 +6,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Helpers/Helpers.h>
+#import "UIView.h"
 
 @class UIECollectionView;
 @class UIECollectionViewOperation;
+@class UIECollectionViewController;
+@class UIECollectionViewControllerOperation;
 
 
 
@@ -49,5 +51,44 @@
 @property (weak, readonly) UIECollectionView *collectionView;
 
 - (instancetype)initWithCollectionView:(UIECollectionView *)collectionView;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIECollectionViewController : UICollectionViewController <UIECollectionViewOperationDelegate>
+
+@property (nonatomic) UIECollectionView *collectionView;
+
+@property (readonly) Class operationClass;
+@property (readonly) UIECollectionViewControllerOperation *operation;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@protocol UIECollectionViewControllerOperationDelegate <UIViewControllerOperationDelegate>
+
+@end
+
+
+
+@interface UIECollectionViewControllerOperation : UIViewControllerOperation <UIECollectionViewControllerOperationDelegate>
+
+@property (weak, readonly) UIECollectionViewController *viewController;
 
 @end

@@ -192,7 +192,7 @@
 
 
 
-@protocol UIETableViewControllerOperationDelegate <NSEOperationDelegate>
+@protocol UIETableViewControllerOperationDelegate <UIViewControllerOperationDelegate>
 
 @end
 

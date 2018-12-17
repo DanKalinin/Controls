@@ -125,12 +125,29 @@
 @dynamic delegates;
 @dynamic viewController;
 
-- (instancetype)initWithViewController:(UIViewController *)viewController {
+- (instancetype)initWithViewController:(UIENavigationController *)viewController {
     self = [super initWithViewController:viewController];
     if (self) {
         self.viewController.delegate = self.delegates;
     }
     return self;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
+@implementation UIStoryboardSegue (UIENavigation)
+
+- (UIENavigationController *)destinationNavigationController {
+    return self.destinationViewController;
 }
 
 @end
