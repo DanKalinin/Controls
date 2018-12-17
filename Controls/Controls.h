@@ -18,6 +18,7 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/UIEView.h>
 #import <Controls/UIETableView.h>
 #import <Controls/UIENavigation.h>
+#import <Controls/UIETabBar.h>
 #import <Controls/UIEButton.h>
 #import <Controls/UIETextField.h>
 
