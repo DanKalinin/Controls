@@ -9,6 +9,7 @@
 #import "UIView.h"
 #import "UIEButton.h"
 #import "UIETextField.h"
+#import "UIEAction.h"
 
 @class UIETableView;
 @class UIETableViewOperationNumberOfSectionsInfo;
@@ -19,6 +20,7 @@
 @class UIETableViewCell;
 @class UIETableViewController;
 @class UIETableViewControllerOperation;
+@class UIETableViewRowAction;
 
 
 
@@ -201,5 +203,33 @@
 @interface UIETableViewControllerOperation : UIViewControllerOperation <UIETableViewControllerOperationDelegate>
 
 @property (weak, readonly) UIETableViewController *viewController;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@protocol UIETableViewRowActionDelegate <UIEActionDelegate>
+
+@optional
+- (void)UIETableViewRowActionDidFinish:(UIETableViewRowAction *)rowAction;
+
+@end
+
+
+
+@interface UIETableViewRowAction : UIEAction <UIETableViewRowActionDelegate>
+
+@property (readonly) HLPArray<UIETableViewRowActionDelegate> *delegates;
+@property (readonly) UITableViewRowAction *rowAction;
+@property (readonly) NSIndexPath *indexPath;
+
+- (instancetype)initWithStyle:(UITableViewRowActionStyle)style title:(NSString *)title identifier:(NSString *)identifier delegate:(id<UIETableViewRowActionDelegate>)delegate;
 
 @end

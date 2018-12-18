@@ -15,7 +15,7 @@
 @protocol CTLAlertActionDelegate <CTLActionDelegate>
 
 @optional
-- (void)CTLAlertActionDidEnd:(CTLAlertAction *)action;
+- (void)CTLAlertActionDidEnd:(CTLAlertAction *)alertAction;
 
 @end
 

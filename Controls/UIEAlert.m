@@ -22,7 +22,7 @@
 @dynamic delegates;
 
 - (instancetype)initWithTitle:(NSString *)title style:(UIAlertActionStyle)style identifier:(NSString *)identifier delegate:(id<UIEAlertActionDelegate>)delegate {
-    self = super.init;
+    self = [super initWithIdentifier:identifier delegate:delegate];
     if (self) {
         self.alertAction = [UIAlertAction actionWithTitle:title style:style handler:^(UIAlertAction *action) {
             [self.delegates UIEActionDidFinish:self];
