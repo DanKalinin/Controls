@@ -6,9 +6,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Helpers/Helpers.h>
+
+@class UIEAction;
+
+@protocol UIEActionDelegate;
 
 
 
-@interface UIEAction : UIAlertAction
+@protocol UIEActionDelegate <NSEOperationDelegate>
+
+@optional
+- (void)UIEActionDidFinish:(UIEAction *)action;
+
+@end
+
+
+
+@interface UIEAction : NSEOperation <UIEActionDelegate>
+
+@property (readonly) HLPArray<UIEActionDelegate> *delegates;
+@property (readonly) NSString *identifier;
+
+- (instancetype)initWithIdentifier:(NSString *)identifier delegate:(id<UIEActionDelegate>)delegate;
 
 @end
