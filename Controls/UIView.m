@@ -69,3 +69,40 @@
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+@interface UIEPreviewAction ()
+
+@property UIPreviewAction *previewAction;
+@property UIViewController *previewViewController;
+
+@end
+
+
+
+@implementation UIEPreviewAction
+
+@dynamic delegates;
+
+- (instancetype)initWithTitle:(NSString *)title style:(UIPreviewActionStyle)style identifier:(NSString *)identifier delegate:(id<UIEPreviewActionDelegate>)delegate {
+    self = [super initWithIdentifier:identifier delegate:delegate];
+    if (self) {
+        self.previewAction = [UIPreviewAction actionWithTitle:title style:style handler:^(UIPreviewAction *action, UIViewController *previewViewController) {
+            self.previewViewController = previewViewController;
+            
+            [self.delegates UIEActionDidFinish:self];
+            [self.delegates UIEPreviewActionDidFinish:self];
+        }];
+    }
+    return self;
+}
+
+@end
