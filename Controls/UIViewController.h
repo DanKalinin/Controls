@@ -14,6 +14,9 @@
 @class UIViewControllerOperation;
 @class UIEPreviewAction;
 
+@protocol UIViewControllerOperationDelegate;
+@protocol UIEPreviewActionDelegate;
+
 
 
 
