@@ -6,7 +6,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIView.h"
 #import "UIEButton.h"
 #import "UIETextField.h"
 #import "UIEAction.h"
@@ -18,8 +17,6 @@
 @class UIETableViewOperationDidSelectRowInfo;
 @class UIETableViewOperation;
 @class UIETableViewCell;
-@class UIETableViewController;
-@class UIETableViewControllerOperation;
 @class UIETableViewRowAction;
 
 
@@ -164,45 +161,6 @@
 @property (readonly) BOOL enabled;
 
 - (void)setEnabled:(BOOL)enabled animated:(BOOL)animated;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface UIETableViewController : UITableViewController <UIETableViewOperationDelegate>
-
-@property (nonatomic) UIETableView *tableView;
-
-@property (readonly) Class operationClass;
-@property (readonly) UIETableViewControllerOperation *operation;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@protocol UIETableViewControllerOperationDelegate <UIViewControllerOperationDelegate>
-
-@end
-
-
-
-@interface UIETableViewControllerOperation : UIViewControllerOperation <UIETableViewControllerOperationDelegate>
-
-@property (weak, readonly) UIETableViewController *viewController;
 
 @end
 

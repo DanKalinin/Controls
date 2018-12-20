@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIView.h"
+#import "UIViewController.h"
 
 @class UIECollectionView;
 @class UIECollectionViewOperation;
