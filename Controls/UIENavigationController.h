@@ -11,6 +11,8 @@
 @class UIENavigationController;
 @class UIENavigationControllerOperation;
 
+@protocol UIENavigationControllerOperationDelegate;
+
 
 
 

@@ -11,6 +11,8 @@
 @class UIETabBar;
 @class UIETabBarOperation;
 
+@protocol UIETabBarOperationDelegate;
+
 
 
 

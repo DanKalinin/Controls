@@ -12,6 +12,8 @@
 @class UIEViewController;
 @class UIEViewControllerOperation;
 
+@protocol UIEViewControllerOperationDelegate;
+
 
 
 
@@ -39,7 +41,13 @@
 
 
 
-@interface UIEViewControllerOperation : UIViewControllerOperation
+@protocol UIEViewControllerOperationDelegate <UIViewControllerOperationDelegate>
+
+@end
+
+
+
+@interface UIEViewControllerOperation : UIViewControllerOperation <UIEViewControllerOperationDelegate>
 
 @property (weak, readonly) UIEViewController *viewController;
 

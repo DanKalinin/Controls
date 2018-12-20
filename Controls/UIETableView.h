@@ -17,6 +17,10 @@
 @class UIETableViewOperation;
 @class UIETableViewRowAction;
 
+@protocol UIETableViewOperationDelegate;
+@protocol UIETableViewRowActionDelegate;
+
+
 
 
 

@@ -12,6 +12,8 @@
 @class UIETableViewController;
 @class UIETableViewControllerOperation;
 
+@protocol UIETableViewControllerOperationDelegate;
+
 
 
 

@@ -11,6 +11,8 @@
 @class UIENavigationBar;
 @class UIENavigationBarOperation;
 
+@protocol UIENavigationBarOperationDelegate;
+
 
 
 

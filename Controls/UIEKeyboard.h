@@ -11,6 +11,8 @@
 @class UIEKeyboardInfo;
 @class UIEKeyboard;
 
+@protocol UIEKeyboardDelegate;
+
 
 
 

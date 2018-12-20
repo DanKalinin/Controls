@@ -1,11 +1,11 @@
 //
-//  UIETableViewController.m
+//  UIECollectionViewController.m
 //  Controls
 //
 //  Created by Dan Kalinin on 12/20/18.
 //
 
-#import "UIETableViewController.h"
+#import "UIECollectionViewController.h"
 
 
 
@@ -16,17 +16,17 @@
 
 
 
-@interface UIETableViewController ()
+@interface UIECollectionViewController ()
 
-@property UIETableViewControllerOperation *operation;
+@property UIECollectionViewControllerOperation *operation;
 
 @end
 
 
 
-@implementation UIETableViewController
+@implementation UIECollectionViewController
 
-@dynamic tableView;
+@dynamic collectionView;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -39,15 +39,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView.operation.delegates addObject:self];
+    [self.collectionView.operation.delegates addObject:self];
 }
 
-- (void)prepareForSegue:(UIEStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     self.operation.prepareForSegueInfo = [UIViewControllerOperationPrepareForSegueInfo.alloc initWithSegue:segue sender:sender];
 }
 
 - (Class)operationClass {
-    return UIETableViewControllerOperation.class;
+    return UIECollectionViewControllerOperation.class;
 }
 
 @end
@@ -61,13 +61,13 @@
 
 
 
-@interface UIETableViewControllerOperation ()
+@interface UIECollectionViewControllerOperation ()
 
 @end
 
 
 
-@implementation UIETableViewControllerOperation
+@implementation UIECollectionViewControllerOperation
 
 @dynamic viewController;
 

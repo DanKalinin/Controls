@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CTLView.h"
+#import "UIView.h"
 
 @class UIEButton;
 

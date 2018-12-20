@@ -11,6 +11,8 @@
 @class UIETabBarController;
 @class UIETabBarControllerOperation;
 
+@protocol UIETabBarControllerOperationDelegate;
+
 
 
 

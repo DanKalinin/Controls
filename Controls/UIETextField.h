@@ -13,6 +13,8 @@
 @class UIETextFieldOperationShouldReturnInfo;
 @class UIETextFieldOperation;
 
+@protocol UIETextFieldOperationDelegate;
+
 
 
 

@@ -11,6 +11,8 @@
 @class UIEApplication;
 @class UIEApplicationOperation;
 
+@protocol UIEApplicationOperationDelegate;
+
 
 
 
