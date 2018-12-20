@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import <Helpers/Helpers.h>
 
+#import "UIEStoryboardSegue.h"
 #import "UIEAction.h"
 
 @class UIViewControllerOperationPrepareForSegueInfo;
@@ -28,10 +29,10 @@
 
 @interface UIViewControllerOperationPrepareForSegueInfo : HLPObject
 
-@property (readonly) UIStoryboardSegue *segue;
+@property (readonly) UIEStoryboardSegue *segue;
 @property (readonly) id sender;
 
-- (instancetype)initWithSegue:(UIStoryboardSegue *)segue sender:(id)sender;
+- (instancetype)initWithSegue:(UIEStoryboardSegue *)segue sender:(id)sender;
 
 @end
 

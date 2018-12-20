@@ -18,7 +18,7 @@
 
 @interface UIViewControllerOperationPrepareForSegueInfo ()
 
-@property UIStoryboardSegue *segue;
+@property UIEStoryboardSegue *segue;
 @property id sender;
 
 @end
@@ -27,7 +27,7 @@
 
 @implementation UIViewControllerOperationPrepareForSegueInfo
 
-- (instancetype)initWithSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (instancetype)initWithSegue:(UIEStoryboardSegue *)segue sender:(id)sender {
     self = super.init;
     if (self) {
         self.segue = segue;
