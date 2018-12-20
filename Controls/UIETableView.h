@@ -6,8 +6,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIEButton.h"
-#import "UIETextField.h"
+
+#import "UIETableViewCell.h"
 #import "UIEAction.h"
 
 @class UIETableView;
@@ -16,7 +16,6 @@
 @class UIETableViewOperationCellForRowInfo;
 @class UIETableViewOperationDidSelectRowInfo;
 @class UIETableViewOperation;
-@class UIETableViewCell;
 @class UIETableViewRowAction;
 
 
@@ -137,30 +136,6 @@
 @property (weak, readonly) UIETableView *tableView;
 
 - (instancetype)initWithTableView:(UIETableView *)tableView;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface UIETableViewCell : UITableViewCell
-
-@property (weak) IBOutlet UIEButton *weakButton1;
-@property (weak) IBOutlet UIEButton *weakButton2;
-
-@property (weak) IBOutlet UIETextField *weakTextField1;
-
-@property (weak) IBOutlet UIActivityIndicatorView *weakActivityIndicatorView1;
-
-@property (readonly) BOOL enabled;
-
-- (void)setEnabled:(BOOL)enabled animated:(BOOL)animated;
 
 @end
 
