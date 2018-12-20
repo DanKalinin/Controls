@@ -7,7 +7,6 @@
 
 #import <UIKit/UIKit.h>
 #import <Helpers/Helpers.h>
-
 #import "UIEAction.h"
 
 @class UIViewControllerOperationPrepareForSegueInfo;

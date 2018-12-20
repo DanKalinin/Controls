@@ -21,4 +21,8 @@
     return self.destinationViewController;
 }
 
+- (UIETabBarController *)destinationTabBarController {
+    return self.destinationViewController;
+}
+
 @end

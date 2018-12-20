@@ -6,12 +6,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIViewController.h"
+#import <Helpers/Helpers.h>
 
 @class UIETabBar;
 @class UIETabBarOperation;
-@class UIETabBarController;
-@class UIETabBarControllerOperation;
 
 
 
@@ -51,59 +49,5 @@
 @property (weak, readonly) UIETabBar *tabBar;
 
 - (instancetype)initWithTabBar:(UIETabBar *)tabBar;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface UIETabBarController : UITabBarController
-
-@property (readonly) Class operationClass;
-@property (readonly) UIETabBarControllerOperation *operation;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@protocol UIETabBarControllerOperationDelegate <UIViewControllerOperationDelegate, UITabBarControllerDelegate>
-
-@end
-
-
-
-@interface UIETabBarControllerOperation : UIViewControllerOperation
-
-@property (readonly) HLPArray<UIETabBarControllerOperationDelegate> *delegates;
-
-@property (weak, readonly) UIETabBarController *viewController;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface UIStoryboardSegue (UIETabBar)
-
-@property (readonly) UIETabBarController *destinationTabBarController;
 
 @end
