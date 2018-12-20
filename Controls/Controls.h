@@ -22,10 +22,11 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/UIETableView.h>
 #import <Controls/UIETableViewCell.h>
 #import <Controls/UIETableViewController.h>
-#import <Controls/UIENavigation.h>
+#import <Controls/UIENavigationBar.h>
 #import <Controls/UIETabBar.h>
 #import <Controls/UIEButton.h>
 #import <Controls/UIETextField.h>
+#import <Controls/UIEStoryboardSegue.h>
 
 #import <Controls/CTLApplication.h>
 #import <Controls/CTLWindow.h>

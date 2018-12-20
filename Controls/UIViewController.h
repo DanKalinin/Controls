@@ -8,12 +8,12 @@
 #import <UIKit/UIKit.h>
 #import <Helpers/Helpers.h>
 
-#import "UIEStoryboardSegue.h"
 #import "UIEAction.h"
 
 @class UIViewControllerOperationPrepareForSegueInfo;
 @class UIViewControllerOperation;
 @class UIEPreviewAction;
+@class UIEStoryboardSegue;
 
 @protocol UIViewControllerOperationDelegate;
 @protocol UIEPreviewActionDelegate;

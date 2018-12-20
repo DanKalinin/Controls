@@ -17,4 +17,8 @@
 
 @implementation UIEStoryboardSegue
 
+- (UIENavigationController *)destinationNavigationController {
+    return self.destinationViewController;
+}
+
 @end
