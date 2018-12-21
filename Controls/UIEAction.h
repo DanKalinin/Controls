@@ -10,6 +10,8 @@
 
 @class UIEAction;
 
+@protocol UIEActionDelegate;
+
 
 
 @protocol UIEActionDelegate <NSEOperationDelegate>

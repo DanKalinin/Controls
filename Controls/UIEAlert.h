@@ -10,6 +10,8 @@
 
 @class UIEAlertAction;
 
+@protocol UIEAlertActionDelegate;
+
 
 
 @protocol UIEAlertActionDelegate <UIEActionDelegate>
