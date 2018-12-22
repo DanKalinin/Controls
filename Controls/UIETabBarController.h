@@ -24,8 +24,8 @@
 
 @interface UIETabBarController : UITabBarController
 
-@property (readonly) Class operationClass;
-@property (readonly) UIETabBarControllerOperation *operation;
+//@property (readonly) Class operationClass;
+//@property (readonly) UIETabBarControllerOperation *operation;
 
 @end
 
@@ -46,8 +46,8 @@
 
 @interface UIETabBarControllerOperation : UIViewControllerOperation
 
-@property (readonly) HLPArray<UIETabBarControllerOperationDelegate> *delegates;
-
-@property (weak, readonly) UIETabBarController *viewController;
+//@property (readonly) HLPArray<UIETabBarControllerOperationDelegate> *delegates;
+//
+//@property (weak, readonly) UIETabBarController *viewController;
 
 @end

@@ -49,6 +49,6 @@
 
 @interface UIEViewControllerOperation : UIViewControllerOperation <UIEViewControllerOperationDelegate>
 
-@property (weak, readonly) UIEViewController *viewController;
+@property (weak, readonly) UIEViewController *weakObject;
 
 @end

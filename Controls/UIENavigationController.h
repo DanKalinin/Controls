@@ -24,8 +24,8 @@
 
 @interface UIENavigationController : UINavigationController
 
-@property (readonly) Class operationClass;
-@property (readonly) UIENavigationControllerOperation *operation;
+//@property (readonly) Class operationClass;
+//@property (readonly) UIENavigationControllerOperation *operation;
 
 @end
 
@@ -46,8 +46,8 @@
 
 @interface UIENavigationControllerOperation : UIViewControllerOperation <UIENavigationControllerOperationDelegate>
 
-@property (readonly) HLPArray<UIENavigationControllerOperationDelegate> *delegates;
-
-@property (weak, readonly) UIENavigationController *viewController;
+//@property (readonly) HLPArray<UIENavigationControllerOperationDelegate> *delegates;
+//
+//@property (weak, readonly) UIENavigationController *viewController;
 
 @end

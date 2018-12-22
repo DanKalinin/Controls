@@ -28,21 +28,21 @@
 
 @dynamic view;
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        self.operation = [self.operationClass.alloc initWithViewController:self];
-    }
-    return self;
-}
-
-- (void)prepareForSegue:(UIEStoryboardSegue *)segue sender:(id)sender {
-    self.operation.prepareForSegueInfo = [UIViewControllerOperationPrepareForSegueInfo.alloc initWithSegue:segue sender:sender];
-}
-
-- (Class)operationClass {
-    return UIEViewControllerOperation.class;
-}
+//- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+//    self = [super initWithCoder:aDecoder];
+//    if (self) {
+//        self.operation = [self.operationClass.alloc initWithViewController:self];
+//    }
+//    return self;
+//}
+//
+//- (void)prepareForSegue:(UIEStoryboardSegue *)segue sender:(id)sender {
+//    self.operation.prepareForSegueInfo = [UIViewControllerOperationPrepareForSegueInfo.alloc initWithSegue:segue sender:sender];
+//}
+//
+//- (Class)operationClass {
+//    return UIEViewControllerOperation.class;
+//}
 
 @end
 
@@ -63,6 +63,6 @@
 
 @implementation UIEViewControllerOperation
 
-@dynamic viewController;
+@dynamic weakObject;
 
 @end

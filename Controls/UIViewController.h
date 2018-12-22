@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Helpers/Helpers.h>
+#import "UIResponder.h"
 #import "UIEAction.h"
 
 @class UIViewControllerOperationPrepareForSegueInfo;
@@ -44,21 +44,19 @@
 
 
 
-@protocol UIViewControllerOperationDelegate <NSEOperationDelegate, UIViewControllerTransitioningDelegate>
+@protocol UIViewControllerOperationDelegate <UIResponderOperationDelegate, UIViewControllerTransitioningDelegate>
 
 @end
 
 
 
-@interface UIViewControllerOperation : NSEOperation <UIViewControllerOperationDelegate>
+@interface UIViewControllerOperation : UIResponderOperation <UIViewControllerOperationDelegate>
 
 @property UIViewControllerOperationPrepareForSegueInfo *prepareForSegueInfo;
 
 @property (readonly) HLPArray<UIViewControllerOperationDelegate> *delegates;
 
-@property (weak, readonly) UIViewController *viewController;
-
-- (instancetype)initWithViewController:(UIViewController *)viewController;
+@property (weak, readonly) UIViewController *weakObject;
 
 @end
 

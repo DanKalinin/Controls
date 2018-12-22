@@ -50,8 +50,6 @@
 
 @interface UIViewControllerOperation ()
 
-@property (weak) UIViewController *viewController;
-
 @end
 
 
@@ -59,12 +57,12 @@
 @implementation UIViewControllerOperation
 
 @dynamic delegates;
+@dynamic weakObject;
 
-- (instancetype)initWithViewController:(UIViewController *)controller {
-    self = super.init;
+- (instancetype)initWithWeakObject:(NSObject *)weakObject {
+    self = [super initWithWeakObject:weakObject];
     if (self) {
-        self.viewController = controller;
-        self.viewController.transitioningDelegate = self.delegates;
+        self.weakObject.transitioningDelegate = self.delegates;
     }
     return self;
 }

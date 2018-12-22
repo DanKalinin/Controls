@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Helpers/Helpers.h>
+#import "UIEWindow.h"
 
 @class UIEApplication;
 @class UIEApplicationOperation;
@@ -46,7 +47,7 @@
 
 @interface UIEApplicationOperation : NSEOperation <UIEApplicationOperationDelegate>
 
-@property (nonatomic) UIWindow *window;
+@property (nonatomic) UIEWindow *window;
 
 @property (readonly) HLPArray<UIEApplicationOperationDelegate> *delegates;
 

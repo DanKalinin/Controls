@@ -25,10 +25,10 @@
 
 @interface UIETableViewController : UITableViewController <UIETableViewOperationDelegate>
 
-@property (nonatomic) UIETableView *tableView;
-
-@property (readonly) Class operationClass;
-@property (readonly) UIETableViewControllerOperation *operation;
+//@property (nonatomic) UIETableView *tableView;
+//
+//@property (readonly) Class operationClass;
+//@property (readonly) UIETableViewControllerOperation *operation;
 
 @end
 
@@ -49,6 +49,6 @@
 
 @interface UIETableViewControllerOperation : UIViewControllerOperation <UIETableViewControllerOperationDelegate>
 
-@property (weak, readonly) UIETableViewController *viewController;
+//@property (weak, readonly) UIETableViewController *viewController;
 
 @end

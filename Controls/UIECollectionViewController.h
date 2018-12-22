@@ -23,10 +23,10 @@
 
 @interface UIECollectionViewController : UICollectionViewController <UIECollectionViewOperationDelegate>
 
-@property (nonatomic) UIECollectionView *collectionView;
-
-@property (readonly) Class operationClass;
-@property (readonly) UIECollectionViewControllerOperation *operation;
+//@property (nonatomic) UIECollectionView *collectionView;
+//
+//@property (readonly) Class operationClass;
+//@property (readonly) UIECollectionViewControllerOperation *operation;
 
 @end
 
@@ -47,6 +47,6 @@
 
 @interface UIECollectionViewControllerOperation : UIViewControllerOperation <UIECollectionViewControllerOperationDelegate>
 
-@property (weak, readonly) UIECollectionViewController *viewController;
+//@property (weak, readonly) UIECollectionViewController *viewController;
 
 @end

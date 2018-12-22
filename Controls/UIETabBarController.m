@@ -43,15 +43,15 @@
 
 @implementation UIETabBarControllerOperation
 
-@dynamic delegates;
-@dynamic viewController;
-
-- (instancetype)initWithViewController:(UIETabBarController *)viewController {
-    self = [super initWithViewController:viewController];
-    if (self) {
-        self.viewController.delegate = self.delegates;
-    }
-    return self;
-}
+//@dynamic delegates;
+//@dynamic viewController;
+//
+//- (instancetype)initWithViewController:(UIETabBarController *)viewController {
+//    self = [super initWithViewController:viewController];
+//    if (self) {
+//        self.viewController.delegate = self.delegates;
+//    }
+//    return self;
+//}
 
 @end

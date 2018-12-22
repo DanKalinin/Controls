@@ -9,6 +9,35 @@
 
 
 
+
+
+
+
+
+
+
+@interface UIViewOperation ()
+
+@end
+
+
+
+@implementation UIViewOperation
+
+@dynamic object;
+@dynamic weakObject;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @implementation UIView (UIE)
 
 - (UIColor *)layerBorderColor {
