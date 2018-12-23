@@ -65,31 +65,8 @@
     self = super.init;
     if (self) {
         self.window = window;
-        
-        [self.center addObserver:self selector:@selector(UIWindowDidBecomeVisibleNotification:) name:UIWindowDidBecomeVisibleNotification object:self.window];
-        [self.center addObserver:self selector:@selector(UIWindowDidBecomeHiddenNotification:) name:UIWindowDidBecomeHiddenNotification object:self.window];
-        [self.center addObserver:self selector:@selector(UIWindowDidBecomeKeyNotification:) name:UIWindowDidBecomeKeyNotification object:self.window];
-        [self.center addObserver:self selector:@selector(UIWindowDidResignKeyNotification:) name:UIWindowDidResignKeyNotification object:self.window];
     }
     return self;
-}
-
-#pragma mark - Notifications
-
-- (void)UIWindowDidBecomeVisibleNotification:(NSNotification *)notification {
-    [self.delegates UIEWindowOperationDidBecomeVisible:self];
-}
-
-- (void)UIWindowDidBecomeHiddenNotification:(NSNotification *)notification {
-    [self.delegates UIEWindowOperationDidBecomeHidden:self];
-}
-
-- (void)UIWindowDidBecomeKeyNotification:(NSNotification *)notification {
-    [self.delegates UIEWindowOperationDidBecomeKey:self];
-}
-
-- (void)UIWindowDidResignKeyNotification:(NSNotification *)notification {
-    [self.delegates UIEWindowOperationDidResignKey:self];
 }
 
 @end

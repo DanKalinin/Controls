@@ -43,12 +43,6 @@
 
 @protocol UIEWindowOperationDelegate <NSEOperationDelegate>
 
-@optional
-- (void)UIEWindowOperationDidBecomeVisible:(UIEWindowOperation *)operation;
-- (void)UIEWindowOperationDidBecomeHidden:(UIEWindowOperation *)operation;
-- (void)UIEWindowOperationDidBecomeKey:(UIEWindowOperation *)operation;
-- (void)UIEWindowOperationDidResignKey:(UIEWindowOperation *)operation;
-
 @end
 
 
