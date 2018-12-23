@@ -6,11 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Helpers/Helpers.h>
+#import "UITextField.h"
 
 @class UIETextField;
-@class UIETextFieldOperationShouldChangeInfo;
-@class UIETextFieldOperationShouldReturnInfo;
 @class UIETextFieldOperation;
 
 @protocol UIETextFieldOperationDelegate;
@@ -29,9 +27,6 @@
 @property (readonly) Class operationClass;
 @property (readonly) UIETextFieldOperation *operation;
 
-@property IBInspectable BOOL clearOnBegin;
-@property IBInspectable NSString *pattern;
-
 @end
 
 
@@ -43,59 +38,16 @@
 
 
 
-@interface UIETextFieldOperationShouldChangeInfo : HLPObject
-
-@property BOOL shouldChange;
-
-@property (readonly) NSRange range;
-@property (readonly) NSString *string;
-
-- (instancetype)initWithRange:(NSRange)range string:(NSString *)string;
+@protocol UIETextFieldOperationDelegate <UITextFieldOperationDelegate>
 
 @end
 
 
 
-
-
-
-
-
-
-
-@interface UIETextFieldOperationShouldReturnInfo : HLPObject
-
-@property BOOL shouldReturn;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@protocol UIETextFieldOperationDelegate <NSEOperationDelegate, UITextFieldDelegate>
-
-@optional
-- (void)UIETextFieldOperationShouldChange:(UIETextFieldOperation *)operation;
-- (void)UIETextFieldOperationShouldReturn:(UIETextFieldOperation *)operation;
-
-@end
-
-
-
-@interface UIETextFieldOperation : NSEOperation <UIETextFieldOperationDelegate>
+@interface UIETextFieldOperation : UITextFieldOperation <UIETextFieldOperationDelegate>
 
 @property (readonly) HLPArray<UIETextFieldOperationDelegate> *delegates;
-@property (readonly) UIETextFieldOperationShouldChangeInfo *shouldChangeInfo;
-@property (readonly) UIETextFieldOperationShouldReturnInfo *shouldReturnInfo;
 
-@property (weak, readonly) UIETextField *textField;
-
-- (instancetype)initWithTextField:(UIETextField *)textField;
+@property (weak, readonly) UIETextField *weakObject;
 
 @end
