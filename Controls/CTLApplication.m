@@ -12,7 +12,7 @@
 @interface CTLApplication ()
 
 @property HLPArray<CTLApplicationDelegate> *delegates;
-@property UIEKeyboard *keyboard;
+@property UIKeyboardOperation *keyboard;
 
 @end
 
@@ -33,7 +33,7 @@
         
         self.delegate = self.delegates;
         
-        self.keyboard = UIEKeyboard.shared;
+        self.keyboard = UIKeyboardOperation.shared;
         [self.keyboard.delegates addObject:self.delegates];
         [self.keyboard start];
     }
