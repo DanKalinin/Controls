@@ -27,6 +27,9 @@
 @property (readonly) Class operationClass;
 @property (readonly) UIETextFieldOperation *operation;
 
+@property IBInspectable BOOL clearOnBegin;
+@property IBInspectable NSString *pattern;
+
 @end
 
 
