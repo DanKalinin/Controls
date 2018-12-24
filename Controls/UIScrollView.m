@@ -17,6 +17,15 @@
 
 @implementation UIScrollViewOperation
 
+@dynamic delegates;
 @dynamic weakObject;
+
+- (instancetype)initWithWeakObject:(UIScrollView *)weakObject {
+    self = [super initWithWeakObject:weakObject];
+    if (self) {
+        self.weakObject.delegate = self.delegates;
+    }
+    return self;
+}
 
 @end

@@ -40,6 +40,8 @@
 
 @implementation UIView (UIE)
 
+@dynamic stringTag;
+
 - (UIColor *)layerBorderColor {
     return [UIColor colorWithCGColor:self.layer.borderColor];
 }

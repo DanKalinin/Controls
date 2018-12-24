@@ -10,13 +10,15 @@
 
 
 
-@protocol UIScrollViewOperationDelegate <UIViewOperationDelegate>
+@protocol UIScrollViewOperationDelegate <UIViewOperationDelegate, UIScrollViewDelegate>
 
 @end
 
 
 
 @interface UIScrollViewOperation : UIViewOperation <UIScrollViewOperationDelegate>
+
+@property (readonly) HLPArray<UIScrollViewOperationDelegate> *delegates;
 
 @property (weak, readonly) UIScrollView *weakObject;
 

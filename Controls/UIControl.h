@@ -89,14 +89,14 @@
 
 @interface UIControl (UIE)
 
-@property IBInspectable UIColor *defaultBackgroundColor;
-@property IBInspectable UIColor *highlightedBackgroundColor;
-@property IBInspectable UIColor *selectedBackgroundColor;
-@property IBInspectable UIColor *disabledBackgroundColor;
+@property UIColor *defaultBackgroundColor;
+@property UIColor *highlightedBackgroundColor;
+@property UIColor *selectedBackgroundColor;
+@property UIColor *disabledBackgroundColor;
 
-@property IBInspectable UIColor *defaultLayerBorderColor;
-@property IBInspectable UIColor *highlightedLayerBorderColor;
-@property IBInspectable UIColor *selectedLayerBorderColor;
-@property IBInspectable UIColor *disabledLayerBorderColor;
+@property UIColor *defaultLayerBorderColor;
+@property UIColor *highlightedLayerBorderColor;
+@property UIColor *selectedLayerBorderColor;
+@property UIColor *disabledLayerBorderColor;
 
 @end

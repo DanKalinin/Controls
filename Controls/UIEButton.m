@@ -9,7 +9,16 @@
 
 
 
+
+
+
+
+
+
+
 @interface UIEButton ()
+
+@property UIEButtonOperation *operation;
 
 @end
 
@@ -17,46 +26,55 @@
 
 @implementation UIEButton
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.operation = [self.operationClass.alloc initWithWeakObject:self];
+    }
+    return self;
+}
+
+- (Class)operationClass {
+    return UIEButtonOperation.class;
+}
+
 - (void)setEnabled:(BOOL)enabled {
     [super setEnabled:enabled];
     
-    self.button1.enabled = self.enabled;
-    
-    if (self.enabled) {
-        self.backgroundColor = self.defaultBackgroundColor;
-        self.layerBorderColor = self.defaultLayerBorderColor;
-    } else {
-        self.backgroundColor = self.disabledBackgroundColor;
-        self.layerBorderColor = self.disabledLayerBorderColor;
-    }
+    [self.operation.delegates UIControlOperationDidSetEnabled:self.operation];
 }
 
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
     
-    self.button1.selected = self.selected;
-    
-    if (self.selected) {
-        self.backgroundColor = self.selectedBackgroundColor;
-        self.layerBorderColor = self.selectedLayerBorderColor;
-    } else {
-        self.backgroundColor = self.defaultBackgroundColor;
-        self.layerBorderColor = self.defaultLayerBorderColor;
-    }
+    [self.operation.delegates UIControlOperationDidSetSelected:self.operation];
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
     [super setHighlighted:highlighted];
     
-    self.button1.highlighted = self.highlighted;
-    
-    if (self.highlighted) {
-        self.backgroundColor = self.highlightedBackgroundColor;
-        self.layerBorderColor = self.highlightedLayerBorderColor;
-    } else {
-        self.backgroundColor = self.defaultBackgroundColor;
-        self.layerBorderColor = self.defaultLayerBorderColor;
-    }
+    [self.operation.delegates UIControlOperationDidSetHighlighted:self.operation];
 }
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIEButtonOperation ()
+
+@end
+
+
+
+@implementation UIEButtonOperation
+
+@dynamic weakObject;
 
 @end

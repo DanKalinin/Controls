@@ -6,13 +6,26 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIView.h"
+#import "UIButton.h"
 
 @class UIEButton;
+@class UIEButtonOperation;
+
+@protocol UIEButtonOperationDelegate;
+
+
+
+
+
+
+
 
 
 
 @interface UIEButton : UIButton
+
+@property (readonly) Class operationClass;
+@property (readonly) UIEButtonOperation *operation;
 
 @property IBInspectable NSString *stringTag;
 
@@ -27,5 +40,26 @@
 @property IBInspectable UIColor *disabledLayerBorderColor;
 
 @property IBOutlet UIEButton *button1;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@protocol UIEButtonOperationDelegate <UIButtonOperationDelegate>
+
+@end
+
+
+
+@interface UIEButtonOperation : UIButtonOperation <UIEButtonOperationDelegate>
+
+@property (weak, readonly) UIEButton *weakObject;
 
 @end

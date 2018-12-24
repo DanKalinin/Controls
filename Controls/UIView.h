@@ -46,6 +46,8 @@
 
 @interface UIView (UIE)
 
+@property NSString *stringTag;
+
 @property IBInspectable UIColor *layerBorderColor;
 
 @end
