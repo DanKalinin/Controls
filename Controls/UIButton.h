@@ -16,11 +16,16 @@
 
 @protocol UIButtonOperationDelegate <UIControlOperationDelegate>
 
+@optional
+- (void)UIButtonOperationEventTouchUpInside:(UIButtonOperation *)operation;
+
 @end
 
 
 
 @interface UIButtonOperation : UIControlOperation <UIButtonOperationDelegate>
+
+@property (readonly) HLPArray<UIButtonOperationDelegate> *delegates;
 
 @property (weak, readonly) UIButton *weakObject;
 

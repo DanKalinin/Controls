@@ -192,6 +192,66 @@
     }
 }
 
+- (void)UIControlOperationEventTouchDown:(UIControlOperation *)operation {
+    
+}
+
+- (void)UIControlOperationEventTouchDownRepeat:(UIControlOperation *)operation {
+    
+}
+
+- (void)UIControlOperationEventTouchDragInside:(UIControlOperation *)operation {
+    
+}
+
+- (void)UIControlOperationEventTouchDragOutside:(UIControlOperation *)operation {
+    
+}
+
+- (void)UIControlOperationEventTouchDragEnter:(UIControlOperation *)operation {
+    
+}
+
+- (void)UIControlOperationEventTouchDragExit:(UIControlOperation *)operation {
+    
+}
+
+- (void)UIControlOperationEventTouchUpInside:(UIControlOperation *)operation {
+    
+}
+
+- (void)UIControlOperationEventTouchUpOutside:(UIControlOperation *)operation {
+    
+}
+
+- (void)UIControlOperationEventTouchCancel:(UIControlOperation *)operation {
+    
+}
+
+- (void)UIControlOperationEventValueChanged:(UIControlOperation *)operation {
+    
+}
+
+- (void)UIControlOperationEventPrimaryActionTriggered:(UIControlOperation *)operation {
+    
+}
+
+- (void)UIControlOperationEventEditingDidBegin:(UIControlOperation *)operation {
+    
+}
+
+- (void)UIControlOperationEventEditingChanged:(UIControlOperation *)operation {
+    
+}
+
+- (void)UIControlOperationEventEditingDidEnd:(UIControlOperation *)operation {
+    
+}
+
+- (void)UIControlOperationEventEditingDidEndOnExit:(UIControlOperation *)operation {
+    
+}
+
 @end
 
 

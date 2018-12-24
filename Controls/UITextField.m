@@ -133,7 +133,49 @@
     
 }
 
+#pragma mark - Control operation
+
+- (void)UIControlOperationEventEditingDidBegin:(UITextFieldOperation *)operation {
+    [super UIControlOperationEventEditingDidBegin:self];
+    
+    [self.delegates UITextFieldOperationEventEditingDidBegin:self];
+}
+
+- (void)UIControlOperationEventEditingChanged:(UITextFieldOperation *)operation {
+    [super UIControlOperationEventEditingChanged:self];
+    
+    [self.delegates UITextFieldOperationEventEditingChanged:self];
+}
+
+- (void)UIControlOperationEventEditingDidEnd:(UITextFieldOperation *)operation {
+    [super UIControlOperationEventEditingDidEnd:self];
+    
+    [self.delegates UITextFieldOperationEventEditingDidEnd:self];
+}
+
+- (void)UIControlOperationEventEditingDidEndOnExit:(UITextFieldOperation *)operation {
+    [super UIControlOperationEventEditingDidEndOnExit:self];
+    
+    [self.delegates UITextFieldOperationEventEditingDidEndOnExit:self];
+}
+
 #pragma mark - Text field operation
+
+- (void)UITextFieldOperationEventEditingDidBegin:(UIControlOperation *)operation {
+    
+}
+
+- (void)UITextFieldOperationEventEditingChanged:(UIControlOperation *)operation {
+    
+}
+
+- (void)UITextFieldOperationEventEditingDidEnd:(UITextFieldOperation *)operation {
+    
+}
+
+- (void)UITextFieldOperationEventEditingDidEndOnExit:(UITextFieldOperation *)operation {
+    
+}
 
 - (void)UITextFieldOperationDidBeginEditing:(UITextFieldOperation *)operation {
     if (self.weakObject.clearOnBegin) {
