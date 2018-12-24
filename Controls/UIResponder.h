@@ -14,6 +14,13 @@
 
 
 
+
+
+
+
+
+
+
 @protocol UIResponderOperationDelegate <NSObjectOperationDelegate>
 
 @end
@@ -25,5 +32,18 @@
 @property (readonly) UIResponder *object;
 
 @property (weak, readonly) UIResponder *weakObject;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIResponder (UIE)
 
 @end

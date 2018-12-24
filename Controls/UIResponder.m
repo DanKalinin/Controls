@@ -9,6 +9,13 @@
 
 
 
+
+
+
+
+
+
+
 @interface UIResponderOperation ()
 
 @end
@@ -19,5 +26,18 @@
 
 @dynamic object;
 @dynamic weakObject;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@implementation UIResponder (UIE)
 
 @end

@@ -8,6 +8,17 @@
 #import <UIKit/UIKit.h>
 #import "UIView.h"
 
+@class UIScrollViewOperation;
+
+@protocol UIScrollViewOperationDelegate;
+
+
+
+
+
+
+
+
 
 
 @protocol UIScrollViewOperationDelegate <UIViewOperationDelegate, UIScrollViewDelegate>
@@ -21,5 +32,18 @@
 @property (readonly) HLPArray<UIScrollViewOperationDelegate> *delegates;
 
 @property (weak, readonly) UIScrollView *weakObject;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIScrollView (UIE)
 
 @end
