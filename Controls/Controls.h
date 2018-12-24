@@ -15,12 +15,14 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/UIView.h>
 #import <Controls/UIWindow.h>
 #import <Controls/UIControl.h>
+#import <Controls/UIButton.h>
 #import <Controls/UITextField.h>
 #import <Controls/UIViewController.h>
 
 #import <Controls/UIEApplication.h>
 #import <Controls/UIEWindow.h>
 #import <Controls/UIEControl.h>
+#import <Controls/UIEButton.h>
 #import <Controls/UIETextField.h>
 #import <Controls/UIEAction.h>
 #import <Controls/UIEAlert.h>
@@ -34,7 +36,6 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/UIENavigationController.h>
 #import <Controls/UIETabBar.h>
 #import <Controls/UIETabBarController.h>
-#import <Controls/UIEButton.h>
 #import <Controls/UIEStoryboardSegue.h>
 
 #import <Controls/CTLApplication.h>
