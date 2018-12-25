@@ -6,14 +6,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIETableViewCell.h"
+#import "UITableView.h"
 #import "UIEAction.h"
 
 @class UIETableView;
-@class UIETableViewOperationNumberOfSectionsInfo;
-@class UIETableViewOperationNumberOfRowsInfo;
-@class UIETableViewOperationCellForRowInfo;
-@class UIETableViewOperationDidSelectRowInfo;
 @class UIETableViewOperation;
 @class UIETableViewRowAction;
 
@@ -46,99 +42,17 @@
 
 
 
-@interface UIETableViewOperationNumberOfSectionsInfo : HLPObject
-
-@property NSInteger sections;
+@protocol UIETableViewOperationDelegate <UITableViewOperationDelegate>
 
 @end
 
 
 
-
-
-
-
-
-
-
-@interface UIETableViewOperationNumberOfRowsInfo : HLPObject
-
-@property NSInteger rows;
-
-@property (readonly) NSInteger section;
-
-- (instancetype)initWithSection:(NSInteger)section;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface UIETableViewOperationCellForRowInfo : HLPObject
-
-@property UIETableViewCell *cell;
-
-@property (readonly) NSIndexPath *indexPath;
-
-- (instancetype)initWithIndexPath:(NSIndexPath *)indexPath;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface UIETableViewOperationDidSelectRowInfo : HLPObject
-
-@property (readonly) NSIndexPath *indexPath;
-
-- (instancetype)initWithIndexPath:(NSIndexPath *)indexPath;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@protocol UIETableViewOperationDelegate <NSEOperationDelegate, UITableViewDelegate, UITableViewDataSource>
-
-@optional
-- (void)UIETableViewOperationNumberOfSections:(UIETableViewOperation *)operation;
-- (void)UIETableViewOperationNumberOfRows:(UIETableViewOperation *)operation;
-- (void)UIETableViewOperationCellForRow:(UIETableViewOperation *)operation;
-- (void)UIETableViewOperationDidSelectRow:(UIETableViewOperation *)operation;
-
-@end
-
-
-
-@interface UIETableViewOperation : NSEOperation <UIETableViewOperationDelegate>
+@interface UIETableViewOperation : UITableViewOperation <UIETableViewOperationDelegate>
 
 @property (readonly) HLPArray<UIETableViewOperationDelegate> *delegates;
-@property (readonly) UIETableViewOperationNumberOfSectionsInfo *numberOfSectionsInfo;
-@property (readonly) UIETableViewOperationNumberOfRowsInfo *numberOfRowsInfo;
-@property (readonly) UIETableViewOperationCellForRowInfo *cellForRowInfo;
-@property (readonly) UIETableViewOperationDidSelectRowInfo *didSelectRowInfo;
 
-@property (weak, readonly) UIETableView *tableView;
-
-- (instancetype)initWithTableView:(UIETableView *)tableView;
+@property (weak, readonly) UIETableView *weakObject;
 
 @end
 
