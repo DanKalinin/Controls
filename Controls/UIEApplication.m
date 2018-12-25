@@ -29,7 +29,7 @@
 - (instancetype)init {
     self = super.init;
     if (self) {
-        self.operation = [self.operationClass.alloc initWithApplication:self];
+        self.operation = [self.operationClass.alloc initWithWeakObject:self];
     }
     return self;
 }
@@ -51,8 +51,6 @@
 
 @interface UIEApplicationOperation ()
 
-@property (weak) UIEApplication *application;
-
 @end
 
 
@@ -60,14 +58,5 @@
 @implementation UIEApplicationOperation
 
 @dynamic delegates;
-
-- (instancetype)initWithApplication:(UIEApplication *)application {
-    self = super.init;
-    if (self) {
-        self.application = application;
-        self.application.delegate = self.delegates;
-    }
-    return self;
-}
 
 @end

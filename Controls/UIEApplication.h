@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Helpers/Helpers.h>
+#import "UIApplication.h"
 #import "UIEWindow.h"
 
 @class UIEApplication;
@@ -39,20 +39,14 @@
 
 
 
-@protocol UIEApplicationOperationDelegate <NSEOperationDelegate, UIApplicationDelegate>
+@protocol UIEApplicationOperationDelegate <UIApplicationOperationDelegate>
 
 @end
 
 
 
-@interface UIEApplicationOperation : NSEOperation <UIEApplicationOperationDelegate>
-
-@property (nonatomic) UIEWindow *window;
+@interface UIEApplicationOperation : UIApplicationOperation <UIEApplicationOperationDelegate>
 
 @property (readonly) HLPArray<UIEApplicationOperationDelegate> *delegates;
-
-@property (weak, readonly) UIEApplication *application;
-
-- (instancetype)initWithApplication:(UIEApplication *)application;
 
 @end
