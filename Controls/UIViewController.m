@@ -66,6 +66,12 @@
     return self;
 }
 
+#pragma mark - View controller operation
+
+- (void)UIViewControllerOperationViewDidLoad:(UIViewControllerOperation *)operation {
+    
+}
+
 @end
 
 

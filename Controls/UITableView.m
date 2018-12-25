@@ -203,4 +203,6 @@
 
 @implementation UITableView (UIE)
 
+@dynamic operation;
+
 @end

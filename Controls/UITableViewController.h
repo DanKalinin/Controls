@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIViewController.h"
+#import "UITableView.h"
 
 @class UITableViewControllerOperation;
 
@@ -29,6 +30,8 @@
 
 @interface UITableViewControllerOperation : UIViewControllerOperation <UITableViewControllerOperationDelegate>
 
+@property (weak, readonly) UITableViewController *weakObject;
+
 @end
 
 
@@ -40,6 +43,6 @@
 
 
 
-@interface UITableViewController (UIE)
+@interface UITableViewController (UIE) <UITableViewOperationDelegate>
 
 @end

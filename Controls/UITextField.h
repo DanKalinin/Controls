@@ -96,7 +96,7 @@
 
 @interface UITextField (UIE)
 
-@property IBInspectable BOOL clearOnBegin;
-@property IBInspectable NSString *pattern;
+@property BOOL clearOnBegin;
+@property NSString *pattern;
 
 @end

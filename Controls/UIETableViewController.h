@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIViewController.h"
+#import "UITableViewController.h"
 #import "UIETableView.h"
 
 @class UIETableViewController;
@@ -25,10 +25,11 @@
 
 @interface UIETableViewController : UITableViewController <UIETableViewOperationDelegate>
 
-//@property (nonatomic) UIETableView *tableView;
-//
-//@property (readonly) Class operationClass;
-//@property (readonly) UIETableViewControllerOperation *operation;
+@property (nonatomic) UIETableView *view;
+@property (nonatomic) UIETableView *tableView;
+
+@property (readonly) Class operationClass;
+@property (readonly) UIETableViewControllerOperation *operation;
 
 @end
 
@@ -41,14 +42,14 @@
 
 
 
-@protocol UIETableViewControllerOperationDelegate <UIViewControllerOperationDelegate>
+@protocol UIETableViewControllerOperationDelegate <UITableViewControllerOperationDelegate>
 
 @end
 
 
 
-@interface UIETableViewControllerOperation : UIViewControllerOperation <UIETableViewControllerOperationDelegate>
+@interface UIETableViewControllerOperation : UITableViewControllerOperation <UIETableViewControllerOperationDelegate>
 
-//@property (weak, readonly) UIETableViewController *viewController;
+@property (weak, readonly) UIETableViewController *weakObject;
 
 @end

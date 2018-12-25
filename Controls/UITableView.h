@@ -130,4 +130,6 @@
 
 @interface UITableView (UIE)
 
+@property (readonly) UITableViewOperation *operation;
+
 @end
