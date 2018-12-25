@@ -12,7 +12,6 @@
 @class UIViewControllerOperationPrepareForSegueInfo;
 @class UIViewControllerOperation;
 @class UIEPreviewAction;
-@class UIEStoryboardSegue;
 
 @protocol UIViewControllerOperationDelegate;
 @protocol UIEPreviewActionDelegate;
@@ -28,10 +27,10 @@
 
 @interface UIViewControllerOperationPrepareForSegueInfo : HLPObject
 
-@property (readonly) UIEStoryboardSegue *segue;
+@property (readonly) UIStoryboardSegue *segue;
 @property (readonly) id sender;
 
-- (instancetype)initWithSegue:(UIEStoryboardSegue *)segue sender:(id)sender;
+- (instancetype)initWithSegue:(UIStoryboardSegue *)segue sender:(id)sender;
 
 @end
 

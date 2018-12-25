@@ -6,7 +6,6 @@
 //
 
 #import "UIViewController.h"
-#import "UIEStoryboardSegue.h"
 
 
 
@@ -19,7 +18,7 @@
 
 @interface UIViewControllerOperationPrepareForSegueInfo ()
 
-@property UIEStoryboardSegue *segue;
+@property UIStoryboardSegue *segue;
 @property id sender;
 
 @end
@@ -28,7 +27,7 @@
 
 @implementation UIViewControllerOperationPrepareForSegueInfo
 
-- (instancetype)initWithSegue:(UIEStoryboardSegue *)segue sender:(id)sender {
+- (instancetype)initWithSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     self = super.init;
     if (self) {
         self.segue = segue;
