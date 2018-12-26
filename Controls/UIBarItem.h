@@ -29,7 +29,7 @@
 
 @interface UIBarItemOperation : NSObjectOperation <UIBarItemOperationDelegate>
 
-@property (weak, readonly) UIBarItem *weakObject;
+@property (weak, readonly) UIBarItem *object;
 
 @end
 
@@ -43,5 +43,7 @@
 
 
 @interface UIBarItem (UIE)
+
+@property (readonly) UIBarItemOperation *operation;
 
 @end

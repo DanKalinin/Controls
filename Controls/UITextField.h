@@ -77,11 +77,10 @@
 @interface UITextFieldOperation : UIControlOperation <UITextFieldOperationDelegate>
 
 @property (readonly) HLPArray<UITextFieldOperationDelegate> *delegates;
-@property (readonly) UITextField *object;
 @property (readonly) UITextFieldOperationShouldChangeInfo *shouldChangeInfo;
 @property (readonly) UITextFieldOperationShouldReturnInfo *shouldReturnInfo;
 
-@property (weak, readonly) UITextField *weakObject;
+@property (weak, readonly) UITextField *object;
 
 @end
 
@@ -95,6 +94,8 @@
 
 
 @interface UITextField (UIE)
+
+@property (readonly) UITextFieldOperation *operation;
 
 @property BOOL clearOnBegin;
 @property NSString *pattern;

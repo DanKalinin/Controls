@@ -89,12 +89,11 @@
 
 @dynamic delegates;
 @dynamic object;
-@dynamic weakObject;
 
-- (instancetype)initWithWeakObject:(UITextField *)weakObject {
-    self = [super initWithWeakObject:weakObject];
+- (instancetype)initWithObject:(UITextField *)object {
+    self = [super initWithObject:object];
     if (self) {
-        self.weakObject.delegate = self.delegates;
+        self.object.delegate = self.delegates;
     }
     return self;
 }
@@ -178,15 +177,15 @@
 }
 
 - (void)UITextFieldOperationDidBeginEditing:(UITextFieldOperation *)operation {
-    if (self.weakObject.clearOnBegin) {
-        self.weakObject.text = @"";
+    if (self.object.clearOnBegin) {
+        self.object.text = @"";
     }
 }
 
 - (void)UITextFieldOperationShouldChange:(UITextFieldOperation *)operation {
-    if (self.weakObject.pattern.length > 0) {
-        NSString *text = [self.weakObject.text stringByReplacingCharactersInRange:self.shouldChangeInfo.range withString:self.shouldChangeInfo.string];
-        NSRange range = [text rangeOfString:self.weakObject.pattern options:NSRegularExpressionSearch];
+    if (self.object.pattern.length > 0) {
+        NSString *text = [self.object.text stringByReplacingCharactersInRange:self.shouldChangeInfo.range withString:self.shouldChangeInfo.string];
+        NSRange range = [text rangeOfString:self.object.pattern options:NSRegularExpressionSearch];
         if (range.location == NSNotFound) {
             self.shouldChangeInfo.shouldChange = NO;
         } else {
@@ -214,7 +213,12 @@
 
 @implementation UITextField (UIE)
 
+@dynamic operation;
 @dynamic clearOnBegin;
 @dynamic pattern;
+
+- (Class)operationClass {
+    return UITextFieldOperation.class;
+}
 
 @end

@@ -9,46 +9,9 @@
 #import "UIWindow.h"
 
 @class UIEWindow;
-@class UIEWindowOperation;
-
-@protocol UIEWindowOperationDelegate;
-@protocol UIEKeyboardDelegate;
-
-
-
-
-
-
-
 
 
 
 @interface UIEWindow : UIWindow
-
-@property (readonly) Class operationClass;
-@property (readonly) UIEWindowOperation *operation;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@protocol UIEWindowOperationDelegate <UIWindowOperationDelegate>
-
-@end
-
-
-
-@interface UIEWindowOperation : UIWindowOperation <UIEWindowOperationDelegate>
-
-@property (readonly) HLPArray<UIEWindowOperationDelegate> *delegates;
-
-@property (weak, readonly) UIEWindow *weakObject;
 
 @end

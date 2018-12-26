@@ -33,7 +33,7 @@
 
 @property (readonly) HLPArray<UIApplicationOperationDelegate> *delegates;
 
-@property (weak, readonly) UIApplication *weakObject;
+@property (weak, readonly) UIApplication *object;
 
 @end
 
@@ -47,5 +47,7 @@
 
 
 @interface UIApplication (UIE)
+
+@property (readonly) UIApplicationOperation *operation;
 
 @end

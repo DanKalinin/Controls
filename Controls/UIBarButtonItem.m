@@ -56,13 +56,13 @@
 @implementation UIBarButtonItemOperation
 
 @dynamic delegates;
-@dynamic weakObject;
+@dynamic object;
 
-- (instancetype)initWithWeakObject:(UIBarButtonItem *)weakObject {
-    self = [super initWithWeakObject:weakObject];
+- (instancetype)initWithObject:(UIBarButtonItem *)object {
+    self = [super initWithObject:object];
     if (self) {
-        self.weakObject.target = self;
-        self.weakObject.action = @selector(UIBarButtonItemEventTouchUpInside:event:);
+        self.object.target = self;
+        self.object.action = @selector(UIBarButtonItemEventTouchUpInside:event:);
     }
     return self;
 }
@@ -92,5 +92,11 @@
 
 
 @implementation UIBarButtonItem (UIE)
+
+@dynamic operation;
+
+- (Class)operationClass {
+    return UIBarButtonItemOperation.class;
+}
 
 @end

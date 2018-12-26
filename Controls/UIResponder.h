@@ -29,9 +29,7 @@
 
 @interface UIResponderOperation : NSObjectOperation <UIResponderOperationDelegate>
 
-@property (readonly) UIResponder *object;
-
-@property (weak, readonly) UIResponder *weakObject;
+@property (weak, readonly) UIResponder *object;
 
 @end
 
@@ -45,5 +43,7 @@
 
 
 @interface UIResponder (UIE)
+
+@property (readonly) UIResponderOperation *operation;
 
 @end

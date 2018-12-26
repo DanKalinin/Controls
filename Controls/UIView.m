@@ -25,7 +25,6 @@
 @implementation UIViewOperation
 
 @dynamic object;
-@dynamic weakObject;
 
 @end
 
@@ -40,7 +39,12 @@
 
 @implementation UIView (UIE)
 
+@dynamic operation;
 @dynamic stringTag;
+
+- (Class)operationClass {
+    return UIViewOperation.class;
+}
 
 - (UIColor *)layerBorderColor {
     return [UIColor colorWithCGColor:self.layer.borderColor];

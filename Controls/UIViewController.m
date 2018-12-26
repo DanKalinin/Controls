@@ -56,12 +56,12 @@
 @implementation UIViewControllerOperation
 
 @dynamic delegates;
-@dynamic weakObject;
+@dynamic object;
 
-- (instancetype)initWithWeakObject:(NSObject *)weakObject {
-    self = [super initWithWeakObject:weakObject];
+- (instancetype)initWithObject:(UIViewController *)object {
+    self = [super initWithObject:object];
     if (self) {
-        self.weakObject.transitioningDelegate = self.delegates;
+        self.object.transitioningDelegate = self.delegates;
     }
     return self;
 }
@@ -70,6 +70,25 @@
 
 - (void)UIViewControllerOperationViewDidLoad:(UIViewControllerOperation *)operation {
     
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
+@implementation UIViewController (UIE)
+
+@dynamic operation;
+
+- (Class)operationClass {
+    return UIViewControllerOperation.class;
 }
 
 @end

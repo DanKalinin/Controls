@@ -25,7 +25,6 @@
 @implementation UIResponderOperation
 
 @dynamic object;
-@dynamic weakObject;
 
 @end
 
@@ -39,5 +38,11 @@
 
 
 @implementation UIResponder (UIE)
+
+@dynamic operation;
+
+- (Class)operationClass {
+    return UIResponderOperation.class;
+}
 
 @end

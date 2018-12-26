@@ -53,7 +53,7 @@
 @property (readonly) HLPArray<UIBarButtonItemOperationDelegate> *delegates;
 @property (readonly) UIBarButtonItemOperationEventInfo *eventInfo;
 
-@property (weak, readonly) UIBarButtonItem *weakObject;
+@property (weak, readonly) UIBarButtonItem *object;
 
 @end
 
@@ -67,5 +67,7 @@
 
 
 @interface UIBarButtonItem (UIE)
+
+@property UIBarButtonItemOperation *operation;
 
 @end

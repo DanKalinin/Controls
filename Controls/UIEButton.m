@@ -9,34 +9,13 @@
 
 
 
-
-
-
-
-
-
-
 @interface UIEButton ()
-
-@property UIEButtonOperation *operation;
 
 @end
 
 
 
 @implementation UIEButton
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        self.operation = [self.operationClass.alloc initWithWeakObject:self];
-    }
-    return self;
-}
-
-- (Class)operationClass {
-    return UIEButtonOperation.class;
-}
 
 - (void)setEnabled:(BOOL)enabled {
     [super setEnabled:enabled];
@@ -55,26 +34,5 @@
     
     [self.operation.delegates UIControlOperationDidSetHighlighted:self.operation];
 }
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface UIEButtonOperation ()
-
-@end
-
-
-
-@implementation UIEButtonOperation
-
-@dynamic weakObject;
 
 @end

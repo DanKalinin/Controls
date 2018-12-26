@@ -25,12 +25,12 @@
 @implementation UIApplicationOperation
 
 @dynamic delegates;
-@dynamic weakObject;
+@dynamic object;
 
-- (instancetype)initWithWeakObject:(UIApplication *)weakObject {
-    self = [super initWithWeakObject:weakObject];
+- (instancetype)initWithObject:(UIApplication *)object {
+    self = [super initWithObject:object];
     if (self) {
-        self.weakObject.delegate = self.delegates;
+        self.object.delegate = self.delegates;
     }
     return self;
 }
@@ -47,5 +47,11 @@
 
 
 @implementation UIApplication (UIE)
+
+@dynamic operation;
+
+- (Class)operationClass {
+    return UIApplicationOperation.class;
+}
 
 @end

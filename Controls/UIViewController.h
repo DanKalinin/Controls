@@ -58,7 +58,22 @@
 
 @property (readonly) HLPArray<UIViewControllerOperationDelegate> *delegates;
 
-@property (weak, readonly) UIViewController *weakObject;
+@property (weak, readonly) UIViewController *object;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIViewController (UIE)
+
+@property (readonly) UIViewControllerOperation *operation;
 
 @end
 

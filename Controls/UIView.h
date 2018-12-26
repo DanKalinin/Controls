@@ -29,9 +29,7 @@
 
 @interface UIViewOperation : UIResponderOperation
 
-@property (readonly) UIView *object;
-
-@property (weak, readonly) UIView *weakObject;
+@property (weak, readonly) UIView *object;
 
 @end
 
@@ -45,6 +43,8 @@
 
 
 @interface UIView (UIE)
+
+@property (readonly) UIViewOperation *operation;
 
 @property NSString *stringTag;
 

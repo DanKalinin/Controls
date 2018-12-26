@@ -57,28 +57,27 @@
 
 @dynamic delegates;
 @dynamic object;
-@dynamic weakObject;
 
-- (instancetype)initWithWeakObject:(UIControl *)weakObject {
-    self = [super initWithWeakObject:weakObject];
+- (instancetype)initWithObject:(UIControl *)object {
+    self = [super initWithObject:object];
     if (self) {
-        [self.weakObject addTarget:self action:@selector(UIControlEventTouchDown:event:) forControlEvents:UIControlEventTouchDown];
-        [self.weakObject addTarget:self action:@selector(UIControlEventTouchDownRepeat:event:) forControlEvents:UIControlEventTouchDownRepeat];
-        [self.weakObject addTarget:self action:@selector(UIControlEventTouchDragInside:event:) forControlEvents:UIControlEventTouchDragInside];
-        [self.weakObject addTarget:self action:@selector(UIControlEventTouchDragOutside:event:) forControlEvents:UIControlEventTouchDragOutside];
-        [self.weakObject addTarget:self action:@selector(UIControlEventTouchDragEnter:event:) forControlEvents:UIControlEventTouchDragEnter];
-        [self.weakObject addTarget:self action:@selector(UIControlEventTouchDragExit:event:) forControlEvents:UIControlEventTouchDragExit];
-        [self.weakObject addTarget:self action:@selector(UIControlEventTouchUpInside:event:) forControlEvents:UIControlEventTouchUpInside];
-        [self.weakObject addTarget:self action:@selector(UIControlEventTouchUpOutside:event:) forControlEvents:UIControlEventTouchUpOutside];
-        [self.weakObject addTarget:self action:@selector(UIControlEventTouchCancel:event:) forControlEvents:UIControlEventTouchCancel];
+        [self.object addTarget:self action:@selector(UIControlEventTouchDown:event:) forControlEvents:UIControlEventTouchDown];
+        [self.object addTarget:self action:@selector(UIControlEventTouchDownRepeat:event:) forControlEvents:UIControlEventTouchDownRepeat];
+        [self.object addTarget:self action:@selector(UIControlEventTouchDragInside:event:) forControlEvents:UIControlEventTouchDragInside];
+        [self.object addTarget:self action:@selector(UIControlEventTouchDragOutside:event:) forControlEvents:UIControlEventTouchDragOutside];
+        [self.object addTarget:self action:@selector(UIControlEventTouchDragEnter:event:) forControlEvents:UIControlEventTouchDragEnter];
+        [self.object addTarget:self action:@selector(UIControlEventTouchDragExit:event:) forControlEvents:UIControlEventTouchDragExit];
+        [self.object addTarget:self action:@selector(UIControlEventTouchUpInside:event:) forControlEvents:UIControlEventTouchUpInside];
+        [self.object addTarget:self action:@selector(UIControlEventTouchUpOutside:event:) forControlEvents:UIControlEventTouchUpOutside];
+        [self.object addTarget:self action:@selector(UIControlEventTouchCancel:event:) forControlEvents:UIControlEventTouchCancel];
         
-        [self.weakObject addTarget:self action:@selector(UIControlEventValueChanged:event:) forControlEvents:UIControlEventValueChanged];
-        [self.weakObject addTarget:self action:@selector(UIControlEventPrimaryActionTriggered:event:) forControlEvents:UIControlEventPrimaryActionTriggered];
+        [self.object addTarget:self action:@selector(UIControlEventValueChanged:event:) forControlEvents:UIControlEventValueChanged];
+        [self.object addTarget:self action:@selector(UIControlEventPrimaryActionTriggered:event:) forControlEvents:UIControlEventPrimaryActionTriggered];
         
-        [self.weakObject addTarget:self action:@selector(UIControlEventEditingDidBegin:event:) forControlEvents:UIControlEventEditingDidBegin];
-        [self.weakObject addTarget:self action:@selector(UIControlEventEditingChanged:event:) forControlEvents:UIControlEventEditingChanged];
-        [self.weakObject addTarget:self action:@selector(UIControlEventEditingDidEnd:event:) forControlEvents:UIControlEventEditingDidEnd];
-        [self.weakObject addTarget:self action:@selector(UIControlEventEditingDidEndOnExit:event:) forControlEvents:UIControlEventEditingDidEndOnExit];
+        [self.object addTarget:self action:@selector(UIControlEventEditingDidBegin:event:) forControlEvents:UIControlEventEditingDidBegin];
+        [self.object addTarget:self action:@selector(UIControlEventEditingChanged:event:) forControlEvents:UIControlEventEditingChanged];
+        [self.object addTarget:self action:@selector(UIControlEventEditingDidEnd:event:) forControlEvents:UIControlEventEditingDidEnd];
+        [self.object addTarget:self action:@selector(UIControlEventEditingDidEndOnExit:event:) forControlEvents:UIControlEventEditingDidEndOnExit];
     }
     return self;
 }
@@ -163,32 +162,32 @@
 #pragma mark - Control operation
 
 - (void)UIControlOperationDidSetEnabled:(UIControlOperation *)operation {
-    if (self.weakObject.enabled) {
-        self.weakObject.backgroundColor = self.weakObject.defaultBackgroundColor;
-        self.weakObject.layerBorderColor = self.weakObject.defaultLayerBorderColor;
+    if (self.object.enabled) {
+        self.object.backgroundColor = self.defaultBackgroundColor;
+        self.object.layerBorderColor = self.defaultLayerBorderColor;
     } else {
-        self.weakObject.backgroundColor = self.weakObject.disabledBackgroundColor;
-        self.weakObject.layerBorderColor = self.weakObject.disabledLayerBorderColor;
+        self.object.backgroundColor = self.disabledBackgroundColor;
+        self.object.layerBorderColor = self.disabledLayerBorderColor;
     }
 }
 
 - (void)UIControlOperationDidSetSelected:(UIControlOperation *)operation {
-    if (self.weakObject.selected) {
-        self.weakObject.backgroundColor = self.weakObject.selectedBackgroundColor;
-        self.weakObject.layerBorderColor = self.weakObject.selectedLayerBorderColor;
+    if (self.object.selected) {
+        self.object.backgroundColor = self.selectedBackgroundColor;
+        self.object.layerBorderColor = self.selectedLayerBorderColor;
     } else {
-        self.weakObject.backgroundColor = self.weakObject.defaultBackgroundColor;
-        self.weakObject.layerBorderColor = self.weakObject.defaultLayerBorderColor;
+        self.object.backgroundColor = self.defaultBackgroundColor;
+        self.object.layerBorderColor = self.defaultLayerBorderColor;
     }
 }
 
 - (void)UIControlOperationDidSetHighlighted:(UIControlOperation *)operation {
-    if (self.weakObject.highlighted) {
-        self.weakObject.backgroundColor = self.weakObject.highlightedBackgroundColor;
-        self.weakObject.layerBorderColor = self.weakObject.highlightedLayerBorderColor;
+    if (self.object.highlighted) {
+        self.object.backgroundColor = self.highlightedBackgroundColor;
+        self.object.layerBorderColor = self.highlightedLayerBorderColor;
     } else {
-        self.weakObject.backgroundColor = self.weakObject.defaultBackgroundColor;
-        self.weakObject.layerBorderColor = self.weakObject.defaultLayerBorderColor;
+        self.object.backgroundColor = self.defaultBackgroundColor;
+        self.object.layerBorderColor = self.defaultLayerBorderColor;
     }
 }
 
@@ -265,14 +264,10 @@
 
 @implementation UIControl (UIE)
 
-@dynamic defaultBackgroundColor;
-@dynamic highlightedBackgroundColor;
-@dynamic selectedBackgroundColor;
-@dynamic disabledBackgroundColor;
+@dynamic operation;
 
-@dynamic defaultLayerBorderColor;
-@dynamic highlightedLayerBorderColor;
-@dynamic selectedLayerBorderColor;
-@dynamic disabledLayerBorderColor;
+- (Class)operationClass {
+    return UIControlOperation.class;
+}
 
 @end

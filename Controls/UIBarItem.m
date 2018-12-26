@@ -24,7 +24,7 @@
 
 @implementation UIBarItemOperation
 
-@dynamic weakObject;
+@dynamic object;
 
 @end
 
@@ -38,5 +38,11 @@
 
 
 @implementation UIBarItem (UIE)
+
+@dynamic operation;
+
+- (Class)operationClass {
+    return UIBarItemOperation.class;
+}
 
 @end

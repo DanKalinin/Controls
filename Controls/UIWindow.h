@@ -39,9 +39,23 @@
 @interface UIWindowOperation : UIViewOperation <UIWindowOperationDelegate>
 
 @property (readonly) HLPArray<UIWindowOperationDelegate> *delegates;
-@property (readonly) UIWindow *object;
 
-@property (weak, readonly) UIWindow *weakObject;
+@property (weak, readonly) UIWindow *object;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIWindow (UIE)
+
+@property (readonly) UIWindowOperation *operation;
 
 @end
 

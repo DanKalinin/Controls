@@ -26,15 +26,14 @@
 
 @dynamic delegates;
 @dynamic object;
-@dynamic weakObject;
 
-- (instancetype)initWithWeakObject:(NSObject *)weakObject {
-    self = [super initWithWeakObject:weakObject];
+- (instancetype)initWithObject:(UIWindow *)object {
+    self = [super initWithObject:object];
     if (self) {
-        [self.center addObserver:self selector:@selector(UIWindowDidBecomeVisibleNotification:) name:UIWindowDidBecomeVisibleNotification object:self.weakObject];
-        [self.center addObserver:self selector:@selector(UIWindowDidBecomeHiddenNotification:) name:UIWindowDidBecomeHiddenNotification object:self.weakObject];
-        [self.center addObserver:self selector:@selector(UIWindowDidBecomeKeyNotification:) name:UIWindowDidBecomeKeyNotification object:self.weakObject];
-        [self.center addObserver:self selector:@selector(UIWindowDidResignKeyNotification:) name:UIWindowDidResignKeyNotification object:self.weakObject];
+        [self.center addObserver:self selector:@selector(UIWindowDidBecomeVisibleNotification:) name:UIWindowDidBecomeVisibleNotification object:self.object];
+        [self.center addObserver:self selector:@selector(UIWindowDidBecomeHiddenNotification:) name:UIWindowDidBecomeHiddenNotification object:self.object];
+        [self.center addObserver:self selector:@selector(UIWindowDidBecomeKeyNotification:) name:UIWindowDidBecomeKeyNotification object:self.object];
+        [self.center addObserver:self selector:@selector(UIWindowDidResignKeyNotification:) name:UIWindowDidResignKeyNotification object:self.object];
     }
     return self;
 }
@@ -55,6 +54,25 @@
 
 - (void)UIWindowDidResignKeyNotification:(NSNotification *)notification {
     [self.delegates UIWindowOperationDidResignKey:self];
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
+@implementation UIWindow (UIE)
+
+@dynamic operation;
+
+- (Class)operationClass {
+    return UIWindowOperation.class;
 }
 
 @end

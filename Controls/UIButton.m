@@ -9,6 +9,13 @@
 
 
 
+
+
+
+
+
+
+
 @interface UIButtonOperation ()
 
 @end
@@ -32,6 +39,25 @@
 
 - (void)UIButtonOperationEventTouchUpInside:(UIButtonOperation *)operation {
     
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
+@implementation UIButton (UIE)
+
+@dynamic operation;
+
+- (Class)operationClass {
+    return UIButtonOperation.class;
 }
 
 @end

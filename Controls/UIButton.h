@@ -14,6 +14,13 @@
 
 
 
+
+
+
+
+
+
+
 @protocol UIButtonOperationDelegate <UIControlOperationDelegate>
 
 @optional
@@ -28,5 +35,20 @@
 @property (readonly) HLPArray<UIButtonOperationDelegate> *delegates;
 
 @property (weak, readonly) UIButton *weakObject;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIButton (UIE)
+
+@property (readonly) UIButtonOperation *operation;
 
 @end
