@@ -16,11 +16,14 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/UIResponder.h>
 #import <Controls/UIApplication.h>
 #import <Controls/UIView.h>
+#import <Controls/UIScrollView.h>
+#import <Controls/UITableView.h>
 #import <Controls/UIWindow.h>
 #import <Controls/UIControl.h>
 #import <Controls/UIButton.h>
 #import <Controls/UITextField.h>
 #import <Controls/UIViewController.h>
+#import <Controls/UITableViewController.h>
 
 #import <Controls/UIEWindow.h>
 #import <Controls/UIEControl.h>

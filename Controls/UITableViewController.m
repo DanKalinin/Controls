@@ -24,14 +24,14 @@
 
 @implementation UITableViewControllerOperation
 
-@dynamic weakObject;
+@dynamic object;
 
 #pragma mark - View controller operation
 
 - (void)UIViewControllerOperationViewDidLoad:(UITableViewControllerOperation *)operation {
     [super UIViewControllerOperationViewDidLoad:self];
     
-    [self.weakObject.tableView.operation.delegates addObject:self.weakObject];
+    [self.object.tableView.operation.delegates addObject:self.object];
 }
 
 @end
@@ -46,5 +46,11 @@
 
 
 @implementation UITableViewController (UIE)
+
+@dynamic operation;
+
+- (Class)operationClass {
+    return UITableViewControllerOperation.class;
+}
 
 @end

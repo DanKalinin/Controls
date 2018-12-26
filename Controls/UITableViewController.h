@@ -30,7 +30,7 @@
 
 @interface UITableViewControllerOperation : UIViewControllerOperation <UITableViewControllerOperationDelegate>
 
-@property (weak, readonly) UITableViewController *weakObject;
+@property (weak, readonly) UITableViewController *object;
 
 @end
 
@@ -44,5 +44,7 @@
 
 
 @interface UITableViewController (UIE) <UITableViewOperationDelegate>
+
+@property (readonly) UITableViewControllerOperation *operation;
 
 @end

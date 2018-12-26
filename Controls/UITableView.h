@@ -115,7 +115,7 @@
 @property (readonly) UITableViewOperationCellForRowInfo *cellForRowInfo;
 @property (readonly) UITableViewOperationDidSelectRowInfo *didSelectRowInfo;
 
-@property (weak, readonly) UITableView *weakObject;
+@property (weak, readonly) UITableView *object;
 
 @end
 

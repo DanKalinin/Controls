@@ -31,7 +31,7 @@
 
 @property (readonly) HLPArray<UIScrollViewOperationDelegate> *delegates;
 
-@property (weak, readonly) UIScrollView *weakObject;
+@property (weak, readonly) UIScrollView *object;
 
 @end
 
@@ -45,5 +45,7 @@
 
 
 @interface UIScrollView (UIE)
+
+@property (readonly) UIScrollViewOperation *operation;
 
 @end

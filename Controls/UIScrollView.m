@@ -25,12 +25,12 @@
 @implementation UIScrollViewOperation
 
 @dynamic delegates;
-@dynamic weakObject;
+@dynamic object;
 
-- (instancetype)initWithWeakObject:(UIScrollView *)weakObject {
-    self = [super initWithWeakObject:weakObject];
+- (instancetype)initWithObject:(UIScrollView *)object {
+    self = [super initWithObject:object];
     if (self) {
-        self.weakObject.delegate = self.delegates;
+        self.object.delegate = self.delegates;
     }
     return self;
 }
@@ -47,5 +47,11 @@
 
 
 @implementation UIScrollView (UIE)
+
+@dynamic operation;
+
+- (Class)operationClass {
+    return UIScrollViewOperation.class;
+}
 
 @end

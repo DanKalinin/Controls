@@ -136,13 +136,13 @@
 @implementation UITableViewOperation
 
 @dynamic delegates;
-@dynamic weakObject;
+@dynamic object;
 
-- (instancetype)initWithWeakObject:(UITableView *)weakObject {
-    self = [super initWithWeakObject:weakObject];
+- (instancetype)initWithObject:(UITableView *)object {
+    self = [super initWithObject:object];
     if (self) {
-        self.weakObject.delegate = self.delegates;
-        self.weakObject.dataSource = self.delegates;
+        self.object.delegate = self.delegates;
+        self.object.dataSource = self.delegates;
     }
     return self;
 }
@@ -204,5 +204,9 @@
 @implementation UITableView (UIE)
 
 @dynamic operation;
+
+- (Class)operationClass {
+    return UITableViewOperation.class;
+}
 
 @end
