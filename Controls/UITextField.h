@@ -97,7 +97,7 @@
 
 @property (readonly) UITextFieldOperation *operation;
 
-@property BOOL clearOnBegin;
-@property NSString *pattern;
+@property IBInspectable BOOL clearOnBegin;
+@property IBInspectable NSString *pattern;
 
 @end

@@ -163,31 +163,31 @@
 
 - (void)UIControlOperationDidSetEnabled:(UIControlOperation *)operation {
     if (self.object.enabled) {
-        self.object.backgroundColor = self.defaultBackgroundColor;
-        self.object.layerBorderColor = self.defaultLayerBorderColor;
+        self.object.backgroundColor = self.object.defaultBackgroundColor;
+        self.object.layerBorderColor = self.object.defaultLayerBorderColor;
     } else {
-        self.object.backgroundColor = self.disabledBackgroundColor;
-        self.object.layerBorderColor = self.disabledLayerBorderColor;
+        self.object.backgroundColor = self.object.disabledBackgroundColor;
+        self.object.layerBorderColor = self.object.disabledLayerBorderColor;
     }
 }
 
 - (void)UIControlOperationDidSetSelected:(UIControlOperation *)operation {
     if (self.object.selected) {
-        self.object.backgroundColor = self.selectedBackgroundColor;
-        self.object.layerBorderColor = self.selectedLayerBorderColor;
+        self.object.backgroundColor = self.object.selectedBackgroundColor;
+        self.object.layerBorderColor = self.object.selectedLayerBorderColor;
     } else {
-        self.object.backgroundColor = self.defaultBackgroundColor;
-        self.object.layerBorderColor = self.defaultLayerBorderColor;
+        self.object.backgroundColor = self.object.defaultBackgroundColor;
+        self.object.layerBorderColor = self.object.defaultLayerBorderColor;
     }
 }
 
 - (void)UIControlOperationDidSetHighlighted:(UIControlOperation *)operation {
     if (self.object.highlighted) {
-        self.object.backgroundColor = self.highlightedBackgroundColor;
-        self.object.layerBorderColor = self.highlightedLayerBorderColor;
+        self.object.backgroundColor = self.object.highlightedBackgroundColor;
+        self.object.layerBorderColor = self.object.highlightedLayerBorderColor;
     } else {
-        self.object.backgroundColor = self.defaultBackgroundColor;
-        self.object.layerBorderColor = self.defaultLayerBorderColor;
+        self.object.backgroundColor = self.object.defaultBackgroundColor;
+        self.object.layerBorderColor = self.object.defaultLayerBorderColor;
     }
 }
 
@@ -264,7 +264,14 @@
 
 @implementation UIControl (UIE)
 
-@dynamic operation;
+@dynamic defaultBackgroundColor;
+@dynamic highlightedBackgroundColor;
+@dynamic selectedBackgroundColor;
+@dynamic disabledBackgroundColor;
+@dynamic defaultLayerBorderColor;
+@dynamic highlightedLayerBorderColor;
+@dynamic selectedLayerBorderColor;
+@dynamic disabledLayerBorderColor;
 
 - (Class)operationClass {
     return UIControlOperation.class;

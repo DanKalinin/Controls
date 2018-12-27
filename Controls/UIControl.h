@@ -70,16 +70,6 @@
 
 @interface UIControlOperation : UIViewOperation <UIControlOperationDelegate>
 
-@property UIColor *defaultBackgroundColor;
-@property UIColor *highlightedBackgroundColor;
-@property UIColor *selectedBackgroundColor;
-@property UIColor *disabledBackgroundColor;
-
-@property UIColor *defaultLayerBorderColor;
-@property UIColor *highlightedLayerBorderColor;
-@property UIColor *selectedLayerBorderColor;
-@property UIColor *disabledLayerBorderColor;
-
 @property (readonly) HLPArray<UIControlOperationDelegate> *delegates;
 @property (readonly) UIControlOperationEventInfo *eventInfo;
 
@@ -99,5 +89,15 @@
 @interface UIControl (UIE)
 
 @property (readonly) UIControlOperation *operation;
+
+@property IBInspectable UIColor *defaultBackgroundColor;
+@property IBInspectable UIColor *highlightedBackgroundColor;
+@property IBInspectable UIColor *selectedBackgroundColor;
+@property IBInspectable UIColor *disabledBackgroundColor;
+
+@property IBInspectable UIColor *defaultLayerBorderColor;
+@property IBInspectable UIColor *highlightedLayerBorderColor;
+@property IBInspectable UIColor *selectedLayerBorderColor;
+@property IBInspectable UIColor *disabledLayerBorderColor;
 
 @end
