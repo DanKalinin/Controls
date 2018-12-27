@@ -13,8 +13,10 @@
 @class UITableViewOperationCellForRowInfo;
 @class UITableViewOperationDidSelectRowInfo;
 @class UITableViewOperation;
+@class UITableViewRowActionOperation;
 
 @protocol UITableViewOperationDelegate;
+@protocol UITableViewRowActionOperationDelegate;
 
 
 
@@ -131,5 +133,49 @@
 @interface UITableView (UIE)
 
 @property (readonly) UITableViewOperation *operation;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@protocol UITableViewRowActionOperationDelegate <NSObjectOperationDelegate>
+
+@optional
+- (void)UITableViewRowActionDidFinish:(UITableViewRowActionOperation *)operation;
+
+@end
+
+
+
+@interface UITableViewRowActionOperation : NSObjectOperation <UITableViewRowActionOperationDelegate>
+
+@property (readonly) HLPArray<UITableViewRowActionOperationDelegate> *delegates;
+@property (readonly) NSIndexPath *indexPath;
+
+@property (weak, readonly) UITableViewRowAction *object;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UITableViewRowAction (UIE)
+
+@property (readonly) UITableViewRowActionOperation *operation;
+
++ (instancetype)rowActionWithStyle:(UITableViewRowActionStyle)style title:(NSString *)title delegate:(id<UITableViewRowActionOperationDelegate>)delegate;
 
 @end

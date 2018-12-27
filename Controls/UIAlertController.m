@@ -18,8 +18,6 @@
 
 @interface UIAlertActionOperation ()
 
-@property NSString *identifier;
-
 @end
 
 
@@ -44,13 +42,12 @@
 
 @dynamic operation;
 
-+ (instancetype)actionWithTitle:(NSString *)title style:(UIAlertActionStyle)style identifier:(NSString *)identifier delegate:(id<UIAlertActionOperationDelegate>)delegate {
-    UIAlertAction *action = [self actionWithTitle:title style:style handler:^(UIAlertAction *action) {
-        [action.operation.delegates UIAlertActionOperationDidFinish:action.operation];
++ (instancetype)actionWithTitle:(NSString *)title style:(UIAlertActionStyle)style delegate:(id<UIAlertActionOperationDelegate>)delegate {
+    UIAlertAction *alertAction = [self actionWithTitle:title style:style handler:^(UIAlertAction *alertAction) {
+        [alertAction.operation.delegates UIAlertActionOperationDidFinish:alertAction.operation];
     }];
-    action.operation.identifier = identifier;
-    [action.operation.delegates addObject:delegate];
-    return action;
+    [alertAction.operation.delegates addObject:delegate];
+    return alertAction;
 }
 
 - (Class)operationClass {

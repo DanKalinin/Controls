@@ -102,30 +102,45 @@
 
 
 
-@interface UIEPreviewAction ()
+@interface UIPreviewActionOperation ()
 
-@property UIPreviewAction *previewAction;
 @property UIViewController *previewViewController;
 
 @end
 
 
 
-@implementation UIEPreviewAction
+@implementation UIPreviewActionOperation
 
 @dynamic delegates;
+@dynamic object;
 
-- (instancetype)initWithTitle:(NSString *)title style:(UIPreviewActionStyle)style identifier:(NSString *)identifier delegate:(id<UIEPreviewActionDelegate>)delegate {
-    self = [super initWithIdentifier:identifier delegate:delegate];
-    if (self) {
-        self.previewAction = [UIPreviewAction actionWithTitle:title style:style handler:^(UIPreviewAction *action, UIViewController *previewViewController) {
-            self.previewViewController = previewViewController;
-            
-            [self.delegates UIEActionDidFinish:self];
-            [self.delegates UIEPreviewActionDidFinish:self];
-        }];
-    }
-    return self;
+@end
+
+
+
+
+
+
+
+
+
+
+@implementation UIPreviewAction (UIE)
+
+@dynamic operation;
+
++ (instancetype)actionWithTitle:(NSString *)title style:(UIPreviewActionStyle)style delegate:(id<UIPreviewActionOperationDelegate>)delegate {
+    UIPreviewAction *previewAction = [UIPreviewAction actionWithTitle:title style:style handler:^(UIPreviewAction *previewAction, UIViewController *previewViewController) {
+        previewAction.operation.previewViewController = previewViewController;
+        [previewAction.operation.delegates UIPreviewActionOperationDidFinish:previewAction.operation];
+    }];
+    [previewAction.operation.delegates addObject:delegate];
+    return previewAction;
+}
+
+- (Class)operationClass {
+    return UIPreviewActionOperation.class;
 }
 
 @end

@@ -210,3 +210,53 @@
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+@interface UITableViewRowActionOperation ()
+
+@property NSIndexPath *indexPath;
+
+@end
+
+
+
+@implementation UITableViewRowActionOperation
+
+@dynamic object;
+@dynamic delegates;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@implementation UITableViewRowAction (UIE)
+
++ (instancetype)rowActionWithStyle:(UITableViewRowActionStyle)style title:(NSString *)title delegate:(id<UITableViewRowActionOperationDelegate>)delegate {
+    UITableViewRowAction *tableViewRowAction = [UITableViewRowAction rowActionWithStyle:style title:title handler:^(UITableViewRowAction *tableViewRowAction, NSIndexPath *indexPath) {
+        tableViewRowAction.operation.indexPath = indexPath;
+        [tableViewRowAction.operation.delegates UITableViewRowActionDidFinish:tableViewRowAction.operation];
+    }];
+    [tableViewRowAction.operation.delegates addObject:delegate];
+    return tableViewRowAction;
+}
+
+- (Class)operationClass {
+    return UITableViewRowActionOperation.class;
+}
+
+@end

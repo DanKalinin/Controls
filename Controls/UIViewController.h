@@ -7,14 +7,13 @@
 
 #import <UIKit/UIKit.h>
 #import "UIResponder.h"
-#import "UIEAction.h"
 
 @class UIViewControllerOperationPrepareForSegueInfo;
 @class UIViewControllerOperation;
-@class UIEPreviewAction;
+@class UIPreviewActionOperation;
 
 @protocol UIViewControllerOperationDelegate;
-@protocol UIEPreviewActionDelegate;
+@protocol UIPreviewActionOperationDelegate;
 
 
 
@@ -86,21 +85,37 @@
 
 
 
-@protocol UIEPreviewActionDelegate <UIEActionDelegate>
+@protocol UIPreviewActionOperationDelegate <NSObjectOperationDelegate>
 
 @optional
-- (void)UIEPreviewActionDidFinish:(UIEPreviewAction *)previewAction;
+- (void)UIPreviewActionOperationDidFinish:(UIPreviewActionOperation *)operation;
 
 @end
 
 
 
-@interface UIEPreviewAction : UIEAction <UIEPreviewActionDelegate>
+@interface UIPreviewActionOperation : NSObjectOperation <UIPreviewActionOperationDelegate>
 
-@property (readonly) HLPArray<UIEPreviewActionDelegate> *delegates;
-@property (readonly) UIPreviewAction *previewAction;
+@property (readonly) HLPArray<UIPreviewActionOperationDelegate> *delegates;
 @property (readonly) UIViewController *previewViewController;
 
-- (instancetype)initWithTitle:(NSString *)title style:(UIPreviewActionStyle)style identifier:(NSString *)identifier delegate:(id<UIEPreviewActionDelegate>)delegate;
+@property (weak, readonly) UIPreviewAction *object;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIPreviewAction (UIE)
+
+@property (readonly) UIPreviewActionOperation *operation;
+
++ (instancetype)actionWithTitle:(NSString *)title style:(UIPreviewActionStyle)style delegate:(id<UIPreviewActionOperationDelegate>)delegate;
 
 @end

@@ -33,7 +33,6 @@
 @interface UIAlertActionOperation : NSObjectOperation <UIAlertActionOperationDelegate>
 
 @property (readonly) HLPArray<UIAlertActionOperationDelegate> *delegates;
-@property (readonly) NSString *identifier;
 
 @property (weak, readonly) UIAlertAction *object;
 
@@ -52,6 +51,6 @@
 
 @property (readonly) UIAlertActionOperation *operation;
 
-+ (instancetype)actionWithTitle:(NSString *)title style:(UIAlertActionStyle)style identifier:(NSString *)identifier delegate:(id<UIAlertActionOperationDelegate>)delegate;
++ (instancetype)actionWithTitle:(NSString *)title style:(UIAlertActionStyle)style delegate:(id<UIAlertActionOperationDelegate>)delegate;
 
 @end
