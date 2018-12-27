@@ -61,14 +61,14 @@
 @protocol UITextFieldOperationDelegate <UIControlOperationDelegate, UITextFieldDelegate>
 
 @optional
-- (void)UITextFieldOperationEventEditingDidBegin:(UITextFieldOperation *)operation;
-- (void)UITextFieldOperationEventEditingChanged:(UITextFieldOperation *)operation;
-- (void)UITextFieldOperationEventEditingDidEnd:(UITextFieldOperation *)operation;
-- (void)UITextFieldOperationEventEditingDidEndOnExit:(UITextFieldOperation *)operation;
+- (void)uiTextFieldOperationEventEditingDidBegin:(UITextFieldOperation *)operation;
+- (void)uiTextFieldOperationEventEditingChanged:(UITextFieldOperation *)operation;
+- (void)uiTextFieldOperationEventEditingDidEnd:(UITextFieldOperation *)operation;
+- (void)uiTextFieldOperationEventEditingDidEndOnExit:(UITextFieldOperation *)operation;
 
-- (void)UITextFieldOperationDidBeginEditing:(UITextFieldOperation *)operation;
-- (void)UITextFieldOperationShouldChange:(UITextFieldOperation *)operation;
-- (void)UITextFieldOperationShouldReturn:(UITextFieldOperation *)operation;
+- (void)uiTextFieldOperationDidBeginEditing:(UITextFieldOperation *)operation;
+- (void)uiTextFieldOperationShouldChange:(UITextFieldOperation *)operation;
+- (void)uiTextFieldOperationShouldReturn:(UITextFieldOperation *)operation;
 
 @end
 
@@ -97,7 +97,7 @@
 
 @property (readonly) UITextFieldOperation *nseOperation;
 
-@property IBInspectable BOOL clearOnBegin;
-@property IBInspectable NSString *pattern;
+@property IBInspectable BOOL uieClearOnBegin;
+@property IBInspectable NSString *uiePattern;
 
 @end

@@ -14,14 +14,14 @@
 
 @interface UIEButton : UIButton
 
-@property UIColor *defaultBackgroundColor;
-@property UIColor *highlightedBackgroundColor;
-@property UIColor *selectedBackgroundColor;
-@property UIColor *disabledBackgroundColor;
+@property UIColor *uieDefaultBackgroundColor;
+@property UIColor *uieHighlightedBackgroundColor;
+@property UIColor *uieSelectedBackgroundColor;
+@property UIColor *uieDisabledBackgroundColor;
 
-@property UIColor *defaultLayerBorderColor;
-@property UIColor *highlightedLayerBorderColor;
-@property UIColor *selectedLayerBorderColor;
-@property UIColor *disabledLayerBorderColor;
+@property UIColor *uieDefaultLayerBorderColor;
+@property UIColor *uieHighlightedLayerBorderColor;
+@property UIColor *uieSelectedLayerBorderColor;
+@property UIColor *uieDisabledLayerBorderColor;
 
 @end

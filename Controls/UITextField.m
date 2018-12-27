@@ -98,6 +98,32 @@
     return self;
 }
 
+#pragma mark - Control
+
+- (void)uiControlOperationEventEditingDidBegin:(UITextFieldOperation *)operation {
+    [super uiControlOperationEventEditingDidBegin:self];
+    
+    [self.delegates uiTextFieldOperationEventEditingDidBegin:self];
+}
+
+- (void)uiControlOperationEventEditingChanged:(UITextFieldOperation *)operation {
+    [super uiControlOperationEventEditingChanged:self];
+    
+    [self.delegates uiTextFieldOperationEventEditingChanged:self];
+}
+
+- (void)uiControlOperationEventEditingDidEnd:(UITextFieldOperation *)operation {
+    [super uiControlOperationEventEditingDidEnd:self];
+    
+    [self.delegates uiTextFieldOperationEventEditingDidEnd:self];
+}
+
+- (void)uiControlOperationEventEditingDidEndOnExit:(UITextFieldOperation *)operation {
+    [super uiControlOperationEventEditingDidEndOnExit:self];
+    
+    [self.delegates uiTextFieldOperationEventEditingDidEndOnExit:self];
+}
+
 #pragma mark - Text field
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
@@ -105,12 +131,12 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    [self.delegates UITextFieldOperationDidBeginEditing:self];
+    [self.delegates uiTextFieldOperationDidBeginEditing:self];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     self.shouldChangeInfo = [UITextFieldOperationShouldChangeInfo.alloc initWithRange:range string:string];
-    [self.delegates UITextFieldOperationShouldChange:self];
+    [self.delegates uiTextFieldOperationShouldChange:self];
     return self.shouldChangeInfo.shouldChange;
 }
 
@@ -120,7 +146,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     self.shouldReturnInfo = UITextFieldOperationShouldReturnInfo.new;
-    [self.delegates UITextFieldOperationShouldReturn:self];
+    [self.delegates uiTextFieldOperationShouldReturn:self];
     return self.shouldReturnInfo.shouldReturn;
 }
 
@@ -132,60 +158,32 @@
     
 }
 
-#pragma mark - Control operation
-
-- (void)UIControlOperationEventEditingDidBegin:(UITextFieldOperation *)operation {
-    [super UIControlOperationEventEditingDidBegin:self];
-    
-    [self.delegates UITextFieldOperationEventEditingDidBegin:self];
-}
-
-- (void)UIControlOperationEventEditingChanged:(UITextFieldOperation *)operation {
-    [super UIControlOperationEventEditingChanged:self];
-    
-    [self.delegates UITextFieldOperationEventEditingChanged:self];
-}
-
-- (void)UIControlOperationEventEditingDidEnd:(UITextFieldOperation *)operation {
-    [super UIControlOperationEventEditingDidEnd:self];
-    
-    [self.delegates UITextFieldOperationEventEditingDidEnd:self];
-}
-
-- (void)UIControlOperationEventEditingDidEndOnExit:(UITextFieldOperation *)operation {
-    [super UIControlOperationEventEditingDidEndOnExit:self];
-    
-    [self.delegates UITextFieldOperationEventEditingDidEndOnExit:self];
-}
-
-#pragma mark - Text field operation
-
-- (void)UITextFieldOperationEventEditingDidBegin:(UIControlOperation *)operation {
+- (void)uiTextFieldOperationEventEditingDidBegin:(UITextFieldOperation *)operation {
     
 }
 
-- (void)UITextFieldOperationEventEditingChanged:(UIControlOperation *)operation {
+- (void)uiTextFieldOperationEventEditingChanged:(UITextFieldOperation *)operation {
     
 }
 
-- (void)UITextFieldOperationEventEditingDidEnd:(UITextFieldOperation *)operation {
+- (void)uiTextFieldOperationEventEditingDidEnd:(UITextFieldOperation *)operation {
     
 }
 
-- (void)UITextFieldOperationEventEditingDidEndOnExit:(UITextFieldOperation *)operation {
+- (void)uiTextFieldOperationEventEditingDidEndOnExit:(UITextFieldOperation *)operation {
     
 }
 
-- (void)UITextFieldOperationDidBeginEditing:(UITextFieldOperation *)operation {
-    if (self.object.clearOnBegin) {
+- (void)uiTextFieldOperationDidBeginEditing:(UITextFieldOperation *)operation {
+    if (self.object.uieClearOnBegin) {
         self.object.text = @"";
     }
 }
 
-- (void)UITextFieldOperationShouldChange:(UITextFieldOperation *)operation {
-    if (self.object.pattern.length > 0) {
+- (void)uiTextFieldOperationShouldChange:(UITextFieldOperation *)operation {
+    if (self.object.uiePattern.length > 0) {
         NSString *text = [self.object.text stringByReplacingCharactersInRange:self.shouldChangeInfo.range withString:self.shouldChangeInfo.string];
-        NSRange range = [text rangeOfString:self.object.pattern options:NSRegularExpressionSearch];
+        NSRange range = [text rangeOfString:self.object.uiePattern options:NSRegularExpressionSearch];
         if (range.location == NSNotFound) {
             self.shouldChangeInfo.shouldChange = NO;
         } else {
@@ -196,7 +194,7 @@
     }
 }
 
-- (void)UITextFieldOperationShouldReturn:(UITextFieldOperation *)operation {
+- (void)uiTextFieldOperationShouldReturn:(UITextFieldOperation *)operation {
     
 }
 
@@ -213,8 +211,8 @@
 
 @implementation UITextField (UIE)
 
-@dynamic clearOnBegin;
-@dynamic pattern;
+@dynamic uieClearOnBegin;
+@dynamic uiePattern;
 
 - (Class)nseOperationClass {
     return UITextFieldOperation.class;

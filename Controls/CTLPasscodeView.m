@@ -72,10 +72,10 @@
         self.labelError.hidden = YES;
         
         CTLLabel *label = self.labels[self.passcode.length];
-        label.text = sender.stringTag;
+        label.text = sender.uieStringTag;
         label.highlighted = YES;
         
-        [self.passcode appendString:sender.stringTag];
+        [self.passcode appendString:sender.uieStringTag];
         
         self.buttonDelete.enabled = YES;
         

@@ -40,17 +40,15 @@
 
 @implementation UIAlertAction (UIE)
 
-@dynamic operation;
-
 + (instancetype)actionWithTitle:(NSString *)title style:(UIAlertActionStyle)style delegate:(id<UIAlertActionOperationDelegate>)delegate {
     UIAlertAction *alertAction = [self actionWithTitle:title style:style handler:^(UIAlertAction *alertAction) {
-        [alertAction.operation.delegates UIAlertActionOperationDidFinish:alertAction.operation];
+        [alertAction.nseOperation.delegates UIAlertActionOperationDidFinish:alertAction.nseOperation];
     }];
-    [alertAction.operation.delegates addObject:delegate];
+    [alertAction.nseOperation.delegates addObject:delegate];
     return alertAction;
 }
 
-- (Class)operationClass {
+- (Class)nseOperationClass {
     return UIAlertActionOperation.class;
 }
 

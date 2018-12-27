@@ -14,7 +14,7 @@
 
 @interface UIETextField : UITextField
 
-@property BOOL clearOnBegin;
-@property NSString *pattern;
+@property BOOL uieClearOnBegin;
+@property NSString *uiePattern;
 
 @end

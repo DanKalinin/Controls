@@ -27,17 +27,17 @@
 @dynamic delegates;
 @dynamic weakObject;
 
-#pragma mark - Control operation
+#pragma mark - Control
 
-- (void)UIControlOperationEventTouchUpInside:(UIButtonOperation *)operation {
-    [super UIControlOperationEventTouchUpInside:self];
+- (void)uiControlOperationEventTouchUpInside:(UIButtonOperation *)operation {
+    [super uiControlOperationEventTouchUpInside:self];
     
-    [self.delegates UIButtonOperationEventTouchUpInside:self];
+    [self.delegates uiButtonOperationEventTouchUpInside:self];
 }
 
-#pragma mark - Button operation
+#pragma mark - Button
 
-- (void)UIButtonOperationEventTouchUpInside:(UIButtonOperation *)operation {
+- (void)uiButtonOperationEventTouchUpInside:(UIButtonOperation *)operation {
     
 }
 

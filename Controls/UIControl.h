@@ -42,27 +42,27 @@
 @protocol UIControlOperationDelegate <UIViewOperationDelegate>
 
 @optional
-- (void)UIControlOperationDidSetEnabled:(UIControlOperation *)operation;
-- (void)UIControlOperationDidSetSelected:(UIControlOperation *)operation;
-- (void)UIControlOperationDidSetHighlighted:(UIControlOperation *)operation;
+- (void)uiControlOperationDidSetEnabled:(UIControlOperation *)operation;
+- (void)uiControlOperationDidSetSelected:(UIControlOperation *)operation;
+- (void)uiControlOperationDidSetHighlighted:(UIControlOperation *)operation;
 
-- (void)UIControlOperationEventTouchDown:(UIControlOperation *)operation;
-- (void)UIControlOperationEventTouchDownRepeat:(UIControlOperation *)operation;
-- (void)UIControlOperationEventTouchDragInside:(UIControlOperation *)operation;
-- (void)UIControlOperationEventTouchDragOutside:(UIControlOperation *)operation;
-- (void)UIControlOperationEventTouchDragEnter:(UIControlOperation *)operation;
-- (void)UIControlOperationEventTouchDragExit:(UIControlOperation *)operation;
-- (void)UIControlOperationEventTouchUpInside:(UIControlOperation *)operation;
-- (void)UIControlOperationEventTouchUpOutside:(UIControlOperation *)operation;
-- (void)UIControlOperationEventTouchCancel:(UIControlOperation *)operation;
+- (void)uiControlOperationEventTouchDown:(UIControlOperation *)operation;
+- (void)uiControlOperationEventTouchDownRepeat:(UIControlOperation *)operation;
+- (void)uiControlOperationEventTouchDragInside:(UIControlOperation *)operation;
+- (void)uiControlOperationEventTouchDragOutside:(UIControlOperation *)operation;
+- (void)uiControlOperationEventTouchDragEnter:(UIControlOperation *)operation;
+- (void)uiControlOperationEventTouchDragExit:(UIControlOperation *)operation;
+- (void)uiControlOperationEventTouchUpInside:(UIControlOperation *)operation;
+- (void)uiControlOperationEventTouchUpOutside:(UIControlOperation *)operation;
+- (void)uiControlOperationEventTouchCancel:(UIControlOperation *)operation;
 
-- (void)UIControlOperationEventValueChanged:(UIControlOperation *)operation;
-- (void)UIControlOperationEventPrimaryActionTriggered:(UIControlOperation *)operation;
+- (void)uiControlOperationEventValueChanged:(UIControlOperation *)operation;
+- (void)uiControlOperationEventPrimaryActionTriggered:(UIControlOperation *)operation;
 
-- (void)UIControlOperationEventEditingDidBegin:(UIControlOperation *)operation;
-- (void)UIControlOperationEventEditingChanged:(UIControlOperation *)operation;
-- (void)UIControlOperationEventEditingDidEnd:(UIControlOperation *)operation;
-- (void)UIControlOperationEventEditingDidEndOnExit:(UIControlOperation *)operation;
+- (void)uiControlOperationEventEditingDidBegin:(UIControlOperation *)operation;
+- (void)uiControlOperationEventEditingChanged:(UIControlOperation *)operation;
+- (void)uiControlOperationEventEditingDidEnd:(UIControlOperation *)operation;
+- (void)uiControlOperationEventEditingDidEndOnExit:(UIControlOperation *)operation;
 
 @end
 
@@ -90,14 +90,14 @@
 
 @property (readonly) UIControlOperation *nseOperation;
 
-@property IBInspectable UIColor *defaultBackgroundColor;
-@property IBInspectable UIColor *highlightedBackgroundColor;
-@property IBInspectable UIColor *selectedBackgroundColor;
-@property IBInspectable UIColor *disabledBackgroundColor;
+@property IBInspectable UIColor *uieDefaultBackgroundColor;
+@property IBInspectable UIColor *uieHighlightedBackgroundColor;
+@property IBInspectable UIColor *uieSelectedBackgroundColor;
+@property IBInspectable UIColor *uieDisabledBackgroundColor;
 
-@property IBInspectable UIColor *defaultLayerBorderColor;
-@property IBInspectable UIColor *highlightedLayerBorderColor;
-@property IBInspectable UIColor *selectedLayerBorderColor;
-@property IBInspectable UIColor *disabledLayerBorderColor;
+@property IBInspectable UIColor *uieDefaultLayerBorderColor;
+@property IBInspectable UIColor *uieHighlightedLayerBorderColor;
+@property IBInspectable UIColor *uieSelectedLayerBorderColor;
+@property IBInspectable UIColor *uieDisabledLayerBorderColor;
 
 @end

@@ -61,193 +61,193 @@
 - (instancetype)initWithObject:(UIControl *)object {
     self = [super initWithObject:object];
     if (self) {
-        [self.object addTarget:self action:@selector(UIControlEventTouchDown:event:) forControlEvents:UIControlEventTouchDown];
-        [self.object addTarget:self action:@selector(UIControlEventTouchDownRepeat:event:) forControlEvents:UIControlEventTouchDownRepeat];
-        [self.object addTarget:self action:@selector(UIControlEventTouchDragInside:event:) forControlEvents:UIControlEventTouchDragInside];
-        [self.object addTarget:self action:@selector(UIControlEventTouchDragOutside:event:) forControlEvents:UIControlEventTouchDragOutside];
-        [self.object addTarget:self action:@selector(UIControlEventTouchDragEnter:event:) forControlEvents:UIControlEventTouchDragEnter];
-        [self.object addTarget:self action:@selector(UIControlEventTouchDragExit:event:) forControlEvents:UIControlEventTouchDragExit];
-        [self.object addTarget:self action:@selector(UIControlEventTouchUpInside:event:) forControlEvents:UIControlEventTouchUpInside];
-        [self.object addTarget:self action:@selector(UIControlEventTouchUpOutside:event:) forControlEvents:UIControlEventTouchUpOutside];
-        [self.object addTarget:self action:@selector(UIControlEventTouchCancel:event:) forControlEvents:UIControlEventTouchCancel];
+        [self.object addTarget:self action:@selector(uiControlEventTouchDown:event:) forControlEvents:UIControlEventTouchDown];
+        [self.object addTarget:self action:@selector(uiControlEventTouchDownRepeat:event:) forControlEvents:UIControlEventTouchDownRepeat];
+        [self.object addTarget:self action:@selector(uiControlEventTouchDragInside:event:) forControlEvents:UIControlEventTouchDragInside];
+        [self.object addTarget:self action:@selector(uiControlEventTouchDragOutside:event:) forControlEvents:UIControlEventTouchDragOutside];
+        [self.object addTarget:self action:@selector(uiControlEventTouchDragEnter:event:) forControlEvents:UIControlEventTouchDragEnter];
+        [self.object addTarget:self action:@selector(uiControlEventTouchDragExit:event:) forControlEvents:UIControlEventTouchDragExit];
+        [self.object addTarget:self action:@selector(uiControlEventTouchUpInside:event:) forControlEvents:UIControlEventTouchUpInside];
+        [self.object addTarget:self action:@selector(uiControlEventTouchUpOutside:event:) forControlEvents:UIControlEventTouchUpOutside];
+        [self.object addTarget:self action:@selector(uiControlEventTouchCancel:event:) forControlEvents:UIControlEventTouchCancel];
         
-        [self.object addTarget:self action:@selector(UIControlEventValueChanged:event:) forControlEvents:UIControlEventValueChanged];
-        [self.object addTarget:self action:@selector(UIControlEventPrimaryActionTriggered:event:) forControlEvents:UIControlEventPrimaryActionTriggered];
+        [self.object addTarget:self action:@selector(uiControlEventValueChanged:event:) forControlEvents:UIControlEventValueChanged];
+        [self.object addTarget:self action:@selector(uiControlEventPrimaryActionTriggered:event:) forControlEvents:UIControlEventPrimaryActionTriggered];
         
-        [self.object addTarget:self action:@selector(UIControlEventEditingDidBegin:event:) forControlEvents:UIControlEventEditingDidBegin];
-        [self.object addTarget:self action:@selector(UIControlEventEditingChanged:event:) forControlEvents:UIControlEventEditingChanged];
-        [self.object addTarget:self action:@selector(UIControlEventEditingDidEnd:event:) forControlEvents:UIControlEventEditingDidEnd];
-        [self.object addTarget:self action:@selector(UIControlEventEditingDidEndOnExit:event:) forControlEvents:UIControlEventEditingDidEndOnExit];
+        [self.object addTarget:self action:@selector(uiControlEventEditingDidBegin:event:) forControlEvents:UIControlEventEditingDidBegin];
+        [self.object addTarget:self action:@selector(uiControlEventEditingChanged:event:) forControlEvents:UIControlEventEditingChanged];
+        [self.object addTarget:self action:@selector(uiControlEventEditingDidEnd:event:) forControlEvents:UIControlEventEditingDidEnd];
+        [self.object addTarget:self action:@selector(uiControlEventEditingDidEndOnExit:event:) forControlEvents:UIControlEventEditingDidEndOnExit];
     }
     return self;
 }
 
 #pragma mark - Control
 
-- (void)UIControlEventTouchDown:(UIControl *)control event:(UIEvent *)event {
+- (void)uiControlEventTouchDown:(UIControl *)control event:(UIEvent *)event {
     self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates UIControlOperationEventTouchDown:self];
+    [self.delegates uiControlOperationEventTouchDown:self];
 }
 
-- (void)UIControlEventTouchDownRepeat:(UIControl *)control event:(UIEvent *)event {
+- (void)uiControlEventTouchDownRepeat:(UIControl *)control event:(UIEvent *)event {
     self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates UIControlOperationEventTouchDownRepeat:self];
+    [self.delegates uiControlOperationEventTouchDownRepeat:self];
 }
 
-- (void)UIControlEventTouchDragInside:(UIControl *)control event:(UIEvent *)event {
+- (void)uiControlEventTouchDragInside:(UIControl *)control event:(UIEvent *)event {
     self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates UIControlOperationEventTouchDragInside:self];
+    [self.delegates uiControlOperationEventTouchDragInside:self];
 }
 
-- (void)UIControlEventTouchDragOutside:(UIControl *)control event:(UIEvent *)event {
+- (void)uiControlEventTouchDragOutside:(UIControl *)control event:(UIEvent *)event {
     self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates UIControlOperationEventTouchDragOutside:self];
+    [self.delegates uiControlOperationEventTouchDragOutside:self];
 }
 
-- (void)UIControlEventTouchDragEnter:(UIControl *)control event:(UIEvent *)event {
+- (void)uiControlEventTouchDragEnter:(UIControl *)control event:(UIEvent *)event {
     self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates UIControlOperationEventTouchDragEnter:self];
+    [self.delegates uiControlOperationEventTouchDragEnter:self];
 }
 
-- (void)UIControlEventTouchDragExit:(UIControl *)control event:(UIEvent *)event {
+- (void)uiControlEventTouchDragExit:(UIControl *)control event:(UIEvent *)event {
     self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates UIControlOperationEventTouchDragExit:self];
+    [self.delegates uiControlOperationEventTouchDragExit:self];
 }
 
-- (void)UIControlEventTouchUpInside:(UIControl *)control event:(UIEvent *)event {
+- (void)uiControlEventTouchUpInside:(UIControl *)control event:(UIEvent *)event {
     self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates UIControlOperationEventTouchUpInside:self];
+    [self.delegates uiControlOperationEventTouchUpInside:self];
 }
 
-- (void)UIControlEventTouchUpOutside:(UIControl *)control event:(UIEvent *)event {
+- (void)uiControlEventTouchUpOutside:(UIControl *)control event:(UIEvent *)event {
     self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates UIControlOperationEventTouchUpOutside:self];
+    [self.delegates uiControlOperationEventTouchUpOutside:self];
 }
 
-- (void)UIControlEventTouchCancel:(UIControl *)control event:(UIEvent *)event {
+- (void)uiControlEventTouchCancel:(UIControl *)control event:(UIEvent *)event {
     self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates UIControlOperationEventTouchCancel:self];
+    [self.delegates uiControlOperationEventTouchCancel:self];
 }
 
-- (void)UIControlEventValueChanged:(UIControl *)control event:(UIEvent *)event {
+- (void)uiControlEventValueChanged:(UIControl *)control event:(UIEvent *)event {
     self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates UIControlOperationEventValueChanged:self];
+    [self.delegates uiControlOperationEventValueChanged:self];
 }
 
-- (void)UIControlEventPrimaryActionTriggered:(UIControl *)control event:(UIEvent *)event {
+- (void)uiControlEventPrimaryActionTriggered:(UIControl *)control event:(UIEvent *)event {
     self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates UIControlOperationEventPrimaryActionTriggered:self];
+    [self.delegates uiControlOperationEventPrimaryActionTriggered:self];
 }
 
-- (void)UIControlEventEditingDidBegin:(UIControl *)control event:(UIEvent *)event {
+- (void)uiControlEventEditingDidBegin:(UIControl *)control event:(UIEvent *)event {
     self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates UIControlOperationEventEditingDidBegin:self];
+    [self.delegates uiControlOperationEventEditingDidBegin:self];
 }
 
-- (void)UIControlEventEditingChanged:(UIControl *)control event:(UIEvent *)event {
+- (void)uiControlEventEditingChanged:(UIControl *)control event:(UIEvent *)event {
     self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates UIControlOperationEventEditingChanged:self];
+    [self.delegates uiControlOperationEventEditingChanged:self];
 }
 
-- (void)UIControlEventEditingDidEnd:(UIControl *)control event:(UIEvent *)event {
+- (void)uiControlEventEditingDidEnd:(UIControl *)control event:(UIEvent *)event {
     self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates UIControlOperationEventEditingDidEnd:self];
+    [self.delegates uiControlOperationEventEditingDidEnd:self];
 }
 
-- (void)UIControlEventEditingDidEndOnExit:(UIControl *)control event:(UIEvent *)event {
+- (void)uiControlEventEditingDidEndOnExit:(UIControl *)control event:(UIEvent *)event {
     self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates UIControlOperationEventEditingDidEndOnExit:self];
+    [self.delegates uiControlOperationEventEditingDidEndOnExit:self];
 }
 
 #pragma mark - Control operation
 
-- (void)UIControlOperationDidSetEnabled:(UIControlOperation *)operation {
+- (void)uiControlOperationDidSetEnabled:(UIControlOperation *)operation {
     if (self.object.enabled) {
-        self.object.backgroundColor = self.object.defaultBackgroundColor;
-        self.object.layerBorderColor = self.object.defaultLayerBorderColor;
+        self.object.backgroundColor = self.object.uieDefaultBackgroundColor;
+        self.object.uieLayerBorderColor = self.object.uieDefaultLayerBorderColor;
     } else {
-        self.object.backgroundColor = self.object.disabledBackgroundColor;
-        self.object.layerBorderColor = self.object.disabledLayerBorderColor;
+        self.object.backgroundColor = self.object.uieDisabledBackgroundColor;
+        self.object.uieLayerBorderColor = self.object.uieDisabledLayerBorderColor;
     }
 }
 
-- (void)UIControlOperationDidSetSelected:(UIControlOperation *)operation {
+- (void)uiControlOperationDidSetSelected:(UIControlOperation *)operation {
     if (self.object.selected) {
-        self.object.backgroundColor = self.object.selectedBackgroundColor;
-        self.object.layerBorderColor = self.object.selectedLayerBorderColor;
+        self.object.backgroundColor = self.object.uieSelectedBackgroundColor;
+        self.object.uieLayerBorderColor = self.object.uieSelectedLayerBorderColor;
     } else {
-        self.object.backgroundColor = self.object.defaultBackgroundColor;
-        self.object.layerBorderColor = self.object.defaultLayerBorderColor;
+        self.object.backgroundColor = self.object.uieDefaultBackgroundColor;
+        self.object.uieLayerBorderColor = self.object.uieDefaultLayerBorderColor;
     }
 }
 
-- (void)UIControlOperationDidSetHighlighted:(UIControlOperation *)operation {
+- (void)uiControlOperationDidSetHighlighted:(UIControlOperation *)operation {
     if (self.object.highlighted) {
-        self.object.backgroundColor = self.object.highlightedBackgroundColor;
-        self.object.layerBorderColor = self.object.highlightedLayerBorderColor;
+        self.object.backgroundColor = self.object.uieHighlightedBackgroundColor;
+        self.object.uieLayerBorderColor = self.object.uieHighlightedLayerBorderColor;
     } else {
-        self.object.backgroundColor = self.object.defaultBackgroundColor;
-        self.object.layerBorderColor = self.object.defaultLayerBorderColor;
+        self.object.backgroundColor = self.object.uieDefaultBackgroundColor;
+        self.object.uieLayerBorderColor = self.object.uieDefaultLayerBorderColor;
     }
 }
 
-- (void)UIControlOperationEventTouchDown:(UIControlOperation *)operation {
+- (void)uiControlOperationEventTouchDown:(UIControlOperation *)operation {
     
 }
 
-- (void)UIControlOperationEventTouchDownRepeat:(UIControlOperation *)operation {
+- (void)uiControlOperationEventTouchDownRepeat:(UIControlOperation *)operation {
     
 }
 
-- (void)UIControlOperationEventTouchDragInside:(UIControlOperation *)operation {
+- (void)uiControlOperationEventTouchDragInside:(UIControlOperation *)operation {
     
 }
 
-- (void)UIControlOperationEventTouchDragOutside:(UIControlOperation *)operation {
+- (void)uiControlOperationEventTouchDragOutside:(UIControlOperation *)operation {
     
 }
 
-- (void)UIControlOperationEventTouchDragEnter:(UIControlOperation *)operation {
+- (void)uiControlOperationEventTouchDragEnter:(UIControlOperation *)operation {
     
 }
 
-- (void)UIControlOperationEventTouchDragExit:(UIControlOperation *)operation {
+- (void)uiControlOperationEventTouchDragExit:(UIControlOperation *)operation {
     
 }
 
-- (void)UIControlOperationEventTouchUpInside:(UIControlOperation *)operation {
+- (void)uiControlOperationEventTouchUpInside:(UIControlOperation *)operation {
     
 }
 
-- (void)UIControlOperationEventTouchUpOutside:(UIControlOperation *)operation {
+- (void)uiControlOperationEventTouchUpOutside:(UIControlOperation *)operation {
     
 }
 
-- (void)UIControlOperationEventTouchCancel:(UIControlOperation *)operation {
+- (void)uiControlOperationEventTouchCancel:(UIControlOperation *)operation {
     
 }
 
-- (void)UIControlOperationEventValueChanged:(UIControlOperation *)operation {
+- (void)uiControlOperationEventValueChanged:(UIControlOperation *)operation {
     
 }
 
-- (void)UIControlOperationEventPrimaryActionTriggered:(UIControlOperation *)operation {
+- (void)uiControlOperationEventPrimaryActionTriggered:(UIControlOperation *)operation {
     
 }
 
-- (void)UIControlOperationEventEditingDidBegin:(UIControlOperation *)operation {
+- (void)uiControlOperationEventEditingDidBegin:(UIControlOperation *)operation {
     
 }
 
-- (void)UIControlOperationEventEditingChanged:(UIControlOperation *)operation {
+- (void)uiControlOperationEventEditingChanged:(UIControlOperation *)operation {
     
 }
 
-- (void)UIControlOperationEventEditingDidEnd:(UIControlOperation *)operation {
+- (void)uiControlOperationEventEditingDidEnd:(UIControlOperation *)operation {
     
 }
 
-- (void)UIControlOperationEventEditingDidEndOnExit:(UIControlOperation *)operation {
+- (void)uiControlOperationEventEditingDidEndOnExit:(UIControlOperation *)operation {
     
 }
 
@@ -264,14 +264,14 @@
 
 @implementation UIControl (UIE)
 
-@dynamic defaultBackgroundColor;
-@dynamic highlightedBackgroundColor;
-@dynamic selectedBackgroundColor;
-@dynamic disabledBackgroundColor;
-@dynamic defaultLayerBorderColor;
-@dynamic highlightedLayerBorderColor;
-@dynamic selectedLayerBorderColor;
-@dynamic disabledLayerBorderColor;
+@dynamic uieDefaultBackgroundColor;
+@dynamic uieHighlightedBackgroundColor;
+@dynamic uieSelectedBackgroundColor;
+@dynamic uieDisabledBackgroundColor;
+@dynamic uieDefaultLayerBorderColor;
+@dynamic uieHighlightedLayerBorderColor;
+@dynamic uieSelectedLayerBorderColor;
+@dynamic uieDisabledLayerBorderColor;
 
 - (Class)nseOperationClass {
     return UIControlOperation.class;

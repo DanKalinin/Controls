@@ -39,18 +39,18 @@
 
 @implementation UIView (UIE)
 
-@dynamic stringTag;
+@dynamic uieStringTag;
 
 - (Class)nseOperationClass {
     return UIViewOperation.class;
 }
 
-- (UIColor *)layerBorderColor {
+- (UIColor *)uieLayerBorderColor {
     return [UIColor colorWithCGColor:self.layer.borderColor];
 }
 
-- (void)setLayerBorderColor:(UIColor *)layerBorderColor {
-    self.layer.borderColor = layerBorderColor.CGColor;
+- (void)setUieLayerBorderColor:(UIColor *)uieLayerBorderColor {
+    self.layer.borderColor = uieLayerBorderColor.CGColor;
 }
 
 @end

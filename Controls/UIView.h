@@ -46,7 +46,7 @@
 
 @property (readonly) UIViewOperation *nseOperation;
 
-@property IBInspectable NSString *stringTag;
-@property IBInspectable UIColor *layerBorderColor;
+@property IBInspectable NSString *uieStringTag;
+@property IBInspectable UIColor *uieLayerBorderColor;
 
 @end
