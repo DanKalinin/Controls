@@ -18,47 +18,11 @@
 
 @interface UIETableView ()
 
-@property UIETableViewOperation *operation;
-
 @end
 
 
 
 @implementation UIETableView
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        self.operation = [self.operationClass.alloc initWithWeakObject:self];
-    }
-    return self;
-}
-
-- (Class)operationClass {
-    return UIETableViewOperation.class;
-}
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface UIETableViewOperation ()
-
-@end
-
-
-
-@implementation UIETableViewOperation
-
-@dynamic delegates;
-@dynamic weakObject;
 
 @end
 

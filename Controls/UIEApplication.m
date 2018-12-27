@@ -17,4 +17,12 @@
 
 @implementation UIEApplication
 
+- (instancetype)init {
+    self = super.init;
+    if (self) {
+        (void)self.operation;
+    }
+    return self;
+}
+
 @end

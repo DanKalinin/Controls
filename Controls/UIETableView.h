@@ -10,10 +10,8 @@
 #import "UIEAction.h"
 
 @class UIETableView;
-@class UIETableViewOperation;
 @class UIETableViewRowAction;
 
-@protocol UIETableViewOperationDelegate;
 @protocol UIETableViewRowActionDelegate;
 
 
@@ -27,32 +25,6 @@
 
 
 @interface UIETableView : UITableView
-
-@property (readonly) Class operationClass;
-@property (readonly) UIETableViewOperation *operation;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@protocol UIETableViewOperationDelegate <UITableViewOperationDelegate>
-
-@end
-
-
-
-@interface UIETableViewOperation : UITableViewOperation <UIETableViewOperationDelegate>
-
-@property (readonly) HLPArray<UIETableViewOperationDelegate> *delegates;
-
-@property (weak, readonly) UIETableView *weakObject;
 
 @end
 
