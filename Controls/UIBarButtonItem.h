@@ -42,7 +42,7 @@
 @protocol UIBarButtonItemOperationDelegate <UIBarItemOperationDelegate>
 
 @optional
-- (void)UIBarButtonItemOperationEventTouchUpInside:(UIBarButtonItemOperation *)operation;
+- (void)uiBarButtonItemOperationEventTouchUpInside:(UIBarButtonItemOperation *)operation;
 
 @end
 

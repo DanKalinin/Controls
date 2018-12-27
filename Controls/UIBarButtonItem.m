@@ -62,21 +62,19 @@
     self = [super initWithObject:object];
     if (self) {
         self.object.target = self;
-        self.object.action = @selector(UIBarButtonItemEventTouchUpInside:event:);
+        self.object.action = @selector(uiBarButtonItemEventTouchUpInside:event:);
     }
     return self;
 }
 
 #pragma mark - Bar button item
 
-- (void)UIBarButtonItemEventTouchUpInside:(UIBarButtonItem *)barButtonItem event:(UIEvent *)event {
+- (void)uiBarButtonItemEventTouchUpInside:(UIBarButtonItem *)barButtonItem event:(UIEvent *)event {
     self.eventInfo = [UIBarButtonItemOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates UIBarButtonItemOperationEventTouchUpInside:self];
+    [self.delegates uiBarButtonItemOperationEventTouchUpInside:self];
 }
 
-#pragma mark - Bar button item operation
-
-- (void)UIBarButtonItemOperationEventTouchUpInside:(UIBarButtonItemOperation *)operation {
+- (void)uiBarButtonItemOperationEventTouchUpInside:(UIBarButtonItemOperation *)operation {
     
 }
 
