@@ -20,7 +20,7 @@
 - (instancetype)init {
     self = super.init;
     if (self) {
-        (void)self.operation;
+        (void)self.nseOperation;
     }
     return self;
 }

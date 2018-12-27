@@ -72,7 +72,7 @@
 
 @interface UIViewController (UIE)
 
-@property (readonly) UIViewControllerOperation *operation;
+@property (readonly) UIViewControllerOperation *nseOperation;
 
 @end
 
@@ -114,7 +114,7 @@
 
 @interface UIPreviewAction (UIE)
 
-@property (readonly) UIPreviewActionOperation *operation;
+@property (readonly) UIPreviewActionOperation *nseOperation;
 
 + (instancetype)actionWithTitle:(NSString *)title style:(UIPreviewActionStyle)style delegate:(id<UIPreviewActionOperationDelegate>)delegate;
 

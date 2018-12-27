@@ -44,6 +44,6 @@
 
 @interface UIResponder (UIE)
 
-@property (readonly) UIResponderOperation *operation;
+@property (readonly) UIResponderOperation *nseOperation;
 
 @end

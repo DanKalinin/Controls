@@ -39,10 +39,9 @@
 
 @implementation UIView (UIE)
 
-@dynamic operation;
 @dynamic stringTag;
 
-- (Class)operationClass {
+- (Class)nseOperationClass {
     return UIViewOperation.class;
 }
 

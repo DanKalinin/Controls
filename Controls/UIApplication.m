@@ -48,9 +48,7 @@
 
 @implementation UIApplication (UIE)
 
-@dynamic operation;
-
-- (Class)operationClass {
+- (Class)nseOperationClass {
     return UIApplicationOperation.class;
 }
 

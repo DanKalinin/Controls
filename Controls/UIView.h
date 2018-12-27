@@ -44,10 +44,9 @@
 
 @interface UIView (UIE)
 
-@property (readonly) UIViewOperation *operation;
+@property (readonly) UIViewOperation *nseOperation;
 
-@property NSString *stringTag;
-
+@property IBInspectable NSString *stringTag;
 @property IBInspectable UIColor *layerBorderColor;
 
 @end

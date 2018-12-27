@@ -273,7 +273,7 @@
 @dynamic selectedLayerBorderColor;
 @dynamic disabledLayerBorderColor;
 
-- (Class)operationClass {
+- (Class)nseOperationClass {
     return UIControlOperation.class;
 }
 

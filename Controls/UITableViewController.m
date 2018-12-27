@@ -31,7 +31,7 @@
 - (void)UIViewControllerOperationViewDidLoad:(UITableViewControllerOperation *)operation {
     [super UIViewControllerOperationViewDidLoad:self];
     
-    [self.object.tableView.operation.delegates addObject:self.object];
+    [self.object.tableView.nseOperation.delegates addObject:self.object];
 }
 
 @end
@@ -47,9 +47,7 @@
 
 @implementation UITableViewController (UIE)
 
-@dynamic operation;
-
-- (Class)operationClass {
+- (Class)nseOperationClass {
     return UITableViewControllerOperation.class;
 }
 

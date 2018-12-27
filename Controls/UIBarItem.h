@@ -44,6 +44,6 @@
 
 @interface UIBarItem (UIE)
 
-@property (readonly) UIBarItemOperation *operation;
+@property (readonly) UIBarItemOperation *nseOperation;
 
 @end

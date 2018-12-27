@@ -48,6 +48,6 @@
 
 @interface UIApplication (UIE)
 
-@property (readonly) UIApplicationOperation *operation;
+@property (readonly) UIApplicationOperation *nseOperation;
 
 @end

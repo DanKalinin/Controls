@@ -85,9 +85,7 @@
 
 @implementation UIViewController (UIE)
 
-@dynamic operation;
-
-- (Class)operationClass {
+- (Class)nseOperationClass {
     return UIViewControllerOperation.class;
 }
 
@@ -128,18 +126,16 @@
 
 @implementation UIPreviewAction (UIE)
 
-@dynamic operation;
-
 + (instancetype)actionWithTitle:(NSString *)title style:(UIPreviewActionStyle)style delegate:(id<UIPreviewActionOperationDelegate>)delegate {
     UIPreviewAction *previewAction = [UIPreviewAction actionWithTitle:title style:style handler:^(UIPreviewAction *previewAction, UIViewController *previewViewController) {
-        previewAction.operation.previewViewController = previewViewController;
-        [previewAction.operation.delegates UIPreviewActionOperationDidFinish:previewAction.operation];
+        previewAction.nseOperation.previewViewController = previewViewController;
+        [previewAction.nseOperation.delegates UIPreviewActionOperationDidFinish:previewAction.nseOperation];
     }];
-    [previewAction.operation.delegates addObject:delegate];
+    [previewAction.nseOperation.delegates addObject:delegate];
     return previewAction;
 }
 
-- (Class)operationClass {
+- (Class)nseOperationClass {
     return UIPreviewActionOperation.class;
 }
 

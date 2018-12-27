@@ -132,7 +132,7 @@
 
 @interface UITableView (UIE)
 
-@property (readonly) UITableViewOperation *operation;
+@property (readonly) UITableViewOperation *nseOperation;
 
 @end
 
@@ -174,7 +174,7 @@
 
 @interface UITableViewRowAction (UIE)
 
-@property (readonly) UITableViewRowActionOperation *operation;
+@property (readonly) UITableViewRowActionOperation *nseOperation;
 
 + (instancetype)rowActionWithStyle:(UITableViewRowActionStyle)style title:(NSString *)title delegate:(id<UITableViewRowActionOperationDelegate>)delegate;
 

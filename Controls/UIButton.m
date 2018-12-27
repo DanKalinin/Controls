@@ -54,9 +54,7 @@
 
 @implementation UIButton (UIE)
 
-@dynamic operation;
-
-- (Class)operationClass {
+- (Class)nseOperationClass {
     return UIButtonOperation.class;
 }
 

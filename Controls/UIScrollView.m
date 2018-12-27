@@ -48,9 +48,7 @@
 
 @implementation UIScrollView (UIE)
 
-@dynamic operation;
-
-- (Class)operationClass {
+- (Class)nseOperationClass {
     return UIScrollViewOperation.class;
 }
 

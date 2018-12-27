@@ -55,7 +55,7 @@
 
 @interface UIWindow (UIE)
 
-@property (readonly) UIWindowOperation *operation;
+@property (readonly) UIWindowOperation *nseOperation;
 
 @end
 

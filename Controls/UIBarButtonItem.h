@@ -68,6 +68,6 @@
 
 @interface UIBarButtonItem (UIE)
 
-@property UIBarButtonItemOperation *operation;
+@property (readonly) UIBarButtonItemOperation *nseOperation;
 
 @end

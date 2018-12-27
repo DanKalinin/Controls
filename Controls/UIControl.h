@@ -88,7 +88,7 @@
 
 @interface UIControl (UIE)
 
-@property (readonly) UIControlOperation *operation;
+@property (readonly) UIControlOperation *nseOperation;
 
 @property IBInspectable UIColor *defaultBackgroundColor;
 @property IBInspectable UIColor *highlightedBackgroundColor;

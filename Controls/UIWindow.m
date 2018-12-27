@@ -69,9 +69,7 @@
 
 @implementation UIWindow (UIE)
 
-@dynamic operation;
-
-- (Class)operationClass {
+- (Class)nseOperationClass {
     return UIWindowOperation.class;
 }
 

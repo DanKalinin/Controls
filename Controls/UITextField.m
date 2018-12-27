@@ -213,11 +213,10 @@
 
 @implementation UITextField (UIE)
 
-@dynamic operation;
 @dynamic clearOnBegin;
 @dynamic pattern;
 
-- (Class)operationClass {
+- (Class)nseOperationClass {
     return UITextFieldOperation.class;
 }
 

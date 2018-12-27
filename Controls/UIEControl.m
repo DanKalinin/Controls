@@ -20,19 +20,19 @@
 - (void)setEnabled:(BOOL)enabled {
     [super setEnabled:enabled];
     
-    [self.operation.delegates UIControlOperationDidSetEnabled:self.operation];
+    [self.nseOperation.delegates UIControlOperationDidSetEnabled:self.nseOperation];
 }
 
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
     
-    [self.operation.delegates UIControlOperationDidSetSelected:self.operation];
+    [self.nseOperation.delegates UIControlOperationDidSetSelected:self.nseOperation];
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
     [super setHighlighted:highlighted];
     
-    [self.operation.delegates UIControlOperationDidSetHighlighted:self.operation];
+    [self.nseOperation.delegates UIControlOperationDidSetHighlighted:self.nseOperation];
 }
 
 @end

@@ -39,9 +39,7 @@
 
 @implementation UIResponder (UIE)
 
-@dynamic operation;
-
-- (Class)operationClass {
+- (Class)nseOperationClass {
     return UIResponderOperation.class;
 }
 

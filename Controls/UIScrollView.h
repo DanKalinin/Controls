@@ -46,6 +46,6 @@
 
 @interface UIScrollView (UIE)
 
-@property (readonly) UIScrollViewOperation *operation;
+@property (readonly) UIScrollViewOperation *nseOperation;
 
 @end
