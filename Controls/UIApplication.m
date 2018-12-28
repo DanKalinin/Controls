@@ -48,6 +48,8 @@
 
 @implementation UIApplication (UIE)
 
+@dynamic nseOperation;
+
 - (Class)nseOperationClass {
     return UIApplicationOperation.class;
 }

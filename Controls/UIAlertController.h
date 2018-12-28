@@ -51,6 +51,6 @@
 
 @property (readonly) UIAlertActionOperation *nseOperation;
 
-+ (instancetype)actionWithTitle:(NSString *)title style:(UIAlertActionStyle)style delegate:(id<UIAlertActionOperationDelegate>)delegate;
++ (instancetype)uieActionWithTitle:(NSString *)title style:(UIAlertActionStyle)style delegate:(id<UIAlertActionOperationDelegate>)delegate;
 
 @end

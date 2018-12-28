@@ -203,6 +203,8 @@
 
 @implementation UITableView (UIE)
 
+@dynamic nseOperation;
+
 - (Class)nseOperationClass {
     return UITableViewOperation.class;
 }
@@ -244,7 +246,9 @@
 
 @implementation UITableViewRowAction (UIE)
 
-+ (instancetype)rowActionWithStyle:(UITableViewRowActionStyle)style title:(NSString *)title delegate:(id<UITableViewRowActionOperationDelegate>)delegate {
+@dynamic nseOperation;
+
++ (instancetype)uieRowActionWithStyle:(UITableViewRowActionStyle)style title:(NSString *)title delegate:(id<UITableViewRowActionOperationDelegate>)delegate {
     UITableViewRowAction *tableViewRowAction = [UITableViewRowAction rowActionWithStyle:style title:title handler:^(UITableViewRowAction *tableViewRowAction, NSIndexPath *indexPath) {
         tableViewRowAction.nseOperation.indexPath = indexPath;
         [tableViewRowAction.nseOperation.delegates UITableViewRowActionDidFinish:tableViewRowAction.nseOperation];

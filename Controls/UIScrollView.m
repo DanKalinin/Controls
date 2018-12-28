@@ -48,6 +48,8 @@
 
 @implementation UIScrollView (UIE)
 
+@dynamic nseOperation;
+
 - (Class)nseOperationClass {
     return UIScrollViewOperation.class;
 }

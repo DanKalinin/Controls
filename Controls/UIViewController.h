@@ -116,6 +116,6 @@
 
 @property (readonly) UIPreviewActionOperation *nseOperation;
 
-+ (instancetype)actionWithTitle:(NSString *)title style:(UIPreviewActionStyle)style delegate:(id<UIPreviewActionOperationDelegate>)delegate;
++ (instancetype)uieActionWithTitle:(NSString *)title style:(UIPreviewActionStyle)style delegate:(id<UIPreviewActionOperationDelegate>)delegate;
 
 @end

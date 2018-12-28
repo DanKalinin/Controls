@@ -39,6 +39,7 @@
 
 @implementation UIView (UIE)
 
+@dynamic nseOperation;
 @dynamic uieStringTag;
 
 - (Class)nseOperationClass {

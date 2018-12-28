@@ -47,6 +47,8 @@
 
 @implementation UITableViewController (UIE)
 
+@dynamic nseOperation;
+
 - (Class)nseOperationClass {
     return UITableViewControllerOperation.class;
 }

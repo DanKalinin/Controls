@@ -264,6 +264,7 @@
 
 @implementation UIControl (UIE)
 
+@dynamic nseOperation;
 @dynamic uieDefaultBackgroundColor;
 @dynamic uieHighlightedBackgroundColor;
 @dynamic uieSelectedBackgroundColor;

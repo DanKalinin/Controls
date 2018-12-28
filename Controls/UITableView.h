@@ -176,6 +176,6 @@
 
 @property (readonly) UITableViewRowActionOperation *nseOperation;
 
-+ (instancetype)rowActionWithStyle:(UITableViewRowActionStyle)style title:(NSString *)title delegate:(id<UITableViewRowActionOperationDelegate>)delegate;
++ (instancetype)uieRowActionWithStyle:(UITableViewRowActionStyle)style title:(NSString *)title delegate:(id<UITableViewRowActionOperationDelegate>)delegate;
 
 @end

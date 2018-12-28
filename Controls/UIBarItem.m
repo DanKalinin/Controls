@@ -39,6 +39,8 @@
 
 @implementation UIBarItem (UIE)
 
+@dynamic nseOperation;
+
 - (Class)nseOperationClass {
     return UIBarItemOperation.class;
 }

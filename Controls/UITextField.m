@@ -211,6 +211,7 @@
 
 @implementation UITextField (UIE)
 
+@dynamic nseOperation;
 @dynamic uieClearOnBegin;
 @dynamic uiePattern;
 

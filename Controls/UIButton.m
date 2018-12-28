@@ -54,6 +54,8 @@
 
 @implementation UIButton (UIE)
 
+@dynamic nseOperation;
+
 - (Class)nseOperationClass {
     return UIButtonOperation.class;
 }

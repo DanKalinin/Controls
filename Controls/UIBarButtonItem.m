@@ -91,6 +91,8 @@
 
 @implementation UIBarButtonItem (UIE)
 
+@dynamic nseOperation;
+
 - (Class)nseOperationClass {
     return UIBarButtonItemOperation.class;
 }
