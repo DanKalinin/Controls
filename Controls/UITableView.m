@@ -151,42 +151,42 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     self.numberOfSectionsInfo = UITableViewOperationNumberOfSectionsInfo.new;
-    [self.delegates UITableViewOperationNumberOfSections:self];
+    [self.delegates uiTableViewOperationNumberOfSections:self];
     return self.numberOfSectionsInfo.sections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     self.numberOfRowsInfo = [UITableViewOperationNumberOfRowsInfo.alloc initWithSection:section];
-    [self.delegates UITableViewOperationNumberOfRows:self];
+    [self.delegates uiTableViewOperationNumberOfRows:self];
     return self.numberOfRowsInfo.rows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     self.cellForRowInfo = [UITableViewOperationCellForRowInfo.alloc initWithIndexPath:indexPath];
-    [self.delegates UITableViewOperationCellForRow:self];
+    [self.delegates uiTableViewOperationCellForRow:self];
     return self.cellForRowInfo.cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.didSelectRowInfo = [UITableViewOperationDidSelectRowInfo.alloc initWithIndexPath:indexPath];
-    [self.delegates UITableViewOperationDidSelectRow:self];
+    [self.delegates uiTableViewOperationDidSelectRow:self];
 }
 
-#pragma mark - Table view operation
+#pragma mark - Operation
 
-- (void)UITableViewOperationNumberOfSections:(UITableViewOperation *)operation {
+- (void)uiTableViewOperationNumberOfSections:(UITableViewOperation *)operation {
     
 }
 
-- (void)UITableViewOperationNumberOfRows:(UITableViewOperation *)operation {
+- (void)uiTableViewOperationNumberOfRows:(UITableViewOperation *)operation {
     
 }
 
-- (void)UITableViewOperationCellForRow:(UITableViewOperation *)operation {
+- (void)uiTableViewOperationCellForRow:(UITableViewOperation *)operation {
     
 }
 
-- (void)UITableViewOperationDidSelectRow:(UITableViewOperation *)operation {
+- (void)uiTableViewOperationDidSelectRow:(UITableViewOperation *)operation {
     
 }
 

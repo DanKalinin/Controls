@@ -100,10 +100,10 @@
 @protocol UITableViewOperationDelegate <UIScrollViewOperationDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @optional
-- (void)UITableViewOperationNumberOfSections:(UITableViewOperation *)operation;
-- (void)UITableViewOperationNumberOfRows:(UITableViewOperation *)operation;
-- (void)UITableViewOperationCellForRow:(UITableViewOperation *)operation;
-- (void)UITableViewOperationDidSelectRow:(UITableViewOperation *)operation;
+- (void)uiTableViewOperationNumberOfSections:(UITableViewOperation *)operation;
+- (void)uiTableViewOperationNumberOfRows:(UITableViewOperation *)operation;
+- (void)uiTableViewOperationCellForRow:(UITableViewOperation *)operation;
+- (void)uiTableViewOperationDidSelectRow:(UITableViewOperation *)operation;
 
 @end
 
