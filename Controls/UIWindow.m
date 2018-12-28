@@ -30,30 +30,30 @@
 - (instancetype)initWithObject:(UIWindow *)object {
     self = [super initWithObject:object];
     if (self) {
-        [self.center addObserver:self selector:@selector(UIWindowDidBecomeVisibleNotification:) name:UIWindowDidBecomeVisibleNotification object:self.object];
-        [self.center addObserver:self selector:@selector(UIWindowDidBecomeHiddenNotification:) name:UIWindowDidBecomeHiddenNotification object:self.object];
-        [self.center addObserver:self selector:@selector(UIWindowDidBecomeKeyNotification:) name:UIWindowDidBecomeKeyNotification object:self.object];
-        [self.center addObserver:self selector:@selector(UIWindowDidResignKeyNotification:) name:UIWindowDidResignKeyNotification object:self.object];
+        [self.center addObserver:self selector:@selector(uiWindowDidBecomeVisibleNotification:) name:UIWindowDidBecomeVisibleNotification object:self.object];
+        [self.center addObserver:self selector:@selector(uiWindowDidBecomeHiddenNotification:) name:UIWindowDidBecomeHiddenNotification object:self.object];
+        [self.center addObserver:self selector:@selector(uiWindowDidBecomeKeyNotification:) name:UIWindowDidBecomeKeyNotification object:self.object];
+        [self.center addObserver:self selector:@selector(uiWindowDidResignKeyNotification:) name:UIWindowDidResignKeyNotification object:self.object];
     }
     return self;
 }
 
 #pragma mark - Notifications
 
-- (void)UIWindowDidBecomeVisibleNotification:(NSNotification *)notification {
-    [self.delegates UIWindowOperationDidBecomeVisible:self];
+- (void)uiWindowDidBecomeVisibleNotification:(NSNotification *)notification {
+    [self.delegates uiWindowOperationDidBecomeVisible:self];
 }
 
-- (void)UIWindowDidBecomeHiddenNotification:(NSNotification *)notification {
-    [self.delegates UIWindowOperationDidBecomeHidden:self];
+- (void)uiWindowDidBecomeHiddenNotification:(NSNotification *)notification {
+    [self.delegates uiWindowOperationDidBecomeHidden:self];
 }
 
-- (void)UIWindowDidBecomeKeyNotification:(NSNotification *)notification {
-    [self.delegates UIWindowOperationDidBecomeKey:self];
+- (void)uiWindowDidBecomeKeyNotification:(NSNotification *)notification {
+    [self.delegates uiWindowOperationDidBecomeKey:self];
 }
 
-- (void)UIWindowDidResignKeyNotification:(NSNotification *)notification {
-    [self.delegates UIWindowOperationDidResignKey:self];
+- (void)uiWindowDidResignKeyNotification:(NSNotification *)notification {
+    [self.delegates uiWindowOperationDidResignKey:self];
 }
 
 @end

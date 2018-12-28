@@ -27,10 +27,10 @@
 @protocol UIWindowOperationDelegate <UIViewOperationDelegate>
 
 @optional
-- (void)UIWindowOperationDidBecomeVisible:(UIWindowOperation *)operation;
-- (void)UIWindowOperationDidBecomeHidden:(UIWindowOperation *)operation;
-- (void)UIWindowOperationDidBecomeKey:(UIWindowOperation *)operation;
-- (void)UIWindowOperationDidResignKey:(UIWindowOperation *)operation;
+- (void)uiWindowOperationDidBecomeVisible:(UIWindowOperation *)operation;
+- (void)uiWindowOperationDidBecomeHidden:(UIWindowOperation *)operation;
+- (void)uiWindowOperationDidBecomeKey:(UIWindowOperation *)operation;
+- (void)uiWindowOperationDidResignKey:(UIWindowOperation *)operation;
 
 @end
 
