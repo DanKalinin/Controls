@@ -45,7 +45,7 @@
 @protocol UIViewControllerOperationDelegate <UIResponderOperationDelegate, UIViewControllerTransitioningDelegate>
 
 @optional
-- (void)UIViewControllerOperationViewDidLoad:(UIViewControllerOperation *)operation;
+- (void)uiViewControllerOperationViewDidLoad:(UIViewControllerOperation *)operation;
 
 @end
 

@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.nseOperation.delegates UIViewControllerOperationViewDidLoad:self.nseOperation];
+    [self.nseOperation.delegates uiViewControllerOperationViewDidLoad:self.nseOperation];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

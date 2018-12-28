@@ -26,10 +26,10 @@
 
 @dynamic object;
 
-#pragma mark - View controller operation
+#pragma mark - View controller
 
 - (void)UIViewControllerOperationViewDidLoad:(UITableViewControllerOperation *)operation {
-    [super UIViewControllerOperationViewDidLoad:self];
+    [super uiViewControllerOperationViewDidLoad:self];
     
     [self.object.tableView.nseOperation.delegates addObject:self.object];
 }
