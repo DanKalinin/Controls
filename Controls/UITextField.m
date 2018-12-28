@@ -100,28 +100,28 @@
 
 #pragma mark - Control
 
-- (void)uiControlOperationEventEditingDidBegin:(UITextFieldOperation *)operation {
-    [super uiControlOperationEventEditingDidBegin:self];
+- (void)uiControlOperationEditingDidBegin:(UITextFieldOperation *)operation {
+    [super uiControlOperationEditingDidBegin:self];
     
-    [self.delegates uiTextFieldOperationEventEditingDidBegin:self];
+    [self.delegates uiTextFieldOperationEditingDidBegin:self];
 }
 
-- (void)uiControlOperationEventEditingChanged:(UITextFieldOperation *)operation {
-    [super uiControlOperationEventEditingChanged:self];
+- (void)uiControlOperationEditingChanged:(UITextFieldOperation *)operation {
+    [super uiControlOperationEditingChanged:self];
     
-    [self.delegates uiTextFieldOperationEventEditingChanged:self];
+    [self.delegates uiTextFieldOperationEditingChanged:self];
 }
 
-- (void)uiControlOperationEventEditingDidEnd:(UITextFieldOperation *)operation {
-    [super uiControlOperationEventEditingDidEnd:self];
+- (void)uiControlOperationEditingDidEnd:(UITextFieldOperation *)operation {
+    [super uiControlOperationEditingDidEnd:self];
     
-    [self.delegates uiTextFieldOperationEventEditingDidEnd:self];
+    [self.delegates uiTextFieldOperationEditingDidEnd:self];
 }
 
-- (void)uiControlOperationEventEditingDidEndOnExit:(UITextFieldOperation *)operation {
-    [super uiControlOperationEventEditingDidEndOnExit:self];
+- (void)uiControlOperationEditingDidEndOnExit:(UITextFieldOperation *)operation {
+    [super uiControlOperationEditingDidEndOnExit:self];
     
-    [self.delegates uiTextFieldOperationEventEditingDidEndOnExit:self];
+    [self.delegates uiTextFieldOperationEditingDidEndOnExit:self];
 }
 
 #pragma mark - Text field
@@ -158,19 +158,19 @@
     
 }
 
-- (void)uiTextFieldOperationEventEditingDidBegin:(UITextFieldOperation *)operation {
+- (void)uiTextFieldOperationEditingDidBegin:(UITextFieldOperation *)operation {
     
 }
 
-- (void)uiTextFieldOperationEventEditingChanged:(UITextFieldOperation *)operation {
+- (void)uiTextFieldOperationEditingChanged:(UITextFieldOperation *)operation {
     
 }
 
-- (void)uiTextFieldOperationEventEditingDidEnd:(UITextFieldOperation *)operation {
+- (void)uiTextFieldOperationEditingDidEnd:(UITextFieldOperation *)operation {
     
 }
 
-- (void)uiTextFieldOperationEventEditingDidEndOnExit:(UITextFieldOperation *)operation {
+- (void)uiTextFieldOperationEditingDidEndOnExit:(UITextFieldOperation *)operation {
     
 }
 

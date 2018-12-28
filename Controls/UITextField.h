@@ -61,10 +61,10 @@
 @protocol UITextFieldOperationDelegate <UIControlOperationDelegate, UITextFieldDelegate>
 
 @optional
-- (void)uiTextFieldOperationEventEditingDidBegin:(UITextFieldOperation *)operation;
-- (void)uiTextFieldOperationEventEditingChanged:(UITextFieldOperation *)operation;
-- (void)uiTextFieldOperationEventEditingDidEnd:(UITextFieldOperation *)operation;
-- (void)uiTextFieldOperationEventEditingDidEndOnExit:(UITextFieldOperation *)operation;
+- (void)uiTextFieldOperationEditingDidBegin:(UITextFieldOperation *)operation;
+- (void)uiTextFieldOperationEditingChanged:(UITextFieldOperation *)operation;
+- (void)uiTextFieldOperationEditingDidEnd:(UITextFieldOperation *)operation;
+- (void)uiTextFieldOperationEditingDidEndOnExit:(UITextFieldOperation *)operation;
 
 - (void)uiTextFieldOperationDidBeginEditing:(UITextFieldOperation *)operation;
 - (void)uiTextFieldOperationShouldChange:(UITextFieldOperation *)operation;

@@ -24,7 +24,7 @@
 @protocol UIButtonOperationDelegate <UIControlOperationDelegate>
 
 @optional
-- (void)uiButtonOperationEventTouchUpInside:(UIButtonOperation *)operation;
+- (void)uiButtonOperationTouchUpInside:(UIButtonOperation *)operation;
 
 @end
 

@@ -29,15 +29,15 @@
 
 #pragma mark - Control
 
-- (void)uiControlOperationEventTouchUpInside:(UIButtonOperation *)operation {
-    [super uiControlOperationEventTouchUpInside:self];
+- (void)uiControlOperationTouchUpInside:(UIButtonOperation *)operation {
+    [super uiControlOperationTouchUpInside:self];
     
-    [self.delegates uiButtonOperationEventTouchUpInside:self];
+    [self.delegates uiButtonOperationTouchUpInside:self];
 }
 
 #pragma mark - Button
 
-- (void)uiButtonOperationEventTouchUpInside:(UIButtonOperation *)operation {
+- (void)uiButtonOperationTouchUpInside:(UIButtonOperation *)operation {
     
 }
 

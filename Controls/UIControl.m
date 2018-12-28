@@ -16,7 +16,7 @@
 
 
 
-@interface UIControlOperationEventInfo ()
+@interface UIControlOperationInfo ()
 
 @property UIEvent *event;
 
@@ -24,7 +24,7 @@
 
 
 
-@implementation UIControlOperationEventInfo
+@implementation UIControlOperationInfo
 
 - (instancetype)initWithEvent:(UIEvent *)event {
     self = super.init;
@@ -47,7 +47,7 @@
 
 @interface UIControlOperation ()
 
-@property UIControlOperationEventInfo *eventInfo;
+@property UIControlOperationInfo *info;
 
 @end
 
@@ -85,78 +85,78 @@
 #pragma mark - Control
 
 - (void)uiControlEventTouchDown:(UIControl *)control event:(UIEvent *)event {
-    self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates uiControlOperationEventTouchDown:self];
+    self.info = [UIControlOperationInfo.alloc initWithEvent:event];
+    [self.delegates uiControlOperationTouchDown:self];
 }
 
 - (void)uiControlEventTouchDownRepeat:(UIControl *)control event:(UIEvent *)event {
-    self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates uiControlOperationEventTouchDownRepeat:self];
+    self.info = [UIControlOperationInfo.alloc initWithEvent:event];
+    [self.delegates uiControlOperationTouchDownRepeat:self];
 }
 
 - (void)uiControlEventTouchDragInside:(UIControl *)control event:(UIEvent *)event {
-    self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates uiControlOperationEventTouchDragInside:self];
+    self.info = [UIControlOperationInfo.alloc initWithEvent:event];
+    [self.delegates uiControlOperationTouchDragInside:self];
 }
 
 - (void)uiControlEventTouchDragOutside:(UIControl *)control event:(UIEvent *)event {
-    self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates uiControlOperationEventTouchDragOutside:self];
+    self.info = [UIControlOperationInfo.alloc initWithEvent:event];
+    [self.delegates uiControlOperationTouchDragOutside:self];
 }
 
 - (void)uiControlEventTouchDragEnter:(UIControl *)control event:(UIEvent *)event {
-    self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates uiControlOperationEventTouchDragEnter:self];
+    self.info = [UIControlOperationInfo.alloc initWithEvent:event];
+    [self.delegates uiControlOperationTouchDragEnter:self];
 }
 
 - (void)uiControlEventTouchDragExit:(UIControl *)control event:(UIEvent *)event {
-    self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates uiControlOperationEventTouchDragExit:self];
+    self.info = [UIControlOperationInfo.alloc initWithEvent:event];
+    [self.delegates uiControlOperationTouchDragExit:self];
 }
 
 - (void)uiControlEventTouchUpInside:(UIControl *)control event:(UIEvent *)event {
-    self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates uiControlOperationEventTouchUpInside:self];
+    self.info = [UIControlOperationInfo.alloc initWithEvent:event];
+    [self.delegates uiControlOperationTouchUpInside:self];
 }
 
 - (void)uiControlEventTouchUpOutside:(UIControl *)control event:(UIEvent *)event {
-    self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates uiControlOperationEventTouchUpOutside:self];
+    self.info = [UIControlOperationInfo.alloc initWithEvent:event];
+    [self.delegates uiControlOperationTouchUpOutside:self];
 }
 
 - (void)uiControlEventTouchCancel:(UIControl *)control event:(UIEvent *)event {
-    self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates uiControlOperationEventTouchCancel:self];
+    self.info = [UIControlOperationInfo.alloc initWithEvent:event];
+    [self.delegates uiControlOperationTouchCancel:self];
 }
 
 - (void)uiControlEventValueChanged:(UIControl *)control event:(UIEvent *)event {
-    self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates uiControlOperationEventValueChanged:self];
+    self.info = [UIControlOperationInfo.alloc initWithEvent:event];
+    [self.delegates uiControlOperationValueChanged:self];
 }
 
 - (void)uiControlEventPrimaryActionTriggered:(UIControl *)control event:(UIEvent *)event {
-    self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates uiControlOperationEventPrimaryActionTriggered:self];
+    self.info = [UIControlOperationInfo.alloc initWithEvent:event];
+    [self.delegates uiControlOperationPrimaryActionTriggered:self];
 }
 
 - (void)uiControlEventEditingDidBegin:(UIControl *)control event:(UIEvent *)event {
-    self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates uiControlOperationEventEditingDidBegin:self];
+    self.info = [UIControlOperationInfo.alloc initWithEvent:event];
+    [self.delegates uiControlOperationEditingDidBegin:self];
 }
 
 - (void)uiControlEventEditingChanged:(UIControl *)control event:(UIEvent *)event {
-    self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates uiControlOperationEventEditingChanged:self];
+    self.info = [UIControlOperationInfo.alloc initWithEvent:event];
+    [self.delegates uiControlOperationEditingChanged:self];
 }
 
 - (void)uiControlEventEditingDidEnd:(UIControl *)control event:(UIEvent *)event {
-    self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates uiControlOperationEventEditingDidEnd:self];
+    self.info = [UIControlOperationInfo.alloc initWithEvent:event];
+    [self.delegates uiControlOperationEditingDidEnd:self];
 }
 
 - (void)uiControlEventEditingDidEndOnExit:(UIControl *)control event:(UIEvent *)event {
-    self.eventInfo = [UIControlOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates uiControlOperationEventEditingDidEndOnExit:self];
+    self.info = [UIControlOperationInfo.alloc initWithEvent:event];
+    [self.delegates uiControlOperationEditingDidEndOnExit:self];
 }
 
 #pragma mark - Control operation
@@ -191,63 +191,63 @@
     }
 }
 
-- (void)uiControlOperationEventTouchDown:(UIControlOperation *)operation {
+- (void)uiControlOperationTouchDown:(UIControlOperation *)operation {
     
 }
 
-- (void)uiControlOperationEventTouchDownRepeat:(UIControlOperation *)operation {
+- (void)uiControlOperationTouchDownRepeat:(UIControlOperation *)operation {
     
 }
 
-- (void)uiControlOperationEventTouchDragInside:(UIControlOperation *)operation {
+- (void)uiControlOperationTouchDragInside:(UIControlOperation *)operation {
     
 }
 
-- (void)uiControlOperationEventTouchDragOutside:(UIControlOperation *)operation {
+- (void)uiControlOperationTouchDragOutside:(UIControlOperation *)operation {
     
 }
 
-- (void)uiControlOperationEventTouchDragEnter:(UIControlOperation *)operation {
+- (void)uiControlOperationTouchDragEnter:(UIControlOperation *)operation {
     
 }
 
-- (void)uiControlOperationEventTouchDragExit:(UIControlOperation *)operation {
+- (void)uiControlOperationTouchDragExit:(UIControlOperation *)operation {
     
 }
 
-- (void)uiControlOperationEventTouchUpInside:(UIControlOperation *)operation {
+- (void)uiControlOperationTouchUpInside:(UIControlOperation *)operation {
     
 }
 
-- (void)uiControlOperationEventTouchUpOutside:(UIControlOperation *)operation {
+- (void)uiControlOperationTouchUpOutside:(UIControlOperation *)operation {
     
 }
 
-- (void)uiControlOperationEventTouchCancel:(UIControlOperation *)operation {
+- (void)uiControlOperationTouchCancel:(UIControlOperation *)operation {
     
 }
 
-- (void)uiControlOperationEventValueChanged:(UIControlOperation *)operation {
+- (void)uiControlOperationValueChanged:(UIControlOperation *)operation {
     
 }
 
-- (void)uiControlOperationEventPrimaryActionTriggered:(UIControlOperation *)operation {
+- (void)uiControlOperationPrimaryActionTriggered:(UIControlOperation *)operation {
     
 }
 
-- (void)uiControlOperationEventEditingDidBegin:(UIControlOperation *)operation {
+- (void)uiControlOperationEditingDidBegin:(UIControlOperation *)operation {
     
 }
 
-- (void)uiControlOperationEventEditingChanged:(UIControlOperation *)operation {
+- (void)uiControlOperationEditingChanged:(UIControlOperation *)operation {
     
 }
 
-- (void)uiControlOperationEventEditingDidEnd:(UIControlOperation *)operation {
+- (void)uiControlOperationEditingDidEnd:(UIControlOperation *)operation {
     
 }
 
-- (void)uiControlOperationEventEditingDidEndOnExit:(UIControlOperation *)operation {
+- (void)uiControlOperationEditingDidEndOnExit:(UIControlOperation *)operation {
     
 }
 
