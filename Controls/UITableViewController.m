@@ -28,7 +28,7 @@
 
 #pragma mark - View controller
 
-- (void)UIViewControllerOperationViewDidLoad:(UITableViewControllerOperation *)operation {
+- (void)uiViewControllerOperationViewDidLoad:(UITableViewControllerOperation *)operation {
     [super uiViewControllerOperationViewDidLoad:self];
     
     [self.object.tableView.nseOperation.delegates addObject:self.object];
