@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "UIBarItem.h"
 
-@class UIBarButtonItemOperationEventInfo;
+@class UIBarButtonItemOperationInfo;
 @class UIBarButtonItemOperation;
 
 @protocol UIBarButtonItemOperationDelegate;
@@ -22,7 +22,7 @@
 
 
 
-@interface UIBarButtonItemOperationEventInfo : HLPObject
+@interface UIBarButtonItemOperationInfo : HLPObject
 
 @property (readonly) UIEvent *event;
 
@@ -42,7 +42,7 @@
 @protocol UIBarButtonItemOperationDelegate <UIBarItemOperationDelegate>
 
 @optional
-- (void)uiBarButtonItemOperationEventTouchUpInside:(UIBarButtonItemOperation *)operation;
+- (void)uiBarButtonItemOperationTouchUpInside:(UIBarButtonItemOperation *)operation;
 
 @end
 
@@ -51,7 +51,7 @@
 @interface UIBarButtonItemOperation : UIBarItemOperation <UIBarButtonItemOperationDelegate>
 
 @property (readonly) HLPArray<UIBarButtonItemOperationDelegate> *delegates;
-@property (readonly) UIBarButtonItemOperationEventInfo *eventInfo;
+@property (readonly) UIBarButtonItemOperationInfo *info;
 
 @property (weak, readonly) UIBarButtonItem *object;
 

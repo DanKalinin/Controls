@@ -16,7 +16,7 @@
 
 
 
-@interface UIBarButtonItemOperationEventInfo ()
+@interface UIBarButtonItemOperationInfo ()
 
 @property UIEvent *event;
 
@@ -24,7 +24,7 @@
 
 
 
-@implementation UIBarButtonItemOperationEventInfo
+@implementation UIBarButtonItemOperationInfo
 
 - (instancetype)initWithEvent:(UIEvent *)event {
     self = super.init;
@@ -47,7 +47,7 @@
 
 @interface UIBarButtonItemOperation ()
 
-@property UIBarButtonItemOperationEventInfo *eventInfo;
+@property UIBarButtonItemOperationInfo *info;
 
 @end
 
@@ -62,19 +62,19 @@
     self = [super initWithObject:object];
     if (self) {
         self.object.target = self;
-        self.object.action = @selector(uiBarButtonItemEventTouchUpInside:event:);
+        self.object.action = @selector(uiBarButtonItemTouchUpInside:event:);
     }
     return self;
 }
 
 #pragma mark - Bar button item
 
-- (void)uiBarButtonItemEventTouchUpInside:(UIBarButtonItem *)barButtonItem event:(UIEvent *)event {
-    self.eventInfo = [UIBarButtonItemOperationEventInfo.alloc initWithEvent:event];
-    [self.delegates uiBarButtonItemOperationEventTouchUpInside:self];
+- (void)uiBarButtonItemTouchUpInside:(UIBarButtonItem *)barButtonItem event:(UIEvent *)event {
+    self.info = [UIBarButtonItemOperationInfo.alloc initWithEvent:event];
+    [self.delegates uiBarButtonItemOperationTouchUpInside:self];
 }
 
-- (void)uiBarButtonItemOperationEventTouchUpInside:(UIBarButtonItemOperation *)operation {
+- (void)uiBarButtonItemOperationTouchUpInside:(UIBarButtonItemOperation *)operation {
     
 }
 
