@@ -161,7 +161,7 @@
 
 #pragma mark - Control operation
 
-- (void)uiControlOperationDidSetEnabled:(UIControlOperation *)operation {
+- (void)uiControlOperationSetEnabled:(UIControlOperation *)operation {
     if (self.object.enabled) {
         self.object.backgroundColor = self.object.uieDefaultBackgroundColor;
         self.object.uieLayerBorderColor = self.object.uieDefaultLayerBorderColor;
@@ -171,7 +171,7 @@
     }
 }
 
-- (void)uiControlOperationDidSetSelected:(UIControlOperation *)operation {
+- (void)uiControlOperationSetSelected:(UIControlOperation *)operation {
     if (self.object.selected) {
         self.object.backgroundColor = self.object.uieSelectedBackgroundColor;
         self.object.uieLayerBorderColor = self.object.uieSelectedLayerBorderColor;
@@ -181,7 +181,7 @@
     }
 }
 
-- (void)uiControlOperationDidSetHighlighted:(UIControlOperation *)operation {
+- (void)uiControlOperationSetHighlighted:(UIControlOperation *)operation {
     if (self.object.highlighted) {
         self.object.backgroundColor = self.object.uieHighlightedBackgroundColor;
         self.object.uieLayerBorderColor = self.object.uieHighlightedLayerBorderColor;

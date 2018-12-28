@@ -42,9 +42,9 @@
 @protocol UIControlOperationDelegate <UIViewOperationDelegate>
 
 @optional
-- (void)uiControlOperationDidSetEnabled:(UIControlOperation *)operation;
-- (void)uiControlOperationDidSetSelected:(UIControlOperation *)operation;
-- (void)uiControlOperationDidSetHighlighted:(UIControlOperation *)operation;
+- (void)uiControlOperationSetEnabled:(UIControlOperation *)operation;
+- (void)uiControlOperationSetSelected:(UIControlOperation *)operation;
+- (void)uiControlOperationSetHighlighted:(UIControlOperation *)operation;
 
 - (void)uiControlOperationTouchDown:(UIControlOperation *)operation;
 - (void)uiControlOperationTouchDownRepeat:(UIControlOperation *)operation;
