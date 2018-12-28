@@ -44,7 +44,7 @@
 
 + (instancetype)uieActionWithTitle:(NSString *)title style:(UIAlertActionStyle)style delegate:(id<UIAlertActionOperationDelegate>)delegate {
     UIAlertAction *alertAction = [self actionWithTitle:title style:style handler:^(UIAlertAction *alertAction) {
-        [alertAction.nseOperation.delegates UIAlertActionOperationDidFinish:alertAction.nseOperation];
+        [alertAction.nseOperation.delegates uiAlertActionOperationDidFinish:alertAction.nseOperation];
     }];
     [alertAction.nseOperation.delegates addObject:delegate];
     return alertAction;

@@ -133,7 +133,7 @@
 + (instancetype)uieActionWithTitle:(NSString *)title style:(UIPreviewActionStyle)style delegate:(id<UIPreviewActionOperationDelegate>)delegate {
     UIPreviewAction *previewAction = [UIPreviewAction actionWithTitle:title style:style handler:^(UIPreviewAction *previewAction, UIViewController *previewViewController) {
         previewAction.nseOperation.previewViewController = previewViewController;
-        [previewAction.nseOperation.delegates UIPreviewActionOperationDidFinish:previewAction.nseOperation];
+        [previewAction.nseOperation.delegates uiPreviewActionOperationDidFinish:previewAction.nseOperation];
     }];
     [previewAction.nseOperation.delegates addObject:delegate];
     return previewAction;

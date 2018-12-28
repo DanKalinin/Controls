@@ -88,7 +88,7 @@
 @protocol UIPreviewActionOperationDelegate <NSObjectOperationDelegate>
 
 @optional
-- (void)UIPreviewActionOperationDidFinish:(UIPreviewActionOperation *)operation;
+- (void)uiPreviewActionOperationDidFinish:(UIPreviewActionOperation *)operation;
 
 @end
 

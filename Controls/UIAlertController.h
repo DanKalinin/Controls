@@ -24,7 +24,7 @@
 @protocol UIAlertActionOperationDelegate <NSObjectOperationDelegate>
 
 @optional
-- (void)UIAlertActionOperationDidFinish:(UIAlertActionOperation *)operation;
+- (void)uiAlertActionOperationDidFinish:(UIAlertActionOperation *)operation;
 
 @end
 

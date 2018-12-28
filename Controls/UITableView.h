@@ -148,7 +148,7 @@
 @protocol UITableViewRowActionOperationDelegate <NSObjectOperationDelegate>
 
 @optional
-- (void)UITableViewRowActionDidFinish:(UITableViewRowActionOperation *)operation;
+- (void)uiTableViewRowActionDidFinish:(UITableViewRowActionOperation *)operation;
 
 @end
 
