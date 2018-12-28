@@ -93,12 +93,12 @@
 @protocol UIKeyboardOperationDelegate <NSEOperationDelegate>
 
 @optional
-- (void)UIKeyboardOperationWillShow:(UIKeyboardOperation *)operation;
-- (void)UIKeyboardOperationDidShow:(UIKeyboardOperation *)operation;
-- (void)UIKeyboardOperationWillHide:(UIKeyboardOperation *)operation;
-- (void)UIKeyboardOperationDidHide:(UIKeyboardOperation *)operation;
-- (void)UIKeyboardOperationWillChangeFrame:(UIKeyboardOperation *)operation;
-- (void)UIKeyboardOperationDidChangeFrame:(UIKeyboardOperation *)operation;
+- (void)uiKeyboardOperationWillShow:(UIKeyboardOperation *)operation;
+- (void)uiKeyboardOperationDidShow:(UIKeyboardOperation *)operation;
+- (void)uiKeyboardOperationWillHide:(UIKeyboardOperation *)operation;
+- (void)uiKeyboardOperationDidHide:(UIKeyboardOperation *)operation;
+- (void)uiKeyboardOperationWillChangeFrame:(UIKeyboardOperation *)operation;
+- (void)uiKeyboardOperationDidChangeFrame:(UIKeyboardOperation *)operation;
 
 @end
 

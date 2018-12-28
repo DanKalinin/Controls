@@ -150,46 +150,46 @@
 - (instancetype)init {
     self = super.init;
     if (self) {
-        [self.center addObserver:self selector:@selector(UIKeyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
-        [self.center addObserver:self selector:@selector(UIKeyboardDidShowNotification:) name:UIKeyboardDidShowNotification object:nil];
-        [self.center addObserver:self selector:@selector(UIKeyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
-        [self.center addObserver:self selector:@selector(UIKeyboardDidHideNotification:) name:UIKeyboardDidHideNotification object:nil];
-        [self.center addObserver:self selector:@selector(UIKeyboardWillChangeFrameNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
-        [self.center addObserver:self selector:@selector(UIKeyboardDidChangeFrameNotification:) name:UIKeyboardDidChangeFrameNotification object:nil];
+        [self.center addObserver:self selector:@selector(uiKeyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
+        [self.center addObserver:self selector:@selector(uiKeyboardDidShowNotification:) name:UIKeyboardDidShowNotification object:nil];
+        [self.center addObserver:self selector:@selector(uiKeyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
+        [self.center addObserver:self selector:@selector(uiKeyboardDidHideNotification:) name:UIKeyboardDidHideNotification object:nil];
+        [self.center addObserver:self selector:@selector(uiKeyboardWillChangeFrameNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
+        [self.center addObserver:self selector:@selector(uiKeyboardDidChangeFrameNotification:) name:UIKeyboardDidChangeFrameNotification object:nil];
     }
     return self;
 }
 
 #pragma mark - Notifications
 
-- (void)UIKeyboardWillShowNotification:(NSNotification *)notification {
+- (void)uiKeyboardWillShowNotification:(NSNotification *)notification {
     self.info = [UIKeyboardOperationInfo.alloc initWithDictionary:notification.userInfo];
-    [self.delegates UIKeyboardOperationWillShow:self];
+    [self.delegates uiKeyboardOperationWillShow:self];
 }
 
-- (void)UIKeyboardDidShowNotification:(NSNotification *)notification {
+- (void)uiKeyboardDidShowNotification:(NSNotification *)notification {
     self.info = [UIKeyboardOperationInfo.alloc initWithDictionary:notification.userInfo];
-    [self.delegates UIKeyboardOperationDidShow:self];
+    [self.delegates uiKeyboardOperationDidShow:self];
 }
 
-- (void)UIKeyboardWillHideNotification:(NSNotification *)notification {
+- (void)uiKeyboardWillHideNotification:(NSNotification *)notification {
     self.info = [UIKeyboardOperationInfo.alloc initWithDictionary:notification.userInfo];
-    [self.delegates UIKeyboardOperationWillHide:self];
+    [self.delegates uiKeyboardOperationWillHide:self];
 }
 
-- (void)UIKeyboardDidHideNotification:(NSNotification *)notification {
+- (void)uiKeyboardDidHideNotification:(NSNotification *)notification {
     self.info = [UIKeyboardOperationInfo.alloc initWithDictionary:notification.userInfo];
-    [self.delegates UIKeyboardOperationDidHide:self];
+    [self.delegates uiKeyboardOperationDidHide:self];
 }
 
-- (void)UIKeyboardWillChangeFrameNotification:(NSNotification *)notification {
+- (void)uiKeyboardWillChangeFrameNotification:(NSNotification *)notification {
     self.info = [UIKeyboardOperationInfo.alloc initWithDictionary:notification.userInfo];
-    [self.delegates UIKeyboardOperationWillChangeFrame:self];
+    [self.delegates uiKeyboardOperationWillChangeFrame:self];
 }
 
-- (void)UIKeyboardDidChangeFrameNotification:(NSNotification *)notification {
+- (void)uiKeyboardDidChangeFrameNotification:(NSNotification *)notification {
     self.info = [UIKeyboardOperationInfo.alloc initWithDictionary:notification.userInfo];
-    [self.delegates UIKeyboardOperationDidChangeFrame:self];
+    [self.delegates uiKeyboardOperationDidChangeFrame:self];
 }
 
 @end
