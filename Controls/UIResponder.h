@@ -21,13 +21,13 @@
 
 
 
-@protocol UIResponderOperationDelegate <NSObjectOperationDelegate>
+@protocol UIResponderOperationDelegate <NSEObjectOperationDelegate>
 
 @end
 
 
 
-@interface UIResponderOperation : NSObjectOperation <UIResponderOperationDelegate>
+@interface UIResponderOperation : NSEObjectOperation <UIResponderOperationDelegate>
 
 @property (weak, readonly) UIResponder *object;
 

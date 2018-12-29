@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIView.h"
+#import "UIEView.h"
 
 @class UIScrollViewOperation;
 
@@ -21,13 +21,13 @@
 
 
 
-@protocol UIScrollViewOperationDelegate <UIViewOperationDelegate, UIScrollViewDelegate>
+@protocol UIScrollViewOperationDelegate <UIEViewOperationDelegate, UIScrollViewDelegate>
 
 @end
 
 
 
-@interface UIScrollViewOperation : UIViewOperation <UIScrollViewOperationDelegate>
+@interface UIScrollViewOperation : UIEViewOperation <UIScrollViewOperationDelegate>
 
 @property (readonly) HLPArray<UIScrollViewOperationDelegate> *delegates;
 

@@ -20,19 +20,19 @@
 - (void)setEnabled:(BOOL)enabled {
     [super setEnabled:enabled];
     
-    [self.nseOperation.delegates uiControl:self setEnabled:enabled];
+    [self.nseOperation.delegates uieControl:self setEnabled:enabled];
 }
 
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
     
-    [self.nseOperation.delegates uiControl:self setSelected:selected];
+    [self.nseOperation.delegates uieControl:self setSelected:selected];
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
     [super setHighlighted:highlighted];
     
-    [self.nseOperation.delegates uiControl:self setHighlighted:highlighted];
+    [self.nseOperation.delegates uieControl:self setHighlighted:highlighted];
 }
 
 @end

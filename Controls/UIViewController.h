@@ -45,7 +45,7 @@
 @protocol UIViewControllerOperationDelegate <UIResponderOperationDelegate, UIViewControllerTransitioningDelegate>
 
 @optional
-- (void)uiViewControllerOperationViewDidLoad:(UIViewControllerOperation *)operation;
+- (void)uiViewControllerViewDidLoad:(UIViewController *)viewController;
 
 @end
 
@@ -85,7 +85,7 @@
 
 
 
-@protocol UIPreviewActionOperationDelegate <NSObjectOperationDelegate>
+@protocol UIPreviewActionOperationDelegate <NSEObjectOperationDelegate>
 
 @optional
 - (void)uiPreviewActionOperationDidFinish:(UIPreviewActionOperation *)operation;
@@ -94,7 +94,7 @@
 
 
 
-@interface UIPreviewActionOperation : NSObjectOperation <UIPreviewActionOperationDelegate>
+@interface UIPreviewActionOperation : NSEObjectOperation <UIPreviewActionOperationDelegate>
 
 @property (readonly) HLPArray<UIPreviewActionOperationDelegate> *delegates;
 @property (readonly) UIViewController *previewViewController;

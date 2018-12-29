@@ -145,7 +145,7 @@
 
 
 
-@protocol UITableViewRowActionOperationDelegate <NSObjectOperationDelegate>
+@protocol UITableViewRowActionOperationDelegate <NSEObjectOperationDelegate>
 
 @optional
 - (void)uiTableViewRowActionDidFinish:(UITableViewRowActionOperation *)operation;
@@ -154,7 +154,7 @@
 
 
 
-@interface UITableViewRowActionOperation : NSObjectOperation <UITableViewRowActionOperationDelegate>
+@interface UITableViewRowActionOperation : NSEObjectOperation <UITableViewRowActionOperationDelegate>
 
 @property (readonly) HLPArray<UITableViewRowActionOperationDelegate> *delegates;
 @property (readonly) NSIndexPath *indexPath;

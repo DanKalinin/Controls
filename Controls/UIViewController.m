@@ -61,14 +61,14 @@
 - (instancetype)initWithObject:(UIViewController *)object {
     self = [super initWithObject:object];
     if (self) {
-        self.object.transitioningDelegate = self.delegates;
+        object.transitioningDelegate = self.delegates;
     }
     return self;
 }
 
 #pragma mark - View controller
 
-- (void)uiViewControllerOperationViewDidLoad:(UIViewControllerOperation *)operation {
+- (void)uiViewControllerViewDidLoad:(UIViewController *)viewController {
     
 }
 

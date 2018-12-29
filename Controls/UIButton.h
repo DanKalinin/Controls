@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIControl.h"
+#import "UIEControl.h"
 
 @class UIButtonOperation;
 
@@ -21,7 +21,7 @@
 
 
 
-@protocol UIButtonOperationDelegate <UIControlOperationDelegate>
+@protocol UIButtonOperationDelegate <UIEControlOperationDelegate>
 
 @optional
 - (void)uiButtonOperationTouchUpInside:(UIButtonOperation *)operation;
@@ -30,7 +30,7 @@
 
 
 
-@interface UIButtonOperation : UIControlOperation <UIButtonOperationDelegate>
+@interface UIButtonOperation : UIEControlOperation <UIButtonOperationDelegate>
 
 @property (readonly) HLPArray<UIButtonOperationDelegate> *delegates;
 

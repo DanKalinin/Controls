@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIView.h"
+#import "UIEView.h"
 
 @class UITableViewCellOperation;
 
@@ -21,7 +21,7 @@
 
 
 
-@protocol UITableViewCellOperationDelegate <UIViewOperationDelegate>
+@protocol UITableViewCellOperationDelegate <UIEViewOperationDelegate>
 
 @optional
 - (void)uiTableViewCellOperationSetEnabled:(UITableViewCellOperation *)operation;
@@ -30,7 +30,7 @@
 
 
 
-@interface UITableViewCellOperation : UIViewOperation <UITableViewCellOperationDelegate>
+@interface UITableViewCellOperation : UIEViewOperation <UITableViewCellOperationDelegate>
 
 @property (readonly) BOOL enabled;
 

@@ -21,7 +21,7 @@
 
 
 
-@protocol UIAlertActionOperationDelegate <NSObjectOperationDelegate>
+@protocol UIAlertActionOperationDelegate <NSEObjectOperationDelegate>
 
 @optional
 - (void)uiAlertActionOperationDidFinish:(UIAlertActionOperation *)operation;
@@ -30,7 +30,7 @@
 
 
 
-@interface UIAlertActionOperation : NSObjectOperation <UIAlertActionOperationDelegate>
+@interface UIAlertActionOperation : NSEObjectOperation <UIAlertActionOperationDelegate>
 
 @property (readonly) HLPArray<UIAlertActionOperationDelegate> *delegates;
 

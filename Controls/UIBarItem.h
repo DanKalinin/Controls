@@ -21,13 +21,13 @@
 
 
 
-@protocol UIBarItemOperationDelegate <NSObjectOperationDelegate>
+@protocol UIBarItemOperationDelegate <NSEObjectOperationDelegate>
 
 @end
 
 
 
-@interface UIBarItemOperation : NSObjectOperation <UIBarItemOperationDelegate>
+@interface UIBarItemOperation : NSEObjectOperation <UIBarItemOperationDelegate>
 
 @property (weak, readonly) UIBarItem *object;
 
