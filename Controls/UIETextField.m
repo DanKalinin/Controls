@@ -47,15 +47,15 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (textField.uieClearOnBegin) {
+    if (self.clearOnBegin) {
         textField.text = @"";
     }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    if (textField.uiePattern.length > 0) {
+    if (self.pattern.length > 0) {
         NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
-        NSRange range = [text rangeOfString:textField.uiePattern options:NSRegularExpressionSearch];
+        NSRange range = [text rangeOfString:self.pattern options:NSRegularExpressionSearch];
         if (range.location == NSNotFound) {
             return NO;
         } else {
@@ -96,8 +96,6 @@
 @implementation UITextField (UIE)
 
 @dynamic nseOperation;
-@dynamic uieClearOnBegin;
-@dynamic uiePattern;
 
 - (Class)nseOperationClass {
     return UIETextFieldOperation.class;

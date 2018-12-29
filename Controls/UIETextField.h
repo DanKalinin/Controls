@@ -9,6 +9,7 @@
 #import "UIEControl.h"
 
 @class UIETextFieldOperation;
+@class UIETextField;
 
 @protocol UIETextFieldOperationDelegate;
 
@@ -35,6 +36,9 @@
 
 @interface UIETextFieldOperation : UIEControlOperation <UIETextFieldOperationDelegate>
 
+@property BOOL clearOnBegin;
+@property NSString *pattern;
+
 @property (readonly) HLPArray<UIETextFieldOperationDelegate> *delegates;
 
 @property (weak, readonly) UITextField *object;
@@ -53,9 +57,6 @@
 @interface UITextField (UIE)
 
 @property (readonly) UIETextFieldOperation *nseOperation;
-
-@property IBInspectable BOOL uieClearOnBegin;
-@property IBInspectable NSString *uiePattern;
 
 @end
 
