@@ -8,8 +8,6 @@
 #import <UIKit/UIKit.h>
 #import "UIControl.h"
 
-@class UITextFieldOperationShouldChangeInfo;
-@class UITextFieldOperationShouldReturnInfo;
 @class UITextFieldOperation;
 
 @protocol UITextFieldOperationDelegate;
@@ -23,52 +21,13 @@
 
 
 
-@interface UITextFieldOperationShouldChangeInfo : HLPObject
-
-@property BOOL shouldChange;
-
-@property (readonly) NSRange range;
-@property (readonly) NSString *string;
-
-- (instancetype)initWithRange:(NSRange)range string:(NSString *)string;
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface UITextFieldOperationShouldReturnInfo : HLPObject
-
-@property BOOL shouldReturn;
-
-@end
-
-
-
-
-
-
-
-
-
-
 @protocol UITextFieldOperationDelegate <UIControlOperationDelegate, UITextFieldDelegate>
 
 @optional
-- (void)uiTextFieldOperationEditingDidBegin:(UITextFieldOperation *)operation;
-- (void)uiTextFieldOperationEditingChanged:(UITextFieldOperation *)operation;
-- (void)uiTextFieldOperationEditingDidEnd:(UITextFieldOperation *)operation;
-- (void)uiTextFieldOperationEditingDidEndOnExit:(UITextFieldOperation *)operation;
-
-- (void)uiTextFieldOperationDidBeginEditing:(UITextFieldOperation *)operation;
-- (void)uiTextFieldOperationShouldChange:(UITextFieldOperation *)operation;
-- (void)uiTextFieldOperationShouldReturn:(UITextFieldOperation *)operation;
+- (void)uiTextFieldEditingDidBegin:(UITextField *)textField event:(UIEvent *)event;
+- (void)uiTextFieldEditingChanged:(UITextField *)textField event:(UIEvent *)event;
+- (void)uiTextFieldEditingDidEnd:(UITextField *)textField event:(UIEvent *)event;
+- (void)uiTextFieldEditingDidEndOnExit:(UITextField *)textField event:(UIEvent *)event;
 
 @end
 
@@ -77,8 +36,6 @@
 @interface UITextFieldOperation : UIControlOperation <UITextFieldOperationDelegate>
 
 @property (readonly) HLPArray<UITextFieldOperationDelegate> *delegates;
-@property (readonly) UITextFieldOperationShouldChangeInfo *shouldChangeInfo;
-@property (readonly) UITextFieldOperationShouldReturnInfo *shouldReturnInfo;
 
 @property (weak, readonly) UITextField *object;
 

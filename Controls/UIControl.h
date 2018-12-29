@@ -8,7 +8,6 @@
 #import <UIKit/UIKit.h>
 #import "UIView.h"
 
-@class UIControlOperationInfo;
 @class UIControlOperation;
 
 @protocol UIControlOperationDelegate;
@@ -22,47 +21,30 @@
 
 
 
-@interface UIControlOperationInfo : HLPObject
-
-@property (readonly) UIEvent *event;
-
-- (instancetype)initWithEvent:(UIEvent *)event;
-
-@end
-
-
-
-
-
-
-
-
-
-
 @protocol UIControlOperationDelegate <UIViewOperationDelegate>
 
 @optional
-- (void)uiControlOperationSetEnabled:(UIControlOperation *)operation;
-- (void)uiControlOperationSetSelected:(UIControlOperation *)operation;
-- (void)uiControlOperationSetHighlighted:(UIControlOperation *)operation;
+- (void)uiControl:(UIControl *)control setEnabled:(BOOL)enabled;
+- (void)uiControl:(UIControl *)control setSelected:(BOOL)selected;
+- (void)uiControl:(UIControl *)control setHighlighted:(BOOL)highlighted;
 
-- (void)uiControlOperationTouchDown:(UIControlOperation *)operation;
-- (void)uiControlOperationTouchDownRepeat:(UIControlOperation *)operation;
-- (void)uiControlOperationTouchDragInside:(UIControlOperation *)operation;
-- (void)uiControlOperationTouchDragOutside:(UIControlOperation *)operation;
-- (void)uiControlOperationTouchDragEnter:(UIControlOperation *)operation;
-- (void)uiControlOperationTouchDragExit:(UIControlOperation *)operation;
-- (void)uiControlOperationTouchUpInside:(UIControlOperation *)operation;
-- (void)uiControlOperationTouchUpOutside:(UIControlOperation *)operation;
-- (void)uiControlOperationTouchCancel:(UIControlOperation *)operation;
+- (void)uiControlTouchDown:(UIControl *)control event:(UIEvent *)event;
+- (void)uiControlTouchDownRepeat:(UIControl *)control event:(UIEvent *)event;
+- (void)uiControlTouchDragInside:(UIControl *)control event:(UIEvent *)event;
+- (void)uiControlTouchDragOutside:(UIControl *)control event:(UIEvent *)event;
+- (void)uiControlTouchDragEnter:(UIControl *)control event:(UIEvent *)event;
+- (void)uiControlTouchDragExit:(UIControl *)control event:(UIEvent *)event;
+- (void)uiControlTouchUpInside:(UIControl *)control event:(UIEvent *)event;
+- (void)uiControlTouchUpOutside:(UIControl *)control event:(UIEvent *)event;
+- (void)uiControlTouchCancel:(UIControl *)control event:(UIEvent *)event;
 
-- (void)uiControlOperationValueChanged:(UIControlOperation *)operation;
-- (void)uiControlOperationPrimaryActionTriggered:(UIControlOperation *)operation;
+- (void)uiControlValueChanged:(UIControl *)control event:(UIEvent *)event;
+- (void)uiControlPrimaryActionTriggered:(UIControl *)control event:(UIEvent *)event;
 
-- (void)uiControlOperationEditingDidBegin:(UIControlOperation *)operation;
-- (void)uiControlOperationEditingChanged:(UIControlOperation *)operation;
-- (void)uiControlOperationEditingDidEnd:(UIControlOperation *)operation;
-- (void)uiControlOperationEditingDidEndOnExit:(UIControlOperation *)operation;
+- (void)uiControlEditingDidBegin:(UIControl *)control event:(UIEvent *)event;
+- (void)uiControlEditingChanged:(UIControl *)control event:(UIEvent *)event;
+- (void)uiControlEditingDidEnd:(UIControl *)control event:(UIEvent *)event;
+- (void)uiControlEditingDidEndOnExit:(UIControl *)control event:(UIEvent *)event;
 
 @end
 
@@ -71,7 +53,6 @@
 @interface UIControlOperation : UIViewOperation <UIControlOperationDelegate>
 
 @property (readonly) HLPArray<UIControlOperationDelegate> *delegates;
-@property (readonly) UIControlOperationInfo *info;
 
 @property (weak, readonly) UIControl *object;
 

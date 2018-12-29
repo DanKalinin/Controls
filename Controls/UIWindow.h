@@ -27,10 +27,10 @@
 @protocol UIWindowOperationDelegate <UIViewOperationDelegate>
 
 @optional
-- (void)uiWindowOperationDidBecomeVisible:(UIWindowOperation *)operation;
-- (void)uiWindowOperationDidBecomeHidden:(UIWindowOperation *)operation;
-- (void)uiWindowOperationDidBecomeKey:(UIWindowOperation *)operation;
-- (void)uiWindowOperationDidResignKey:(UIWindowOperation *)operation;
+- (void)uiWindowDidBecomeVisibleNotification:(NSNotification *)notification;
+- (void)uiWindowDidBecomeHiddenNotification:(NSNotification *)notification;
+- (void)uiWindowDidBecomeKeyNotification:(NSNotification *)notification;
+- (void)uiWindowDidResignKeyNotification:(NSNotification *)notification;
 
 @end
 
@@ -93,12 +93,12 @@
 @protocol UIKeyboardOperationDelegate <NSEOperationDelegate>
 
 @optional
-- (void)uiKeyboardOperationWillShow:(UIKeyboardOperation *)operation;
-- (void)uiKeyboardOperationDidShow:(UIKeyboardOperation *)operation;
-- (void)uiKeyboardOperationWillHide:(UIKeyboardOperation *)operation;
-- (void)uiKeyboardOperationDidHide:(UIKeyboardOperation *)operation;
-- (void)uiKeyboardOperationWillChangeFrame:(UIKeyboardOperation *)operation;
-- (void)uiKeyboardOperationDidChangeFrame:(UIKeyboardOperation *)operation;
+- (void)uiKeyboardWillShowNotification:(NSNotification *)notification;
+- (void)uiKeyboardDidShowNotification:(NSNotification *)notification;
+- (void)uiKeyboardWillHideNotification:(NSNotification *)notification;
+- (void)uiKeyboardDidHideNotification:(NSNotification *)notification;
+- (void)uiKeyboardWillChangeFrameNotification:(NSNotification *)notification;
+- (void)uiKeyboardDidChangeFrameNotification:(NSNotification *)notification;
 
 @end
 
