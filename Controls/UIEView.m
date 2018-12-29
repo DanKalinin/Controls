@@ -26,6 +26,14 @@
 
 @dynamic object;
 
+- (UIColor *)layerBorderColor {
+    return [UIColor colorWithCGColor:self.object.layer.borderColor];
+}
+
+- (void)setLayerBorderColor:(UIColor *)layerBorderColor {
+    self.object.layer.borderColor = layerBorderColor.CGColor;
+}
+
 @end
 
 
@@ -40,18 +48,9 @@
 @implementation UIView (UIE)
 
 @dynamic nseOperation;
-@dynamic uieStringTag;
 
 - (Class)nseOperationClass {
     return UIEViewOperation.class;
-}
-
-- (UIColor *)uieLayerBorderColor {
-    return [UIColor colorWithCGColor:self.layer.borderColor];
-}
-
-- (void)setUieLayerBorderColor:(UIColor *)uieLayerBorderColor {
-    self.layer.borderColor = uieLayerBorderColor.CGColor;
 }
 
 @end

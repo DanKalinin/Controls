@@ -56,30 +56,30 @@
 - (void)uieControl:(UIControl *)control setEnabled:(BOOL)enabled {
     if (control.enabled) {
         control.backgroundColor = self.defaultBackgroundColor;
-        control.uieLayerBorderColor = self.defaultLayerBorderColor;
+        control.nseOperation.layerBorderColor = self.defaultLayerBorderColor;
     } else {
         control.backgroundColor = self.disabledBackgroundColor;
-        control.uieLayerBorderColor = self.disabledLayerBorderColor;
+        control.nseOperation.layerBorderColor = self.disabledLayerBorderColor;
     }
 }
 
 - (void)uieControl:(UIControl *)control setSelected:(BOOL)selected {
     if (control.selected) {
         control.backgroundColor = self.selectedBackgroundColor;
-        control.uieLayerBorderColor = self.selectedLayerBorderColor;
+        control.nseOperation.layerBorderColor = self.selectedLayerBorderColor;
     } else {
         control.backgroundColor = self.defaultBackgroundColor;
-        control.uieLayerBorderColor = self.defaultLayerBorderColor;
+        control.nseOperation.layerBorderColor = self.defaultLayerBorderColor;
     }
 }
 
 - (void)uieControl:(UIControl *)control setHighlighted:(BOOL)highlighted {
     if (control.highlighted) {
         control.backgroundColor = self.highlightedBackgroundColor;
-        control.uieLayerBorderColor = self.highlightedLayerBorderColor;
+        control.nseOperation.layerBorderColor = self.highlightedLayerBorderColor;
     } else {
         control.backgroundColor = self.defaultBackgroundColor;
-        control.uieLayerBorderColor = self.defaultLayerBorderColor;
+        control.nseOperation.layerBorderColor = self.defaultLayerBorderColor;
     }
 }
 

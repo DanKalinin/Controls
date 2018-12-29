@@ -30,6 +30,9 @@
 
 @interface UIEViewOperation : UIResponderOperation
 
+@property NSString *stringTag;
+@property UIColor *layerBorderColor;
+
 @property (weak, readonly) UIView *object;
 
 @end
@@ -46,9 +49,6 @@
 @interface UIView (UIE)
 
 @property (readonly) UIEViewOperation *nseOperation;
-
-@property IBInspectable NSString *uieStringTag;
-@property IBInspectable UIColor *uieLayerBorderColor;
 
 @end
 

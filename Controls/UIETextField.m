@@ -32,10 +32,10 @@
     if (self) {
         object.delegate = self.delegates;
         
-        [object addTarget:self.delegates action:@selector(uiTextFieldEditingDidBegin:event:) forControlEvents:UIControlEventEditingDidBegin];
-        [object addTarget:self.delegates action:@selector(uiTextFieldEditingChanged:event:) forControlEvents:UIControlEventEditingChanged];
-        [object addTarget:self.delegates action:@selector(uiTextFieldEditingDidEnd:event:) forControlEvents:UIControlEventEditingDidEnd];
-        [object addTarget:self.delegates action:@selector(uiTextFieldEditingDidEndOnExit:event:) forControlEvents:UIControlEventEditingDidEndOnExit];
+        [object addTarget:self.delegates action:@selector(uieTextFieldEditingDidBegin:event:) forControlEvents:UIControlEventEditingDidBegin];
+        [object addTarget:self.delegates action:@selector(uieTextFieldEditingChanged:event:) forControlEvents:UIControlEventEditingChanged];
+        [object addTarget:self.delegates action:@selector(uieTextFieldEditingDidEnd:event:) forControlEvents:UIControlEventEditingDidEnd];
+        [object addTarget:self.delegates action:@selector(uieTextFieldEditingDidEndOnExit:event:) forControlEvents:UIControlEventEditingDidEndOnExit];
     }
     return self;
 }
