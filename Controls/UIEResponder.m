@@ -62,4 +62,6 @@
 
 @implementation UIEResponderOperation
 
+@dynamic object;
+
 @end
