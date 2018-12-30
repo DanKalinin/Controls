@@ -54,7 +54,7 @@
 
 
 
-@interface UIEViewControllerOperation ()
+@interface UIEViewControllerOperation () <UIViewControllerTransitioningDelegate>
 
 @end
 
@@ -63,5 +63,13 @@
 @implementation UIEViewControllerOperation
 
 @dynamic object;
+
+- (instancetype)initWithObject:(UIViewController *)object {
+    self = [super initWithObject:object];
+    
+    object.transitioningDelegate = self;
+    
+    return self;
+}
 
 @end

@@ -54,7 +54,7 @@
 
 
 
-@interface UIETableViewOperation ()
+@interface UIETableViewOperation () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -63,5 +63,14 @@
 @implementation UIETableViewOperation
 
 @dynamic object;
+
+- (instancetype)initWithObject:(UITableView *)object {
+    self = [super initWithObject:object];
+    
+    object.delegate = self;
+    object.dataSource = self;
+    
+    return self;
+}
 
 @end
