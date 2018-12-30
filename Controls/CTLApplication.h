@@ -7,28 +7,28 @@
 
 #import <UIKit/UIKit.h>
 #import <Helpers/Helpers.h>
-#import "UIEWindow.h"
+#import "CTLWindow.h"
 
 @class CTLApplication;
 
 
 
-@protocol CTLApplicationDelegate <UIEKeyboardOperationDelegate, UIApplicationDelegate>
-
-@end
-
-
-
-@interface CTLApplication : UIApplication <CTLApplicationDelegate>
-
-@property (nonatomic) UIWindow *window;
-
-@property (readonly) NSOperationQueue *operationQueue;
-@property (readonly) HLPArray<CTLApplicationDelegate> *delegates;
-@property (readonly) UIEKeyboardOperation *keyboard;
-
-+ (instancetype)shared;
-
-- (void)addOperation:(HLPOperation *)operation;
-
-@end
+//@protocol CTLApplicationDelegate <CTLKeyboardOperationDelegate, UIApplicationDelegate>
+//
+//@end
+//
+//
+//
+//@interface CTLApplication : UIApplication <CTLApplicationDelegate>
+//
+//@property (nonatomic) UIWindow *window;
+//
+//@property (readonly) NSOperationQueue *operationQueue;
+//@property (readonly) HLPArray<CTLApplicationDelegate> *delegates;
+//@property (readonly) CTLKeyboardOperation *keyboard;
+//
+//+ (instancetype)shared;
+//
+//- (void)addOperation:(HLPOperation *)operation;
+//
+//@end

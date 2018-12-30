@@ -26,7 +26,7 @@
     self.passcode = NSMutableString.string;
     self.notificationFeedbackGenerator = UINotificationFeedbackGenerator.new;
     
-    for (UIEButton *button in self.buttons) {
+    for (UIButton *button in self.buttons) {
         [button addTarget:self action:@selector(button:) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -67,15 +67,15 @@
 
 #pragma mark - Actions
 
-- (void)button:(UIEButton *)sender {
+- (void)button:(UIButton *)sender {
     if (self.passcode.length < self.labels.count) {
         self.labelError.hidden = YES;
         
         CTLLabel *label = self.labels[self.passcode.length];
-        label.text = sender.nseOperation.stringTag;
+//        label.text = sender.nseOperation.stringTag;
         label.highlighted = YES;
         
-        [self.passcode appendString:sender.nseOperation.stringTag];
+//        [self.passcode appendString:sender.nseOperation.stringTag];
         
         self.buttonDelete.enabled = YES;
         
@@ -87,7 +87,7 @@
     }
 }
 
-- (void)buttonDelete:(UIEButton *)sender {
+- (void)buttonDelete:(UIButton *)sender {
     if (self.passcode.length > 0) {
         NSRange range = NSMakeRange(self.passcode.length - 1, 1);
         [self.passcode deleteCharactersInRange:range];
