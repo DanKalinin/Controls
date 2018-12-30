@@ -60,4 +60,6 @@
 
 @property (weak, readonly) UIViewController *object;
 
+- (void)viewDidLoad;
+
 @end
