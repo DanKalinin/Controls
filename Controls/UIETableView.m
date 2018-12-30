@@ -131,11 +131,41 @@
 
 
 
+@interface UIETableViewDidSelectRowAtIndexPath ()
+
+@property NSIndexPath *indexPath;
+
+@end
+
+
+
+@implementation UIETableViewDidSelectRowAtIndexPath
+
+- (instancetype)initWithIndexPath:(NSIndexPath *)indexPath {
+    self = super.init;
+    
+    self.indexPath = indexPath;
+    
+    return self;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface UIETableViewOperation () <UITableViewDelegate, UITableViewDataSource>
 
 @property UIETableViewNumberOfSections *numberOfSections;
 @property UIETableViewNumberOfRowsInSection *numberOfRowsInSection;
 @property UIETableViewCellForRowAtIndexPath *cellForRowAtIndexPath;
+@property UIETableViewDidSelectRowAtIndexPath *didSelectRowAtIndexPath;
 
 @end
 
@@ -153,6 +183,13 @@
     object.dataSource = self;
     
     return self;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.didSelectRowAtIndexPath = [UIETableViewDidSelectRowAtIndexPath.alloc initWithIndexPath:indexPath];
+    [self.delegates uieTableViewDidSelectRowAtIndexPath:tableView];
 }
 
 #pragma mark - UITableViewDataSource

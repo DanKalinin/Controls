@@ -49,7 +49,7 @@
     [self.nseOperation viewDidLoad];
 }
 
-#pragma mark - UITableViewDelegate
+#pragma mark - UIETableViewDelegate
 
 - (void)uieTableViewNumberOfSections:(UITableView *)tableView {
     tableView.nseOperation.numberOfSections.sections = [self numberOfSectionsInTableView:tableView];
@@ -61,6 +61,10 @@
 
 - (void)uieTableViewCellForRowAtIndexPath:(UITableView *)tableView {
     tableView.nseOperation.cellForRowAtIndexPath.cell = [self tableView:tableView cellForRowAtIndexPath:tableView.nseOperation.cellForRowAtIndexPath.indexPath];
+}
+
+- (void)uieTableViewDidSelectRowAtIndexPath:(UITableView *)tableView {
+    
 }
 
 @end

@@ -103,12 +103,30 @@
 
 
 
+@interface UIETableViewDidSelectRowAtIndexPath : NSEObject
+
+@property (readonly) NSIndexPath *indexPath;
+
+- (instancetype)initWithIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @protocol UIETableViewDelegate <UIEScrollViewDelegate>
 
 @optional
 - (void)uieTableViewNumberOfSections:(UITableView *)tableView;
 - (void)uieTableViewNumberOfRowsInSection:(UITableView *)tableView;
 - (void)uieTableViewCellForRowAtIndexPath:(UITableView *)tableView;
+- (void)uieTableViewDidSelectRowAtIndexPath:(UITableView *)tableView;
 
 @end
 
@@ -120,6 +138,7 @@
 @property (readonly) UIETableViewNumberOfSections *numberOfSections;
 @property (readonly) UIETableViewNumberOfRowsInSection *numberOfRowsInSection;
 @property (readonly) UIETableViewCellForRowAtIndexPath *cellForRowAtIndexPath;
+@property (readonly) UIETableViewDidSelectRowAtIndexPath *didSelectRowAtIndexPath;
 
 @property (weak, readonly) UITableView *object;
 
