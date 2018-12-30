@@ -1,5 +1,5 @@
 //
-//  UIWindow.m
+//  UIEWindow.m
 //  Controls
 //
 //  Created by Dan Kalinin on 12/23/18.
@@ -16,13 +16,13 @@
 
 
 
-@interface UIWindowOperation ()
+@interface UIEWindowOperation ()
 
 @end
 
 
 
-@implementation UIWindowOperation
+@implementation UIEWindowOperation
 
 @dynamic delegates;
 @dynamic object;
@@ -30,10 +30,10 @@
 - (instancetype)initWithObject:(UIWindow *)object {
     self = [super initWithObject:object];
     if (self) {
-        [self.center addObserver:self.delegates selector:@selector(uiWindowDidBecomeVisibleNotification:) name:UIWindowDidBecomeVisibleNotification object:self.object];
-        [self.center addObserver:self.delegates selector:@selector(uiWindowDidBecomeHiddenNotification:) name:UIWindowDidBecomeHiddenNotification object:self.object];
-        [self.center addObserver:self.delegates selector:@selector(uiWindowDidBecomeKeyNotification:) name:UIWindowDidBecomeKeyNotification object:self.object];
-        [self.center addObserver:self.delegates selector:@selector(uiWindowDidResignKeyNotification:) name:UIWindowDidResignKeyNotification object:self.object];
+        [self.center addObserver:self.delegates selector:@selector(uieWindowDidBecomeVisibleNotification:) name:UIWindowDidBecomeVisibleNotification object:object];
+        [self.center addObserver:self.delegates selector:@selector(uieWindowDidBecomeHiddenNotification:) name:UIWindowDidBecomeHiddenNotification object:object];
+        [self.center addObserver:self.delegates selector:@selector(uieWindowDidBecomeKeyNotification:) name:UIWindowDidBecomeKeyNotification object:object];
+        [self.center addObserver:self.delegates selector:@selector(uieWindowDidResignKeyNotification:) name:UIWindowDidResignKeyNotification object:object];
     }
     return self;
 }
@@ -54,7 +54,7 @@
 @dynamic nseOperation;
 
 - (Class)nseOperationClass {
-    return UIWindowOperation.class;
+    return UIEWindowOperation.class;
 }
 
 @end
@@ -87,7 +87,7 @@
 
 
 
-@interface UIKeyboardOperationInfo ()
+@interface UIEKeyboardOperationInfo ()
 
 @property NSDictionary *dictionary;
 @property CGRect frameBegin;
@@ -100,7 +100,7 @@
 
 
 
-@implementation UIKeyboardOperationInfo
+@implementation UIEKeyboardOperationInfo
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = super.init;
@@ -127,20 +127,20 @@
 
 
 
-@interface UIKeyboardOperation ()
+@interface UIEKeyboardOperation ()
 
-@property UIKeyboardOperationInfo *info;
+@property UIEKeyboardOperationInfo *info;
 
 @end
 
 
 
-@implementation UIKeyboardOperation
+@implementation UIEKeyboardOperation
 
 @dynamic delegates;
 
 + (instancetype)shared {
-    static UIKeyboardOperation *shared = nil;
+    static UIEKeyboardOperation *shared = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         shared = self.new;
@@ -151,12 +151,12 @@
 - (instancetype)init {
     self = super.init;
     if (self) {
-        [self.center addObserver:self.delegates selector:@selector(uiKeyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
-        [self.center addObserver:self.delegates selector:@selector(uiKeyboardDidShowNotification:) name:UIKeyboardDidShowNotification object:nil];
-        [self.center addObserver:self.delegates selector:@selector(uiKeyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
-        [self.center addObserver:self.delegates selector:@selector(uiKeyboardDidHideNotification:) name:UIKeyboardDidHideNotification object:nil];
-        [self.center addObserver:self.delegates selector:@selector(uiKeyboardWillChangeFrameNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
-        [self.center addObserver:self.delegates selector:@selector(uiKeyboardDidChangeFrameNotification:) name:UIKeyboardDidChangeFrameNotification object:nil];
+        [self.center addObserver:self.delegates selector:@selector(uieKeyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
+        [self.center addObserver:self.delegates selector:@selector(uieKeyboardDidShowNotification:) name:UIKeyboardDidShowNotification object:nil];
+        [self.center addObserver:self.delegates selector:@selector(uieKeyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
+        [self.center addObserver:self.delegates selector:@selector(uieKeyboardDidHideNotification:) name:UIKeyboardDidHideNotification object:nil];
+        [self.center addObserver:self.delegates selector:@selector(uieKeyboardWillChangeFrameNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
+        [self.center addObserver:self.delegates selector:@selector(uieKeyboardDidChangeFrameNotification:) name:UIKeyboardDidChangeFrameNotification object:nil];
     }
     return self;
 }

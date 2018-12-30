@@ -5,7 +5,7 @@
 //  Created by Dan Kalinin on 12/24/18.
 //
 
-#import "UIScrollView.h"
+#import "UIEScrollView.h"
 
 
 
@@ -16,13 +16,13 @@
 
 
 
-@interface UIScrollViewOperation ()
+@interface UIEScrollViewOperation ()
 
 @end
 
 
 
-@implementation UIScrollViewOperation
+@implementation UIEScrollViewOperation
 
 @dynamic delegates;
 @dynamic object;
@@ -51,7 +51,26 @@
 @dynamic nseOperation;
 
 - (Class)nseOperationClass {
-    return UIScrollViewOperation.class;
+    return UIEScrollViewOperation.class;
 }
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIEScrollView ()
+
+@end
+
+
+
+@implementation UIEScrollView
 
 @end

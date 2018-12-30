@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIScrollView.h"
+#import "UIEScrollView.h"
 
 @class UITableViewOperationNumberOfSectionsInfo;
 @class UITableViewOperationNumberOfRowsInfo;
@@ -97,7 +97,7 @@
 
 
 
-@protocol UITableViewOperationDelegate <UIScrollViewOperationDelegate, UITableViewDelegate, UITableViewDataSource>
+@protocol UITableViewOperationDelegate <UIEScrollViewOperationDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @optional
 - (void)uiTableViewOperationNumberOfSections:(UITableViewOperation *)operation;
@@ -109,7 +109,7 @@
 
 
 
-@interface UITableViewOperation : UIScrollViewOperation <UITableViewOperationDelegate>
+@interface UITableViewOperation : UIEScrollViewOperation <UITableViewOperationDelegate>
 
 @property (readonly) HLPArray<UITableViewOperationDelegate> *delegates;
 @property (readonly) UITableViewOperationNumberOfSectionsInfo *numberOfSectionsInfo;

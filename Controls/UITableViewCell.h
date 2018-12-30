@@ -26,6 +26,8 @@
 @optional
 - (void)uiTableViewCellOperationSetEnabled:(UITableViewCellOperation *)operation;
 
+- (void)uieTableViewCell:(UITableViewCell *)tableViewCell setEnabled:(BOOL)enabled animated:(BOOL)animated;
+
 @end
 
 

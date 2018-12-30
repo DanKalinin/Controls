@@ -8,14 +8,12 @@
 #import <UIKit/UIKit.h>
 #import "UIEView.h"
 
-@class UIWindowOperation;
-@class UIKeyboardOperationInfo;
-@class UIKeyboardOperation;
+@class UIEWindowOperation;
+@class UIEKeyboardOperationInfo;
+@class UIEKeyboardOperation;
 
-@protocol UIWindowOperationDelegate;
-@protocol UIKeyboardOperationDelegate;
-
-
+@protocol UIEWindowOperationDelegate;
+@protocol UIEKeyboardOperationDelegate;
 
 
 
@@ -24,21 +22,23 @@
 
 
 
-@protocol UIWindowOperationDelegate <UIEViewOperationDelegate>
+
+
+@protocol UIEWindowOperationDelegate <UIEViewOperationDelegate>
 
 @optional
-- (void)uiWindowDidBecomeVisibleNotification:(NSNotification *)notification;
-- (void)uiWindowDidBecomeHiddenNotification:(NSNotification *)notification;
-- (void)uiWindowDidBecomeKeyNotification:(NSNotification *)notification;
-- (void)uiWindowDidResignKeyNotification:(NSNotification *)notification;
+- (void)uieWindowDidBecomeVisibleNotification:(NSNotification *)notification;
+- (void)uieWindowDidBecomeHiddenNotification:(NSNotification *)notification;
+- (void)uieWindowDidBecomeKeyNotification:(NSNotification *)notification;
+- (void)uieWindowDidResignKeyNotification:(NSNotification *)notification;
 
 @end
 
 
 
-@interface UIWindowOperation : UIEViewOperation <UIWindowOperationDelegate>
+@interface UIEWindowOperation : UIEViewOperation <UIEWindowOperationDelegate>
 
-@property (readonly) HLPArray<UIWindowOperationDelegate> *delegates;
+@property (readonly) HLPArray<UIEWindowOperationDelegate> *delegates;
 
 @property (weak, readonly) UIWindow *object;
 
@@ -55,7 +55,7 @@
 
 @interface UIWindow (UIE)
 
-@property (readonly) UIWindowOperation *nseOperation;
+@property (readonly) UIEWindowOperation *nseOperation;
 
 @end
 
@@ -81,7 +81,7 @@
 
 
 
-@interface UIKeyboardOperationInfo : HLPObject
+@interface UIEKeyboardOperationInfo : HLPObject
 
 @property (readonly) NSDictionary *dictionary;
 @property (readonly) CGRect frameBegin;
@@ -103,23 +103,23 @@
 
 
 
-@protocol UIKeyboardOperationDelegate <NSEOperationDelegate>
+@protocol UIEKeyboardOperationDelegate <NSEOperationDelegate>
 
 @optional
-- (void)uiKeyboardWillShowNotification:(NSNotification *)notification;
-- (void)uiKeyboardDidShowNotification:(NSNotification *)notification;
-- (void)uiKeyboardWillHideNotification:(NSNotification *)notification;
-- (void)uiKeyboardDidHideNotification:(NSNotification *)notification;
-- (void)uiKeyboardWillChangeFrameNotification:(NSNotification *)notification;
-- (void)uiKeyboardDidChangeFrameNotification:(NSNotification *)notification;
+- (void)uieKeyboardWillShowNotification:(NSNotification *)notification;
+- (void)uieKeyboardDidShowNotification:(NSNotification *)notification;
+- (void)uieKeyboardWillHideNotification:(NSNotification *)notification;
+- (void)uieKeyboardDidHideNotification:(NSNotification *)notification;
+- (void)uieKeyboardWillChangeFrameNotification:(NSNotification *)notification;
+- (void)uieKeyboardDidChangeFrameNotification:(NSNotification *)notification;
 
 @end
 
 
 
-@interface UIKeyboardOperation : NSEOperation <UIKeyboardOperationDelegate>
+@interface UIEKeyboardOperation : NSEOperation <UIEKeyboardOperationDelegate>
 
-@property (readonly) HLPArray<UIKeyboardOperationDelegate> *delegates;
-@property (readonly) UIKeyboardOperationInfo *info;
+@property (readonly) HLPArray<UIEKeyboardOperationDelegate> *delegates;
+@property (readonly) UIEKeyboardOperationInfo *info;
 
 @end

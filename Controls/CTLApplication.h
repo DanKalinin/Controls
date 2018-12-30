@@ -13,7 +13,7 @@
 
 
 
-@protocol CTLApplicationDelegate <UIKeyboardOperationDelegate, UIApplicationDelegate>
+@protocol CTLApplicationDelegate <UIEKeyboardOperationDelegate, UIApplicationDelegate>
 
 @end
 
@@ -25,7 +25,7 @@
 
 @property (readonly) NSOperationQueue *operationQueue;
 @property (readonly) HLPArray<CTLApplicationDelegate> *delegates;
-@property (readonly) UIKeyboardOperation *keyboard;
+@property (readonly) UIEKeyboardOperation *keyboard;
 
 + (instancetype)shared;
 
