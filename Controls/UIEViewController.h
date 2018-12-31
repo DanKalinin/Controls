@@ -50,6 +50,24 @@
 
 
 
+@interface UIEViewControllerPrepareForSegue : NSEObject
+
+@property (readonly) UIStoryboardSegue *segue;
+@property (readonly) id sender;
+
+- (instancetype)initWithSegue:(UIStoryboardSegue *)segue sender:(id)sender;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @protocol UIEViewControllerDelegate <UIEResponderDelegate>
 
 @end
@@ -58,8 +76,11 @@
 
 @interface UIEViewControllerOperation : UIEResponderOperation <UIEViewControllerDelegate>
 
+@property (readonly) UIEViewControllerPrepareForSegue *prepareForSegue;
+
 @property (weak, readonly) UIViewController *object;
 
 - (void)viewDidLoad;
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
 
 @end

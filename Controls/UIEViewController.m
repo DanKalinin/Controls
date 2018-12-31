@@ -54,7 +54,40 @@
 
 
 
+@interface UIEViewControllerPrepareForSegue ()
+
+@property UIStoryboardSegue *segue;
+@property id sender;
+
+@end
+
+
+
+@implementation UIEViewControllerPrepareForSegue
+
+- (instancetype)initWithSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    self = super.init;
+    
+    self.segue = segue;
+    self.sender = sender;
+    
+    return self;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface UIEViewControllerOperation () <UIViewControllerTransitioningDelegate>
+
+@property UIEViewControllerPrepareForSegue *prepareForSegue;
 
 @end
 
@@ -76,6 +109,10 @@
 
 - (void)viewDidLoad {
     
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    self.prepareForSegue = [UIEViewControllerPrepareForSegue.alloc initWithSegue:segue sender:sender];
 }
 
 @end

@@ -49,6 +49,12 @@
     [self.nseOperation viewDidLoad];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
+    
+    [self.nseOperation prepareForSegue:segue sender:sender];
+}
+
 #pragma mark - UIETableViewDelegate
 
 - (void)uieTableViewNumberOfSections:(UITableView *)tableView {
