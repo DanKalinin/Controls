@@ -9,6 +9,10 @@
 #import "UIEScrollView.h"
 
 @class UIETableView;
+@class UIETableViewNumberOfSections;
+@class UIETableViewNumberOfRowsInSection;
+@class UIETableViewCellForRowAtIndexPath;
+@class UIETableViewDidSelectRowAtIndexPath;
 @class UIETableViewOperation;
 
 @protocol UIETableViewDelegate;

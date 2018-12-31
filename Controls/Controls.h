@@ -12,8 +12,8 @@ FOUNDATION_EXPORT double ControlsVersionNumber;
 FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 
 #import <Controls/UIEApplication.h>
-#import <Controls/UIEScrollView.h>
 #import <Controls/UIETableViewController.h>
+#import <Controls/UIEBarButtonItem.h>
 
 //#import <Controls/UIBarItem.h>
 //#import <Controls/UIBarButtonItem.h>

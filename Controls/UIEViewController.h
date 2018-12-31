@@ -9,6 +9,7 @@
 #import "UIEResponder.h"
 
 @class UIEViewController;
+@class UIEViewControllerPrepareForSegue;
 @class UIEViewControllerOperation;
 
 @protocol UIEViewControllerDelegate;
