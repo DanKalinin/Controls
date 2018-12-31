@@ -139,11 +139,11 @@
 @interface UIETableViewOperation : UIEScrollViewOperation <UIETableViewDelegate>
 
 @property (readonly) HLPArray<UIETableViewDelegate> *delegates;
-@property (readonly) UIETableViewNumberOfSections *numberOfSections;
-@property (readonly) UIETableViewNumberOfRowsInSection *numberOfRowsInSection;
-@property (readonly) UIETableViewCellForRowAtIndexPath *cellForRowAtIndexPath;
-@property (readonly) UIETableViewDidSelectRowAtIndexPath *didSelectRowAtIndexPath;
 
 @property (weak, readonly) UITableView *object;
+@property (weak, readonly) UIETableViewNumberOfSections *numberOfSections;
+@property (weak, readonly) UIETableViewNumberOfRowsInSection *numberOfRowsInSection;
+@property (weak, readonly) UIETableViewCellForRowAtIndexPath *cellForRowAtIndexPath;
+@property (weak, readonly) UIETableViewDidSelectRowAtIndexPath *didSelectRowAtIndexPath;
 
 @end

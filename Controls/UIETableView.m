@@ -162,10 +162,10 @@
 
 @interface UIETableViewOperation () <UITableViewDelegate, UITableViewDataSource>
 
-@property UIETableViewNumberOfSections *numberOfSections;
-@property UIETableViewNumberOfRowsInSection *numberOfRowsInSection;
-@property UIETableViewCellForRowAtIndexPath *cellForRowAtIndexPath;
-@property UIETableViewDidSelectRowAtIndexPath *didSelectRowAtIndexPath;
+@property (weak) UIETableViewNumberOfSections *numberOfSections;
+@property (weak) UIETableViewNumberOfRowsInSection *numberOfRowsInSection;
+@property (weak) UIETableViewCellForRowAtIndexPath *cellForRowAtIndexPath;
+@property (weak) UIETableViewDidSelectRowAtIndexPath *didSelectRowAtIndexPath;
 
 @end
 
@@ -188,26 +188,26 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.didSelectRowAtIndexPath = [UIETableViewDidSelectRowAtIndexPath.alloc initWithIndexPath:indexPath];
+    self.didSelectRowAtIndexPath = [UIETableViewDidSelectRowAtIndexPath.alloc initWithIndexPath:indexPath].nseAutorelease;
     [self.delegates uieTableViewDidSelectRowAtIndexPath:tableView];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    self.numberOfSections = UIETableViewNumberOfSections.new;
+    self.numberOfSections = UIETableViewNumberOfSections.new.nseAutorelease;
     [self.delegates uieTableViewNumberOfSections:tableView];
     return self.numberOfSections.sections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    self.numberOfRowsInSection = [UIETableViewNumberOfRowsInSection.alloc initWithSection:section];
+    self.numberOfRowsInSection = [UIETableViewNumberOfRowsInSection.alloc initWithSection:section].nseAutorelease;
     [self.delegates uieTableViewNumberOfRowsInSection:tableView];
     return self.numberOfRowsInSection.rows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.cellForRowAtIndexPath = [UIETableViewCellForRowAtIndexPath.alloc initWithIndexPath:indexPath];
+    self.cellForRowAtIndexPath = [UIETableViewCellForRowAtIndexPath.alloc initWithIndexPath:indexPath].nseAutorelease;
     [self.delegates uieTableViewCellForRowAtIndexPath:tableView];
     return self.cellForRowAtIndexPath.cell;
 }

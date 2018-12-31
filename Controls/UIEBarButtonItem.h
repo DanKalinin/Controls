@@ -79,8 +79,8 @@
 @interface UIEBarButtonItemOperation : UIEBarItemOperation <UIEBarButtonItemDelegate>
 
 @property (readonly) HLPArray<UIEBarButtonItemDelegate> *delegates;
-@property (readonly) UIEBarButtonItemEvent *touchUpInside;
 
 @property (weak, readonly) UIBarButtonItem *object;
+@property (weak, readonly) UIEBarButtonItemEvent *touchUpInside;
 
 @end

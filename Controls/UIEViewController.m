@@ -87,7 +87,7 @@
 
 @interface UIEViewControllerOperation () <UIViewControllerTransitioningDelegate>
 
-@property UIEViewControllerPrepareForSegue *prepareForSegue;
+@property (weak) UIEViewControllerPrepareForSegue *prepareForSegue;
 
 @end
 
@@ -112,7 +112,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    self.prepareForSegue = [UIEViewControllerPrepareForSegue.alloc initWithSegue:segue sender:sender];
+    self.prepareForSegue = [UIEViewControllerPrepareForSegue.alloc initWithSegue:segue sender:sender].nseAutorelease;
 }
 
 @end

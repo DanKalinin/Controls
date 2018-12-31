@@ -77,9 +77,8 @@
 
 @interface UIEViewControllerOperation : UIEResponderOperation <UIEViewControllerDelegate>
 
-@property (readonly) UIEViewControllerPrepareForSegue *prepareForSegue;
-
 @property (weak, readonly) UIViewController *object;
+@property (weak, readonly) UIEViewControllerPrepareForSegue *prepareForSegue;
 
 - (void)viewDidLoad;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
