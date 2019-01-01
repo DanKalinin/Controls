@@ -201,11 +201,11 @@
     self.numberOfSections = UIETableViewNumberOfSections.new.nseAutorelease;
     [self.delegates uieTableViewNumberOfSections:tableView];
     
-    if (self.object.uieEmptyBackgroundView) {
+    if (tableView.uieEmptyBackgroundView) {
         if (self.numberOfSections.sections > 0) {
-            self.object.backgroundView = nil;
+            tableView.backgroundView = nil;
         } else {
-            self.object.backgroundView = self.object.uieEmptyBackgroundView;
+            tableView.backgroundView = tableView.uieEmptyBackgroundView;
         }
     }
     
