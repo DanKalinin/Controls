@@ -19,6 +19,7 @@
 @implementation UITableView (UIE)
 
 @dynamic nseOperation;
+@dynamic uieEmptyBackgroundView;
 
 - (Class)nseOperationClass {
     return UIETableViewOperation.class;
@@ -36,6 +37,8 @@
 
 
 @interface UIETableView ()
+
+@property UIView *uieEmptyBackgroundView;
 
 @end
 
@@ -197,6 +200,15 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     self.numberOfSections = UIETableViewNumberOfSections.new.nseAutorelease;
     [self.delegates uieTableViewNumberOfSections:tableView];
+    
+    if (self.object.uieEmptyBackgroundView) {
+        if (self.numberOfSections.sections > 0) {
+            self.object.backgroundView = nil;
+        } else {
+            self.object.backgroundView = self.object.uieEmptyBackgroundView;
+        }
+    }
+    
     return self.numberOfSections.sections;
 }
 

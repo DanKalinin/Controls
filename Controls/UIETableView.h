@@ -30,6 +30,8 @@
 
 @property (readonly) UIETableViewOperation *nseOperation;
 
+@property IBOutlet UIView *uieEmptyBackgroundView;
+
 @end
 
 
