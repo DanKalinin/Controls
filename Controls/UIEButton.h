@@ -6,3 +6,58 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIEControl.h"
+
+@class UIEButton;
+@class UIEButtonOperation;
+
+@protocol UIEButtonDelegate;
+
+
+
+
+
+
+
+
+
+
+@interface UIButton (UIE)
+
+@property (readonly) UIEButtonOperation *nseOperation;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIEButton : UIButton
+
+@end
+
+
+
+
+
+
+
+
+
+
+@protocol UIEButtonDelegate <UIEControlDelegate>
+
+@end
+
+
+
+@interface UIEButtonOperation : UIEControlOperation <UIEButtonDelegate>
+
+@property (weak, readonly) UIButton *object;
+
+@end
