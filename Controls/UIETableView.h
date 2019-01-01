@@ -141,11 +141,14 @@
 @interface UIETableViewOperation : UIEScrollViewOperation <UIETableViewDelegate>
 
 @property (readonly) HLPArray<UIETableViewDelegate> *delegates;
+@property (readonly) BOOL empty;
 
 @property (weak, readonly) UITableView *object;
 @property (weak, readonly) UIETableViewNumberOfSections *numberOfSections;
 @property (weak, readonly) UIETableViewNumberOfRowsInSection *numberOfRowsInSection;
 @property (weak, readonly) UIETableViewCellForRowAtIndexPath *cellForRowAtIndexPath;
 @property (weak, readonly) UIETableViewDidSelectRowAtIndexPath *didSelectRowAtIndexPath;
+
+- (void)setEmpty:(BOOL)empty animated:(BOOL)animated;
 
 @end

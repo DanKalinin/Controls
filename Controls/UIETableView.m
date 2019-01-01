@@ -165,6 +165,8 @@
 
 @interface UIETableViewOperation () <UITableViewDelegate, UITableViewDataSource>
 
+@property BOOL empty;
+
 @property (weak) UIETableViewNumberOfSections *numberOfSections;
 @property (weak) UIETableViewNumberOfRowsInSection *numberOfRowsInSection;
 @property (weak) UIETableViewCellForRowAtIndexPath *cellForRowAtIndexPath;
@@ -188,6 +190,12 @@
     return self;
 }
 
+- (void)setEmpty:(BOOL)empty animated:(BOOL)animated {
+    self.empty = empty;
+    
+    [self.object reloadData];
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -200,6 +208,8 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     self.numberOfSections = UIETableViewNumberOfSections.new.nseAutorelease;
     [self.delegates uieTableViewNumberOfSections:tableView];
+    
+    self.numberOfSections.sections *= !self.empty;
     
     if (tableView.uieEmptyBackgroundView) {
         if (self.numberOfSections.sections > 0) {
