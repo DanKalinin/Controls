@@ -45,6 +45,16 @@
 
 @interface UIEControl ()
 
+@property UIColor *uieDefaultBackgroundColor;
+@property UIColor *uieHighlightedBackgroundColor;
+@property UIColor *uieSelectedBackgroundColor;
+@property UIColor *uieDisabledBackgroundColor;
+
+@property UIColor *uieDefaultLayerBorderColor;
+@property UIColor *uieHighlightedLayerBorderColor;
+@property UIColor *uieSelectedLayerBorderColor;
+@property UIColor *uieDisabledLayerBorderColor;
+
 @end
 
 
