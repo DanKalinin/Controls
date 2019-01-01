@@ -77,16 +77,13 @@
     [object addTarget:self action:@selector(touchUpOutside:event:) forControlEvents:UIControlEventTouchUpOutside];
     [object addTarget:self action:@selector(touchCancel:event:) forControlEvents:UIControlEventTouchCancel];
 
+    [object addTarget:self action:@selector(valueChanged:event:) forControlEvents:UIControlEventValueChanged];
+    [object addTarget:self action:@selector(primaryActionTriggered:event:) forControlEvents:UIControlEventPrimaryActionTriggered];
     
-    
-    
-//    UIControlEventValueChanged                                      = 1 << 12,     // sliders, etc.
-//    UIControlEventPrimaryActionTriggered NS_ENUM_AVAILABLE_IOS(9_0) = 1 << 13,     // semantic action: for buttons, etc.
-//
-//    UIControlEventEditingDidBegin                                   = 1 << 16,     // UITextField
-//    UIControlEventEditingChanged                                    = 1 << 17,
-//    UIControlEventEditingDidEnd                                     = 1 << 18,
-//    UIControlEventEditingDidEndOnExit
+    [object addTarget:self action:@selector(editingDidBegin:event:) forControlEvents:UIControlEventEditingDidBegin];
+    [object addTarget:self action:@selector(editingChanged:event:) forControlEvents:UIControlEventEditingChanged];
+    [object addTarget:self action:@selector(editingDidEnd:event:) forControlEvents:UIControlEventEditingDidEnd];
+    [object addTarget:self action:@selector(editingDidEndOnExit:event:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
     return self;
 }
@@ -119,11 +116,35 @@
     
 }
 
-- (void)touchUpOutside:(UIControl *)control event:(UIEvent *)event {
+- (void)touchUpOutside:(UIControl *)sender event:(UIEvent *)event {
     
 }
 
-- (void)touchCancel:(UIControl *)control event:(UIEvent *)event {
+- (void)touchCancel:(UIControl *)sender event:(UIEvent *)event {
+    
+}
+
+- (void)valueChanged:(UIControl *)sender event:(UIEvent *)event {
+    
+}
+
+- (void)primaryActionTriggered:(UIControl *)sender event:(UIEvent *)event {
+    
+}
+
+- (void)editingDidBegin:(UIControl *)sender event:(UIEvent *)event {
+    
+}
+
+- (void)editingChanged:(UIControl *)sender event:(UIEvent *)event {
+    
+}
+
+- (void)editingDidEnd:(UIControl *)sender event:(UIEvent *)event {
+    
+}
+
+- (void)editingDidEndOnExit:(UIControl *)sender event:(UIEvent *)event {
     
 }
 

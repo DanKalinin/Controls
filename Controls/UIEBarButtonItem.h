@@ -50,23 +50,6 @@
 
 
 
-@interface UIEBarButtonItemEvent : NSEObject
-
-@property (readonly) UIEvent *event;
-
-- (instancetype)initWithEvent:(UIEvent *)event;
-
-@end
-
-
-
-
-
-
-
-
-
-
 @protocol UIEBarButtonItemDelegate <UIEBarItemDelegate>
 
 @optional
@@ -81,6 +64,6 @@
 @property (readonly) HLPArray<UIEBarButtonItemDelegate> *delegates;
 
 @property (weak, readonly) UIBarButtonItem *object;
-@property (weak, readonly) UIEBarButtonItemEvent *touchUpInside;
+@property (weak, readonly) UIEvent *event;
 
 @end

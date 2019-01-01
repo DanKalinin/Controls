@@ -54,38 +54,9 @@
 
 
 
-@interface UIEBarButtonItemEvent ()
-
-@property UIEvent *event;
-
-@end
-
-
-
-@implementation UIEBarButtonItemEvent
-
-- (instancetype)initWithEvent:(UIEvent *)event {
-    self = super.init;
-    
-    self.event = event;
-    
-    return self;
-}
-
-@end
-
-
-
-
-
-
-
-
-
-
 @interface UIEBarButtonItemOperation ()
 
-@property (weak) UIEBarButtonItemEvent *touchUpInside;
+@property (weak) UIEvent *event;
 
 @end
 
@@ -106,7 +77,7 @@
 }
 
 - (void)touchUpInside:(UIBarButtonItem *)sender event:(UIEvent *)event {
-    self.touchUpInside = [UIEBarButtonItemEvent.alloc initWithEvent:event].nseAutorelease;
+    self.event = event.nseAutorelease;
     [self.delegates uieBarButtonItemTouchUpInside:sender];
 }
 
