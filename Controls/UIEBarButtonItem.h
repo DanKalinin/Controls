@@ -53,7 +53,7 @@
 @protocol UIEBarButtonItemDelegate <UIEBarItemDelegate>
 
 @optional
-- (void)uieBarButtonItemTouchUpInside:(UIBarButtonItem *)item;
+- (void)uieBarButtonItemEvent:(UIBarButtonItem *)item;
 
 @end
 

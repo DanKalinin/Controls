@@ -71,14 +71,14 @@
     self = [super initWithObject:object];
     
     object.target = self;
-    object.action = @selector(touchUpInside:event:);
+    object.action = @selector(event:event:);
     
     return self;
 }
 
-- (void)touchUpInside:(UIBarButtonItem *)sender event:(UIEvent *)event {
+- (void)event:(UIBarButtonItem *)sender event:(UIEvent *)event {
     self.event = event.nseAutorelease;
-    [self.delegates uieBarButtonItemTouchUpInside:sender];
+    [self.delegates uieBarButtonItemEvent:sender];
 }
 
 @end
