@@ -52,12 +52,34 @@
 
 @protocol UIEControlDelegate <UIEViewDelegate>
 
+@optional
+- (void)uieControlTouchDown:(UIControl *)control;
+- (void)uieControlTouchDownRepeat:(UIControl *)control;
+- (void)uieControlTouchDragInside:(UIControl *)control;
+- (void)uieControlTouchDragOutside:(UIControl *)control;
+- (void)uieControlTouchDragEnter:(UIControl *)control;
+- (void)uieControlTouchDragExit:(UIControl *)control;
+- (void)uieControlTouchUpInside:(UIControl *)control;
+- (void)uieControlTouchUpOutside:(UIControl *)control;
+- (void)uieControlTouchCancel:(UIControl *)control;
+
+- (void)uieControlValueChanged:(UIControl *)control;
+- (void)uieControlPrimaryActionTriggered:(UIControl *)control;
+
+- (void)uieControlEditingDidBegin:(UIControl *)control;
+- (void)uieControlEditingChanged:(UIControl *)control;
+- (void)uieControlEditingDidEnd:(UIControl *)control;
+- (void)uieControlEditingDidEndOnExit:(UIControl *)control;
+
 @end
 
 
 
 @interface UIEControlOperation : UIEViewOperation <UIEControlDelegate>
 
+@property (readonly) HLPArray<UIEControlDelegate> *delegates;
+
 @property (weak, readonly) UIControl *object;
+@property (weak, readonly) UIEvent *event;
 
 @end

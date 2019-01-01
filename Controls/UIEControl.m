@@ -56,12 +56,15 @@
 
 @interface UIEControlOperation ()
 
+@property (weak) UIEvent *event;
+
 @end
 
 
 
 @implementation UIEControlOperation
 
+@dynamic delegates;
 @dynamic object;
 
 - (instancetype)initWithObject:(UIControl *)object {
@@ -89,63 +92,78 @@
 }
 
 - (void)touchDown:(UIControl *)sender event:(UIEvent *)event {
-    
+    self.event = event.nseAutorelease;
+    [self.delegates uieControlTouchDown:sender];
 }
 
 - (void)touchDownRepeat:(UIControl *)sender event:(UIEvent *)event {
-    
+    self.event = event.nseAutorelease;
+    [self.delegates uieControlTouchDownRepeat:sender];
 }
 
 - (void)touchDragInside:(UIControl *)sender event:(UIEvent *)event {
-    
+    self.event = event.nseAutorelease;
+    [self.delegates uieControlTouchDragInside:sender];
 }
 
 - (void)touchDragOutside:(UIControl *)sender event:(UIEvent *)event {
-    
+    self.event = event.nseAutorelease;
+    [self.delegates uieControlTouchDragOutside:sender];
 }
 
 - (void)touchDragEnter:(UIControl *)sender event:(UIEvent *)event {
-    
+    self.event = event.nseAutorelease;
+    [self.delegates uieControlTouchDragEnter:sender];
 }
 
 - (void)touchDragExit:(UIControl *)sender event:(UIEvent *)event {
-    
+    self.event = event.nseAutorelease;
+    [self.delegates uieControlTouchDragExit:sender];
 }
 
 - (void)touchUpInside:(UIControl *)sender event:(UIEvent *)event {
-    
+    self.event = event.nseAutorelease;
+    [self.delegates uieControlTouchUpInside:sender];
 }
 
 - (void)touchUpOutside:(UIControl *)sender event:(UIEvent *)event {
-    
+    self.event = event.nseAutorelease;
+    [self.delegates uieControlTouchUpOutside:sender];
 }
 
 - (void)touchCancel:(UIControl *)sender event:(UIEvent *)event {
-    
+    self.event = event.nseAutorelease;
+    [self.delegates uieControlTouchCancel:sender];
 }
 
 - (void)valueChanged:(UIControl *)sender event:(UIEvent *)event {
-    
+    self.event = event.nseAutorelease;
+    [self.delegates uieControlValueChanged:sender];
 }
 
 - (void)primaryActionTriggered:(UIControl *)sender event:(UIEvent *)event {
-    
+    self.event = event.nseAutorelease;
+    [self.delegates uieControlPrimaryActionTriggered:sender];
 }
 
 - (void)editingDidBegin:(UIControl *)sender event:(UIEvent *)event {
-    
+    self.event = event.nseAutorelease;
+    [self.delegates uieControlEditingDidBegin:sender];
 }
 
 - (void)editingChanged:(UIControl *)sender event:(UIEvent *)event {
-    
+    self.event = event.nseAutorelease;
+    [self.delegates uieControlEditingChanged:sender];
 }
 
 - (void)editingDidEnd:(UIControl *)sender event:(UIEvent *)event {
-    
+    self.event = event.nseAutorelease;
+    [self.delegates uieControlEditingDidEnd:sender];
 }
 
 - (void)editingDidEndOnExit:(UIControl *)sender event:(UIEvent *)event {
-    
+    self.event = event.nseAutorelease;
+    [self.delegates uieControlEditingDidEndOnExit:sender];
 }
 
 @end
