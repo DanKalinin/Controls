@@ -24,6 +24,15 @@
     return UIEViewOperation.class;
 }
 
+- (UIColor *)uieLayerBorderColor {
+    UIColor *uieLayerBorderColor = [UIColor colorWithCGColor:self.layer.backgroundColor];
+    return uieLayerBorderColor;
+}
+
+- (void)setUieLayerBorderColor:(UIColor *)uieLayerBorderColor {
+    self.layer.borderColor = uieLayerBorderColor.CGColor;
+}
+
 @end
 
 

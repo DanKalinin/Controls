@@ -26,6 +26,8 @@
 
 @property (readonly) UIEViewOperation *nseOperation;
 
+@property IBInspectable UIColor *uieLayerBorderColor;
+
 @end
 
 
