@@ -19,6 +19,14 @@
 @implementation UIControl (UIE)
 
 @dynamic nseOperation;
+@dynamic uieDefaultBackgroundColor;
+@dynamic uieHighlightedBackgroundColor;
+@dynamic uieSelectedBackgroundColor;
+@dynamic uieDisabledBackgroundColor;
+@dynamic uieDefaultLayerBorderColor;
+@dynamic uieHighlightedLayerBorderColor;
+@dynamic uieSelectedLayerBorderColor;
+@dynamic uieDisabledLayerBorderColor;
 
 - (Class)nseOperationClass {
     return UIEControlOperation.class;
@@ -42,6 +50,24 @@
 
 
 @implementation UIEControl
+
+- (void)setEnabled:(BOOL)enabled {
+    super.enabled = enabled;
+    
+    self.nseOperation.enabled = enabled;
+}
+
+- (void)setSelected:(BOOL)selected {
+    super.selected = selected;
+    
+    self.nseOperation.selected = selected;
+}
+
+- (void)setHighlighted:(BOOL)highlighted {
+    super.highlighted = highlighted;
+    
+    self.nseOperation.highlighted = highlighted;
+}
 
 @end
 
@@ -164,6 +190,38 @@
 - (void)editingDidEndOnExit:(UIControl *)sender event:(UIEvent *)event {
     self.event = event.nseAutorelease;
     [self.delegates uieControlEditingDidEndOnExit:sender];
+}
+
+#pragma mark - UIControl
+
+- (void)setEnabled:(BOOL)enabled {
+    if (enabled) {
+        self.object.backgroundColor = self.object.uieDefaultBackgroundColor;
+        self.object.uieLayerBorderColor = self.object.uieDefaultLayerBorderColor;
+    } else {
+        self.object.backgroundColor = self.object.uieDisabledBackgroundColor;
+        self.object.uieLayerBorderColor = self.object.uieDisabledLayerBorderColor;
+    }
+}
+
+- (void)setSelected:(BOOL)selected {
+    if (selected) {
+        self.object.backgroundColor = self.object.uieSelectedBackgroundColor;
+        self.object.uieLayerBorderColor = self.object.uieSelectedLayerBorderColor;
+    } else {
+        self.object.backgroundColor = self.object.uieDefaultBackgroundColor;
+        self.object.uieLayerBorderColor = self.object.uieDefaultLayerBorderColor;
+    }
+}
+
+- (void)setHighlighted:(BOOL)highlighted {
+    if (highlighted) {
+        self.object.backgroundColor = self.object.uieHighlightedBackgroundColor;
+        self.object.uieLayerBorderColor = self.object.uieHighlightedLayerBorderColor;
+    } else {
+        self.object.backgroundColor = self.object.uieDefaultBackgroundColor;
+        self.object.uieLayerBorderColor = self.object.uieDefaultLayerBorderColor;
+    }
 }
 
 @end

@@ -92,4 +92,8 @@
 @property (weak, readonly) UIControl *object;
 @property (weak, readonly) UIEvent *event;
 
+- (void)setEnabled:(BOOL)enabled;
+- (void)setSelected:(BOOL)selected;
+- (void)setHighlighted:(BOOL)highlighted;
+
 @end
