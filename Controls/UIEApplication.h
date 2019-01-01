@@ -56,7 +56,7 @@
 
 
 
-@interface UIEApplicationOperation : UIEResponderOperation <UIEApplicationDelegate>
+@interface UIEApplicationOperation : UIEResponderOperation <UIEApplicationDelegate, UIApplicationDelegate>
 
 @property (nonatomic) UIWindow *window;
 

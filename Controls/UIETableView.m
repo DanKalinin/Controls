@@ -163,7 +163,7 @@
 
 
 
-@interface UIETableViewOperation () <UITableViewDelegate, UITableViewDataSource>
+@interface UIETableViewOperation ()
 
 @property BOOL empty;
 
@@ -184,7 +184,6 @@
 - (instancetype)initWithObject:(UITableView *)object {
     self = [super initWithObject:object];
     
-    object.delegate = self;
     object.dataSource = self;
     
     return self;

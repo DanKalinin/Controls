@@ -52,11 +52,16 @@
 
 @protocol UIEButtonDelegate <UIEControlDelegate>
 
+@optional
+- (void)uieButtonTouchUpInside:(UIButton *)button;
+
 @end
 
 
 
 @interface UIEButtonOperation : UIEControlOperation <UIEButtonDelegate>
+
+@property HLPArray<UIEButtonDelegate> *delegates;
 
 @property (weak, readonly) UIButton *object;
 

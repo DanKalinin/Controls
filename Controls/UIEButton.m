@@ -71,6 +71,13 @@
 
 @implementation UIEButtonOperation
 
+@dynamic delegates;
 @dynamic object;
+
+- (void)touchUpInside:(UIButton *)sender event:(UIEvent *)event {
+    [super touchUpInside:sender event:event];
+    
+    [self.delegates uieButtonTouchUpInside:sender];
+}
 
 @end

@@ -56,7 +56,7 @@
 
 
 
-@interface UIEScrollViewOperation : UIEViewOperation <UIEScrollViewDelegate>
+@interface UIEScrollViewOperation : UIEViewOperation <UIEScrollViewDelegate, UIScrollViewDelegate>
 
 @property (weak, readonly) UIScrollView *object;
 

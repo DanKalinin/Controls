@@ -138,7 +138,7 @@
 
 
 
-@interface UIETableViewOperation : UIEScrollViewOperation <UIETableViewDelegate>
+@interface UIETableViewOperation : UIEScrollViewOperation <UIETableViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (readonly) HLPArray<UIETableViewDelegate> *delegates;
 @property (readonly) BOOL empty;

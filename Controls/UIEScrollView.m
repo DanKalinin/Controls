@@ -54,7 +54,7 @@
 
 
 
-@interface UIEScrollViewOperation () <UIScrollViewDelegate>
+@interface UIEScrollViewOperation ()
 
 @end
 

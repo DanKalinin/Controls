@@ -92,6 +92,24 @@
 @property (weak, readonly) UIControl *object;
 @property (weak, readonly) UIEvent *event;
 
+- (void)touchDown:(UIControl *)sender event:(UIEvent *)event;
+- (void)touchDownRepeat:(UIControl *)sender event:(UIEvent *)event;
+- (void)touchDragInside:(UIControl *)sender event:(UIEvent *)event;
+- (void)touchDragOutside:(UIControl *)sender event:(UIEvent *)event;
+- (void)touchDragEnter:(UIControl *)sender event:(UIEvent *)event;
+- (void)touchDragExit:(UIControl *)sender event:(UIEvent *)event;
+- (void)touchUpInside:(UIControl *)sender event:(UIEvent *)event;
+- (void)touchUpOutside:(UIControl *)sender event:(UIEvent *)event;
+- (void)touchCancel:(UIControl *)sender event:(UIEvent *)event;
+
+- (void)valueChanged:(UIControl *)sender event:(UIEvent *)event;
+- (void)primaryActionTriggered:(UIControl *)sender event:(UIEvent *)event;
+
+- (void)editingDidBegin:(UIControl *)sender event:(UIEvent *)event;
+- (void)editingChanged:(UIControl *)sender event:(UIEvent *)event;
+- (void)editingDidEnd:(UIControl *)sender event:(UIEvent *)event;
+- (void)editingDidEndOnExit:(UIControl *)sender event:(UIEvent *)event;
+
 - (void)setEnabled:(BOOL)enabled;
 - (void)setSelected:(BOOL)selected;
 - (void)setHighlighted:(BOOL)highlighted;

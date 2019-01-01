@@ -85,7 +85,7 @@
 
 
 
-@interface UIEViewControllerOperation () <UIViewControllerTransitioningDelegate>
+@interface UIEViewControllerOperation ()
 
 @property (weak) UIEViewControllerPrepareForSegue *prepareForSegue;
 

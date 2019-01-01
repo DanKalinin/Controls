@@ -75,7 +75,7 @@
 
 
 
-@interface UIEViewControllerOperation : UIEResponderOperation <UIEViewControllerDelegate>
+@interface UIEViewControllerOperation : UIEResponderOperation <UIEViewControllerDelegate, UIViewControllerTransitioningDelegate>
 
 @property (weak, readonly) UIViewController *object;
 @property (weak, readonly) UIEViewControllerPrepareForSegue *prepareForSegue;

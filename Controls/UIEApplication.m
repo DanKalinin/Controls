@@ -62,7 +62,7 @@
 
 
 
-@interface UIEApplicationOperation () <UIApplicationDelegate>
+@interface UIEApplicationOperation ()
 
 @end
 
