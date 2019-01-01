@@ -26,6 +26,16 @@
 
 @property (readonly) UIEControlOperation *nseOperation;
 
+@property IBInspectable UIColor *uieDefaultBackgroundColor;
+@property IBInspectable UIColor *uieHighlightedBackgroundColor;
+@property IBInspectable UIColor *uieSelectedBackgroundColor;
+@property IBInspectable UIColor *uieDisabledBackgroundColor;
+
+@property IBInspectable UIColor *uieDefaultLayerBorderColor;
+@property IBInspectable UIColor *uieHighlightedLayerBorderColor;
+@property IBInspectable UIColor *uieSelectedLayerBorderColor;
+@property IBInspectable UIColor *uieDisabledLayerBorderColor;
+
 @end
 
 
