@@ -37,10 +37,10 @@
 
 @interface UIETableViewCell ()
 
-@property (weak) UIButton *uieWeakButton1;
-@property (weak) UIButton *uieWeakButton2;
-@property (weak) UITextField *uieWeakTextField1;
-@property (weak) UIActivityIndicatorView *uieWeakActivityIndicatorView1;
+@property UIButton *uieButton1;
+@property UIButton *uieButton2;
+@property UITextField *uieTextField1;
+@property UIActivityIndicatorView *uieActivityIndicatorView1;
 
 @end
 
@@ -94,8 +94,8 @@
     
     self.object.userInteractionEnabled = enabled;
     
-    self.object.uieWeakButton1.enabled = enabled;
-    self.object.uieWeakButton2.enabled = enabled;
+    self.object.uieButton1.enabled = enabled;
+    self.object.uieButton2.enabled = enabled;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

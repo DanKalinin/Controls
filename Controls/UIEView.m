@@ -19,10 +19,10 @@
 @implementation UIView (UIE)
 
 @dynamic nseOperation;
-@dynamic uieWeakButton1;
-@dynamic uieWeakButton2;
-@dynamic uieWeakTextField1;
-@dynamic uieWeakActivityIndicatorView1;
+@dynamic uieButton1;
+@dynamic uieButton2;
+@dynamic uieTextField1;
+@dynamic uieActivityIndicatorView1;
 
 - (Class)nseOperationClass {
     return UIEViewOperation.class;

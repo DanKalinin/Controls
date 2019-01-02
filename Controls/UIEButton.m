@@ -45,6 +45,7 @@
 @property UIColor *uieHighlightedLayerBorderColor;
 @property UIColor *uieSelectedLayerBorderColor;
 @property UIColor *uieDisabledLayerBorderColor;
+@property UIButton *uieButton1;
 
 @end
 

@@ -28,12 +28,12 @@
 
 @property IBInspectable UIColor *uieLayerBorderColor;
 
-@property (weak) IBOutlet UIButton *uieWeakButton1;
-@property (weak) IBOutlet UIButton *uieWeakButton2;
+@property IBOutlet UIButton *uieButton1;
+@property IBOutlet UIButton *uieButton2;
 
-@property (weak) IBOutlet UITextField *uieWeakTextField1;
+@property IBOutlet UITextField *uieTextField1;
 
-@property (weak) IBOutlet UIActivityIndicatorView *uieWeakActivityIndicatorView1;
+@property IBOutlet UIActivityIndicatorView *uieActivityIndicatorView1;
 
 @end
 

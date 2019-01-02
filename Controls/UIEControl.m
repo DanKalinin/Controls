@@ -211,6 +211,8 @@
         self.object.backgroundColor = self.object.uieDisabledBackgroundColor;
         self.object.uieLayerBorderColor = self.object.uieDisabledLayerBorderColor;
     }
+    
+    self.object.uieButton1.enabled = enabled;
 }
 
 - (void)setSelected:(BOOL)selected {
@@ -221,6 +223,8 @@
         self.object.backgroundColor = self.object.uieDefaultBackgroundColor;
         self.object.uieLayerBorderColor = self.object.uieDefaultLayerBorderColor;
     }
+    
+    self.object.uieButton1.selected = selected;
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
@@ -231,6 +235,8 @@
         self.object.backgroundColor = self.object.uieDefaultBackgroundColor;
         self.object.uieLayerBorderColor = self.object.uieDefaultLayerBorderColor;
     }
+    
+    self.object.uieButton1.highlighted = highlighted;
 }
 
 @end
