@@ -99,11 +99,13 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    
+    self.object.uieButton1.selected = selected;
+    self.object.uieButton2.selected = selected;
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
-    
+    self.object.uieButton1.highlighted = highlighted;
+    self.object.uieButton2.highlighted = highlighted;
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {

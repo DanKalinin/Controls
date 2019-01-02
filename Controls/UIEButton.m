@@ -53,6 +53,24 @@
 
 @implementation UIEButton
 
+- (void)setEnabled:(BOOL)enabled {
+    super.enabled = enabled;
+    
+    self.nseOperation.enabled = enabled;
+}
+
+- (void)setSelected:(BOOL)selected {
+    super.selected = selected;
+    
+    self.nseOperation.selected = selected;
+}
+
+- (void)setHighlighted:(BOOL)highlighted {
+    super.highlighted = highlighted;
+    
+    self.nseOperation.highlighted = highlighted;
+}
+
 @end
 
 
