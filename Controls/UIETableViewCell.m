@@ -37,6 +37,11 @@
 
 @interface UIETableViewCell ()
 
+@property (weak) UIButton *uieWeakButton1;
+@property (weak) UIButton *uieWeakButton2;
+@property (weak) UITextField *uieWeakTextField1;
+@property (weak) UIActivityIndicatorView *uieWeakActivityIndicatorView1;
+
 @end
 
 
