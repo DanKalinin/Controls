@@ -258,11 +258,26 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    
+    if (textField.uieClearOnBegin) {
+        textField.text = @"";
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     self.shouldChangeCharactersInRange = [UIETextFieldShouldChangeCharactersInRange.alloc initWithRange:range string:string].nseAutorelease;
+    
+    if (textField.uiePattern.length > 0) {
+        NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        range = [text rangeOfString:textField.uiePattern options:NSRegularExpressionSearch];
+        if (range.location == NSNotFound) {
+            self.shouldChangeCharactersInRange.should = NO;
+        } else {
+            self.shouldChangeCharactersInRange.should = YES;
+        }
+    } else {
+        self.shouldChangeCharactersInRange.should = YES;
+    }
+    
     [self.delegates uieTextFieldShouldChangeCharactersInRange:textField];
     return self.shouldChangeCharactersInRange.should;
 }
