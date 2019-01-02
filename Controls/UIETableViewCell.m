@@ -91,6 +91,11 @@
 
 - (void)setEnabled:(BOOL)enabled animated:(BOOL)animated {
     self.enabled = enabled;
+    
+    self.object.userInteractionEnabled = enabled;
+    
+    self.object.uieWeakButton1.enabled = enabled;
+    self.object.uieWeakButton2.enabled = enabled;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
