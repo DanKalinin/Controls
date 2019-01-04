@@ -55,7 +55,7 @@
 
 
 
-@interface UIEKeyboard : NSEOperation
+@interface UIEKeyboard : NSEOperation <UIEKeyboardDelegate>
 
 @property (readonly) HLPArray<UIEKeyboardDelegate> *delegates;
 
