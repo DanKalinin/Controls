@@ -19,6 +19,7 @@ FOUNDATION_EXPORT const unsigned char ControlsVersionString[];
 #import <Controls/UIEAlertController.h>
 #import <Controls/UIEWindow.h>
 #import <Controls/UIEPasscodeViewController.h>
+#import <Controls/UIELabel.h>
 
 //#import <Controls/UIBarItem.h>
 //#import <Controls/UIBarButtonItem.h>
