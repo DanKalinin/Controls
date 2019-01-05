@@ -24,6 +24,7 @@
 
 @implementation UIEPasscodeViewController
 
+@dynamic view;
 @dynamic nseOperation;
 
 - (Class)nseOperationClass {
@@ -50,5 +51,7 @@
 @implementation UIEPasscodeViewControllerOperation
 
 @dynamic object;
+
+#pragma mark - UIEPasscodeViewDelegate
 
 @end

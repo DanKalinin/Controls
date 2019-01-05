@@ -22,7 +22,9 @@
 
 
 
-@interface UIEPasscodeViewController : UIEViewController
+@interface UIEPasscodeViewController : UIEViewController <UIEPasscodeViewDelegate>
+
+@property (nonatomic) UIEPasscodeView *view;
 
 @property (readonly) UIEPasscodeViewControllerOperation *nseOperation;
 
