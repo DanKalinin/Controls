@@ -27,6 +27,7 @@
 @property (readonly) UIEViewOperation *nseOperation;
 
 @property IBInspectable UIColor *uieLayerBorderColor;
+@property IBInspectable NSString *uieStringTag;
 
 @property IBOutlet UIButton *uieButton1;
 @property IBOutlet UIButton *uieButton2;

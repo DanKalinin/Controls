@@ -61,7 +61,7 @@
 
 @interface UIEButtonOperation : UIEControlOperation <UIEButtonDelegate>
 
-@property HLPArray<UIEButtonDelegate> *delegates;
+@property (readonly) HLPArray<UIEButtonDelegate> *delegates;
 
 @property (weak, readonly) UIButton *object;
 

@@ -37,6 +37,8 @@
 
 @interface UIEButton ()
 
+@property NSString *uieStringTag;
+@property UIButton *uieButton1;
 @property UIColor *uieDefaultBackgroundColor;
 @property UIColor *uieHighlightedBackgroundColor;
 @property UIColor *uieSelectedBackgroundColor;
@@ -45,7 +47,6 @@
 @property UIColor *uieHighlightedLayerBorderColor;
 @property UIColor *uieSelectedLayerBorderColor;
 @property UIColor *uieDisabledLayerBorderColor;
-@property UIButton *uieButton1;
 
 @end
 

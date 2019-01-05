@@ -19,6 +19,7 @@
 @implementation UIView (UIE)
 
 @dynamic nseOperation;
+@dynamic uieStringTag;
 @dynamic uieButton1;
 @dynamic uieButton2;
 @dynamic uieTextField1;
