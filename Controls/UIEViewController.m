@@ -43,6 +43,18 @@
 
 @implementation UIEViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self.nseOperation viewDidLoad];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
+    
+    [self.nseOperation prepareForSegue:segue sender:sender];
+}
+
 @end
 
 
@@ -108,7 +120,7 @@
 #pragma mark - UIViewController
 
 - (void)viewDidLoad {
-    
+    [self.object.view.nseOperation.delegates addObject:self.object];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -94,10 +94,4 @@
 
 @dynamic object;
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self.object.tableView.nseOperation.delegates addObject:self.object];
-}
-
 @end

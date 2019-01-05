@@ -1,0 +1,50 @@
+//
+//  UIEPasscodeViewController.h
+//  Controls
+//
+//  Created by Dan Kalinin on 1/5/19.
+//
+
+#import "UIEViewController.h"
+#import "UIEPasscodeView.h"
+
+@class UIEPasscodeViewController;
+@class UIEPasscodeViewControllerOperation;
+
+@protocol UIEPasscodeViewControllerDelegate;
+
+
+
+
+
+
+
+
+
+
+@interface UIEPasscodeViewController : UIEViewController
+
+@property (readonly) UIEPasscodeViewControllerOperation *nseOperation;
+
+@end
+
+
+
+
+
+
+
+
+
+
+@protocol UIEPasscodeViewControllerDelegate <UIEViewControllerDelegate>
+
+@end
+
+
+
+@interface UIEPasscodeViewControllerOperation : UIEViewControllerOperation <UIEPasscodeViewControllerDelegate>
+
+@property (weak, readonly) UIEPasscodeViewController *object;
+
+@end

@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIEResponder.h"
+#import "UIEView.h"
 
 @class UIEViewController;
 @class UIEViewControllerPrepareForSegue;
@@ -23,7 +24,7 @@
 
 
 
-@interface UIViewController (UIE)
+@interface UIViewController (UIE) <UIEViewDelegate>
 
 @property (readonly) UIEViewControllerOperation *nseOperation;
 

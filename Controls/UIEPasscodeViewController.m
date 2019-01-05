@@ -1,0 +1,54 @@
+//
+//  UIEPasscodeViewController.m
+//  Controls
+//
+//  Created by Dan Kalinin on 1/5/19.
+//
+
+#import "UIEPasscodeViewController.h"
+
+
+
+
+
+
+
+
+
+
+@interface UIEPasscodeViewController ()
+
+@end
+
+
+
+@implementation UIEPasscodeViewController
+
+@dynamic nseOperation;
+
+- (Class)nseOperationClass {
+    return UIEPasscodeViewControllerOperation.class;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface UIEPasscodeViewControllerOperation ()
+
+@end
+
+
+
+@implementation UIEPasscodeViewControllerOperation
+
+@dynamic object;
+
+@end

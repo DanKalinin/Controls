@@ -26,6 +26,10 @@
 
 @dynamic nseOperation;
 
+- (Class)nseOperationClass {
+    return UIEPasscodeViewOperation.class;
+}
+
 @end
 
 
