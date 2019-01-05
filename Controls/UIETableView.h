@@ -28,9 +28,9 @@
 
 @interface UITableView (UIE)
 
-@property (readonly) UIETableViewOperation *nseOperation;
-
 @property IBOutlet UIView *uieEmptyBackgroundView;
+
+@property (readonly) UIETableViewOperation *nseOperation;
 
 @end
 
