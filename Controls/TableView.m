@@ -9,6 +9,8 @@
 #import "TableView.h"
 #import <Helpers/Helpers.h>
 
+NSString *const TableViewCellReuseIdentifier = @"Cell";
+
 
 
 
@@ -161,6 +163,9 @@
         
         self.canMoveSingleRow = YES;
         
+        self.cellEditingStyle = UITableViewCellEditingStyleDelete;
+        self.shouldIndentWhileEditing = YES;
+        
         self.pgrGroup = [UIPanGestureRecognizer.alloc initWithTarget:self action:@selector(onPan:)];
         self.pgrGroup.enabled = NO;
         self.pgrGroup.cancelsTouchesInView = NO;
@@ -255,6 +260,16 @@
     
     if (self.rowsCollapsed) {
         [self.collapsedRows addObjectsFromArray:self.indexPaths];
+    } else {
+        SEL selector = @selector(tableView:isCollapsedIndexPath:);
+        if ([self.originalDataSource respondsToSelector:selector]) {
+            for (NSIndexPath *indexPath in self.indexPaths) {
+                BOOL collapsed = [self.originalDataSource tableView:self isCollapsedIndexPath:indexPath];
+                if (collapsed) {
+                    [self.collapsedRows addObject:indexPath];
+                }
+            }
+        }
     }
 }
 
@@ -439,6 +454,28 @@
     return ip;
 }
 
+// Editing
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCellEditingStyle style = self.cellEditingStyle;
+    
+    if ([self.originalDelegate respondsToSelector:_cmd]) {
+        style = [self.originalDelegate tableView:tableView editingStyleForRowAtIndexPath:indexPath];
+    }
+    
+    return style;
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    BOOL should = self.shouldIndentWhileEditing;
+    
+    if ([self.originalDelegate respondsToSelector:_cmd]) {
+        should = [self.originalDelegate tableView:tableView shouldIndentWhileEditingRowAtIndexPath:indexPath];
+    }
+    
+    return should;
+}
+
 #pragma mark - Gesture recognizer
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -592,6 +629,26 @@
 
 @dynamic view;
 @dynamic tableView;
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSInteger rows;
+    if (self.cells.count > 0) {
+        rows = self.cells.count;
+    } else {
+        rows = [super tableView:tableView numberOfRowsInSection:section];
+    }
+    return rows;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell;
+    if (self.cells.count > 0) {
+        cell = self.cells[indexPath.row];
+    } else {
+        cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    }
+    return cell;
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height;

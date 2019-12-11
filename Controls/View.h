@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import <Helpers/Helpers.h>
 
-@class TextFields, TimerControl, CircleView;
+@class TextFields, TimerControl, CircleView, HandleView, ScrollView;
 @class View, ImageView, TextField, TextView, Button, KeyboardContainerView, ShapeLayerView, GradientLayerView, GradientLayerView2, EmitterLayerView;
 
 extern const UIModalPresentationStyle UIModalPresentationPush;
@@ -113,7 +113,7 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 
 @interface Button : UIButton // Customized button
 
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *subbuttons; // Subbuttons changing their state together with receiver
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray<UIButton *> *subbuttons; // Subbuttons changing their state together with receiver
 
 @property (weak, nonatomic) IBOutlet Button *button1; // Convenience outlet connections
 @property (weak, nonatomic) IBOutlet Button *button2;
@@ -145,7 +145,7 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 
 
 
-@interface KeyboardContainerView : View // Content container view, which size is changing based on keyboard apperance
+@interface KeyboardContainerView : View <UIGestureRecognizerDelegate> // Content container view, which size is changing based on keyboard apperance
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint; // Constraint which constant is changing based on keyboard appearance
 
@@ -253,6 +253,8 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 @property (weak, nonatomic) IBOutlet UIView *view5;
 @property (weak, nonatomic) IBOutlet UIView *view6;
 
+@property (weak, nonatomic) IBOutlet ScrollView *scrollView1;
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageView1;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView2;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView3;
@@ -260,6 +262,8 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
 @property (weak, nonatomic) IBOutlet UILabel *label3;
+@property (weak, nonatomic) IBOutlet UILabel *label4;
+@property (weak, nonatomic) IBOutlet UILabel *label5;
 
 @property (strong, nonatomic) IBOutlet UILabel *sLabel1;
 @property (strong, nonatomic) IBOutlet UILabel *sLabel2;
@@ -287,9 +291,21 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 
 @property (weak, nonatomic) IBOutlet TextFields *textFields1;
 
+@property (weak, nonatomic) IBOutlet UIStackView *stackView1;
+@property (weak, nonatomic) IBOutlet UIStackView *stackView2;
+@property (weak, nonatomic) IBOutlet UIStackView *stackView3;
+@property (weak, nonatomic) IBOutlet UIStackView *stackView4;
+
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl1;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint1;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint2;
+
 @property (weak, nonatomic) IBOutlet TimerControl *timerControl1;
 
 @property (weak, nonatomic) IBOutlet CircleView *circleView1;
+
+@property (weak, nonatomic) IBOutlet HandleView *handleView1;
 
 @property (weak, readonly) UIViewController *overlay;
 

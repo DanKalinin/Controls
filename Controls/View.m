@@ -9,6 +9,8 @@
 #import "TextFields.h"
 #import "TimerControl.h"
 #import "CircleView.h"
+#import "HandleView.h"
+#import "ScrollView.h"
 
 const UIModalPresentationStyle UIModalPresentationPush = -10;
 
@@ -90,6 +92,25 @@ const UIModalPresentationStyle UIModalPresentationPush = -10;
 
 
 
+@interface TextView ()
+
+@end
+
+
+
+@implementation TextView
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface TextFieldDelegate : NSObject <UITextFieldDelegate>
 
 @end
@@ -137,25 +158,6 @@ const UIModalPresentationStyle UIModalPresentationPush = -10;
 - (void)textFieldDidEndEditing:(TextField *)textField {
     
 }
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface TextView ()
-
-@end
-
-
-
-@implementation TextView
 
 @end
 
@@ -329,6 +331,7 @@ const UIModalPresentationStyle UIModalPresentationPush = -10;
         self.keyboardWillChangeFrameNotification = YES;
         
         UITapGestureRecognizer *tgr = [UITapGestureRecognizer.alloc initWithTarget:self action:@selector(onTap:)];
+        tgr.delegate = self;
         tgr.cancelsTouchesInView = NO;
         [self addGestureRecognizer:tgr];
     }
@@ -352,6 +355,19 @@ const UIModalPresentationStyle UIModalPresentationPush = -10;
 
 - (void)onTap:(UITapGestureRecognizer *)tgr {
     [self endEditing:YES];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    BOOL should = YES;
+    
+    for (UIView *view = touch.view; view; view = view.superview) {
+        if (view.isFirstResponder) {
+            should = NO;
+            break;
+        }
+    }
+    
+    return should;
 }
 
 @end

@@ -15,6 +15,8 @@
 
 @class TableView;
 
+extern NSString *const TableViewCellReuseIdentifier;
+
 typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
     TableViewRowReorderingPolicyNone,
     TableViewRowReorderingPolicyInSection
@@ -38,6 +40,7 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 // Collapsing
 
 - (BOOL)tableView:(TableView *)tableView isCollapsedSection:(NSInteger)section;
+- (BOOL)tableView:(TableView *)tableView isCollapsedIndexPath:(NSIndexPath *)indexPath;
 
 // Grouping
 
@@ -85,6 +88,7 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @interface TableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet ImageView *imageView1;
+@property (weak, nonatomic) IBOutlet ImageView *imageView2;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint1;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint2;
@@ -128,8 +132,10 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @property (weak, nonatomic) IBOutlet UISlider *slider1;
 
 @property (weak, nonatomic) IBOutlet PickerControl *pickerControl1;
+@property (weak, nonatomic) IBOutlet PickerControl *pickerControl2;
 
 @property (weak, nonatomic) IBOutlet NumberPickerControl *numberPickerControl1;
+@property (weak, nonatomic) IBOutlet NumberPickerControl *numberPickerControl2;
 
 @property (weak, nonatomic) IBOutlet DoubleNumberPickerControl *doubleNumberPickerControl1;
 
@@ -237,6 +243,9 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @property IBInspectable BOOL canMoveSingleRow;
 @property IBInspectable TableViewRowReorderingPolicy rowReorderingPolicy;
 
+@property IBInspectable UITableViewCellEditingStyle cellEditingStyle;
+@property IBInspectable BOOL shouldIndentWhileEditing;
+
 @property (readonly) UIPanGestureRecognizer *pgrGroup; // Enable to support grouping
 
 - (IBAction)onHeaderView:(UIButton *)sender;
@@ -272,9 +281,22 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 @property (weak, nonatomic) IBOutlet TableViewCell *cell5;
 @property (weak, nonatomic) IBOutlet TableViewCell *cell6;
 
+@property (weak, nonatomic) IBOutlet UILabel *label1;
+@property (weak, nonatomic) IBOutlet UILabel *label2;
+@property (weak, nonatomic) IBOutlet UILabel *label3;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView1;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView2;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView3;
+
 @property (weak, nonatomic) IBOutlet Button *button1;
 @property (weak, nonatomic) IBOutlet Button *button2;
 @property (weak, nonatomic) IBOutlet Button *button3;
+@property (weak, nonatomic) IBOutlet Button *button4;
+@property (weak, nonatomic) IBOutlet Button *button5;
+@property (weak, nonatomic) IBOutlet Button *button6;
+
+@property (strong, nonatomic) IBOutlet Button *sButton1;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonItem1;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonItem2;
@@ -284,7 +306,7 @@ typedef NS_ENUM(NSUInteger, TableViewRowReorderingPolicy) {
 
 @property (strong, nonatomic) IBOutlet EdgeSliderControl *sliderControl1;
 
-@property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cells;
+@property (strong, nonatomic) IBOutletCollection(TableViewCell) NSMutableArray<TableViewCell *> *cells;
 
 @property IBInspectable NSString *string1;
 @property IBInspectable NSString *string2;
