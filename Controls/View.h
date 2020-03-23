@@ -97,6 +97,7 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 @property IBInspectable BOOL clearOnBegin;
 @property IBInspectable NSString *pattern;
 @property IBInspectable CGFloat disabledAlpha;
+@property IBInspectable NSUInteger maxLength;
 
 @property (readonly) BOOL valid;
 

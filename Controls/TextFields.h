@@ -25,6 +25,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIBarButtonItem) NSArray *items;
 
 @property IBInspectable NSString *separator; // . - default separator
+@property IBInspectable BOOL checkEquality;
 
 @property NSString *text; // Text from @ textFields joined by @ separator
 

@@ -134,7 +134,11 @@ const UIModalPresentationStyle UIModalPresentationPush = -10;
         NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
         NSRange range = [text rangeOfString:textField.pattern options:NSRegularExpressionSearch];
         if (range.location == NSNotFound) {
-            return NO;
+            if (text.length > textField.maxLength) {
+                return NO;
+            } else {
+                return YES;
+            }
         } else {
             return YES;
         }

@@ -48,9 +48,16 @@
 }
 
 - (BOOL)valid {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(text.length > 0) AND (valid = YES)"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"valid == YES"];
     NSArray *validTextFields = [self.textFields filteredArrayUsingPredicate:predicate];
     BOOL valid = (validTextFields.count == self.textFields.count);
+    
+    if (valid && self.checkEquality) {
+        NSArray *array = [self.textFields valueForKey:@"text"];
+        NSSet *set = [NSSet setWithArray:array];
+        valid = (set.count == 1);
+    }
+    
     return valid;
 }
 
