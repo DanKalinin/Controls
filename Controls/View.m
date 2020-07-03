@@ -67,6 +67,32 @@ const UIModalPresentationStyle UIModalPresentationPush = -10;
 
 
 
+@interface AttributedLabel ()
+
+@end
+
+
+
+@implementation AttributedLabel
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    UILabel *label = [self valueForKey:NSLocale.currentLocale.languageCode];
+    self.attributedText = label.attributedText;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface ImageView ()
 
 @end
@@ -99,6 +125,32 @@ const UIModalPresentationStyle UIModalPresentationPush = -10;
 
 
 @implementation TextView
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface AttributedTextView ()
+
+@end
+
+
+
+@implementation AttributedTextView
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    UILabel *textView = [self valueForKey:NSLocale.currentLocale.languageCode];
+    self.attributedText = textView.attributedText;
+}
 
 @end
 

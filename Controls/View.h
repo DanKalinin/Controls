@@ -63,6 +63,22 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 
 
 
+@interface AttributedLabel : Label
+
+@property (strong, nonatomic) IBOutlet UILabel *en;
+@property (strong, nonatomic) IBOutlet UILabel *ru;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface ImageView : UIImageView // Customized image view
 
 @property IBInspectable UIColor *defaultBackgroundColor;
@@ -80,6 +96,22 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 
 
 @interface TextView : UITextView
+
+@end
+
+
+
+
+
+
+
+
+
+
+@interface AttributedTextView : TextView
+
+@property (strong, nonatomic) IBOutlet UITextView *en;
+@property (strong, nonatomic) IBOutlet UITextView *ru;
 
 @end
 
