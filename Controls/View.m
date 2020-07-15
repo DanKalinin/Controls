@@ -373,6 +373,49 @@ const UIModalPresentationStyle UIModalPresentationPush = -10;
 
 
 
+@interface SegmentedControl ()
+
+@end
+
+
+
+@implementation SegmentedControl
+
+- (UIColor *)normalTextColor {
+    NSDictionary *attributes = [self titleTextAttributesForState:UIControlStateNormal];
+    UIColor *ret = attributes[NSForegroundColorAttributeName];
+    return ret;
+}
+
+- (void)setNormalTextColor:(UIColor *)normalTextColor {
+    NSMutableDictionary *attributes = NSMutableDictionary.dictionary;
+    attributes[NSForegroundColorAttributeName] = normalTextColor;
+    [self setTitleTextAttributes:attributes forState:UIControlStateNormal];
+}
+
+- (UIColor *)selectedTextColor {
+    NSDictionary *attributes = [self titleTextAttributesForState:UIControlStateSelected];
+    UIColor *ret = attributes[NSForegroundColorAttributeName];
+    return ret;
+}
+
+- (void)setSelectedTextColor:(UIColor *)selectedTextColor {
+    NSMutableDictionary *attributes = NSMutableDictionary.dictionary;
+    attributes[NSForegroundColorAttributeName] = selectedTextColor;
+    [self setTitleTextAttributes:attributes forState:UIControlStateSelected];
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface KeyboardContainerView ()
 
 @end

@@ -178,6 +178,22 @@ extern const UIModalPresentationStyle UIModalPresentationPush;
 
 
 
+@interface SegmentedControl : UISegmentedControl
+
+@property IBInspectable UIColor *normalTextColor;
+@property IBInspectable UIColor *selectedTextColor;
+
+@end
+
+
+
+
+
+
+
+
+
+
 @interface KeyboardContainerView : View <UIGestureRecognizerDelegate> // Content container view, which size is changing based on keyboard apperance
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint; // Constraint which constant is changing based on keyboard appearance
