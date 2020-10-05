@@ -20,7 +20,7 @@
 
 @interface CollectionViewCell ()
 
-@property BOOL editing;
+@property BOOL _editing;
 @property CABasicAnimation *shakeAnimation;
 
 @end
@@ -65,7 +65,7 @@
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-    self.editing = editing;
+    self._editing = editing;
     
     self.buttonDelete.hidden = !editing;
     
@@ -130,7 +130,7 @@
 
 @property UILongPressGestureRecognizer *lpgr;
 @property UIPanGestureRecognizer *pgrReorder;
-@property BOOL editing;
+@property BOOL _editing;
 @property BOOL movementBegan;
 
 @end
@@ -195,7 +195,7 @@
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-    self.editing = editing;
+    self._editing = editing;
     
     for (CollectionViewCell *cell in self.visibleCells) {
         [cell setEditing:editing animated:animated];
@@ -263,7 +263,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(CollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    [cell setEditing:self.editing animated:NO];
+    [cell setEditing:self._editing animated:NO];
 }
 
 // Reordering

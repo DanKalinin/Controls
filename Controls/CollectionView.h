@@ -98,7 +98,7 @@ typedef NS_ENUM(NSUInteger, CollectionViewItemReorderingPolicy) {
 
 @property IBInspectable BOOL shakeOnEditing;
 
-@property (readonly) BOOL editing;
+@property (readonly) BOOL _editing;
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated;
 
@@ -140,7 +140,7 @@ typedef NS_ENUM(NSUInteger, CollectionViewItemReorderingPolicy) {
 
 @property (readonly) UILongPressGestureRecognizer *lpgr; // Enable to support long press. - collectionView:didLongPressItemAtIndexPath: will be called.
 @property (readonly) UIPanGestureRecognizer *pgrReorder; // Enable to support custom reordering. Do not enable if @ reorderOnEditing = YES.
-@property (readonly) BOOL editing;
+@property (readonly) BOOL _editing;
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated;
 
